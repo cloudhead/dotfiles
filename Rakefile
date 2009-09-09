@@ -53,8 +53,8 @@ end
 def link file, erb
   if erb
     msg "generating", :green, file, "\n"
-    File.open(dot(file), 'w') do |file|
-      file.write ERB.new(File.read(file + '.erb')).result(binding)
+    File.open(dot(file), 'w') do |f|
+      f.write ERB.new(File.read(file + '.erb')).result(binding)
     end
   else
     msg "linking", :green, file, "\n"

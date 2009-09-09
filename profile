@@ -5,7 +5,7 @@
 #
 # Includes
 #
-. ~/git-completion.bash
+. /usr/local/etc/git-completion.bash
 
 #
 # ENV
