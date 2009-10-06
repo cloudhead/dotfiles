@@ -25,9 +25,11 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 # git
 alias gush='git push'
 alias github='gush origin master'
+alias origin='gush origin master'
 alias gist='git status'
 alias gull='git pull'
 alias gadd='git add'
+alias gim='git commit -m'
 
 # ls & cd
 if [[ $SYSTEM =~ $SYSTEM_NIX ]]; then
@@ -37,6 +39,7 @@ else
 fi
 
 alias ..='cd ..'
+alias ts='thin start'
 
 # other
 alias nginxre='sudo kill `cat /usr/local/logs/nginx.pid`;sudo nginx'
