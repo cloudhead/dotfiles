@@ -1,4 +1,30 @@
-to install:
+Installation
+------------
 
-$ sudo cp ./etc/* /usr/local/etc/
+change your login shell to zsh:
+
+$ chsh -s /bin/zsh
+
+clone and install the files:
+
+$ git clone git://github.com/cloudhead/dotfiles.git
+$ cd dotfiles
 $ rake
+
+Features
+--------
+
+# zsh/prompt
+- % is colored differently depending on return value of previous command
+- Shows current git branch and action (ex: merging), through built-in vcs_info functions
+- Current branch's color depends on the state of the working directory
+- ls colors
+- sane defaults & options (completion, spell-correction..)
+
+# irb
+- colored prompt
+- history
+
+# vim
+- everything is based around 2 space soft-tabs
+- a couple useful commands and input remapping
