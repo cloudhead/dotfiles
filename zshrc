@@ -98,21 +98,25 @@ function prompt_cursor {
 #
 # Set prompt style
 #
-ACTION="%{$CYAN%}%a%{$CLEAR%}"
+ACTION="%{$PURPLE%}:%a%{$CLEAR%}"
 
-zstyle ':vcs_info:*'         enable git
-zstyle ':vcs_info:*'         check-for-changes true
-zstyle ':vcs_info:*'         unstagedstr   "%{$GREEN%}+%{$CLEAR%} "
-zstyle ':vcs_info:*'         stagedstr     "%{$YELLOW%}!%{$CLEAR%} "
-zstyle ':vcs_info:*:clean:*' actionformats "%{$BLUE%}(%b:${ACTION})%{$CLEAR%} "
-zstyle ':vcs_info:*:dirty:*' actionformats "%{$GREEN%}(%b):${ACTION}%{$CLEAR%} "
-zstyle ':vcs_info:*:clean:*' formats       "%{$BLUE%}(%b)%{$CLEAR%} "
-zstyle ':vcs_info:*:dirty:*' formats       "%{$GREEN%}(%b)%{$CLEAR%} "
-zstyle ':vcs_info:*'         nvcsformats   ""
+zstyle ':vcs_info:*'          enable git
+zstyle ':vcs_info:*'          check-for-changes true
+zstyle ':vcs_info:*:clean:*'  actionformats "%{$BLUE%}(%b${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:dirty:*'  actionformats "%{$GREEN%}(%b${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:staged:*' formats       "%{$YELLOW%}(%b%${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:clean:*'  formats       "%{$BLUE%}(%b)%{$CLEAR%} "
+zstyle ':vcs_info:*:dirty:*'  formats       "%{$GREEN%}(%b)%{$CLEAR%} "
+zstyle ':vcs_info:*:staged:*' formats       "%{$YELLOW%}(%b)%{$CLEAR%} "
+zstyle ':vcs_info:*'          nvcsformats   ""
 
 function precmd {
-  # Check if there are unstaged changes 
-  if git diff --quiet 2>/dev/null >&2 
+  # Check if there are unstaged changes
+  git status &>/dev/null
+
+  if [ $? -eq 0 ]; then
+    vcs_info 'staged'
+  elif git diff --quiet 2>/dev/null >&2
   then
     vcs_info 'clean'
   else
