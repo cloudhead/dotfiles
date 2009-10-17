@@ -3,7 +3,9 @@
 :benchmark: false
 :bulk_threshold: 1000
 :sources: 
+- http://gemcutter.org
 - http://gems.rubyforge.org/
 - http://gems.github.com
 :update_sources: true
 :verbose: true
+gemcutter_key: 8526af70dd051c5d51e2ddb9ad4a55d6
