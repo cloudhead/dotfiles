@@ -128,4 +128,4 @@ function precmd {
 # Set Prompts
 #
 PROMPT='%{$CYAN%}%n%{$CLEAR%} %~ $vcs_info_msg_0_$(prompt_cursor) %{$CLEAR%}'
-RPROMPT='%{$PURPLE%}%w %T%{$CLEAR%} %{$CYAN%}@%m%{$CLEAR%} %{$BLUE%}: %!%{$CLEAR%}' 
+RPROMPT='%{$PURPLE%}%w %T%{$CLEAR%} %{$CYAN%}@ %m%{$CLEAR%} %{$BLUE%}: %!%{$CLEAR%}' 
