@@ -104,7 +104,7 @@ zstyle ':vcs_info:*'          enable git
 zstyle ':vcs_info:*'          check-for-changes true
 zstyle ':vcs_info:*:clean:*'  actionformats "%{$BLUE%}(%b${ACTION})%{$CLEAR%} "
 zstyle ':vcs_info:*:dirty:*'  actionformats "%{$GREEN%}(%b${ACTION})%{$CLEAR%} "
-zstyle ':vcs_info:*:staged:*' formats       "%{$YELLOW%}(%b%${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:staged:*' actionformats "%{$YELLOW%}(%b%${ACTION})%{$CLEAR%} "
 zstyle ':vcs_info:*:clean:*'  formats       "%{$BLUE%}(%b)%{$CLEAR%} "
 zstyle ':vcs_info:*:dirty:*'  formats       "%{$GREEN%}(%b)%{$CLEAR%} "
 zstyle ':vcs_info:*:staged:*' formats       "%{$YELLOW%}(%b)%{$CLEAR%} "
