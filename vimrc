@@ -4,6 +4,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
+set smartindent
+set smarttab
 
 " Misc
 set number
@@ -12,9 +14,37 @@ set showcmd
 set showmatch
 set wildmenu
 set nowrap
+set hidden
+set nocompatible
+
+" Better search
+set hlsearch
+set incsearch
+
+" File-type
+filetype on
+filetype plugin on
+filetype indent on
+
+" Show trailing white-space
+let ruby_space_errors = 1
+let c_space_errors = 1
 
 " Easy command mode switch
 inoremap jj <Esc>
+
+" Move cursor inside delimiters
+inoremap [] []<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap () ()<Left>
+inoremap {} {}<Left>
+inoremap `` ``<Left>
+inoremap <> <><Left>
+
+" Move with h & l in input mode
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 " Syntax coloring
 colorscheme cloudhead
