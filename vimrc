@@ -46,6 +46,10 @@ inoremap <> <><Left>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
+" Go to next tab
+nmap <Tab> :tabn<CR>
+nmap <S-Tab> :tabp<CR>
+
 " Syntax coloring
 colorscheme cloudhead
 syntax enable
