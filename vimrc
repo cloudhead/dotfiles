@@ -2,6 +2,7 @@
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set backspace=indent,eol,start
 set expandtab
 set autoindent
 set smartindent
@@ -46,11 +47,18 @@ inoremap <> <><Left>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
+" Fix backspace key in xterm
+inoremap  <BS>
+
+" Enable mouse in insert and normal mode
+set mouse=in
+
 " Go to next tab
 nmap <Tab> :tabn<CR>
 nmap <S-Tab> :tabp<CR>
 
 " Syntax coloring
+set t_Co=256
 colorscheme cloudhead
 syntax enable
 
