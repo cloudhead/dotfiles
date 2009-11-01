@@ -3,23 +3,14 @@
 # cloudhead - .zshrc
 #
 
+source ~/.profile
+
 #
 # Includes
 #
 autoload colors && colors
 autoload -Uz vcs_info  
 autoload -U compinit && compinit
-
-#
-# ENV
-#
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
-export PATH="/usr/local/mysql/bin:/usr/local/git/bin:/usr:${PATH}"
-export MANPATH="/opt/local/share/man:${MANPATH}"
-export CLICOLOR="true"
-export LSCOLORS="gxfxcxdxbxegedabagacad"
-export EDITOR="vim"
 
 #
 # Aliases
@@ -129,3 +120,4 @@ function precmd {
 #
 PROMPT='%{$CYAN%}%n%{$CLEAR%} %~ $vcs_info_msg_0_$(prompt_cursor) %{$CLEAR%}'
 RPROMPT='%{$PURPLE%}%w %T%{$CLEAR%} %{$CYAN%}@ %m%{$CLEAR%} %{$BLUE%}: %!%{$CLEAR%}' 
+
