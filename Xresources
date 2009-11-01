@@ -1,0 +1,47 @@
+!
+! .Xresources
+!
+XTerm*customization: -color
+XTerm*ScrollBar:      true
+XTerm*rightScrollBar: true
+XTerm*visualBell:     false
+XTerm*saveLines:      4096
+
+XTerm*allowSendEvents:     True
+XTerm*sessionMgt:          false
+XTerm*eightBitInput:       false
+XTerm*highlightSelection:  true
+
+XTerm*termName: xterm-256color
+XTerm*loginShell: true
+XTerm*ttyModes: erase ^?
+
+! Font
+XTerm*faceName: Anonymous Pro
+XTerm*faceSize: 12
+
+! Color
+XTerm*foreground:  white
+XTerm*background:  black
+XTerm*cursorColor: darkred 
+XTerm*borderColor: white
+XTerm*scrollColor: black
+XTerm*background:  #000000
+XTerm*foreground:  #efefcf
+XTerm*color0:      #000000
+XTerm*color1:      #9e1828
+XTerm*color2:      #86ce47
+XTerm*color3:      #ffec4e
+XTerm*color4:      #414171
+XTerm*color5:      #963c59
+XTerm*color6:      #418179
+XTerm*color7:      #bebebe
+XTerm*color8:      #666666
+XTerm*color9:      #cf3e3e
+XTerm*color10:     #adf343
+XTerm*color11:     #fff796
+XTerm*color12:     #72d0e1
+XTerm*color13:     #e078b5
+XTerm*color14:     #71bebe
+XTerm*color15:     #ffffff
+
