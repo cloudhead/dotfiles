@@ -4,10 +4,10 @@ require 'open-uri'
 require 'json'
 require 'cgi'
 
-ANSI_YELLOW   = "\e[1;33m"
-ANSI_PURPLE   = "\e[0;35m"
-ANSI_RESET      = "\e[0m"
-ANSI_BOLD       = "\033[1m"
+ANSI_YELLOW   = "\e[33m"
+ANSI_PURPLE   = "\033[35m"
+ANSI_RESET    = "\033[0m"
+ANSI_BOLD     = "\e[1m"
 
 begin
   require 'wirble'
