@@ -14,4 +14,5 @@ export CLICOLOR="true"
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 export EDITOR="vim"
 export USERWM=`which xmonad`
+export SRCPATH="/usr/local/src/"
 

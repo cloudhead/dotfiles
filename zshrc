@@ -12,7 +12,7 @@ autoload colors && colors
 autoload -Uz vcs_info  
 autoload -U compinit && compinit
 
-# Set Input modal to vi
+# Set input mode to vi
 set -o vi
 
 # Bind <C-r> to history search
@@ -37,7 +37,7 @@ alias ..='cd ..'
 # other
 alias nginxre='sudo kill `cat /usr/local/logs/nginx.pid`;sudo nginx'
 alias ts='thin start'
-alias src='cd /usr/local/src'
+alias src="cd $SRCPATH"
 
 #
 # History
