@@ -1,9 +1,11 @@
 [user]
 	email = <%= print "email: "; STDOUT.flush; STDIN.gets.chomp %>
-	name = <%= print "name: ";   STDOUT.flush; STDIN.gets.chomp %>
-	editor = mate
+	name = <%= print "name: "; STDOUT.flush; STDIN.gets.chomp %>
+  editor = <%= ENV['EDITOR'] %>
+
 [github]
-	user = cloudhead
+  user = <%= print "github username: "; STDOUT.flush; STDIN.gets.chomp %>
+
 [color]
   branch = auto
   diff = auto
@@ -24,5 +26,7 @@
   added = yellow
   changed = green
   untracked = cyan
+
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
+
