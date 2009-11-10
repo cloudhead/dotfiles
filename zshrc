@@ -12,6 +12,12 @@ autoload colors && colors
 autoload -Uz vcs_info  
 autoload -U compinit && compinit
 
+# Set Input modal to vi
+set -o vi
+
+# Bind <C-r> to history search
+bindkey "^r" history-incremental-search-backward
+
 #
 # Aliases
 #
@@ -31,6 +37,7 @@ alias ..='cd ..'
 # other
 alias nginxre='sudo kill `cat /usr/local/logs/nginx.pid`;sudo nginx'
 alias ts='thin start'
+alias src='cd /usr/local/src'
 
 #
 # History
@@ -93,9 +100,9 @@ ACTION="%{$PURPLE%}:%a%{$CLEAR%}"
 
 zstyle ':vcs_info:*'          enable git
 zstyle ':vcs_info:*'          check-for-changes true
-zstyle ':vcs_info:*:clean:*'  actionformats "%{$BLUE%}(%b${ACTION})%{$CLEAR%} "
-zstyle ':vcs_info:*:dirty:*'  actionformats "%{$GREEN%}(%b${ACTION})%{$CLEAR%} "
-zstyle ':vcs_info:*:staged:*' actionformats "%{$YELLOW%}(%b%${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:clean:*'  actionformats "(%{$BLUE%}%b${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:dirty:*'  actionformats "(%{$GREEN%}%b${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:staged:*' actionformats "(%{$YELLOW%}%b%${ACTION})%{$CLEAR%} "
 zstyle ':vcs_info:*:clean:*'  formats       "%{$BLUE%}(%b)%{$CLEAR%} "
 zstyle ':vcs_info:*:dirty:*'  formats       "%{$GREEN%}(%b)%{$CLEAR%} "
 zstyle ':vcs_info:*:staged:*' formats       "%{$YELLOW%}(%b)%{$CLEAR%} "
