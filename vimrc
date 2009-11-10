@@ -16,7 +16,9 @@ set showmatch
 set wildmenu
 set nowrap
 set hidden
-set nocompatible
+set nocompatible   " don't try to be compatible with vi
+set ignorecase     " ignore case in search
+set smartcase      " override ignorecase if uppercase is used in search string
 
 " Better search
 set hlsearch
@@ -54,8 +56,11 @@ inoremap  <BS>
 set mouse=in
 
 " Go to next tab
-nmap <Tab> :tabn<CR>
-nmap <S-Tab> :tabp<CR>
+nmap <Tab> gt
+nmap <S-Tab> gT
+
+" auto `cd` to directory, when opening a file
+autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 
 " Syntax coloring
 set t_Co=256
