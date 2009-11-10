@@ -20,22 +20,40 @@ XTerm*ttyModes: erase ^?
 XTerm*faceName: Anonymous Pro
 XTerm*faceSize: 12
 
+!
 ! Color
-XTerm*foreground:  white
-XTerm*background:  black
+!
 XTerm*cursorColor: darkred 
 XTerm*borderColor: white
 XTerm*scrollColor: black
-XTerm*background:  #000000
+
+XTerm*background:  #1c1c11
 XTerm*foreground:  #efefcf
-XTerm*color0:      #000000
+
+! black
+XTerm*color0:      #1c1c11
+
+! red
 XTerm*color1:      #9e1828
+
+! green
 XTerm*color2:      #86ce47
+
+! yellow
 XTerm*color3:      #ffec4e
-XTerm*color4:      #414171
-XTerm*color5:      #963c59
-XTerm*color6:      #418179
+
+! blue
+XTerm*color4:      #515181
+
+! magenta
+XTerm*color5:      #b65c79
+
+! cyan
+XTerm*color6:      #519189
+
+! white
 XTerm*color7:      #bebebe
+
 XTerm*color8:      #666666
 XTerm*color9:      #cf3e3e
 XTerm*color10:     #adf343
