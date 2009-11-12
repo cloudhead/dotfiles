@@ -24,60 +24,60 @@ endif
 let colors_name = "cloudhead"
 
 " General colors
-hi Normal              ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText             ctermfg=black       ctermbg=NONE        cterm=NONE
+hi Normal               ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi NonText              ctermfg=black       ctermbg=NONE        cterm=NONE
 
-hi Cursor              ctermfg=black       ctermbg=white       cterm=reverse
-hi LineNr              ctermfg=240         ctermbg=235         cterm=NONE
+hi Cursor               ctermfg=black       ctermbg=white       cterm=reverse
+hi LineNr               ctermfg=240         ctermbg=235         cterm=NONE
 
-hi VertSplit           ctermfg=241         ctermbg=235         cterm=NONE
-hi StatusLine          ctermfg=245         ctermbg=235         cterm=NONE
-hi StatusLineNC        ctermfg=241         ctermbg=235         cterm=NONE
+hi VertSplit            ctermfg=241         ctermbg=235         cterm=NONE
+hi StatusLine           ctermfg=245         ctermbg=235         cterm=NONE
+hi StatusLineNC         ctermfg=241         ctermbg=235         cterm=NONE
 
-hi Folded              ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Title               ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Visual              ctermfg=NONE        ctermbg=235         cterm=NONE
+hi Folded               ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Title                ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Visual               ctermfg=NONE        ctermbg=52          cterm=NONE
 
-hi SpecialKey          ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi SpecialKey           ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
-hi WildMenu            ctermfg=black       ctermbg=yellow      cterm=NONE
-hi PmenuSbar           ctermfg=black       ctermbg=white       cterm=NONE
-"hi Ignore                                 ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi WildMenu             ctermfg=black       ctermbg=yellow      cterm=NONE
+hi PmenuSbar            ctermfg=black       ctermbg=white       cterm=NONE
+"hi Ignore                                  ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
-hi Error               ctermfg=NONE         ctermbg=red         cterm=NONE
-hi ErrorMsg            ctermfg=NONE         ctermbg=52          cterm=NONE
-hi WarningMsg          ctermfg=NONE         ctermbg=172         cterm=NONE
+hi Error                ctermfg=NONE        ctermbg=red         cterm=NONE
+hi ErrorMsg             ctermfg=NONE        ctermbg=52          cterm=NONE
+hi WarningMsg           ctermfg=NONE        ctermbg=172         cterm=NONE
 
 " Message displayed in lower left, such as --INSERT--
-hi ModeMsg             ctermfg=darkgrey    ctermbg=235         cterm=NONE
+hi ModeMsg              ctermfg=darkgrey    ctermbg=235         cterm=NONE
 
 if version >= 700 " Vim 7.x specific colors
-  hi CursorLine         ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+  hi CursorLine         ctermfg=NONE        ctermbg=235         cterm=NONE
   hi CursorColumn       ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi MatchParen         ctermfg=NONE        ctermbg=black       cterm=BOLD
   hi Pmenu              ctermfg=NONE        ctermbg=NONE        cterm=NONE
-  hi PmenuSel           ctermfg=NONE        ctermbg=NONE        cterm=NONE
+  hi PmenuSel           ctermfg=black       ctermbg=yellow      cterm=NONE
   hi Search             ctermfg=NONE        ctermbg=NONE        cterm=underline
 endif
 
 " Syntax highlighting
-hi Comment              ctermfg=239    ctermbg=NONE        cterm=NONE
-hi String               ctermfg=106    ctermbg=NONE        cterm=NONE
-hi Number               ctermfg=red    ctermbg=NONE        cterm=NONE
+hi Comment              ctermfg=239         ctermbg=NONE        cterm=NONE
+hi String               ctermfg=106         ctermbg=NONE        cterm=NONE
+hi Number               ctermfg=red         ctermbg=NONE        cterm=NONE
 
-hi Keyword              ctermfg=228      ctermbg=NONE        cterm=NONE
-hi PreProc              ctermfg=cyan     ctermbg=NONE        cterm=NONE
+hi Keyword              ctermfg=228         ctermbg=NONE        cterm=NONE
+hi PreProc              ctermfg=cyan        ctermbg=NONE        cterm=NONE
 
-hi Todo                 ctermfg=white       ctermbg=NONE        cterm=bold
+hi Todo                 ctermfg=240         ctermbg=NONE        cterm=bold
 hi Constant             ctermfg=yellow      ctermbg=NONE        cterm=NONE
 
-hi Identifier           ctermfg=cyan      ctermbg=NONE        cterm=NONE
-hi Function             ctermfg=103       ctermbg=NONE        cterm=NONE
-hi Class                ctermfg=67        ctermbg=NONE        cterm=bold
-hi Type                 ctermfg=67        ctermbg=NONE        cterm=NONE
+hi Identifier           ctermfg=cyan        ctermbg=NONE        cterm=NONE
+hi Function             ctermfg=103         ctermbg=NONE        cterm=NONE
+hi Class                ctermfg=67          ctermbg=NONE        cterm=bold
+hi Type                 ctermfg=67          ctermbg=NONE        cterm=NONE
 
-hi Special              ctermfg=166       ctermbg=NONE        cterm=NONE
-hi Delimiter            ctermfg=cyan      ctermbg=NONE        cterm=NONE
+hi Special              ctermfg=166         ctermbg=NONE        cterm=NONE
+hi Delimiter            ctermfg=cyan        ctermbg=NONE        cterm=NONE
 "hi Operator                              ctermfg=black       ctermbg=NONE        cterm=NONE
 
 hi link Character       Constant
@@ -95,7 +95,7 @@ hi link PreCondit       PreProc
 hi link StorageClass    Type
 hi link Structure       Type
 hi link Typedef         Type
-hi link Tag             Special
+"hi link Tag             Special
 hi link SpecialChar     Special
 hi link SpecialComment  Special
 hi link Debug           Special
