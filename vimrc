@@ -16,9 +16,17 @@ set showmatch
 set wildmenu
 set nowrap
 set hidden
+set modeline
+set autoread       " auto-reload modified files (with no local changes)
 set nocompatible   " don't try to be compatible with vi
 set ignorecase     " ignore case in search
 set smartcase      " override ignorecase if uppercase is used in search string
+set report=0       " report all changes
+set laststatus=2   " always show status-line
+set cursorline     " highlight current line
+
+" Directory where swap files are kept (in order of preferense)
+set directory=~/tmp,/var/tmp,/tmp,.
 
 " Better search
 set hlsearch
@@ -79,3 +87,4 @@ inoremap <C-S-j> <Esc>:m+<CR>==gi
 inoremap <C-S-k> <Esc>:m-2<CR>==gi
 vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+
