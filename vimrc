@@ -28,6 +28,9 @@ set cursorline     " highlight current line
 " Directory where swap files are kept (in order of preferense)
 set directory=~/tmp,/var/tmp,/tmp,.
 
+" Set Status-line with useful info
+set statusline=%F\ %m%r%w(%Y)\ %=(%L\ loc)\ [#\%03.3b\ 0x\%02.2B]\ \ %l,%v\ \ %P
+
 " Better search
 set hlsearch
 set incsearch
@@ -63,21 +66,18 @@ inoremap  <BS>
 " Enable mouse in insert and normal mode
 set mouse=in
 
-" Go to next tab
-nmap <Tab> gt
-nmap <S-Tab> gT
+" Create an empty line underneath without moving the cursor
+nmap <CR> mlo<Esc>`l
 
-" auto `cd` to directory, when opening a file
-autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+" Indent with spacebar
+nmap <space> >>
 
 " Syntax coloring
 set t_Co=256
 colorscheme cloudhead
 syntax enable
 
-" Easy view switching
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
+" Minimum window height = 0
 set wmh=0
 
 " Move lines of text around
@@ -88,3 +88,34 @@ inoremap <C-S-k> <Esc>:m-2<CR>==gi
 vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
+"
+" Tabline
+"
+if exists("+showtabline")
+  function! MyTabLine()
+    let s = ''
+    let t = tabpagenr()
+    let i = 1
+
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let file = bufname(buflist[winnr - 1])
+      let file = fnamemodify(file, ':p:t')
+      let file = (file == '') ? '[No Name]' : file
+      let s .= ' ' . file . ' '
+      let s .= winnr
+      let s .= (getbufvar(buflist[winnr - 1], '&modified') ? '+ ' : ' ')
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+  endfunction
+  set stal=2
+  set tabline=%!MyTabLine()
+endif
+      
