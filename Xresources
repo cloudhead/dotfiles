@@ -15,10 +15,12 @@ XTerm*highlightSelection:  true
 XTerm*termName: xterm-256color
 XTerm*loginShell: true
 XTerm*ttyModes: erase ^?
+XTerm*locale: true
+XTerm*utf8: 1
 
 ! Font
-XTerm*faceName: Anonymous Pro
-XTerm*faceSize: 12
+XTerm*faceName: Deja Vu Sans Mono
+XTerm*faceSize: 10
 
 !
 ! Color
