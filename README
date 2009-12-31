@@ -11,6 +11,10 @@ $ git clone git://github.com/cloudhead/dotfiles.git
 $ cd dotfiles
 $ rake
 
+if on OS X, get X11 to run xmonad:
+
+$ defaults write org.x.X11 app_to_run xmonad
+
 Features
 --------
 
@@ -21,10 +25,11 @@ Features
 - ls colors
 - sane defaults & options (completion, spell-correction..)
 
-# irb
-- colored prompt
-- history
-
 # vim
 - everything is based around 2 space soft-tabs
+- sane defaults
 - a couple useful commands and input remapping
+
+# xterm
+- sane defaults
+- 256 colors
