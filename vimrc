@@ -25,11 +25,11 @@ set report=0       " report all changes
 set laststatus=2   " always show status-line
 set cursorline     " highlight current line
 
-" Directory where swap files are kept (in order of preferense)
+" Keep swap files in one of these 
 set directory=~/tmp,/var/tmp,/tmp,.
 
-" Set Status-line with useful info
-set statusline=%F\ %m%r%w(%Y)\ %=(%L\ loc)\ [#\%03.3b\ 0x\%02.2B]\ \ %l,%v\ \ %P
+" Let's see some useful info in the status line
+set statusline=%F\ %m%r%w%y\ %=(%L\ loc)\ [#\%03.3b\ 0x\%02.2B]\ \ %l,%v\ \ %P
 
 " Better search
 set hlsearch
@@ -56,10 +56,6 @@ inoremap {} {}<Left>
 inoremap `` ``<Left>
 inoremap <> <><Left>
 
-" Move with h & l in input mode
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
 " Fix backspace key in xterm
 inoremap  <BS>
 
@@ -67,26 +63,22 @@ inoremap  <BS>
 set mouse=in
 
 " Create an empty line underneath without moving the cursor
-nmap <CR> mlo<Esc>`l
+noremap <CR> mlo<Esc>`l
 
 " Indent with spacebar
-nmap <space> >>
+noremap <space> >>
+
+" Move easily between ^ and $
+noremap <C-h> ^
+noremap <C-l> $
 
 " Syntax coloring
 set t_Co=256
-colorscheme cloudhead
+colorscheme cotingale
 syntax enable
 
 " Minimum window height = 0
 set wmh=0
-
-" Move lines of text around
-nnoremap <C-S-j> mz:m+<CR>`z==
-nnoremap <C-S-k> mz:m-2<CR>`z==
-inoremap <C-S-j> <Esc>:m+<CR>==gi
-inoremap <C-S-k> <Esc>:m-2<CR>==gi
-vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 "
 " Tabline
