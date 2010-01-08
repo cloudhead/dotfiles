@@ -44,4 +44,4 @@ if [ -d /usr/X11/lib/X11/xinit/xinitrc.d ] ; then
   unset f
 fi
 
-exec xterm
+exec xmonad
