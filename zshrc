@@ -116,15 +116,16 @@ zstyle ':vcs_info:*'          nvcsformats   ""
 
 function precmd {
   # Check if there are unstaged changes
-  git status &>/dev/null
+  if [ "$(git status -s 2>/dev/null)" ]; then
+    git diff-index --cached --quiet --ignore-submodules HEAD &>/dev/null
 
-  if [ $? -eq 0 ]; then
-    vcs_info 'staged'
-  elif git diff --quiet 2>/dev/null >&2
-  then
-    vcs_info 'clean'
+    if [ $? -eq 1 ]; then
+      vcs_info 'staged'
+    else
+      vcs_info 'dirty'
+    fi
   else
-    vcs_info 'dirty'
+    vcs_info 'clean'
   fi
 }
 
