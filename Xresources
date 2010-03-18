@@ -1,67 +1,65 @@
 !
 ! .Xresources
 !
-XTerm*customization: -color
-XTerm*ScrollBar:      true
-XTerm*rightScrollBar: true
-XTerm*visualBell:     false
-XTerm*saveLines:      4096
+URxvt.scrollBar:      false
+!URxvt*visualBell:     false
+URxvt*saveLines:      4096
+URxvt*lineSpace:      1
+URxvt*internalBorder: 2
+!URxvt.letterSpace:      4096
 
-XTerm*allowSendEvents:     True
-XTerm*sessionMgt:          false
-XTerm*eightBitInput:       false
-XTerm*highlightSelection:  true
+!URxvt*allowSendEvents:     True
+!URxvt*sessionMgt:          false
+!URxvt*eightBitInput:       false
+URxvt*highlightSelection:  true
 
-XTerm*termName: xterm-256color
-XTerm*loginShell: true
-XTerm*ttyModes: erase ^?
-XTerm*locale: true
-XTerm*utf8: 1
+!URxvt*loginShell: true
+!URxvt*ttyModes: erase ^?
+!URxvt*locale: true
+!URxvt*utf8: 1
 
 ! Font
-XTerm*faceName: Deja Vu Sans Mono
-XTerm*faceSize: 10
+URxvt.font: xft:Deja Vu Sans Mono:pixelsize=12
 
 !
 ! Color
 !
-XTerm*cursorColor: darkred 
-XTerm*borderColor: white
-XTerm*scrollColor: black
-
-XTerm*background:  #1c1c11
-XTerm*foreground:  #efefcf
-
+URxvt.cursorColor: darkred 
+URxvt.borderColor: white
+URxvt.scrollColor: black
+URxvt.background:  black
+URxvt.foreground:  white
+!#efefcf
 ! black
-XTerm*color0:      #1c1c11
+URxvt*color0:      #1c1c11
 
 ! red
-XTerm*color1:      #9e1828
+URxvt*color1:      #9e1828
 
 ! green
-XTerm*color2:      #86ce47
+URxvt*color2:      #86ce47
 
 ! yellow
-XTerm*color3:      #ffec4e
+URxvt*color3:      #ffec4e
 
 ! blue
-XTerm*color4:      #515181
+URxvt*color4:      #515181
 
 ! magenta
-XTerm*color5:      #b65c79
+URxvt*color5:      #b65c79
 
 ! cyan
-XTerm*color6:      #519189
+URxvt*color6:      #519189
 
 ! white
-XTerm*color7:      #bebebe
+URxvt*color7:      #bebebe
 
-XTerm*color8:      #666666
-XTerm*color9:      #cf3e3e
-XTerm*color10:     #adf343
-XTerm*color11:     #fff796
-XTerm*color12:     #72d0e1
-XTerm*color13:     #e078b5
-XTerm*color14:     #71bebe
-XTerm*color15:     #ffffff
+URxvt*color8:      #666666
+URxvt*color9:      #cf3e3e
+URxvt*color10:     #adf343
+URxvt*color11:     #fff796
+URxvt*color12:     #72d0e1
+URxvt*color13:     #e078b5
+URxvt*color14:     #71bebe
+URxvt*color15:     #ffffff
 
