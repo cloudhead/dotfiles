@@ -31,10 +31,6 @@ set directory=~/tmp,/var/tmp,/tmp,.
 " Let's see some useful info in the status line
 set statusline=%F\ %m%r%w%y\ %=(%L\ loc)\ [#\%03.3b\ 0x\%02.2B]\ \ %l,%v\ \ %P
 
-" Pretend javascript function literals have beautiful syntax
-autocmd BufRead,BufWritePost *.js silent %s/function/->/
-autocmd BufWritePre          *.js silent %s/->/function/
-
 " Per file-type indentation
 autocmd BufEnter *.js set softtabstop=4|set shiftwidth=4
 autocmd BufEnter *.c  set softtabstop=4|set shiftwidth=4
