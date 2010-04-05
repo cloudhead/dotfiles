@@ -67,6 +67,8 @@ noremap <space> >>
 " Move easily between ^ and $
 noremap <C-h> ^
 noremap <C-l> $
+noremap j gj
+noremap k gk
 
 " Syntax coloring
 set t_Co=256
