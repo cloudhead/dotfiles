@@ -1,17 +1,6 @@
 require 'fileutils'
 require 'erb'
 
-begin
-  require 'mutter'
-
-  @mutter = Mutter.new({
-    :underline => %w'( )', :yellow => %w'[ ]',
-    :bold      => %w'< >'
-  }).clear(:default)
-rescue LoadError
-  $stderr.puts "mutter wasn't found, using default output."
-end
-
 task :default => :install
 
 desc "install the dotfiles in the user's home directory"
@@ -26,7 +15,7 @@ task :install do
       if replace_all
         replace file, erb
       else
-        msg "exists", :yellow, file, "-- [replace?] <yes> (n)o (a)ll "
+        msg "exists", :yellow, file, "-- replace? <yes> (n)o (a)ll "
         case $stdin.gets.chomp
           when 'a'
             replace_all = true
@@ -67,12 +56,8 @@ def dot file
 end
 
 def msg title, style, file = nil, str = ""
-  msg = if @mutter
-    @mutter.process(title, style)
-  else
-    title
-  end
-  msg += " ~/.#{file} " + (@mutter ? @mutter.process(str) : str)
+  msg = title
+  msg += " ~/.#{file} " + str
   print msg
 end
 
