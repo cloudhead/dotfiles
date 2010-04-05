@@ -4,8 +4,8 @@
 URxvt.scrollBar:      false
 !URxvt*visualBell:     false
 URxvt*saveLines:      4096
-URxvt*lineSpace:      1
-URxvt*internalBorder: 2
+!URxvt*lineSpace:      0
+URxvt*internalBorder: 1
 !URxvt.letterSpace:      4096
 
 !URxvt*allowSendEvents:     True
@@ -19,7 +19,7 @@ URxvt*highlightSelection:  true
 !URxvt*utf8: 1
 
 ! Font
-URxvt.font: xft:Deja Vu Sans Mono:pixelsize=12
+URxvt.font: xft:Deja Vu Sans Mono:pixelsize=12:dpi=96
 
 !
 ! Color
@@ -28,8 +28,14 @@ URxvt.cursorColor: darkred
 URxvt.borderColor: white
 URxvt.scrollColor: black
 URxvt.background:  black
-URxvt.foreground:  white
-!#efefcf
+URxvt.foreground:  #efefcf
+
+URxvt.keysym.M-C-1: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=12:hinting=true:dpi=96\007
+URxvt.keysym.M-C-2: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=14:hinting=true:dpi=96\007
+URxvt.keysym.M-C-3: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=16:hinting=true:dpi=96\007
+URxvt.keysym.M-C-4: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=20:hinting=true:dpi=96\007
+URxvt.keysym.M-C-5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=28:hinting=true:dpi=96\007
+
 ! black
 URxvt*color0:      #1c1c11
 
