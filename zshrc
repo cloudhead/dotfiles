@@ -32,8 +32,13 @@ alias gadd='git add'
 alias gim='git commit -m'
 alias c='git commit'
 
-alias l='ls -alAGhp --color=always'
-alias ls='ls -p --color=always'
+if [[ $(uname) -eq 'Darwin' ]]; then
+  alias l='ls -alAghp'
+  alias ls='ls -p'
+else
+  alias l='ls -alAGhp --color=always'
+  alias ls='ls -p --color=always'
+fi
 alias ..='cd ..'
 
 # other
