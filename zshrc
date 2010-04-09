@@ -32,7 +32,7 @@ alias gadd='git add'
 alias gim='git commit -m'
 alias c='git commit'
 
-if [[ $(uname) -eq 'Darwin' ]]; then
+if [[ $(uname) = 'Darwin' ]]; then
   alias l='ls -alAghp'
   alias ls='ls -p'
 else
