@@ -30,5 +30,6 @@ IRB.conf[:PROMPT][:CLOUD] = {
   :PROMPT_N => "#{ANSI_PURPLE}%N*#{ANSI_RESET}\n ",   # "
   :RETURN   => "#{ANSI_PURPLE}=>#{ANSI_RESET}#{ANSI_YELLOW} %s#{ANSI_RESET}\n"
 }
-IRB.conf[:PROMPT_MODE] = :CLOUD
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
 
