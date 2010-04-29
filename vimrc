@@ -14,6 +14,7 @@ set ruler
 set showcmd
 set showmatch
 set wildmenu
+set wildmode=list,full
 set nowrap
 set hidden
 set modeline
@@ -24,6 +25,7 @@ set smartcase      " override ignorecase if uppercase is used in search string
 set report=0       " report all changes
 set laststatus=2   " always show status-line
 set cursorline     " highlight current line
+set scrolloff=4
 
 " Keep swap files in one of these 
 set directory=~/tmp,/var/tmp,/tmp,.
@@ -55,6 +57,13 @@ inoremap kj <Esc>
 " Fix backspace key in xterm
 inoremap  <BS>
 
+inoremap () ()<Left>
+inoremap [] []<Left>
+inoremap '' ''<Left>
+inoremap "" ""<Left>
+
+inoremap <C-l> <C-x><C-l>
+
 " Enable mouse in insert and normal mode
 set mouse=in
 
@@ -77,6 +86,14 @@ syntax enable
 
 " Minimum window height = 0
 set wmh=0
+
+function! CleverTab()
+   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+   else
+      return "\<C-N>"
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
 
 "
 " Tabline

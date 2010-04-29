@@ -6,10 +6,9 @@
 #
 # ENV
 #
-export PATH=/usr/local/mysql/bin:/usr/local/git/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export MANPATH="/opt/local/share/man:${MANPATH}"
+export PATH=/usr/local/mysql/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export CLICOLOR="true"
-export LSCOLORS="gxfxcxdxbxegedabagacad"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR="vim"
 export USERWM=`which xmonad`
 export SRCPATH="/usr/local/src/"
