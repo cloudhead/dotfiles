@@ -3,10 +3,11 @@
 !
 URxvt.scrollBar:           false
 URxvt.saveLines:           4096
-URxvt.internalBorder:      1
+URxvt.internalBorder:      4
+URxvt.externalBorder:      0
 URxvt.highlightSelection:  true
 
-!URxvt*loginShell: true
+URxvt.loginShell: true
 !URxvt*ttyModes: erase ^?
 !URxvt*locale: true
 
@@ -17,7 +18,7 @@ URxvt.font: xft:Deja Vu Sans Mono:pixelsize=14:dpi=96
 ! Color
 !
 URxvt.cursorColor: darkred
-URxvt.borderColor: white
+URxvt.borderColor: black
 URxvt.scrollColor: black
 URxvt.background:  black
 URxvt.foreground:  #efefcf

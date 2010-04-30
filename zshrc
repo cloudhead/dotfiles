@@ -9,7 +9,7 @@ source ~/.profile
 # Includes
 #
 autoload colors && colors
-autoload -Uz vcs_info  
+autoload -Uz vcs_info
 autoload -U compinit && compinit
 autoload -U complist
 
@@ -60,7 +60,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 REPORTTIME=10
- 
+
 setopt NO_BG_NICE
 setopt NO_HUP
 setopt NO_LIST_BEEP
@@ -93,9 +93,9 @@ GREY=$'\e[0;94m'
 #
 function prompt_cursor {
   STATUS=$?
-  
+
   local prompt=""
-  
+
   # Status
   if [[ $STATUS == 0 ]]; then
     prompt=$GREEN
@@ -104,7 +104,7 @@ function prompt_cursor {
   else
     prompt=$RED
   fi
-  
+
   echo "%{$prompt%}%#%{$CLEAR%}"
 }
 
@@ -113,23 +113,24 @@ function prompt_cursor {
 #
 ACTION="%{$PURPLE%}:%a%{$CLEAR%}"
 
-zstyle ':vcs_info:*'                enable git
-zstyle ':vcs_info:*'                check-for-changes true
-zstyle ':vcs_info:*'  stagedstr     "%{$YELLOW%}"
-zstyle ':vcs_info:*'  unstagedstr   "%{$GREEN%}"
-zstyle ':vcs_info:*'  actionformats "(%{$BLUE%}%u%c%b${ACTION})%{$CLEAR%} "
-zstyle ':vcs_info:*'  formats       "%{$BLUE%}%c%u(%c%b%c%u)%{$CLEAR%} "
-zstyle ':vcs_info:*'  nvcsformats   ""
+zstyle ':vcs_info:*:prompt:*'                enable git
+zstyle ':vcs_info:*:prompt:*'                check-for-changes true
+zstyle ':vcs_info:*:prompt:*'  stagedstr     "%{$YELLOW%}"
+zstyle ':vcs_info:*:prompt:*'  unstagedstr   "%{$GREEN%}"
+zstyle ':vcs_info:*:prompt:*'  actionformats "(%{$BLUE%}%u%c%b${ACTION})%{$CLEAR%} "
+zstyle ':vcs_info:*:prompt:*'  formats       "%{$BLUE%}%c%u(%c%b%c%u)%{$CLEAR%} "
+zstyle ':vcs_info:*:prompt:*'  nvcsformats   ""
 
 function precmd {
-  vcs_info
-  #
-  # Set Prompts
-  #
-  local git='$vcs_info_msg_0_'
-  PROMPT="%{$GREY%}%n%{$CLEAR%} %~ ${git}$(prompt_cursor) %{$CLEAR%}"
-  RPROMPT='%{$BLUE%}%w %T%{$CLEAR%}' 
+  vcs_info 'prompt'
 }
+
+#
+# Set Prompts
+#
+local git='$vcs_info_msg_0_'
+PROMPT="%{$GREY%}%n%{$CLEAR%} %~ ${git}$(prompt_cursor) %{$CLEAR%}"
+RPROMPT='%{$BLUE%}%w %T%{$CLEAR%}'
 
 #
 # ls colors
