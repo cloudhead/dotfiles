@@ -89,26 +89,6 @@ CYAN=$fg[cyan]
 GREY=$'\e[0;94m'
 
 #
-# Prompt
-#
-function prompt_cursor {
-  STATUS=$?
-
-  local prompt=""
-
-  # Status
-  if [[ $STATUS == 0 ]]; then
-    prompt=$GREEN
-  elif [[ $STATUS == 1 ]]; then
-    prompt=$YELLOW
-  else
-    prompt=$RED
-  fi
-
-  echo "%{$prompt%}%#%{$CLEAR%}"
-}
-
-#
 # Set prompt style
 #
 ACTION="%{$PURPLE%}:%a%{$CLEAR%}"
@@ -122,14 +102,26 @@ zstyle ':vcs_info:*:prompt:*'  formats       "%{$BLUE%}%c%u(%c%b%c%u)%{$CLEAR%} 
 zstyle ':vcs_info:*:prompt:*'  nvcsformats   ""
 
 function precmd {
+  local last=$?
+  local prompt=""
+
+  # Status
+  if [[ $last -eq 0 ]]; then
+    prompt=$GREEN
+  elif [[ $last  -eq 1 ]]; then
+    prompt=$YELLOW
+  else
+    prompt=$RED
+  fi
+
+  cursor="%{$prompt%}%#%{$CLEAR%}"
   vcs_info 'prompt'
 }
 
 #
 # Set Prompts
 #
-local git='$vcs_info_msg_0_'
-PROMPT="%{$GREY%}%n%{$CLEAR%} %~ ${git}$(prompt_cursor) %{$CLEAR%}"
+PROMPT="%{$GREY%}%n%{$CLEAR%} %~ "'${vcs_info_msg_0_}${cursor}'" %{$CLEAR%}"
 RPROMPT='%{$BLUE%}%w %T%{$CLEAR%}'
 
 #

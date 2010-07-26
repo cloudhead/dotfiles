@@ -26,6 +26,7 @@ set report=0       " report all changes
 set laststatus=2   " always show status-line
 set cursorline     " highlight current line
 set scrolloff=4
+set nofoldenable
 
 " Keep swap files in one of these 
 set directory=~/tmp,/var/tmp,/tmp,.
@@ -34,8 +35,8 @@ set directory=~/tmp,/var/tmp,/tmp,.
 set statusline=%F\ %m%r%w%y\ %=(%L\ loc)\ [#\%03.3b\ 0x\%02.2B]\ \ %l,%v\ \ %P
 
 " Per file-type indentation
-autocmd BufEnter *.js set softtabstop=4|set shiftwidth=4
-autocmd BufEnter *.c  set softtabstop=4|set shiftwidth=4
+autocmd BufEnter *.js  set softtabstop=4|set shiftwidth=4
+autocmd BufEnter *.c   set softtabstop=4|set shiftwidth=4
 
 " Better search
 set hlsearch
@@ -63,6 +64,8 @@ inoremap '' ''<Left>
 inoremap "" ""<Left>
 
 inoremap <C-l> <C-x><C-l>
+
+inoremap <C-f> function () {}<Left>
 
 " Enable mouse in insert and normal mode
 set mouse=in

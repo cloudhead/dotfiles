@@ -6,6 +6,8 @@ URxvt.saveLines:           4096
 URxvt.internalBorder:      4
 URxvt.externalBorder:      0
 URxvt.highlightSelection:  true
+URxvt.letterSpace:         -1
+URxvt.lineSpace:         -2
 
 URxvt.loginShell: true
 !URxvt*ttyModes: erase ^?
@@ -23,6 +25,7 @@ URxvt.scrollColor: black
 URxvt.background:  black
 URxvt.foreground:  #efefcf
 
+URxvt.keysym.M-C-0: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=10:hinting=true:dpi=96\007
 URxvt.keysym.M-C-1: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=12:hinting=true:dpi=96\007
 URxvt.keysym.M-C-2: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=14:hinting=true:dpi=96\007
 URxvt.keysym.M-C-3: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=16:hinting=true:dpi=96\007
