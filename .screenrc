@@ -1,0 +1,19 @@
+# cloudhead's .screenrc
+
+#
+# Basic settings
+#
+startup_message off
+defscrollback 10000
+shell zsh
+shelltitle ""
+defmonitor on
+activity "<%n>"
+silencewait 15
+bell_msg "! (%n)"
+vbell_msg "! (%n)"
+autodetach on
+defutf8 on
+
+hardstatus alwayslastline "%{=b}%{G} : %{b}%w %=%{kG}%C%A"
+
