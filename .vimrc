@@ -68,7 +68,7 @@ inoremap <C-l> <C-x><C-l>
 inoremap <C-f> function () {}<Left>
 
 " Enable mouse in insert and normal mode
-set mouse=in
+set mouse=vin
 
 " Create an empty line underneath without moving the cursor
 noremap <CR> mlo<Esc>`l
@@ -83,7 +83,9 @@ noremap j gj
 noremap k gk
 
 " Syntax coloring
-set t_Co=256
+if $TERM == "urxvt"
+  set t_Co=256
+endif
 colorscheme cotingale
 syntax enable
 
