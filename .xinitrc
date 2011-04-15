@@ -6,7 +6,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/usr/X11/lib/X11/xinit/.Xresources
 sysmodmap=/usr/X11/lib/X11/xinit/.Xmodmap
 
-xmodmap -e "keycode 59 = BackSpace"
+xset r rate 200 25
 
 # merge in defaults and keymaps
 
