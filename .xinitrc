@@ -34,8 +34,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-source ~/.profile
-
 # start some nice programs
 if [ -d /usr/X11/lib/X11/xinit/xinitrc.d ] ; then
   for f in /usr/X11/lib/X11/xinit/xinitrc.d/*.sh ; do
@@ -44,4 +42,4 @@ if [ -d /usr/X11/lib/X11/xinit/xinitrc.d ] ; then
   unset f
 fi
 
-exec xmonad
+exec dwm
