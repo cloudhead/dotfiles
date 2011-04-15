@@ -28,6 +28,8 @@ set cursorline     " highlight current line
 set scrolloff=4
 set nofoldenable
 
+set background=dark
+
 " Keep swap files in one of these 
 set directory=~/tmp,/var/tmp,/tmp,.
 
@@ -51,6 +53,12 @@ filetype indent on
 let ruby_space_errors = 1
 let c_space_errors = 1
 let javascript_space_errors = 1
+
+let c_C99 = 1
+
+if exists("c_no_names")
+  unlet c_no_names
+endif
 
 " Easy command mode switch
 inoremap kj <Esc>
