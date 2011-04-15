@@ -6,11 +6,15 @@
 #
 # ENV
 #
-export PATH=/usr/local/mysql/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+export PATH=/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export CLICOLOR="true"
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR="vim"
-export USERWM=`which xmonad`
-export SRCPATH="/usr/local/src/"
+export USERWM=`which dwm`
+export SRCPATH="~/src"
 export LANG="en_US.UTF-8"
 
+if [[ -z "$DISPLAY" ]] && [[ ! -a "/tmp/.X11-unix/X0" ]]; then
+  startx
+  logout
+fi
