@@ -7,14 +7,10 @@ URxvt.internalBorder:      4
 URxvt.externalBorder:      0
 URxvt.highlightSelection:  true
 URxvt.letterSpace:         -1
-URxvt.lineSpace:         -2
-
-URxvt.loginShell: true
-!URxvt*ttyModes: erase ^?
-!URxvt*locale: true
+URxvt.loginShell:          true
 
 ! Font
-URxvt.font: xft:Deja Vu Sans Mono:pixelsize=14:dpi=96
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:dpi=96
 
 !
 ! Color
@@ -23,18 +19,18 @@ URxvt.cursorColor: darkred
 URxvt.borderColor: black
 URxvt.scrollColor: black
 URxvt.background:  black
-URxvt.foreground:  #efefcf
+URxvt.foreground:  white
 
-URxvt.keysym.M-C-0: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=10:hinting=true:dpi=96\007
-URxvt.keysym.M-C-1: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=12:hinting=true:dpi=96\007
-URxvt.keysym.M-C-2: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=14:hinting=true:dpi=96\007
-URxvt.keysym.M-C-3: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=16:hinting=true:dpi=96\007
-URxvt.keysym.M-C-4: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=20:hinting=true:dpi=96\007
-URxvt.keysym.M-C-5: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=26:hinting=true:dpi=96\007
-URxvt.keysym.M-C-6: command:\033]710;xft: Deja Vu Sans Mono:pixelsize=36:hinting=true:dpi=96\007
+URxvt.keysym.C-0: command:\033]710;xft: DejaVu Sans Mono:pixelsize=10:dpi=96\007
+URxvt.keysym.C-1: command:\033]710;xft: DejaVu Sans Mono:pixelsize=12:dpi=96\007
+URxvt.keysym.C-2: command:\033]710;xft: DejaVu Sans Mono:pixelsize=14:dpi=96\007
+URxvt.keysym.C-3: command:\033]710;xft: DejaVu Sans Mono:pixelsize=16:dpi=96\007
+URxvt.keysym.C-4: command:\033]710;xft: DejaVu Sans Mono:pixelsize=18:dpi=96\007
+URxvt.keysym.C-5: command:\033]710;xft: DejaVu Sans Mono:pixelsize=24:dpi=96\007
+URxvt.keysym.C-9: command:\033]710;xft: DejaVu Sans Mono:pixelsize=36:dpi=96\007
 
 ! black
-URxvt*color0:      #111111
+URxvt*color0:      #000000
 
 ! red
 URxvt*color1:      #9e1828
