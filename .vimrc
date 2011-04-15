@@ -94,7 +94,7 @@ noremap k gk
 if $TERM == "urxvt"
   set t_Co=256
 endif
-colorscheme cotingale
+colorscheme shady
 syntax enable
 
 " Minimum window height = 0
