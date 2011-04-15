@@ -51,7 +51,8 @@ alias vi='vim'
 alias e='vim'
 alias wic='wicd-curses'
 alias rcconf='sudo vim /etc/rc.conf'
-alias chrome='google-chrome'
+alias chrome='chromium'
+alias pdf='mupdf'
 
 #
 # History
