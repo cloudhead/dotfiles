@@ -1,29 +1,40 @@
-Installation
-------------
 
-change your login shell to zsh:
 
-$ chsh -s /bin/zsh
 
-if on OS X, get X11 to run xmonad:
+        cloudhead's dotfiles
 
-$ defaults write org.x.X11 app_to_run xmonad
 
-Features
---------
+.about
 
-# zsh/prompt
-- % is colored differently depending on return value of previous command
-- Shows current git branch and action (ex: merging), through built-in vcs_info functions
-- Current branch's color depends on the state of the working directory
-- ls colors
-- sane defaults & options (completion, spell-correction..)
+  these dotfiles are meant to be used in linux, although most of it will work in other *nixes too.
+  they are centered around vim, zsh, git, X & urxvt.
 
-# vim
-- everything is based around 2 space soft-tabs
-- sane defaults
-- a couple useful commands and input remapping
+.installation
 
-# xterm
-- sane defaults
-- 256 colors
+  1. change your login shell to zsh:
+
+    $ chsh -s /bin/zsh
+
+  2. copy all files to ~
+
+.features
+
+  zsh
+  - % is colored differently depending on return value of previous command
+  - Shows current git branch and action (ex: merging), through built-in vcs_info functions
+  - Current branch's color depends on the state of the working directory
+  - ls colors
+  - sane defaults & options (completion, spell-correction..)
+
+  vim
+  - everything is based around 2 space soft-tabs
+  - sane defaults
+  - a couple useful commands and input remapping
+  - better status bar
+  - better tabs
+
+  urxvt
+  - sane defaults
+  - no scroll-bars
+  - C-1 to C-5 changes font size
+  - 'DejaVu Sans Mono'
