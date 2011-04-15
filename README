@@ -16,6 +16,7 @@
     $ chsh -s /bin/zsh
 
   2. copy all files to ~
+  3. change the colorscheme in the .vimrc, or see http://github.com/cloudhead/shady.vim
 
 .features
 
