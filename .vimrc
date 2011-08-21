@@ -5,7 +5,6 @@ set softtabstop=2
 set backspace=indent,eol,start
 set expandtab
 set autoindent
-set smartindent
 set smarttab
 
 " Misc
