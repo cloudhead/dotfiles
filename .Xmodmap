@@ -1,0 +1,13 @@
+!
+! .Xmodmap
+!
+
+clear Mod1
+clear Mod2
+keycode 63 = Mode_switch
+
+! bind Alt key to Meta
+keycode 66 = Meta_L
+keycode 69 = Meta_R
+add Mod1 = Meta_L
+add Mod2 = Mode_switch

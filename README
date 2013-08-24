@@ -1,0 +1,28 @@
+
+
+
+        cloudhead's dotfiles
+
+
+.about
+
+  these dotfiles are meant to be used in linux.
+
+.requirements
+
+  - dwm
+  - urxvt
+  - zsh
+  - vim
+  - git
+  - dvtm
+  - gohu (font)
+
+.installation
+
+  1. change your login shell to zsh:
+
+    $ chsh -s /usr/bin/zsh
+
+  2. copy all files to ~
+
