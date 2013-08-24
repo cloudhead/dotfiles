@@ -76,7 +76,7 @@ precmd() {
   fi
 
   # Window title
-  echo -ne "\e]1;$PWD - $(git rev-parse --abbrev-ref HEAD 2>/dev/null)\a"
+  echo -ne "\e]2;$PWD - $(git rev-parse --abbrev-ref HEAD 2>/dev/null)\a"
 }
 
 col() {
