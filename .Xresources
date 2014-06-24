@@ -8,18 +8,26 @@ URxvt.externalBorder:      0
 URxvt.highlightSelection:  true
 URxvt.loginShell:          true
 URxvt.termName:            xterm-256color
-URxvt.font:                -gohu-*-medium-*-*-*-14-*-*-*-*-*-*-*
-URxvt.boldFont:            -gohu-*-bold-*-*-*-14-*-*-*-*-*-*-*
+URxvt.letterSpace:         -1
+URxvt.font:                xft:DejaVu Sans Mono:pixelsize=15
+URxvt.boldFont:            xft:DejaVu Sans Mono:pixelsize=15:style=Bold
 URxvt.colorBD:             #FFFFFF
-URxvt.cursorColor:         darkred
+URxvt.cursorColor:         red
 URxvt.borderColor:         black
 URxvt.scrollColor:         black
 URxvt.underlineColor:      white
-URxvt.foreground:          #CCCCCC
-URxvt.background:          #000000
+URxvt.foreground:          #FFFFFF
+URxvt.background:          #111111
 URxvt.mapAlert:            true
 URxvt.highlightColor:      darkred
 
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+
+! VGA
 *color0:  #000000
 *color1:  #AA0000
 *color2:  #00AA00

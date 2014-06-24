@@ -1,10 +1,10 @@
 [user]
-  email = user@local.domain
-  name = user
+  email = alexis@cloudhead.io
+  name = Alexis Sellier
   editor = vim
 
 [github]
-  user = user
+  user = cloudhead
 
 [color]
   branch = auto

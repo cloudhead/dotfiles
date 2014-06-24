@@ -5,6 +5,7 @@
 xset r rate 180 40                   # Sane repeat rate
 xset -b                              # No bell
 xset -dpms                           # Keep screen on at all times
+xset s off                           #
 setxkbmap -option compose:ralt       # Set compose key to R-Alt
 
 . ~/.profile

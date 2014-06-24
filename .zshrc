@@ -1,7 +1,7 @@
 ##
 # cloudhead - .zshrc
 #
-export PATH=~/bin:~/.cabal/bin:$PATH
+export PATH=~/bin:~/.cabal/bin:/home/cloudhead/.gem/ruby/2.1.0/bin:$PATH
 
 source ~/.profile
 source ~/.awsrc
@@ -24,8 +24,8 @@ bindkey "^r" history-incremental-search-backward
 #
 alias g='git'
 alias ls='ls -p'
-alias l='ls -lFGh'
-alias ll='ls -lFAGh'
+alias l='ls -lFGh --color=always'
+alias ll='ls -lFAGh --color=always'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
 alias img='sxiv'
@@ -35,6 +35,8 @@ alias x='startx'
 alias web='chromium'
 alias e='vim'
 alias pdf='mupdf'
+alias webserver='python2 -m SimpleHTTPServer'
+alias pacman='sudo pacman --color=auto'
 
 #
 # History
