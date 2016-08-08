@@ -83,7 +83,12 @@ noremap <C-l> $
 noremap j gj
 noremap k gk
 
-" \m to make
+" Remap arrow keys to something useful
+nnoremap <left>  :bprev<CR>
+nnoremap <right> :bnext<CR>
+nnoremap <up>    :tabnext<CR>
+nnoremap <down>  :tabprev<CR>
+
 map <Leader>m :make<Return>
 
 " Syntax coloring
