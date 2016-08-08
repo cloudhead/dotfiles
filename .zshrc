@@ -87,3 +87,4 @@ col() {
   awk "{ print \$$1 }"
 }
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
