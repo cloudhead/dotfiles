@@ -89,7 +89,11 @@ nnoremap <right> :bnext<CR>
 nnoremap <up>    :tabnext<CR>
 nnoremap <down>  :tabprev<CR>
 
-map <Leader>m :make<Return>
+map <Leader>m       :make<Return>
+map <C-n>           :NERDTreeToggle<CR>
+map <C-p>           :FZF<CR>
+map <C-_>           <plug>NERDCommenterToggle
+map <Leader><Space> :Goyo<CR>
 
 " Syntax coloring
 set t_Co=256
