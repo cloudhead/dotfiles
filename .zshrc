@@ -8,6 +8,7 @@ export VISUAL=vim
 
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.awsrc ]   && source ~/.awsrc
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #
 # Includes
