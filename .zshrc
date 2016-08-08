@@ -17,7 +17,12 @@ autoload -U complist
 set -o vi
 
 # Bind <C-r> to history search
-bindkey "^r" history-incremental-search-backward
+if [ -f ~/.fzf.zsh ]; then
+  bindkey '^R' fzf-history-widget
+  bindkey '^P' fzf-file-widget
+else
+  bindkey '^R' history-incremental-search-backward
+fi
 
 #
 # Aliases
