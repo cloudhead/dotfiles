@@ -6,6 +6,12 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export VISUAL=vim
 
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.awsrc ]   && source ~/.awsrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -42,7 +48,7 @@ alias df='df -h'
 alias sys='systemctl'
 alias x='startx'
 alias web='chromium &'
-alias e='vim'
+alias e=$EDITOR
 alias pdf='mupdf'
 alias webserver='python2 -m SimpleHTTPServer'
 alias pacman='sudo pacman --color=auto'
