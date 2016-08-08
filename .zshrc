@@ -16,6 +16,11 @@ fi
 [ -f ~/.awsrc ]   && source ~/.awsrc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# `ls` colors
+if [ -f ~/.dircolors ]; then
+  eval $(dircolors -b ~/.dircolors)
+fi
+
 #
 # Includes
 #
