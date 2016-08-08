@@ -39,6 +39,8 @@ set wmh=0                           " Minimum window height = 0
 set showcmd
 
 
+let mapleader = ","
+
 " Per file-type indentation
 autocmd BufEnter *.hs  set softtabstop=4|set shiftwidth=4
 autocmd BufEnter *.js  set softtabstop=4|set shiftwidth=4
