@@ -82,3 +82,15 @@ function! CleverTab()
   endif
 endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
+
+call plug#begin()
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/goyo.vim'
+Plug 'neomake/neomake'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
