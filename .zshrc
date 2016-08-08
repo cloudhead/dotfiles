@@ -2,6 +2,8 @@
 # cloudhead - .zshrc
 #
 export PATH=~/bin:~/.cabal/bin:$PATH
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 source ~/.profile
 source ~/.awsrc
