@@ -40,6 +40,7 @@ set showcmd
 
 
 let mapleader = ","
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Per file-type indentation
 autocmd BufEnter *.hs  set softtabstop=4|set shiftwidth=4
