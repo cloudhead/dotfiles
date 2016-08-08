@@ -1,0 +1,3 @@
+Config {
+    font = "xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true"
+}
