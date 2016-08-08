@@ -99,6 +99,11 @@ map <Leader><Space> :Goyo<CR>
 set t_Co=256
 syntax enable
 
+try
+  colorscheme shady
+catch
+endtry
+
 function! CleverTab()
   if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
     return "\<Tab>"
