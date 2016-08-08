@@ -40,6 +40,9 @@ set showcmd
 
 
 let mapleader = ","
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
+let g:goyo_width = 120
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Per file-type indentation
