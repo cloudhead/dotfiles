@@ -1,7 +1,7 @@
 ##
 # cloudhead - .zshrc
 #
-export PATH=~/bin:~/.cabal/bin:/home/cloudhead/.gem/ruby/2.1.0/bin:$PATH
+export PATH=~/bin:~/.cabal/bin:$PATH
 
 source ~/.profile
 source ~/.awsrc
