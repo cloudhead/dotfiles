@@ -20,4 +20,4 @@ if [ -f ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi
 
-exec dwm
+exec xmonad
