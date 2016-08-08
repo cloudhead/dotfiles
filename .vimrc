@@ -54,6 +54,17 @@ autocmd BufEnter *.h   set shiftwidth=4|set noexpandtab
 autocmd BufEnter *.lua set shiftwidth=2|set expandtab
 autocmd BufEnter *.erl set softtabstop=4|set shiftwidth=4
 
+au FileType haskell setlocal makeprg=stack\ build
+au FileType haskell setlocal errorformat=
+                \%-G,
+                \%-Z\ %#,
+                \%W%f:%l:%c:\ Warning:\ %m,
+                \%E%f:%l:%c:\ %m,
+                \%E%>%f:%l:%c:,
+                \%+C\ \ %#%m,
+                \%W%>%f:%l:%c:,
+                \%+C\ \ %#%tarning:\ %m,
+
 " File-type
 filetype on
 filetype plugin on
