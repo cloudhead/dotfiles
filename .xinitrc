@@ -9,8 +9,8 @@ xset s off                           #
 xset m 4/3 0                         # Pointer settings
 setxkbmap -option compose:ralt       # Set compose key to R-Alt
 
-. ~/.profile
-. ~/.synaptics
+[ -f ~/.profile ]   && . ~/.profile
+[ -f ~/.synaptics ] && . ~/.synaptics
 
 if [ -f ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap;
