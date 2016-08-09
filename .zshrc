@@ -87,14 +87,23 @@ setopt INTERACTIVECOMMENTS
 #
 precmd() {
   local last=$?
+  local remote=""
+
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    remote=" $(whoami)@$(hostname)"
+  fi
 
   # Status
   if [ "$last" -eq 0 ]; then
     PROMPT='; '
-    RPROMPT=''
+    RPROMPT="$remote"
   else
     PROMPT="%{$fg[red]%}; %{$reset_color%}"
-    RPROMPT="%{$fg[red]%}# $last%{$reset_color%}"
+    RPROMPT=" $last"
+  fi
+
+  if [ "$RPROMPT" != "" ]; then
+    RPROMPT="%{$fg[red]%}#$RPROMPT%{$reset_color%}"
   fi
 }
 
