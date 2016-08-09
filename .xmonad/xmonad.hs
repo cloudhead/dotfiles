@@ -5,6 +5,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 
 import System.Directory
+import System.IO
 import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -12,23 +13,28 @@ import qualified Data.Map as Map
 main :: IO ()
 main = do
     home <- getHomeDirectory
-    xmonad =<< statusBar "xmobar" barConfig toggleStrutsKey desktopConfig
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ desktopConfig
         { terminal           = "st dvtm -M"
         , focusedBorderColor = "#666666"
         , normalBorderColor  = "black"
         , borderWidth        = 2
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
+        , logHook            = dynamicLogWithPP (barConfig xmproc)
+        , layoutHook         = avoidStruts $ layoutHook def
+        , manageHook         = manageDocks <+> manageHook def
         }
 
-barConfig :: PP
-barConfig = xmobarPP
+barConfig :: Handle -> PP
+barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
     , ppHiddenNoWindows = xmobarColor light   dark   . wrap " " " "
     , ppHidden          = xmobarColor light   dark   . wrap "◦" " "
     , ppUrgent          = xmobarColor black   red
     , ppWsSep           = ""
     , ppSep             = " ░ "
+    , ppOutput          = hPutStrLn h
     }
   where
     red   = "red"
