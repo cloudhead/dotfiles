@@ -1,19 +1,31 @@
 
 
+  These are my dotfiles. There are many like them,
+  but these ones are mine.
 
-        cloudhead's dotfiles
+  Everything here is optimized first and foremost for
+  efficiency and low-latency.
+  
+    * We don't run git commands in the shell prompt.
+    * We don't use 'Oh My Zsh' or such filth which results in slow systems.
+    * We don't use pointless plugins like vim powerline.
+    * We avoid slow or bloated software such as bash and xterm.
 
+  The environment is based around the following programs:
 
-.about
+    * `st` as the terminal emulator. It's small and fast as fuck.
+    * `dvtm` to manage the scrollback buffer.
+    * `xmonad` as the window manager. There are also settings for `dwm`.
+    * `zsh` as the shell.
+    * `dmenu` as the launcher.
+    * `xmobar` as the status bar.
+    * `vim` and `neovim` as the editors.
 
-  these dotfiles are meant to be used in linux.
-  they are based around xmonad, zsh, dvtm and st.
+  To install:
 
-.installation
+    1. Change your login shell to zsh:
 
-  1. change your login shell to zsh:
+        $ chsh -s /usr/bin/zsh
 
-    $ chsh -s /usr/bin/zsh
-
-  2. copy all files to ~
+    2. Copy all files to ~.
 
