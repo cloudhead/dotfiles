@@ -33,6 +33,7 @@ barConfig h = xmobarPP
     , ppHiddenNoWindows = xmobarColor light   dark   . wrap " " " "
     , ppHidden          = xmobarColor light   dark   . wrap "◦" " "
     , ppUrgent          = xmobarColor black   red
+    , ppLayout          = const ""
     , ppWsSep           = ""
     , ppSep             = " ░ "
     , ppOutput          = hPutStrLn h
