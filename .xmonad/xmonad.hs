@@ -50,7 +50,7 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
 myKeys :: FilePath -> XConfig Layout -> Map (KeyMask, KeySym) (X ())
 myKeys home conf@XConfig { XMonad.modMask = modMask } =
-    Map.union (XMonad.keys def conf) ks
+    Map.union ks (XMonad.keys def conf)
   where
     ks = Map.fromList
        [ ((modMask, xK_F12),     safeSpawn "systemctl" ["suspend"])
