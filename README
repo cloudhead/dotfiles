@@ -7,16 +7,7 @@
 .about
 
   these dotfiles are meant to be used in linux.
-
-.requirements
-
-  - dwm
-  - urxvt
-  - zsh
-  - vim
-  - git
-  - dvtm
-  - gohu (font)
+  they are based around xmonad, zsh, dvtm and st.
 
 .installation
 
