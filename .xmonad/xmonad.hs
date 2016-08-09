@@ -3,6 +3,7 @@ import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
+import XMonad.Layout.Spacing
 
 import System.Directory
 import System.IO
@@ -16,13 +17,13 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ desktopConfig
         { terminal           = "st dvtm -M"
-        , focusedBorderColor = "#666666"
+        , focusedBorderColor = "#555"
         , normalBorderColor  = "black"
         , borderWidth        = 2
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
-        , layoutHook         = avoidStruts $ layoutHook def
+        , layoutHook         = smartSpacing 8 $ avoidStruts $ layoutHook def
         , manageHook         = manageDocks <+> manageHook def
         }
 
