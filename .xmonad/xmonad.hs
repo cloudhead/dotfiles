@@ -54,5 +54,15 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
   where
     ks = Map.fromList
        [ ((modMask, xK_F12),     safeSpawn "systemctl" ["suspend"])
+       , ((modMask, xK_p),       dmenu)
        , ((noModMask, xK_Print), spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        ]
+    dmenu :: X ()
+    dmenu = safeSpawn
+        "dmenu_run" [ "-fn", "'xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true:hintstyle=hintslight'"
+                    , "-i"
+                    , "-nb", "black"
+                    , "-nf", "#bbb"
+                    , "-sb", "#444"
+                    , "-sf", "white"
+                    ]
