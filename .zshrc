@@ -44,8 +44,8 @@ fi
 #
 alias g='git'
 alias ls='ls -p'
-alias l='ls -lFGh --color=always'
-alias ll='ls -lFAGh --color=always'
+alias l='ls -lFGh --color=auto'
+alias ll='ls -lFAGh --color=auto'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
 alias img='sxiv'
