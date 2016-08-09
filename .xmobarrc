@@ -7,7 +7,7 @@ Config {
      , bgColor = "black"
      , fgColor = "grey"
      , position = TopW L 100
-     , commands = [ Run DynNetwork [ "--template", "<dev> <tx>kB/s <rx>kB/s" ] 10
+     , commands = [ Run DynNetwork [ "--template", "<dev> <tx>KB/s <rx>KB/s" ] 10
                   , Run MultiCpu   [ "--template", "<total0>% <total1>% <total2>% <total3>%", "-w", "3" ] 50
                   , Run Memory     [ "--template", "<usedratio>%", "-w", "3" ] 10
                   , Run Date       "%a %b %d %Y %H:%M:%S" "date" 10
