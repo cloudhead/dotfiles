@@ -4,18 +4,22 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 
+import System.Directory
+import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
 
 main :: IO ()
-main = xmonad =<< statusBar "xmobar" barConfig toggleStrutsKey desktopConfig
-     { terminal           = "st dvtm -M"
-     , focusedBorderColor = "#666666"
-     , normalBorderColor  = "black"
-     , borderWidth        = 2
-     , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
-     , keys               = myKeys
-     }
+main = do
+    home <- getHomeDirectory
+    xmonad =<< statusBar "xmobar" barConfig toggleStrutsKey desktopConfig
+        { terminal           = "st dvtm -M"
+        , focusedBorderColor = "#666666"
+        , normalBorderColor  = "black"
+        , borderWidth        = 2
+        , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
+        , keys               = myKeys home
+        }
 
 barConfig :: PP
 barConfig = xmobarPP
@@ -36,10 +40,11 @@ barConfig = xmobarPP
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
-myKeys :: XConfig Layout -> Map (KeyMask, KeySym) (X ())
-myKeys conf@XConfig { XMonad.modMask = modMask } =
+myKeys :: FilePath -> XConfig Layout -> Map (KeyMask, KeySym) (X ())
+myKeys home conf@XConfig { XMonad.modMask = modMask } =
     Map.union (XMonad.keys def conf) ks
   where
     ks = Map.fromList
-       [ ((modMask, xK_F12), safeSpawn "systemctl" ["suspend"])
+       [ ((modMask, xK_F12),     safeSpawn "systemctl" ["suspend"])
+       , ((noModMask, xK_Print), spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        ]
