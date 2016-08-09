@@ -3,7 +3,7 @@
 #
 export PATH=~/bin:~/.cabal/bin:$PATH
 export FZF_DEFAULT_COMMAND='ag -U -g ""'
-export FZF_DEFAULT_OPTS="--prompt='' --color=bg+:234,pointer:234"
+export FZF_DEFAULT_OPTS="--prompt='' --color=bw"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export VISUAL=vim
 
