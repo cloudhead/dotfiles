@@ -22,16 +22,16 @@ set hidden
 set modeline
 set hlsearch
 set incsearch
-set autoread                        " auto-reload modified files (with no local changes)
-set nocompatible                    " don't try to be compatible with vi
-set ignorecase                      " ignore case in search
-set smartcase                       " override ignorecase if uppercase is used in search string
-set report=0                        " report all changes
-set laststatus=2                    " always show status-line
-set nocursorline                    " highlight current line
+set autoread                        " Auto-reload modified files (with no local changes)
+set nocompatible                    " Don't try to be compatible with vi
+set ignorecase                      " Ignore case in search
+set smartcase                       " Override ignorecase if uppercase is used in search string
+set report=0                        " Report all changes
+set laststatus=2                    " Always show status-line
+set nocursorline                    " Highlight current line
 set scrolloff=4
 set nofoldenable
-set timeoutlen=200                  " set timeout between key sequences
+set timeoutlen=200                  " Set timeout between key sequences
 set background=dark
 set mouse=vin                       " Enable mouse in insert and normal mode
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these 
