@@ -37,6 +37,7 @@ set mouse=vin                       " Enable mouse in insert and normal mode
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these 
 set wmh=0                           " Minimum window height = 0
 set showcmd
+set updatetime=1000                 " How long before 'CursorHold' event
 
 
 let mapleader = ","
@@ -44,6 +45,7 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_width = 120
 let g:deoplete#enable_at_startup = 1
+let g:gitgutter_sign_column_always = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Per file-type indentation
