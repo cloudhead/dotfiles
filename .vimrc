@@ -43,6 +43,7 @@ let mapleader = ","
 let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_width = 120
+let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Per file-type indentation
@@ -54,6 +55,13 @@ autocmd BufEnter *.h   set shiftwidth=4|set noexpandtab
 autocmd BufEnter *.lua set shiftwidth=2|set expandtab
 autocmd BufEnter *.erl set softtabstop=4|set shiftwidth=4
 
+" Haskell
+let g:haskellmode_completion_ghc = 0
+let g:haskell_enable_quantification = 1
+let g:haskell_indent_where = 2
+let g:haskell_indent_case = 4
+let g:haskell_indent_guard = 4
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 au FileType haskell setlocal makeprg=stack\ build
 au FileType haskell setlocal errorformat=
                 \%-G,
@@ -122,5 +130,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/goyo.vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'eagletmt/neco-ghc'
+Plug 'shougo/deoplete.nvim'
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
