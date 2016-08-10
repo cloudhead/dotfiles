@@ -1,17 +1,9 @@
 ##
 # cloudhead - .zshrc
 #
-export PATH=~/bin:~/.cabal/bin:$PATH
 export FZF_DEFAULT_COMMAND='ag -U -g ""'
 export FZF_DEFAULT_OPTS="--prompt='' --color=bw"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export VISUAL=vim
-
-if command -v nvim >/dev/null 2>&1; then
-  export EDITOR=nvim
-else
-  export EDITOR=vim
-fi
 
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.awsrc ]   && source ~/.awsrc
