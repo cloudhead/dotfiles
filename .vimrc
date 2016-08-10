@@ -49,13 +49,11 @@ let g:gitgutter_sign_column_always = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Per file-type indentation
-autocmd BufEnter *.hs  set softtabstop=4|set shiftwidth=4
-autocmd BufEnter *.js  set softtabstop=4|set shiftwidth=4
-autocmd BufEnter *.go  set tabstop=4|set shiftwidth=4|set noexpandtab
-autocmd BufEnter *.c   set shiftwidth=4|set noexpandtab
-autocmd BufEnter *.h   set shiftwidth=4|set noexpandtab
-autocmd BufEnter *.lua set shiftwidth=2|set expandtab
-autocmd BufEnter *.erl set softtabstop=4|set shiftwidth=4
+au FileType haskell     set sts=4 sw=4 expandtab
+au FileType javascript  set sts=4 sw=4 expandtab
+au FileType go          set ts=4  sw=4 noexpandtab
+au FileType c           set       sw=4 noexpandtab
+au FileType lua         set       sw=2 expandtab
 
 " Haskell
 let g:haskellmode_completion_ghc = 0
