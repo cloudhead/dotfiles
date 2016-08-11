@@ -59,7 +59,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        ]
     dmenu :: X ()
     dmenu = safeSpawn
-        "dmenu_run" [ "-fn", "'xft:DejaVu Sans Mono:size=12:antialias=true:hinting=true:hintstyle=hintslight'"
+        "dmenu_run" [ "-fn", "Inconsolata:size=13"
                     , "-i"
                     , "-nb", "black"
                     , "-nf", "#bbb"
