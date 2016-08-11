@@ -7,8 +7,18 @@ servers = (
     ssl_verify = "no";
     autoconnect = "yes";
   },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; autoconnect = "yes"; },
-  { address = "0.0.0.0"; chatnet = "IM"; port = "6667"; autoconnect = "yes"; },
+  {
+    address = "irc.oftc.net";
+    chatnet = "OFTC";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "0.0.0.0";
+    chatnet = "IM";
+    port = "6667";
+    autoconnect = "yes";
+  }
 );
 
 chatnets = {
