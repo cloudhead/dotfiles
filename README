@@ -5,7 +5,7 @@
 
   Everything here is optimized first and foremost for
   efficiency and low-latency. There is also an emphasis on simplicity.
-  
+
     * We don't run git commands in the shell prompt.
     * We don't use 'Oh My Zsh' or such nonsense which results in slow systems.
     * We don't use pointless plugins like vim powerline.
