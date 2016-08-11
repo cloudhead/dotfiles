@@ -7,7 +7,8 @@ servers = (
     ssl_verify = "no";
     autoconnect = "yes";
   },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; autoconnect = "yes" },
+  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; autoconnect = "yes"; },
+  { address = "0.0.0.0"; chatnet = "IM"; port = "6667"; autoconnect = "yes"; },
 );
 
 chatnets = {
@@ -24,6 +25,7 @@ chatnets = {
     max_whois = "1";
   };
   OFTC = { type = "IRC"; max_kicks = "1"; max_msgs = "1"; max_whois = "1"; };
+  IM = { type = "IRC"; max_kicks = "1"; max_msgs = "1"; max_whois = "1"; };
 };
 
 channels = (
@@ -31,7 +33,8 @@ channels = (
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell-game"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#neovim"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "&bitlbee"; chatnet = "IM"; autojoin = "yes"; }
 );
 
 aliases = {
