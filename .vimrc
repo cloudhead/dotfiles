@@ -38,7 +38,15 @@ set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
 set showcmd
 set updatetime=1000                 " How long before 'CursorHold' event
-
+set nobackup
+set nowritebackup
+set noswapfile
+set nolazyredraw
+set nostartofline
+set cmdheight=1
+set matchtime=2                     " Shorter brace match time
+set textwidth=80
+set virtualedit=block
 
 let mapleader = ","
 let g:goyo_margin_top = 0
