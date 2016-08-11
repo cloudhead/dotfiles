@@ -34,7 +34,7 @@ set nofoldenable
 set timeoutlen=200                  " Set timeout between key sequences
 set background=dark
 set mouse=vin                       " Enable mouse in insert and normal mode
-set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these 
+set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
 set showcmd
 set updatetime=1000                 " How long before 'CursorHold' event
