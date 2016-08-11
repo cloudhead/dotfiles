@@ -63,6 +63,15 @@ au FileType go          set ts=4  sw=4 noexpandtab
 au FileType c           set       sw=4 noexpandtab
 au FileType lua         set       sw=2 expandtab
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * call s:StripTrailing()
+function! s:StripTrailing()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfunction
+
 " Haskell
 let g:haskellmode_completion_ghc = 0
 let g:haskell_enable_quantification = 1
