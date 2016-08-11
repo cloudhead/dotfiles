@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char font[] = "Inconsolata:pixelsize=32:antialias=true:autohint=true:dpi=150";
-static int borderpx = 2;
+static int borderpx = 10;
 #define histsize 4000
 
 /*
@@ -44,7 +44,7 @@ static int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
 static unsigned int xfps = 120;
-static unsigned int actionfps = 30;
+static unsigned int actionfps = 60;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
