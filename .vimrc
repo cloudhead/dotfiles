@@ -60,8 +60,9 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 au FileType haskell     set sts=4 sw=4 expandtab
 au FileType javascript  set sts=4 sw=4 expandtab
 au FileType go          set ts=4  sw=4 noexpandtab
-au FileType c           set       sw=4 noexpandtab
+au FileType c,cpp       set       sw=4 noexpandtab
 au FileType lua         set       sw=2 expandtab
+au FileType sh          set       sw=2 expandtab
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
