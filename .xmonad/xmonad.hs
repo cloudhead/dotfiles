@@ -16,7 +16,7 @@ main = do
     home <- getHomeDirectory
     xmproc <- spawnPipe "xmobar"
     xmonad $ desktopConfig
-        { terminal           = "st dvtm -M -h 1000 -d 0"
+        { terminal           = "st"
         , focusedBorderColor = "#555"
         , normalBorderColor  = "black"
         , borderWidth        = 2
