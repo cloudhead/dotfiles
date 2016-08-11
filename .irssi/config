@@ -308,3 +308,11 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
 };
 ignores = ( { level = "PARTS"; } );
+keyboard = (
+  { key = "end"; id = "command"; data = "/sb end"; },
+  { key = "home"; id = "command"; data = "/sb home"; },
+  { key = "^L"; id = "command"; data = "/window right"; },
+  { key = "^J"; id = "command"; data = "/scrollback goto +2"; },
+  { key = "^H"; id = "command"; data = "/window left"; },
+  { key = "^K"; id = "command"; data = "/scrollback goto -2"; }
+);
