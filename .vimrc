@@ -23,7 +23,6 @@ set modeline
 set hlsearch
 set incsearch
 set autoread                        " Auto-reload modified files (with no local changes)
-set nocompatible                    " Don't try to be compatible with vi
 set ignorecase                      " Ignore case in search
 set smartcase                       " Override ignorecase if uppercase is used in search string
 set report=0                        " Report all changes
@@ -48,6 +47,10 @@ set matchtime=2                     " Shorter brace match time
 set textwidth=80
 set virtualedit=block
 
+if !has("nvim")
+  set nocompatible                  " Don't try to be compatible with vi
+endif
+
 let mapleader = ","
 let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
@@ -56,16 +59,18 @@ let g:gitgutter_sign_column_always = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Deoplete (autocomplete)
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#disable_auto_complete = 1
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ deoplete#mappings#manual_complete()
-function! s:check_back_space()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+if has("nvim")
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#disable_auto_complete = 1
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+  function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+endif
 
 " Per file-type indentation
 au FileType haskell     set sts=4 sw=4 expandtab
