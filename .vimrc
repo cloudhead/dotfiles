@@ -56,6 +56,10 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_width = 120
 let g:gitgutter_sign_column_always = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCustomDelimiters = { 'haskell': { 'left': '-- ', 'right': '' } }
+
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Deoplete (autocomplete)
