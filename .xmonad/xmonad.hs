@@ -18,7 +18,7 @@ main = do
     xmonad $ desktopConfig
         { terminal           = "st"
         , focusedBorderColor = "#555"
-        , normalBorderColor  = "black"
+        , normalBorderColor  = "#1F1F1F"
         , borderWidth        = 2
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
@@ -30,12 +30,12 @@ main = do
 barConfig :: Handle -> PP
 barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor light   dark   . wrap " " " "
-    , ppHidden          = xmobarColor light   dark   . wrap "◦" " "
+    , ppHiddenNoWindows = xmobarColor black   dark   . wrap " " " "
+    , ppHidden          = xmobarColor light   dark   . wrap " " " "
     , ppUrgent          = xmobarColor black   red
     , ppLayout          = const ""
     , ppWsSep           = ""
-    , ppSep             = " ░ "
+    , ppSep             = "  "
     , ppOutput          = hPutStrLn h
     }
   where
