@@ -141,9 +141,30 @@ nnoremap <down>  :tabprev<CR>
 
 map <Leader>m       :make<Return>
 map <C-n>           :NERDTreeToggle<CR>
-map <C-p>           :FZF<CR>
+map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
 map <Leader><Space> :Goyo<CR>
+
+" Fuzzy finder using `fzf`. Combines buffers with `ag`.
+function! s:fuzzy(...)
+  try
+    let l = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    let buflist = filter(l, 'bufnr("") !~ v:val')
+  catch
+    let buflist = []
+  endtry
+
+  let ag = split(system('ag -U -g ""'), '\n')
+  let bufs = map(buflist, 'bufname(v:val)')
+  let files = filter(ag, 'index(bufs, v:val) == -1')
+  let result = extend(files, bufs)
+
+  return fzf#run(fzf#wrap('buffers', {
+  \ 'source':  reverse(result),
+  \ 'options': '--exact --color=16 --prompt="/ "',
+  \}), a:000)
+endfunction
+command! FuzzyOpen call s:fuzzy()
 
 " Syntax coloring
 set t_Co=256
