@@ -52,9 +52,6 @@ if !has("nvim")
 endif
 
 let mapleader = ","
-let g:goyo_margin_top = 0
-let g:goyo_margin_bottom = 0
-let g:goyo_width = 120
 let g:gitgutter_sign_column_always = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
@@ -181,7 +178,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/goyo.vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'eagletmt/neco-ghc'
