@@ -4,19 +4,25 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Layout.Spacing
+import XMonad.StackSet
+import XMonad.ManageHook
 
 import System.Directory
 import System.IO
 import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Control.Monad
+
+termName :: FilePath
+termName = "st"
 
 main :: IO ()
 main = do
     home <- getHomeDirectory
     xmproc <- spawnPipe "xmobar"
     xmonad $ desktopConfig
-        { terminal           = "st"
+        { terminal           = termName
         , focusedBorderColor = "#555"
         , normalBorderColor  = "#1F1F1F"
         , borderWidth        = 2
@@ -25,7 +31,16 @@ main = do
         , logHook            = dynamicLogWithPP (barConfig xmproc)
         , layoutHook         = smartSpacing 8 $ avoidStruts $ layoutHook def
         , manageHook         = manageDocks <+> manageHook def
+        , startupHook        = startup
         }
+
+startup :: X ()
+startup = do
+    -- Open a terminal if none are open.
+    withWindowSet $ \wins -> do
+        result <- filterM (runQuery (title =? termName)) (allWindows wins)
+        when (null result) $
+            safeSpawnProg termName
 
 barConfig :: Handle -> PP
 barConfig h = xmobarPP
