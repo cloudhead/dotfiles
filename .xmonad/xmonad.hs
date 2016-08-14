@@ -6,6 +6,7 @@ import XMonad.Util.Run
 import XMonad.Layout.Spacing
 import XMonad.StackSet
 import XMonad.ManageHook
+import XMonad.Layout.NoBorders
 
 import System.Directory
 import System.IO
@@ -29,7 +30,7 @@ main = do
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
-        , layoutHook         = smartSpacing 8 $ avoidStruts $ layoutHook def
+        , layoutHook         = avoidStruts $ smartSpacing 8 $ smartBorders $ layoutHook def
         , manageHook         = manageDocks <+> manageHook def
         , startupHook        = startup
         }
