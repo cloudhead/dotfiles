@@ -141,6 +141,8 @@ map <C-n>           :NERDTreeToggle<CR>
 map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
 map <Leader><Space> :Goyo<CR>
+map <Leader>f       :Ack!<space>
+map <Leader>.       @:
 
 " Fuzzy finder using `fzf`. Combines buffers with `ag`.
 function! s:fuzzy(...)
@@ -163,6 +165,10 @@ function! s:fuzzy(...)
 endfunction
 command! FuzzyOpen call s:fuzzy()
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Syntax coloring
 set t_Co=256
 syntax enable
@@ -180,6 +186,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim'
 Plug 'neovimhaskell/haskell-vim'
