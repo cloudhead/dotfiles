@@ -1,3 +1,5 @@
 :set prompt "λ "
 :set +m
 :set prompt2 "| "
+:def hoogle \x -> return $ ":!hoogle --color        \"" ++ x ++ "\""
+:def doc    \x -> return $ ":!hoogle --color --info \"" ++ x ++ "\""
