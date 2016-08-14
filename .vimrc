@@ -140,7 +140,6 @@ map <Leader>m       :make<Return>
 map <C-n>           :NERDTreeToggle<CR>
 map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
-map <Leader><Space> :Goyo<CR>
 map <Leader>f       :Ack!<space>
 map <Leader>.       @:
 
