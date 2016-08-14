@@ -46,7 +46,7 @@ startup = do
 barConfig :: Handle -> PP
 barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor black   dark   . wrap " " " "
+    , ppHiddenNoWindows = xmobarColor grey    black  . wrap " " " "
     , ppHidden          = xmobarColor light   dark   . wrap " " " "
     , ppUrgent          = xmobarColor black   red
     , ppLayout          = const ""
@@ -60,6 +60,7 @@ barConfig h = xmobarPP
     black = "black"
     light = "#888888"
     dark  = "#333333"
+    grey  = "#555555"
 
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
