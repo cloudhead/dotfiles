@@ -131,16 +131,18 @@ noremap j gj
 noremap k gk
 
 " Remap arrow keys to something useful
-nnoremap <left>  :bprev<CR>
-nnoremap <right> :bnext<CR>
-nnoremap <up>    :tabnext<CR>
-nnoremap <down>  :tabprev<CR>
+nnoremap <left>  :cprev<CR>
+nnoremap <right> :cnext<CR>
+nnoremap <up>    :bprev<CR>
+nnoremap <down>  :bnext<CR>
+
+" Project search
+nnoremap <C-f>      :Ack!<space>
 
 map <Leader>m       :make<Return>
 map <C-n>           :NERDTreeToggle<CR>
 map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
-map <Leader>f       :Ack!<space>
 map <Leader>.       @:
 
 " Fuzzy finder using `fzf`. Combines buffers with `ag`.
