@@ -70,9 +70,10 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
     Map.union ks (XMonad.keys def conf)
   where
     ks = Map.fromList
-       [ ((modMask, xK_F12),     safeSpawn "systemctl" ["hibernate"])
-       , ((modMask, xK_p),       dmenu)
-       , ((noModMask, xK_Print), spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
+       [ ((modMask, xK_F12),                  safeSpawn "systemctl" ["suspend"])
+       , ((modMask .|. shiftMask, xK_F12),    safeSpawn "systemctl" ["hibernate"])
+       , ((modMask, xK_p),                    dmenu)
+       , ((noModMask, xK_Print),              spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        ]
     dmenu :: X ()
     dmenu = safeSpawn
