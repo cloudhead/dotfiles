@@ -1,31 +1,4 @@
 
 
-  These are my dotfiles. There are many like them,
-  but these ones are mine.
-
-  Everything here is optimized first and foremost for
-  efficiency and low-latency. There is also an emphasis on simplicity.
-
-    * We don't run git commands in the shell prompt.
-    * We don't use 'Oh My Zsh' or such nonsense which results in slow systems.
-    * We don't use pointless plugins like vim powerline.
-    * We avoid slow or bloated software such as bash and xterm.
-    * We use defaults whenever possible and don't needlessly configure.
-
-  The environment is based around the following programs:
-
-    * `st` as the terminal emulator. It's small and fast as fuck.
-    * `xmonad` as the window manager. There are also settings for `dwm`.
-    * `zsh` as the shell.
-    * `dmenu` as the launcher.
-    * `xmobar` as the status bar.
-    * `vim` and `neovim` as the editors.
-
-  To install:
-
-    1. Change your login shell to zsh:
-
-        $ chsh -s /usr/bin/zsh
-
-    2. Copy all files to ~.
+  These are my dotfiles.
 
