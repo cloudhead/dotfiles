@@ -144,6 +144,8 @@ map <C-n>           :NERDTreeToggle<CR>
 map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
 map <Leader>.       @:
+map <Leader>e       :e ~/.vimrc<CR>
+map <Leader>s       :source ~/.vimrc<CR>
 
 " Fuzzy finder using `fzf`. Combines buffers with `ag`.
 function! s:fuzzy(...)
