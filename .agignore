@@ -5,6 +5,7 @@
 *.o
 *.so
 .stack/
+.stack-work/
 .cabal/
 .git/
 .cache/
