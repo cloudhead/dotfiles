@@ -120,9 +120,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Always open help in vertical split
-autocmd FileType help wincmd L
-
 " Easy command mode switch
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
