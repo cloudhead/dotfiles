@@ -1,0 +1,13 @@
+*.mo
+*.po
+*.pot
+*.in
+*.o
+*.so
+.stack/
+.cabal/
+.git/
+.cache/
+.local/
+.steam/
+.ghc/

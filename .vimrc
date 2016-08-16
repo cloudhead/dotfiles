@@ -155,7 +155,7 @@ function! s:fuzzy(...)
     let buflist = []
   endtry
 
-  let ag = split(system('ag -U -g ""'), '\n')
+  let ag = split(system('ag --hidden -U -g ""'), '\n')
   let bufs = map(buflist, 'bufname(v:val)')
   let files = filter(ag, 'index(bufs, v:val) == -1')
   let result = extend(files, bufs)
