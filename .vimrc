@@ -46,6 +46,7 @@ set cmdheight=1
 set matchtime=2                     " Shorter brace match time
 set textwidth=80
 set virtualedit=block
+set tags+=.tags
 
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
@@ -81,6 +82,11 @@ au FileType c,cpp       set       sw=4 noexpandtab
 au FileType lua         set       sw=2 expandtab
 au FileType sh          set       sw=2 expandtab
 au FileType vim         set sts=2 sw=2 expandtab
+
+if executable('haskell-tags')
+  au BufWritePost *.hs  silent !haskell-tags % '.tags'
+  au BufWritePost *.hsc silent !haskell-tags % '.tags'
+endif
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()

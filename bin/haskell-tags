@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -f .tags ]; then
+  exec fast-tags -o $2 `ag --haskell -g ""`
+else
+  exec fast-tags -o $2 $1
+fi
