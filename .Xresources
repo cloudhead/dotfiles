@@ -1,33 +1,8 @@
 !
 ! .Xresources
 !
-URxvt.scrollBar:           false
-URxvt.saveLines:           8192
-URxvt.internalBorder:      4
-URxvt.externalBorder:      0
-URxvt.highlightSelection:  true
-URxvt.loginShell:          true
-URxvt.termName:            xterm-256color
-URxvt.letterSpace:         -1
-URxvt.font:                xft:DejaVu Sans Mono:pixelsize=15
-URxvt.boldFont:            xft:DejaVu Sans Mono:pixelsize=15:style=Bold
-URxvt.colorBD:             #FFFFFF
-URxvt.cursorColor:         red
-URxvt.borderColor:         black
-URxvt.scrollColor:         black
-URxvt.underlineColor:      white
-URxvt.foreground:          #FFFFFF
-URxvt.background:          #111111
-URxvt.mapAlert:            true
-URxvt.highlightColor:      darkred
 
 Xft.dpi: 160
-Xft.antialias: true
-Xft.rgba: rgb
-Xft.hinting: true
-Xft.hintstyle: hintfull
-Xft.lcdfilter: lcddefault
-Xft.autohint: 0
 
 ! VGA
 *color0:  #000000
@@ -46,8 +21,3 @@ Xft.autohint: 0
 *color13: #FF55FF
 *color14: #55FFFF
 *color15: #FFFFFF
-
-URxvt.keysym.C-0: command:\033]50;-gohu-*-medium-*-*-*-14-*-*-*-*-*-*-*\007\033]711;-gohu-*-bold-*-*-*-14-*-*-*-*-*-*-*\007
-URxvt.keysym.C-1: command:\033]50;-gohu-*-medium-*-*-*-11-*-*-*-*-*-*-*\007\033]711;-gohu-*-bold-*-*-*-11-*-*-*-*-*-*-*\a
-URxvt.keysym.C-2: command:\033]50;xft: DejaVu Sans Mono:pixelsize=15:antialias=false\007\033]711;xft: DejaVu Sans Mono:pixelsize=15:style=Bold:antialias=false\007
-
