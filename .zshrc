@@ -7,7 +7,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.awsrc ]   && source ~/.awsrc
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # `ls` colors
 if [ -f ~/.dircolors ]; then
@@ -25,7 +24,7 @@ autoload -U complist
 set -o vi
 
 # Bind <C-r> to history search
-if [ -f ~/.fzf.zsh ]; then
+if [ command -v fzf >/dev/null 2>&1 ]; then
   bindkey '^R' fzf-history-widget
   bindkey '^P' fzf-file-widget
 else
