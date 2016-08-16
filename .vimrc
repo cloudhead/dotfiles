@@ -140,7 +140,6 @@ nnoremap <down>  :bnext<CR>
 nnoremap <C-f>      :Ack!<space>
 
 map <Leader>m       :make<Return>
-map <C-n>           :NERDTreeToggle<CR>
 map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <plug>NERDCommenterToggle
 map <Leader>.       @:
@@ -183,7 +182,6 @@ endtry
 
 call plug#begin()
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
