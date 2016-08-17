@@ -124,8 +124,9 @@ filetype indent on
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
 
-noremap <C-j> }
-noremap <C-k> {
+" Jump to high/low and scroll
+noremap <C-k> H{
+noremap <C-j> L}
 
 " Move easily between ^ and $
 noremap <C-h> ^
