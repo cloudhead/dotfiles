@@ -188,6 +188,12 @@ try
 catch
 endtry
 
+" Bindings we aren't using
+inoremap <Up>     <Nop>
+inoremap <Down>   <Nop>
+inoremap <Left>   <Nop>
+inoremap <Right>  <Nop>
+
 call plug#begin()
 
 Plug 'scrooloose/nerdcommenter'
