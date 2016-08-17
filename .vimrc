@@ -139,17 +139,17 @@ nnoremap <C-N> :nohl<CR>
 nnoremap c*    *Ncgn
 
 " Remap arrow keys to something useful
-nnoremap <left>  :cprev<CR>
-nnoremap <right> :cnext<CR>
-nnoremap <up>    :bprev<CR>
-nnoremap <down>  :bnext<CR>
+nnoremap <Left>  :cprev<CR>
+nnoremap <Right> :cnext<CR>
+nnoremap <Up>    :bprev<CR>
+nnoremap <Down>  :bnext<CR>
 
 " Project search
-nnoremap <C-f>      :Ack!<space>
+nnoremap <C-f>      :Ack!<Space>
 
-map <Leader>m       :make<Return>
+map <Leader>m       :make<CR>
 map <C-p>           :FuzzyOpen<CR>
-map <C-_>           <plug>NERDCommenterToggle
+map <C-_>           <Plug>NERDCommenterToggle
 map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
