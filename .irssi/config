@@ -22,7 +22,7 @@ servers = (
 );
 
 chatnets = {
-  EFNet = { 
+  EFNet = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "4";
@@ -43,6 +43,7 @@ channels = (
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell-game"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#neovim"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#vis-editor"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "&bitlbee"; chatnet = "IM"; autojoin = "yes"; }
 );
