@@ -2,11 +2,16 @@
 # cloudhead - .zshrc
 #
 export FZF_DEFAULT_COMMAND='ag --hidden -U -g ""'
-export FZF_DEFAULT_OPTS='--prompt="/ " --color=16 --exact'
+export FZF_DEFAULT_OPTS='--prompt="/ " --color=16,fg+:-1,hl+:-1,hl:254 --exact'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.awsrc ]   && source ~/.awsrc
+
+# Should contain keybindings and completions for fzf
+for f in ~/.fzf/*; do
+  source $f
+done
 
 # `ls` colors
 if [ -f ~/.dircolors ]; then
@@ -24,7 +29,7 @@ autoload -U complist
 set -o vi
 
 # Bind <C-r> to history search
-if [ command -v fzf >/dev/null 2>&1 ]; then
+if command -v fzf >/dev/null 2>&1; then
   bindkey '^R' fzf-history-widget
   bindkey '^P' fzf-file-widget
 else
