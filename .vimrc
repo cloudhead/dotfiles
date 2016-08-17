@@ -133,6 +133,11 @@ noremap <C-l> $
 noremap j gj
 noremap k gk
 
+" Like '*' but stays on the original word
+nnoremap <C-n> *N
+nnoremap <C-N> :nohl<CR>
+nnoremap c*    *Ncgn
+
 " Remap arrow keys to something useful
 nnoremap <left>  :cprev<CR>
 nnoremap <right> :cnext<CR>
