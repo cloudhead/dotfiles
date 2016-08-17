@@ -36,7 +36,7 @@ set mouse=vin                       " Enable mouse in insert and normal mode
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
 set showcmd
-set updatetime=1000                 " How long before 'CursorHold' event
+set updatetime=250                  " How long before 'CursorHold' event
 set nobackup
 set nowritebackup
 set noswapfile
@@ -54,6 +54,7 @@ endif
 
 let mapleader = ","
 let g:gitgutter_sign_column_always = 1
+let g:gitgutter_realtime = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = { 'haskell': { 'left': '-- ', 'right': '' } }
