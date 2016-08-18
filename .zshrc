@@ -16,9 +16,6 @@ autoload colors && colors
 autoload -U compinit && compinit
 autoload -U complist
 
-# Set input mode to vi
-set -o vi
-
 # Fzy integration
 if command -v fzy >/dev/null 2>&1 && test -f ~/.fzy.zsh; then
   source ~/.fzy.zsh
@@ -93,6 +90,30 @@ precmd() {
     RPROMPT="%{$fg[red]%}#$RPROMPT%{$reset_color%}"
   fi
 }
+
+#
+# Vi-mode
+#
+set -o vi
+#
+zle-keymap-select zle-line-init() {
+  # Check ~/.st/config.h for the cursor escape sequences.
+  case $KEYMAP in
+    vicmd)      print -n -- "\e[2 q";;
+    viins|main) print -n -- "\e[4 q";;
+  esac
+
+  zle reset-prompt
+  zle -R
+}
+
+zle-line-finish() {
+  print -n -- "\e[2 q"
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
 
 col() {
   awk "{ print \$$1 }"
