@@ -54,7 +54,6 @@ alias e=$EDITOR
 alias pdf='mupdf'
 alias webserver='python2 -m SimpleHTTPServer'
 alias pacman='sudo pacman --color=auto'
-alias ag='ag -U'
 
 #
 # History
