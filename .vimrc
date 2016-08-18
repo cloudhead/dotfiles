@@ -80,7 +80,7 @@ au FileType javascript  set sts=4 sw=4 expandtab
 au FileType go          set ts=4  sw=4 noexpandtab
 au FileType c,cpp       set       sw=4 noexpandtab
 au FileType lua         set       sw=2 expandtab
-au FileType sh          set       sw=2 expandtab
+au FileType sh,zsh      set ts=2  sw=2 noexpandtab
 au FileType vim         set sts=2 sw=2 expandtab
 
 if executable('haskell-tags')
