@@ -147,34 +147,32 @@ nnoremap <Down>  :bnext<CR>
 
 " Project search
 nnoremap <C-f>      :Ack!<Space>
+nnoremap <C-p>      :FuzzyOpen<CR>
 
 map <Leader>m       :make<CR>
-map <C-p>           :FuzzyOpen<CR>
 map <C-_>           <Plug>NERDCommenterToggle
 map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
 
-" Fuzzy finder using `fzf`. Combines buffers with `ag`.
-function! s:fuzzy(...)
-  try
-    let l = filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    let buflist = filter(l, 'bufnr("") !~ v:val')
-  catch
-    let buflist = []
-  endtry
-
-  let ag = split(system('ag --hidden -U -g ""'), '\n')
-  let bufs = map(buflist, 'bufname(v:val)')
-  let files = filter(ag, 'index(bufs, v:val) == -1')
-  let result = extend(files, bufs)
-
-  return fzf#run(fzf#wrap('buffers', {
-  \ 'source':  reverse(result),
-  \ 'options': '--exact --color=16 --prompt="/ "',
-  \}), a:000)
-endfunction
 command! FuzzyOpen call s:fuzzy()
+function! s:fuzzy()
+  let lines = 12
+  let tmp = tempname()
+  let command = "ag -g '' | fzy -l " . lines . " > " . tmp
+  let opts = { 'tmp': tmp }
+
+  function! opts.on_exit(id, code)
+    close
+    let result = readfile(self.tmp)
+    execute 'edit' fnameescape(join(result))
+  endfunction
+
+  below new
+  execute 'resize' lines + 1
+  call termopen(command, opts)
+  startinsert
+endfunction
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -199,7 +197,6 @@ call plug#begin()
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
