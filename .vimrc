@@ -187,5 +187,6 @@ Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'cloudhead/neovim-ghcid'
 
 call plug#end()
