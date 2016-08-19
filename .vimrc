@@ -167,9 +167,15 @@ function! s:fuzzy()
   let opts = { 'tmp': tmp }
 
   function! opts.on_exit(id, code)
-    close
-    let result = readfile(self.tmp)
-    execute 'edit' fnameescape(join(result))
+    bdelete!
+    if a:code == 0
+      if filereadable(self.tmp)
+        let result = readfile(self.tmp)
+        if !empty(result)
+          execute 'edit' fnameescape(join(result))
+        endif
+      endif
+    endif
   endfunction
 
   below new
