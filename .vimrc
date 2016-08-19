@@ -159,37 +159,6 @@ if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
 
-command! FuzzyOpen call s:fuzzy()
-function! s:fuzzy() abort
-  let lines = 12
-  let tmp = tempname()
-  let command = "ag -g '' | fzy -l " . lines . " > " . tmp
-  let opts = { 'tmp': tmp }
-
-  function! opts.on_exit(id, code) abort
-    bdelete!
-    if a:code == 0
-      if filereadable(self.tmp)
-        let result = readfile(self.tmp)
-        if !empty(result)
-          execute 'edit' fnameescape(join(result))
-        endif
-      endif
-    endif
-  endfunction
-
-  below new
-  execute 'resize' lines + 1
-
-  if bufnr('FuzzyOpen') > 0
-    execute 'buffer' bufnr('FuzzyOpen')
-  else
-    call termopen(command, opts)
-    file FuzzyOpen
-  endif
-  startinsert
-endfunction
-
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
