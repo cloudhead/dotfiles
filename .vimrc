@@ -181,6 +181,7 @@ function! s:fuzzy()
   below new
   execute 'resize' lines + 1
   call termopen(command, opts)
+  file FuzzyOpen
   startinsert
 endfunction
 
