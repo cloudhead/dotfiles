@@ -155,6 +155,10 @@ map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
 
+if has("nvim")
+  tnoremap <Esc> <C-\><C-n>
+endif
+
 command! FuzzyOpen call s:fuzzy()
 function! s:fuzzy()
   let lines = 12
