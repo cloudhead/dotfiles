@@ -160,13 +160,13 @@ if has("nvim")
 endif
 
 command! FuzzyOpen call s:fuzzy()
-function! s:fuzzy()
+function! s:fuzzy() abort
   let lines = 12
   let tmp = tempname()
   let command = "ag -g '' | fzy -l " . lines . " > " . tmp
   let opts = { 'tmp': tmp }
 
-  function! opts.on_exit(id, code)
+  function! opts.on_exit(id, code) abort
     bdelete!
     if a:code == 0
       if filereadable(self.tmp)
@@ -180,8 +180,13 @@ function! s:fuzzy()
 
   below new
   execute 'resize' lines + 1
-  call termopen(command, opts)
-  file FuzzyOpen
+
+  if bufnr('FuzzyOpen') > 0
+    execute 'buffer' bufnr('FuzzyOpen')
+  else
+    call termopen(command, opts)
+    file FuzzyOpen
+  endif
   startinsert
 endfunction
 
