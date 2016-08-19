@@ -7,6 +7,7 @@ import XMonad.Layout.Spacing
 import XMonad.StackSet
 import XMonad.ManageHook
 import XMonad.Layout.NoBorders
+import XMonad.Hooks.EwmhDesktops
 
 import System.Directory
 import System.IO
@@ -22,7 +23,7 @@ main :: IO ()
 main = do
     home <- getHomeDirectory
     xmproc <- spawnPipe "xmobar"
-    xmonad $ desktopConfig
+    xmonad $ ewmh $ desktopConfig
         { terminal           = termName
         , focusedBorderColor = "#555"
         , normalBorderColor  = "#1F1F1F"
