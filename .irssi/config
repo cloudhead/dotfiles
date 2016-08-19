@@ -1,13 +1,5 @@
 servers = (
   {
-    address = "chat.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
-  },
-  {
     address = "irc.oftc.net";
     chatnet = "OFTC";
     port = "6667";
@@ -17,6 +9,15 @@ servers = (
     address = "0.0.0.0";
     chatnet = "IM";
     port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
   }
 );
