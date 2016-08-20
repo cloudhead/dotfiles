@@ -44,7 +44,6 @@ set nolazyredraw
 set nostartofline
 set cmdheight=1
 set matchtime=2                     " Shorter brace match time
-set textwidth=80
 set virtualedit=block
 set tags+=.tags
 
