@@ -134,9 +134,9 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <C-n> *N
-nnoremap <C-N> :nohl<CR>
-nnoremap c*    *Ncgn
+nnoremap <C-n>     *N
+nnoremap c*        *Ncgn
+nnoremap <Leader>n :nohl<CR>
 
 " Remap arrow keys to something useful
 nnoremap <Left>  :cprev<CR>
@@ -144,9 +144,10 @@ nnoremap <Right> :cnext<CR>
 nnoremap <Up>    :bprev<CR>
 nnoremap <Down>  :bnext<CR>
 
-" Project search
+" File navigation/search
 nnoremap <C-f>      :Ack!<Space>
 nnoremap <C-p>      :FuzzyOpen<CR>
+nnoremap <BS>       :b#
 
 map <Leader>m       :make<CR>
 map <C-_>           <Plug>NERDCommenterToggle
