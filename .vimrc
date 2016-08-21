@@ -46,9 +46,12 @@ set cmdheight=1
 set matchtime=2                     " Shorter brace match time
 set virtualedit=block
 set tags+=.tags
+set undofile
+set gdefault                        " Always use /g with %s/
 
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
+  set ttyfast
 endif
 
 let mapleader = ","
