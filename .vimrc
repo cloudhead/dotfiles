@@ -48,6 +48,9 @@ set virtualedit=block
 set tags+=.tags
 set undofile
 set gdefault                        " Always use /g with %s/
+set colorcolumn=80
+set list
+set listchars=tab:··,eol:¬,trail:░
 
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
