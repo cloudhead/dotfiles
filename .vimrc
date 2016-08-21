@@ -137,9 +137,9 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <C-n>     *N
-nnoremap c*        *Ncgn
-nnoremap <Leader>n :nohl<CR>
+nnoremap <Tab>           *N
+nnoremap c*              *Ncgn
+nnoremap <Leader><Tab>   :nohl<CR>
 
 " Remap arrow keys to something useful
 nnoremap <Left>  :cprev<CR>
@@ -151,6 +151,13 @@ nnoremap <Down>  :bnext<CR>
 nnoremap <C-f>      :Ack!<Space>
 nnoremap <C-p>      :FuzzyOpen<CR>
 nnoremap <BS>       :b#
+
+" Navigate relative to the current file
+cmap     %/         %:p:h/
+
+" Use standard regexp when searching
+nnoremap /          /\v
+vnoremap /          /\v
 
 map <Leader>m       :make<CR>
 map <C-_>           <Plug>NERDCommenterToggle
