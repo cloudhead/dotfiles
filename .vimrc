@@ -147,6 +147,9 @@ nnoremap <Tab>           *N
 nnoremap c*              *Ncgn
 nnoremap <Leader><Tab>   :nohl<CR>
 
+ " Select recently pasted text
+nnoremap <leader>p       V`]
+
 " Remap arrow keys to something useful
 nnoremap <Left>  :cprev<CR>
 nnoremap <Right> :cnext<CR>
