@@ -79,6 +79,9 @@ if has("nvim")
   endfunction
 endif
 
+" Save on focus lost
+au FocusLost * :wa
+
 " Per file-type indentation
 au FileType haskell     set sts=4 sw=4 expandtab
 au FileType javascript  set sts=4 sw=4 expandtab
