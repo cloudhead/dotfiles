@@ -55,6 +55,7 @@ set listchars=tab:··,eol:¬,trail:░
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
   set ttyfast
+  set t_Co=256
 endif
 
 let mapleader = ","
@@ -183,7 +184,6 @@ if executable('ag')
 endif
 
 " Syntax coloring
-set t_Co=256
 syntax enable
 
 try
