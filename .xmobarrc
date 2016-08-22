@@ -1,7 +1,7 @@
 -- Xmobar configuration
 
 Config {
-       font = "xft:monospace:size=12"
+       font = "xft:Inconsolata:size=14,monospace:size=12"
      , borderColor = "black"
      , border = TopB
      , bgColor = "black"
