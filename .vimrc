@@ -170,10 +170,6 @@ nnoremap <BS>       :b#
 " Navigate relative to the current file
 cmap     %/         %:p:h/
 
-" Use standard regexp when searching
-nnoremap /          /\v
-vnoremap /          /\v
-
 map <Leader>m       :make<CR>
 map <C-_>           <Plug>NERDCommenterToggle
 map <Leader>.       @:
