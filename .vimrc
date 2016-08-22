@@ -83,7 +83,7 @@ endif
 " Save on focus lost
 au FocusLost * call s:SaveOnFocusLost()
 function! s:SaveOnFocusLost()
-  if !empty(expand('%:p'))
+  if !empty(expand('%:p')) && &modified
     write
   endif
 endfunction
