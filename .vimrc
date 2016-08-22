@@ -196,6 +196,20 @@ try
 catch
 endtry
 
+" Profiling
+command! ProfileStart call s:ProfileStart()
+function! s:ProfileStart()
+  profile start profile
+  profile func *
+  profile file *
+endfunction
+
+command! ProfileStop call s:ProfileStop()
+function! s:ProfileStop()
+  profile stop
+  tabnew profile
+endfunction
+
 call plug#begin()
 
 Plug 'scrooloose/nerdcommenter'
