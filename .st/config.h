@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Inconsolata:pixelsize=30:antialias=true:autohint=false:dpi=150";
+static char font[] = "Inconsolata:pixelsize=30:antialias=true:autohint=false";
 static int borderpx = 10;
 #define histsize 4000
 
