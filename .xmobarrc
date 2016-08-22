@@ -16,5 +16,5 @@ Config {
                   ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{ %multicpu%  ┅  %memory%  ┅  %disku%  ┅  %dynnetwork%  ┅  <fc=#aa0000>%date%</fc>"
+     , template = "%StdinReader%  }{ %multicpu%  ┅  %memory%  ┅  %disku%  ┅  %dynnetwork%  ┅  <fc=#aa0000>%date%</fc> "
 }
