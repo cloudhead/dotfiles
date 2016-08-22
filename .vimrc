@@ -81,7 +81,12 @@ if has("nvim")
 endif
 
 " Save on focus lost
-au FocusLost * :wa
+au FocusLost * call s:SaveOnFocusLost()
+function! s:SaveOnFocusLost()
+  if !empty(expand('%:p'))
+    write
+  endif
+endfunction
 
 " Per file-type indentation
 au FileType haskell     set sts=4 sw=4 expandtab
