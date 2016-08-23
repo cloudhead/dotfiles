@@ -150,18 +150,19 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <Tab>           *N
+nnoremap <C-n>           *N
 nnoremap c*              *Ncgn
 nnoremap <Leader><Tab>   :nohl<CR>
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
 
-" Remap arrow keys to something useful
-nnoremap <Left>  :cprev<CR>
-nnoremap <Right> :cnext<CR>
-nnoremap <Up>    :bprev<CR>
-nnoremap <Down>  :bnext<CR>
+" Switch buffers easily
+nnoremap <Tab>   :b#<CR>
+
+" Actually easier to type and I do it by mistake anyway
+cnoreabbrev W w
+cnoreabbrev Q q
 
 " File navigation/search
 nnoremap <C-f>      :Ack!<Space>
