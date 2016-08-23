@@ -215,6 +215,8 @@ Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'bronson/vim-visual-star-search'
+Plug 'ap/vim-buftabline'
 Plug 'cloudhead/neovim-ghcid'
 Plug 'cloudhead/neovim-fuzzy'
 
