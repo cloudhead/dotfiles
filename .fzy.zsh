@@ -19,6 +19,10 @@ fzy-file-widget () {
 	LBUFFER="${LBUFFER}$(__fzy_fsel)"
 	local ret=$?
 	zle redisplay
+	if [[ $ret == 0 ]]; then
+		zle accept-line "$LBUFFER"
+		ret=$?
+	fi
 	typeset -f zle-line-init >/dev/null && zle zle-line-init
 	return $ret
 }
