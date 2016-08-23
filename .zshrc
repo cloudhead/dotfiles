@@ -29,7 +29,7 @@ fi
 LS_IGNORE="Dropbox" # ~/Dropbox is symlinked.
 
 alias ls="/bin/ls -I $LS_IGNORE"
-alias l="/bin/ls -lFGh --color=auto -I $LS_IGNORE"
+alias l="/bin/ls -lFGhL --color=auto -I $LS_IGNORE"
 alias ll='/bin/ls -lFAGh --color=auto'
 
 #
