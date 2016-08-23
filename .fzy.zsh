@@ -30,7 +30,7 @@ zle     -N   fzy-file-widget
 bindkey '^P' fzy-file-widget
 
 fzy-history-widget () {
-  local selected num
+	local selected num
 	setopt localoptions noglobsubst pipefail 2> /dev/null
   selected=( $(fc -l -r 1 | fzy -q "${LBUFFER//$/\\$}") )
 	local ret=$?
