@@ -7,7 +7,7 @@ fi
 
 __fzy_fsel () {
 	setopt localoptions pipefail 2> /dev/null
-	command ag -g '' | fzy | while read -r item; do
+	command ag --silent -g '' | fzy | while read -r item; do
 		echo -n "${(q)item}"
 	done
 	local ret=$?
