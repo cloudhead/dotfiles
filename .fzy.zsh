@@ -15,7 +15,6 @@ __fzy_fsel () {
 	return $ret
 }
 
-# Place the selected file path on the command line.
 fzy-file-widget () {
 	LBUFFER="${LBUFFER}$(__fzy_fsel)"
 	local ret=$?
@@ -26,7 +25,6 @@ fzy-file-widget () {
 zle     -N   fzy-file-widget
 bindkey '^P' fzy-file-widget
 
-# Place the selected command from history on the command line.
 fzy-history-widget () {
   local selected num
 	setopt localoptions noglobsubst pipefail 2> /dev/null
