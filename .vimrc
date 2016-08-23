@@ -40,7 +40,6 @@ set updatetime=250                  " How long before 'CursorHold' event
 set nobackup
 set nowritebackup
 set noswapfile
-set nolazyredraw
 set nostartofline
 set cmdheight=1
 set matchtime=2                     " Shorter brace match time
@@ -51,6 +50,7 @@ set gdefault                        " Always use /g with %s/
 set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
+set lazyredraw                      " Stop vim from freaking out all the time
 
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
