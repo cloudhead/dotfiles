@@ -1,7 +1,7 @@
 #
 # fzy shell integration
 #
-#	    Adapted from fzf (https://github.com/junegunn/fzf).
+#     Adapted from fzf (https://github.com/junegunn/fzf).
 #
 # Copyright (c) 2016 Junegunn Choi
 # Copyright (c) 2016 Alexis Sellier
@@ -16,7 +16,7 @@ __fzy_fsel () {
 		echo -n "${(q)item}"
 	done
 	local ret=$?
-  echo
+	echo
 	return $ret
 }
 
@@ -37,7 +37,7 @@ bindkey '^P' fzy-file-widget
 fzy-history-widget () {
 	local selected num
 	setopt localoptions noglobsubst pipefail 2> /dev/null
-  selected=( $(fc -l -r 1 | fzy -q "${LBUFFER//$/\\$}") )
+	selected=( $(fc -l -r 1 | fzy -q "${LBUFFER//$/\\$}") )
 	local ret=$?
 	if [[ -n ${selected} ]]; then
 		num=${selected[1]}
