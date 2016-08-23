@@ -44,6 +44,8 @@ channels = (
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell-game"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#neovim"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#zsh"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#archlinux"; chatnet = "freenode"; autojoin = "no"; },
   { name = "#vis-editor"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "&bitlbee"; chatnet = "IM"; autojoin = "yes"; }
