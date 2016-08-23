@@ -3,3 +3,11 @@
 :set prompt2 "| "
 :def hoogle \x -> return $ ":!hoogle --color        \"" ++ x ++ "\""
 :def doc    \x -> return $ ":!hoogle --color --info \"" ++ x ++ "\""
+
+import qualified Data.Set as Set
+import           Data.Set (Set)
+import qualified Data.Map as Map
+import           Data.Map (Map)
+import qualified Data.IntMap as IntMap
+import           Data.IntMap (IntMap)
+import           Control.Arrow
