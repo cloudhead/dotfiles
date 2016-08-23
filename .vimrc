@@ -152,7 +152,10 @@ noremap k gk
 " Like '*' but stays on the original word
 nnoremap <C-n>           *N
 nnoremap c*              *Ncgn
-nnoremap <Leader><Tab>   :nohl<CR>
+nnoremap <Leader>n       :nohl<CR>
+
+" Git
+nnoremap <Leader>gc      :Gwrite <Bar> :Gcommit<CR>
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
