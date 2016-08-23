@@ -1,6 +1,11 @@
 #
 # fzy shell integration
 #
+#	    Adapted from fzf (https://github.com/junegunn/fzf).
+#
+# Copyright (c) 2016 Junegunn Choi
+# Copyright (c) 2016 Alexis Sellier
+#
 if [[ $- != *i* ]]; then
 	return
 fi
