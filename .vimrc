@@ -63,6 +63,7 @@ let g:gitgutter_sign_column_always = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = { 'haskell': { 'left': '-- ', 'right': '' } }
+let g:buftabline_show = 1
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
