@@ -24,12 +24,18 @@ else
 fi
 
 #
+# ls
+#
+LS_IGNORE="Dropbox" # ~/Dropbox is symlinked.
+
+alias ls="/bin/ls -I $LS_IGNORE"
+alias l="/bin/ls -lFGh --color=auto -I $LS_IGNORE"
+alias ll='/bin/ls -lFAGh --color=auto'
+
+#
 # Aliases
 #
 alias g='git'
-alias ls='ls -p'
-alias l='ls -lFGh --color=auto'
-alias ll='ls -lFAGh --color=auto'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
 alias img='sxiv'
