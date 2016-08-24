@@ -58,7 +58,7 @@ if !has("nvim")
   set t_Co=256
 endif
 
-let mapleader = ","
+let mapleader = "\<Space>"
 let g:gitgutter_sign_column_always = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
@@ -134,6 +134,8 @@ au FileType haskell setlocal errorformat=
 filetype on
 filetype plugin on
 filetype indent on
+
+nnoremap <Space> <NOP>
 
 " Easy command mode switch
 inoremap kj <Esc>
