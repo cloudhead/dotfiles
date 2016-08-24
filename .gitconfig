@@ -32,7 +32,7 @@
   pager = less -x1,5
 
 [alias]
-  c = commit
+  c = commit -v
   s = status -sb
   st = status
   co = checkout
