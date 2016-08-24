@@ -127,4 +127,17 @@ col() {
   awk "{ print \$$1 }"
 }
 
+#
+# Switch to `fg` process with Ctrl-Z
+#
+fg-command() {
+  if [[ ! $#BUFFER -eq 0 ]]; then
+    zle push-input
+  fi
+  BUFFER="fg"
+  zle accept-line
+}
+zle -N fg-command
+bindkey '^Z' fg-command
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
