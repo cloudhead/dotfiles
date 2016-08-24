@@ -30,7 +30,7 @@ set laststatus=2                    " Always show status-line
 set nocursorline                    " Highlight current line
 set scrolloff=4
 set nofoldenable
-set timeoutlen=200                  " Set timeout between key sequences
+set timeoutlen=500                  " Set timeout between key sequences
 set background=dark
 set mouse=vin                       " Enable mouse in insert and normal mode
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
