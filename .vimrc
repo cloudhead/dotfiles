@@ -60,6 +60,8 @@ endif
 
 let mapleader = "\<Space>"
 let g:gitgutter_sign_column_always = 1
+let g:gitgutter_grep_command = 'ag -g'
+let g:gitgutter_map_keys = 0
 let g:NERDCompactSexyComs = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = { 'haskell': { 'left': '-- ', 'right': '' } }
