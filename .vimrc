@@ -157,7 +157,11 @@ nnoremap c*              *Ncgn
 nnoremap <Leader>n       :nohl<CR>
 
 " Git
-nnoremap <Leader>gc      :Gwrite <Bar> :Gcommit<CR>
+nnoremap <Leader>c      :GitCommit -v<CR>
+nnoremap <Leader>a      :GitGutterStageHunk<CR>
+nnoremap <Leader>aa     :Gwrite<CR>
+nnoremap <Leader>u      :GitGutterUndoHunk<CR>
+nnoremap <Leader>p      :GitGutterPreviewHunk<CR>
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
