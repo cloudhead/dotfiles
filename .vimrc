@@ -51,6 +51,7 @@ set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set lazyredraw                      " Stop vim from freaking out all the time
+set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
