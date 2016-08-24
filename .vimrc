@@ -51,7 +51,7 @@ set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set lazyredraw                      " Stop vim from freaking out all the time
-set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%{Hi()}\ %y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
@@ -238,6 +238,14 @@ command! ProfileStop call s:ProfileStop()
 function! s:ProfileStop()
   profile stop
   tabnew profile
+endfunction
+
+" Get highlight group under cursor
+function! Hi()
+  if exists('g:show_hi')
+    return synIDattr(synID(line("."), col("."), 1), "name")
+  endif
+  return ''
 endfunction
 
 call plug#begin()
