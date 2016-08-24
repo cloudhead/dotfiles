@@ -53,6 +53,23 @@ set listchars=tab:·\ ,eol:¬,trail:█
 set lazyredraw                      " Stop vim from freaking out all the time
 set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 
+" We don't use tabs much, but at least try and show less cruft
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let s .= ' ' . (!empty(bufname) ? fnamemodify(bufname, ':t') : '[No Name]') . ' '
+  endfor
+  return s
+endfunction
+set tabline=%!Tabline()
+
 if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
   set ttyfast
