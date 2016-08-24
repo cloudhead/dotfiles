@@ -102,7 +102,7 @@ if has("nvim")
 endif
 
 " Update gutter whenever possible
-au CursorHold,CursorHoldI,FocusLost * :GitGutter
+au FocusLost * :GitGutter
 
 " Save on focus lost
 au FocusLost * call s:SaveOnFocusLost()
