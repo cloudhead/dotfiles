@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+now="$(date +"%S%M%H%d%m%Y")"
+tmp="$(mktemp)"
+
+log() {
+	echo -e "\e[1m$@\e[0m"
+}
+
+log "RECORDING STARTED (exit to stop)"
+
+ttyrec "$tmp"
+
+log "RECORDING ENDED"
+
+ttygif "$tmp"
+rm     "$tmp"
