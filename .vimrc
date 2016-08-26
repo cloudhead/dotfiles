@@ -116,11 +116,13 @@ endfunction
 " Per file-type indentation
 au FileType haskell     setlocal sts=4 sw=4 expandtab
 au FileType javascript  setlocal sts=4 sw=4 expandtab
+au FileType css         setlocal ts=4  sw=4 noexpandtab
 au FileType go          setlocal ts=4  sw=4 noexpandtab
 au FileType c,cpp       setlocal       sw=4 noexpandtab
 au FileType lua         setlocal       sw=2 expandtab
 au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
+au FileType help        setlocal ts=4  sw=4 noexpandtab
 
 if executable('haskell-tags')
   au BufWritePost *.hs  silent !haskell-tags % '.tags'
