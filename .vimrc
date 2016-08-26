@@ -180,20 +180,22 @@ noremap k gk
 " Like '*' but stays on the original word
 nnoremap <C-n>           *N
 nnoremap c*              *Ncgn
-nnoremap <Leader>n       :nohl<CR>
+nnoremap <Leader>h       :nohl<CR>
 
 " Git
-nnoremap <Leader>c      :GitCommit -v<CR>
-nnoremap <Leader>a      :GitGutterStageHunk<CR>
-nnoremap <Leader>aa     :Gwrite<CR>
-nnoremap <Leader>u      :GitGutterUndoHunk<CR>
-nnoremap <Leader>p      :GitGutterPreviewHunk<CR>
+nnoremap <Leader>gc     :Gcommit -v<CR>
+nnoremap <Leader>ga     :GitGutterStageHunk<CR>
+nnoremap <Leader>ga.    :Gwrite<CR>
+nnoremap <Leader>gu     :GitGutterUndoHunk<CR>
+nnoremap <Leader>gp     :GitGutterPreviewHunk<CR>
+nnoremap <Leader>n      :cnext<CR>
+nnoremap <Leader>p      :cprev<CR>
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
 
 " Switch buffers easily
-nnoremap <Tab>   :b#<CR>
+nnoremap <Tab>   <C-^>
 
 " Actually easier to type and I do it by mistake anyway
 cnoreabbrev W w
