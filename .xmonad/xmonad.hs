@@ -8,6 +8,7 @@ import XMonad.StackSet
 import XMonad.ManageHook
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Actions.CycleWS
 
 import System.Directory
 import System.IO
@@ -74,6 +75,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        [ ((modMask, xK_F12),                  safeSpawn "systemctl" ["suspend"])
        , ((modMask .|. shiftMask, xK_F12),    safeSpawn "systemctl" ["hibernate"])
        , ((modMask, xK_p),                    dmenu)
+       , ((modMask, xK_Tab),                  toggleWS)
        , ((noModMask, xK_Print),              spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        ]
     dmenu :: X ()
