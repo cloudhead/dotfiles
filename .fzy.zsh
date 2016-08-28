@@ -43,6 +43,7 @@ fzy-history-widget () {
 		num=${selected[1]}
 		if [[ -n ${num} ]]; then
 			zle vi-fetch-history -n ${num}
+			zle accept-line "$LBUFFER"
 		fi
 	fi
 	zle redisplay
