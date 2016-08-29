@@ -2,7 +2,6 @@
 "
 " Modification of vims Haskell syntax file:
 "   - match types using regular expression
-"   - highlight toplevel functions
 "   - use "syntax keyword" instead of "syntax match" where appropriate
 "   - functions and types in import and module declarations are matched
 "   - removed hs_highlight_more_types (just not needed anymore)
@@ -11,8 +10,6 @@
 "   - QuasiQuotation
 "   - top level Template Haskell slices
 "   - PackageImport
-"
-" TODO: find out which vim versions are still supported
 "
 " From Original file:
 " ===================
@@ -30,21 +27,12 @@
 "
 " Options-assign a value to these variables to turn the option on:
 "
-" hs_highlight_delimiters - Highlight delimiter characters--users
-"			    with a light-colored background will
-"			    probably want to turn this on.
-" hs_highlight_boolean - Treat True and False as keywords.
-" hs_highlight_types - Treat names of primitive types as keywords.
-" hs_highlight_debug - Highlight names of debugging functions.
 " hs_allow_hash_operator - Don't highlight seemingly incorrect C
 "			   preprocessor directives but assume them to be
 "			   operators
-" 
-" 
+"
 
-if version < 600
-  syn clear
-elseif exists("b:current_syntax")
+if exists("b:current_syntax")
   finish
 endif
 
@@ -70,38 +58,10 @@ syn match hsConSym "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=:[-!#$%&\*\+./<=>\?@\\^|~:]*"
 syn match hsVarSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[a-z][a-zA-Z0-9_']*`"
 syn match hsConSym "`\(\<[A-Z][a-zA-Z0-9_']*\.\)\=[A-Z][a-zA-Z0-9_']*`"
 
-" Toplevel Template Haskell support
-"sy match hsTHTopLevel "^[a-z]\(\(.\&[^=]\)\|\(\n[^a-zA-Z0-9]\)\)*"
-sy match hsTHIDTopLevel "^[a-z]\S*" 
-sy match hsTHTopLevel "^\$(\?" nextgroup=hsTHTopLevelName 
-sy match hsTHTopLevelName "[a-z]\S*" contained
-
 " Reserved symbols--cannot be overloaded.
 syn match hsDelimiter  "(\|)\|\[\|\]\|,\|;\|_\|{\|}"
 
 sy region hsInnerParen start="(" end=")" contained contains=hsInnerParen,hsConSym,hsType,hsVarSym
-sy region hs_InfixOpFunctionName start="^(" end=")\s*[^:`]\(\W\&\S\&[^'\"`()[\]{}@]\)\+"re=s
-    \ contained keepend contains=hsInnerParen,hs_HlInfixOp
-
-sy match hs_hlFunctionName "[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained 
-sy match hs_FunctionName "^[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained contains=hs_hlFunctionName
-sy match hs_HighliteInfixFunctionName "`[a-z_][^`]*`" contained
-sy match hs_InfixFunctionName "^\S[^=]*`[a-z_][^`]*`"me=e-1 contained contains=hs_HighliteInfixFunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
-sy match hs_HlInfixOp "\(\W\&\S\&[^`(){}'[\]]\)\+" contained contains=hsString
-sy match hs_InfixOpFunctionName "^\(\(\w\|[[\]{}]\)\+\|\(\".*\"\)\|\('.*'\)\)\s*[^:]=*\(\W\&\S\&[^='\"`()[\]{}@]\)\+"
-    \ contained contains=hs_HlInfixOp,hsCharacter
-
-sy match hs_OpFunctionName        "(\(\W\&[^(),\"]\)\+)" contained
-"sy region hs_Function start="^["'a-z_([{]" end="=\(\s\|\n\|\w\|[([]\)" keepend extend
-sy region hs_Function start="^["'a-zA-Z_([{]\(\(.\&[^=]\)\|\(\n\s\)\)*=" end="\(\s\|\n\|\w\|[([]\)" 
-        \ contains=hs_OpFunctionName,hs_InfixOpFunctionName,hs_InfixFunctionName,hs_FunctionName,hsType,hsConSym,hsVarSym,hsString,hsCharacter
-
-sy match hs_DeclareFunction "^[a-z_(]\S*\(\s\|\n\)*::" contains=hs_FunctionName,hs_OpFunctionName
-
-" hi hs_InfixOpFunctionName guibg=bg
-" hi hs_Function guibg=green
-" hi hs_InfixFunctionName guibg=red
-" hi hs_DeclareFunction guibg=red
 
 sy keyword hsStructure data family class where instance default deriving
 sy keyword hsTypedef type newtype
@@ -110,22 +70,16 @@ sy keyword hsInfix infix infixl infixr
 sy keyword hsStatement  do case of let in
 sy keyword hsConditional if then else
 
-"if exists("hs_highlight_types")
-  " Primitive types from the standard prelude and libraries.
-  sy match hsType "\<[A-Z]\(\S\&[^,.]\)*\>"
-  sy match hsType "()"
-"endif
+" Primitive types from the standard prelude and libraries.
+sy match hsType "\<[A-Z]\(\S\&[^,.]\)*\>"
+sy match hsType "()"
 
-" Not real keywords, but close.
-if exists("hs_highlight_boolean")
-  " Boolean constants from the standard prelude.
-  syn keyword hsBoolean True False
-endif
+syn keyword hsBoolean True False
 
 syn region	hsPackageString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
-sy match   hsModuleName  excludenl "\([A-Z]\w*\.\?\)*" contained 
+sy match   hsModuleName  excludenl "\([A-Z]\w*\.\?\)*" contained
 
-sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)" 
+sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
     \ contains=hsModuleName,hsImportLabel
     \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy keyword hsImportLabel import qualified contained
@@ -140,27 +94,10 @@ sy match hsImportParams "as\s\+\(\w\+\)" contained
     \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy match hsImportParams "hiding" contained
     \ contains=hsHidingLabel
-    \ nextgroup=hsImportParams,hsImportIllegal skipwhite 
+    \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy region hsImportParams start="(" end=")" contained
     \ contains=hsBlockComment,hsLineComment, hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName
     \ nextgroup=hsImportIllegal skipwhite
-
-" hi hsImport guibg=red
-"hi hsImportParams guibg=bg
-"hi hsImportIllegal guibg=bg
-"hi hsModuleName guibg=bg
-
-"sy match hsImport		"\<import\>\(.\|[^(]\)*\((.*)\)\?" 
-"         \ contains=hsPackageString,hsImportLabel,hsImportMod,hsModuleName,hsImportList
-"sy keyword hsImportLabel import contained
-"sy keyword hsImportMod		as qualified hiding contained
-"sy region hsImportListInner start="(" end=")" contained keepend extend contains=hs_OpFunctionName
-"sy region  hsImportList matchgroup=hsImportListParens start="("rs=s+1 end=")"re=e-1
-"        \ contained 
-"        \ keepend extend
-"        \ contains=hsType,hsLineComment,hsBlockComment,hs_hlFunctionName,hsImportListInner
-
-
 
 " new module highlighting
 syn region hsDelimTypeExport start="\<[A-Z]\(\S\&[^,.]\)*\>(" end=")" contained
@@ -172,7 +109,7 @@ sy match hsExportModule "\<module\>\(\s\|\t\|\n\)*\([A-Z]\w*\.\?\)*" contained c
 sy keyword hsModuleStartLabel module contained
 sy keyword hsModuleWhereLabel where contained
 
-syn match hsModuleStart "^module\(\s\|\n\)*\(\<\(\w\|\.\)*\>\)\(\s\|\n\)*" 
+syn match hsModuleStart "^module\(\s\|\n\)*\(\<\(\w\|\.\)*\>\)\(\s\|\n\)*"
   \ contains=hsModuleStartLabel,hsModuleName
   \ nextgroup=hsModuleCommentA,hsModuleExports,hsModuleWhereLabel
 
@@ -226,17 +163,15 @@ sy match hsQQEnd "|\]" contained
 sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
 sy match hsQQVarIDNew "\[\(.\&[^|]\)*|" contained
 
-if exists("hs_highlight_debug")
-  " Debugging functions from the standard prelude.
-  syn keyword hsDebug undefined error trace
-endif
-
+" Debugging functions from the standard prelude.
+syn keyword hsDebug undefined error trace
 
 " C Preprocessor directives. Shamelessly ripped from c.vim and trimmed
 " First, see whether to flag directive-like lines or not
 if (!exists("hs_allow_hash_operator"))
     syn match	cError		display "^\s*\(%:\|#\).*$"
 endif
+
 " Accept %: for # (C99)
 syn region	cPreCondit	start="^\s*\(%:\|#\)\s*\(if\|ifdef\|ifndef\|elif\)\>" skip="\\$" end="$" end="//"me=s-1 contains=cComment,cCppString,cCommentError
 syn match	cPreCondit	display "^\s*\(%:\|#\)\s*\(else\|endif\)\>"
@@ -255,100 +190,79 @@ syntax match	cCommentError	display "\*/" contained
 syntax match	cCommentStartError display "/\*"me=e-1 contained
 syn region	cCppString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 
+hi def link hsTypedef          Typedef
+hi def link hsVarSym           hsOperator
+hi def link hsConSym           hsOperator
+hi def link hsDelimiter        Delimiter
 
-if version >= 508 || !exists("did_hs_syntax_inits")
-  if version < 508
-    let did_hs_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+hi def link hsModuleStartLabel Structure
+hi def link hsExportModuleLabel Keyword
+hi def link hsModuleWhereLabel Structure
+hi def link hsModuleName       Normal
 
-  HiLink hs_hlFunctionName    Function
-  HiLink hs_HighliteInfixFunctionName Function
-  HiLink hs_HlInfixOp       Function
-  HiLink hs_OpFunctionName  Function
-  HiLink hsTypedef          Typedef
-  HiLink hsVarSym           hsOperator
-  HiLink hsConSym           hsOperator
-  if exists("hs_highlight_delimiters")
-    " Some people find this highlighting distracting.
-	HiLink hsDelimiter        Delimiter
-  endif
+hi def link hsImportIllegal    Error
+hi def link hsAsLabel          hsImportLabel
+hi def link hsHidingLabel      hsImportLabel
+hi def link hsImportLabel      Include
+hi def link hsImportMod        Include
+hi def link hsPackageString    hsString
 
-  HiLink hsModuleStartLabel Structure
-  HiLink hsExportModuleLabel Keyword
-  HiLink hsModuleWhereLabel Structure
-  HiLink hsModuleName       Normal
-  
-  HiLink hsImportIllegal    Error
-  HiLink hsAsLabel          hsImportLabel
-  HiLink hsHidingLabel      hsImportLabel
-  HiLink hsImportLabel      Include
-  HiLink hsImportMod        Include
-  HiLink hsPackageString    hsString
+hi def link hsOperator         Operator
 
-  HiLink hsOperator         Operator
+hi def link hsInfix            Keyword
+hi def link hsStructure        Structure
+hi def link hsStatement        Statement
+hi def link hsConditional      Conditional
 
-  HiLink hsInfix            Keyword
-  HiLink hsStructure        Structure
-  HiLink hsStatement        Statement
-  HiLink hsConditional      Conditional
+hi def link hsSpecialCharError Error
+hi def link hsSpecialChar      SpecialChar
+hi def link hsString           String
+hi def link hsFFIString        String
+hi def link hsCharacter        Character
+hi def link hsNumber           Number
+hi def link hsFloat            Float
 
-  HiLink hsSpecialCharError Error
-  HiLink hsSpecialChar      SpecialChar
-  HiLink hsString           String
-  HiLink hsFFIString        String
-  HiLink hsCharacter        Character
-  HiLink hsNumber           Number
-  HiLink hsFloat            Float
+hi def link hsLiterateComment		  hsComment
+hi def link hsBlockComment     hsComment
+hi def link hsLineComment      hsComment
+hi def link hsModuleCommentA   hsComment
+hi def link hsModuleCommentB   hsComment
+hi def link hsComment          Comment
+hi def link hsCommentTodo      Todo
+hi def link hsPragma           SpecialComment
+hi def link hsBoolean			  Boolean
 
-  HiLink hsLiterateComment		  hsComment
-  HiLink hsBlockComment     hsComment
-  HiLink hsLineComment      hsComment
-  HiLink hsModuleCommentA   hsComment
-  HiLink hsModuleCommentB   hsComment
-  HiLink hsComment          Comment
-  HiLink hsCommentTodo      Todo
-  HiLink hsPragma           SpecialComment
-  HiLink hsBoolean			  Boolean
+hi def link hsDelimTypeExport  hsType
+hi def link hsType             Type
 
-  if exists("hs_highlight_types")
-      HiLink hsDelimTypeExport  hsType
-      HiLink hsType             Type
-  endif
+hi def link hsDebug            Debug
 
-  HiLink hsDebug            Debug
+hi def link cCppString         hsString
+hi def link cCommentStart      hsComment
+hi def link cCommentError      hsError
+hi def link cCommentStartError hsError
+hi def link cInclude           Include
+hi def link cPreProc           PreProc
+hi def link cDefine            Macro
+hi def link cIncluded          hsString
+hi def link cError             Error
+hi def link cPreCondit         PreCondit
+hi def link cComment           Comment
+hi def link cCppSkip           cCppOut
+hi def link cCppOut2           cCppOut
+hi def link cCppOut            Comment
 
-  HiLink cCppString         hsString
-  HiLink cCommentStart      hsComment
-  HiLink cCommentError      hsError
-  HiLink cCommentStartError hsError
-  HiLink cInclude           Include
-  HiLink cPreProc           PreProc
-  HiLink cDefine            Macro
-  HiLink cIncluded          hsString
-  HiLink cError             Error
-  HiLink cPreCondit         PreCondit
-  HiLink cComment           Comment
-  HiLink cCppSkip           cCppOut
-  HiLink cCppOut2           cCppOut
-  HiLink cCppOut            Comment
+hi def link hsFFIForeign       Keyword
+hi def link hsFFIImportExport  Structure
+hi def link hsFFICallConvention Keyword
+hi def link hsFFISafety         Keyword
 
-  HiLink hsFFIForeign       Keyword
-  HiLink hsFFIImportExport  Structure
-  HiLink hsFFICallConvention Keyword
-  HiLink hsFFISafety         Keyword
+hi def link hsTHIDTopLevel   Macro
+hi def link hsTHTopLevelName Macro
 
-  HiLink hsTHIDTopLevel   Macro
-  HiLink hsTHTopLevelName Macro
-
-  HiLink hsQQVarID Keyword
-  HiLink hsQQVarIDNew Keyword
-  HiLink hsQQEnd   Keyword
-  HiLink hsQQContent String
-
-  delcommand HiLink
-endif
+hi def link hsQQVarID Keyword
+hi def link hsQQVarIDNew Keyword
+hi def link hsQQEnd   Keyword
+hi def link hsQQContent String
 
 let b:current_syntax = "haskell"
