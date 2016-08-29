@@ -2,7 +2,8 @@
 # cloudhead - .zshenv
 #
 
-export PATH=~/bin:~/.cabal/bin:$PATH
+[ -f ~/.profile ] && source ~/.profile
+
 export VISUAL=vim
 export GOPATH=~
 
