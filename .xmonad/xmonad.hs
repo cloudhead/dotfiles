@@ -9,6 +9,7 @@ import XMonad.ManageHook
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
+import XMonad.Hooks.UrgencyHook
 
 import System.Directory
 import System.IO
@@ -24,7 +25,7 @@ main :: IO ()
 main = do
     home <- getHomeDirectory
     xmproc <- spawnPipe "xmobar"
-    xmonad $ ewmh $ desktopConfig
+    xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ desktopConfig
         { terminal           = termName
         , focusedBorderColor = "#555"
         , normalBorderColor  = "#1F1F1F"
@@ -50,14 +51,15 @@ barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
     , ppHiddenNoWindows = xmobarColor grey    black  . wrap " " " "
     , ppHidden          = xmobarColor light   dark   . wrap " " " "
-    , ppUrgent          = xmobarColor black   red
+    , ppUrgent          = xmobarColor black   red    . wrap " " " "
+    , ppTitle           = xmobarColor red     black
     , ppLayout          = const ""
     , ppWsSep           = ""
     , ppSep             = "  "
     , ppOutput          = hPutStrLn h
     }
   where
-    red   = "red"
+    red   = "#AA0000"
     white = "white"
     black = "black"
     light = "#888888"
