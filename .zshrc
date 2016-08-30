@@ -53,8 +53,8 @@ alias vim=nvim
 # History
 #
 HISTFILE=~/.zsh_history
-HISTSIZE=4096
-SAVEHIST=4096
+HISTSIZE=65536
+SAVEHIST=65536
 REPORTTIME=10
 
 autoload up-line-or-beginning-search
