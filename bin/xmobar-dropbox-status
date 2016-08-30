@@ -1,0 +1,12 @@
+#!/bin/sh
+
+status="$(dropbox-cli status)"
+
+case "$status" in
+	"Up to date")
+		echo "✔" ;;
+	Syncing*)
+		echo "↯" ;;
+	*)
+		echo "✘ $status" ;;
+esac
