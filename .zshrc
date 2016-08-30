@@ -57,6 +57,18 @@ HISTSIZE=4096
 SAVEHIST=4096
 REPORTTIME=10
 
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "\e[A" up-line-or-beginning-search
+bindkey "\e[B" down-line-or-beginning-search
+
+#
+# Options
+#
 setopt NO_BG_NICE
 setopt NO_HUP
 setopt NO_LIST_BEEP
