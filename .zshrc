@@ -103,6 +103,7 @@ precmd() {
 # Vi-mode
 #
 bindkey -v
+export KEYTIMEOUT=1
 #
 zle-keymap-select zle-line-init() {
   # Check ~/.st/config.h for the cursor escape sequences.
