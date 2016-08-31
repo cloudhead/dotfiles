@@ -164,7 +164,8 @@ sy match hsQQVarID "\[\$\(.\&[^|]\)*|" contained
 sy match hsQQVarIDNew "\[\(.\&[^|]\)*|" contained
 
 " Debugging functions from the standard prelude.
-syn keyword hsDebug undefined error trace
+syn keyword hsDebug trace traceM traceShowM
+syn keyword hsUndefined undefined error
 
 " C Preprocessor directives. Shamelessly ripped from c.vim and trimmed
 " First, see whether to flag directive-like lines or not
@@ -236,6 +237,7 @@ hi def link hsDelimTypeExport  hsType
 hi def link hsType             Type
 
 hi def link hsDebug            Debug
+hi def link hsUndefined        Keyword
 
 hi def link cCppString         hsString
 hi def link cCommentStart      hsComment
