@@ -50,6 +50,8 @@ set gdefault                        " Always use /g with %s/
 set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
+set fillchars=diff:\ ,vert:│
+set diffopt=filler,vertical,foldcolumn:0
 set lazyredraw                      " Stop vim from freaking out all the time
 set statusline=%<%f\ %h%m%r%=%{Hi()}\ %y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 
@@ -185,6 +187,8 @@ nnoremap <Leader>h       :nohl<CR>
 
 " Git
 nnoremap <Leader>gc     :Gcommit -v<CR>
+nnoremap <Leader>gc.    :Gwrite <Bar> Gcommit -v<CR>
+nnoremap <Leader>gca    :Git commit -a<CR>
 nnoremap <Leader>ga     :GitGutterStageHunk<CR>
 nnoremap <Leader>ga.    :Gwrite<CR>
 nnoremap <Leader>gu     :GitGutterUndoHunk<CR>
@@ -245,6 +249,14 @@ function! s:ProfileStop()
 endfunction
 
 " Get highlight group under cursor
+command! Hi call s:ToggleHi()
+function! s:ToggleHi()
+  if exists('g:show_hi')
+    unlet g:show_hi
+  else
+    let g:show_hi = 1
+  endif
+endfunction
 function! Hi()
   if exists('g:show_hi')
     return synIDattr(synID(line("."), col("."), 1), "name")
