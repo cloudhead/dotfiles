@@ -213,10 +213,13 @@ nnoremap <C-p>      :FuzzyOpen<CR>
 cmap     %/         %:p:h/
 
 map <Leader>m       :make<CR>
-map <C-_>           <Plug>CommentaryLine
 map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
+
+" Commenting
+nmap <C-_>           <Plug>CommentaryLine
+xmap <C-_>           <Plug>Commentary
 
 if has("nvim")
   tnoremap <Esc> <C-\><C-n>
