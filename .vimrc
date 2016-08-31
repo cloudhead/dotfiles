@@ -213,7 +213,7 @@ nnoremap <C-p>      :FuzzyOpen<CR>
 cmap     %/         %:p:h/
 
 map <Leader>m       :make<CR>
-map <C-_>           <Plug>NERDCommenterToggle
+map <C-_>           <Plug>CommentaryLine
 map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
@@ -266,9 +266,9 @@ endfunction
 
 call plug#begin()
 
-Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim'
