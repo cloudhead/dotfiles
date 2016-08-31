@@ -23,12 +23,6 @@ servers = (
 );
 
 chatnets = {
-  EFNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "4";
-    max_whois = "1";
-  };
   Freenode = {
     type = "IRC";
     max_kicks = "1";
@@ -47,8 +41,7 @@ channels = (
   { name = "#zsh"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "no"; },
   { name = "#vis-editor"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "&bitlbee"; chatnet = "IM"; autojoin = "yes"; }
+  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
