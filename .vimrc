@@ -162,6 +162,7 @@ filetype plugin on
 filetype indent on
 
 nnoremap <Space> <NOP>
+nnoremap Q       <NOP>
 
 " Easy command mode switch
 inoremap kj <Esc>
