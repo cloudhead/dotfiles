@@ -127,11 +127,6 @@ au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
 au FileType help        setlocal ts=4  sw=4 noexpandtab
 
-if executable('haskell-tags')
-  au BufWritePost *.hs  silent !haskell-tags % '.tags'
-  au BufWritePost *.hsc silent !haskell-tags % '.tags'
-endif
-
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
 function! s:StripTrailing()
@@ -144,10 +139,7 @@ endfunction
 " Haskell
 let g:haskellmode_completion_ghc = 0
 let g:haskell_enable_quantification = 1
-let g:haskell_indent_where = 2
-let g:haskell_indent_case = 4
-let g:haskell_indent_guard = 4
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+au FileType haskell setlocal omnifunc=necoghc#omnifunc
 au FileType haskell setlocal makeprg=stack\ build
 au FileType haskell setlocal errorformat=
                 \%-G,
@@ -158,6 +150,11 @@ au FileType haskell setlocal errorformat=
                 \%+C\ \ %#%m,
                 \%W%>%f:%l:%c:,
                 \%+C\ \ %#%tarning:\ %m,
+
+if executable('haskell-tags')
+  au BufWritePost *.hs  silent !haskell-tags % '.tags'
+  au BufWritePost *.hsc silent !haskell-tags % '.tags'
+endif
 
 " File-type
 filetype on
