@@ -101,9 +101,6 @@ if has("nvim")
   endfunction
 endif
 
-" Update gutter whenever possible
-au FocusLost * :GitGutter
-
 " Save on focus lost
 au FocusLost * call s:SaveOnFocusLost()
 function! s:SaveOnFocusLost()
@@ -179,16 +176,18 @@ nnoremap <C-n>           *N
 nnoremap c*              *Ncgn
 nnoremap <Leader>h       :nohl<CR>
 
-" Git
-nnoremap <Leader>gc     :Gcommit -v<CR>
-nnoremap <Leader>gc.    :Gwrite <Bar> Gcommit -v<CR>
-nnoremap <Leader>gca    :Git commit -a<CR>
-nnoremap <Leader>ga     :GitGutterStageHunk<CR>
-nnoremap <Leader>ga.    :Gwrite<CR>
-nnoremap <Leader>gu     :GitGutterUndoHunk<CR>
-nnoremap <Leader>gp     :GitGutterPreviewHunk<CR>
 nnoremap <Leader>n      :cnext<CR>
 nnoremap <Leader>p      :cprev<CR>
+
+" Git
+nnoremap <Leader>gg     :GitGutterToggle<CR>
+nnoremap <Backspace>    :GitGutterUndoHunk<CR>
+nnoremap <Return>       :GitGutterStageHunk<CR>
+
+cnoreabbrev gw Gwrite
+cnoreabbrev gc Gcommit -v
+cnoreabbrev gn GitGutterNextHunk
+cnoreabbrev gp GitGutterPrevHunk
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
