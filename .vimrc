@@ -84,10 +84,6 @@ let g:gitgutter_grep_command = 'ag -g'
 let g:gitgutter_map_keys = 0
 let g:gitgutter_eager = 1
 let g:gitgutter_realtime = 0
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = { 'haskell': { 'left': '-- ', 'right': '' } }
-let g:buftabline_show = 1
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
