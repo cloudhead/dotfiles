@@ -206,9 +206,11 @@ nnoremap <C-p>      :FuzzyOpen<CR>
 cmap     %/         %:p:h/
 
 map <Leader>m       :make<CR>
-map <Leader>.       @:
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
+
+" Repeat previous command
+map <Leader><Space> @:
 
 " Commenting
 nmap <C-_>           <Plug>CommentaryLine
