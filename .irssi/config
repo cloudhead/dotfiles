@@ -205,8 +205,19 @@ settings = {
     real_name = "Alexis Sellier";
     user_name = "cloudhead";
     nick = "cloudhead";
+    cmdchars = "/";
   };
-  "fe-text" = { actlist_sort = "refnum"; };
+  "fe-text" = {
+    actlist_sort = "refnum";
+    scrollback_lines = "0";
+    scrollback_time = "7day";
+  };
+  "fe-common/core" = {
+    theme = "default";
+    term_charset = "utf-8";
+    emphasis_replace = "yes";
+    beep_msg_level = "MSGS INVITES DCC DCCMSGS HILIGHT";
+  };
 };
 ignores = ( { level = "PARTS"; } );
 keyboard = (
