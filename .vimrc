@@ -194,7 +194,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 
 " File navigation/search
-nnoremap <C-p>      :FuzzyOpen<CR>
+nnoremap <Leader>o      :FuzzyOpen<CR>
 
 " Navigate relative to the current file
 cmap     %/         %:p:h/
