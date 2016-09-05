@@ -79,11 +79,6 @@ if !has("nvim")
 endif
 
 let mapleader = "\<Space>"
-let g:gitgutter_sign_column_always = 1
-let g:gitgutter_grep_command = 'ag -g'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_realtime = 0
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
@@ -180,14 +175,13 @@ nnoremap <Leader>n      :cnext<CR>
 nnoremap <Leader>p      :cprev<CR>
 
 " Git
-nnoremap <Leader>gg     :GitGutterToggle<CR>
-nnoremap <Backspace>    :GitGutterUndoHunk<CR>
-nnoremap <Return>       :GitGutterStageHunk<CR>
+cnoreabbrev gw    Gwrite
+cnoreabbrev gwa   Git add -u
+cnoreabbrev gc    Gcommit -v
+cnoreabbrev gca   gwa <Bar> gc
 
-cnoreabbrev gw Gwrite
-cnoreabbrev gc Gcommit -v
-cnoreabbrev gn GitGutterNextHunk
-cnoreabbrev gp GitGutterPrevHunk
+autocmd BufRead fugitive\:* xnoremap <buffer> dp :diffput<CR>
+autocmd BufRead fugitive\:* xnoremap <buffer> do :diffget<CR>
 
  " Select recently pasted text
 nnoremap <leader>p       V`]
@@ -264,7 +258,6 @@ endfunction
 
 call plug#begin()
 
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
