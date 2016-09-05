@@ -1,7 +1,6 @@
 [user]
   email = alexis@cloudhead.io
   name = Alexis Sellier
-  editor = vim
 
 [github]
   user = cloudhead
@@ -30,6 +29,7 @@
 [core]
   excludesfile = ~/.gitignore
   pager = less -x1,5
+  editor = /bin/vim
 
 [alias]
   c = commit -v
