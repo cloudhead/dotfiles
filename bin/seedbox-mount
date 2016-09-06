@@ -1,0 +1,17 @@
+#!/bin/sh
+
+uid="$(id -u $USER)"
+gid="$(id -g $USER)"
+
+mountpoint=/home/plex
+
+fusermount -u $mountpoint 2>/dev/null
+
+sshfs $SEEDBOX_URI \
+	"$mountpoint" \
+	-oumask=555   \
+	-ogid="$gid"  \
+	-oallow_other \
+	-oauto_cache  \
+	-ouid="$uid"  \
+	-oreconnect,ServerAliveInterval=15,ServerAliveCountMax=3
