@@ -3,6 +3,7 @@
 #
 
 [ -f ~/.profile ] && source ~/.profile
+[ -f ~/.env ]     && source ~/.env
 
 export VISUAL=vim
 export GOPATH=~
