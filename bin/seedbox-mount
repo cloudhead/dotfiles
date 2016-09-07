@@ -14,4 +14,4 @@ sshfs $SEEDBOX_URI \
 	-oallow_other \
 	-oauto_cache  \
 	-ouid="$uid"  \
-	-oreconnect,ServerAliveInterval=15,ServerAliveCountMax=3
+	-oreconnect,ServerAliveInterval=15,ServerAliveCountMax=3,Compression=no,Cipher=arcfour
