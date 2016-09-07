@@ -272,7 +272,7 @@ Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim'
 Plug 'bronson/vim-visual-star-search'
-Plug 'cloudhead/neovim-ghcid'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'cloudhead/neovim-fuzzy'
 
 call plug#end()
