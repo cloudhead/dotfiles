@@ -41,6 +41,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 set nostartofline
+set noshowmode                      " Don't show stuff like `-- INSERT --`
+set foldlevel=99                    " Open all folds by default
 set cmdheight=1
 set matchtime=2                     " Shorter brace match time
 set virtualedit=block
@@ -152,6 +154,12 @@ filetype indent on
 nnoremap <Space> <NOP>
 nnoremap Q       <NOP>
 
+" Make `Y` behave like `D` and `C`
+nnoremap Y       y$
+
+" Copy selected text to clipboard
+xnoremap Y       "+y
+
 " Easy command mode switch
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
@@ -167,7 +175,7 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <C-n>           *N
+nnoremap <Leader>/       *N
 nnoremap c*              *Ncgn
 nnoremap <Leader>h       :nohl<CR>
 
