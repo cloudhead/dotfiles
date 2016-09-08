@@ -13,9 +13,10 @@ Config {
                   , Run Date       "%a %b %d %Y %H:%M:%S" "date" 10
                   , Run DiskU      [("/", "<used>/<size>"), ("/home", "<used>/<size>")] [] 20
                   , Run Com        "xmobar-dropbox-status" [] "dropbox" 10
+                  , Run CoreTemp   [ "--template", "<core0>° <core1>° <core2>° <core3>°" ] 50
                   , Run StdinReader
                   ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{┊  %dropbox%  ┊ %multicpu%  ┊  %memory%  ┊  %disku% ┊  %dynnetwork%  ┊  <fc=#aa0000>%date%</fc> "
+     , template = "%StdinReader%  }{┊  %dropbox%  ┊ %coretemp% ┊ %multicpu%  ┊  %memory%  ┊  %disku% ┊  %dynnetwork%  ┊  <fc=#aa0000>%date%</fc> "
 }
