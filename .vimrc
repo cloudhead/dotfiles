@@ -201,6 +201,9 @@ nnoremap <Tab>   <C-^>
 cnoreabbrev W w
 cnoreabbrev Q q
 
+" Ack
+cnoreabbrev ack Ack!
+
 " File navigation/search
 nnoremap <Leader>o      :FuzzyOpen<CR>
 
