@@ -65,6 +65,7 @@ sy region hsInnerParen start="(" end=")" contained contains=hsInnerParen,hsConSy
 
 sy keyword hsStructure data family class where instance default deriving
 sy keyword hsTypedef type newtype
+sy keyword hsPattern pattern
 
 sy keyword hsInfix infix infixl infixr
 sy keyword hsStatement  do case of let in
@@ -123,7 +124,7 @@ syn match hsModuleCommentA "--.*\n"
 
 syn region hsModuleExports start="(" end=")" contained
    \ nextgroup=hsModuleCommentB,hsModuleWhereLabel skipwhite skipnl
-   \ contains=hsBlockComment,hsLineComment,hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName,hsExportModule
+   \ contains=hsBlockComment,hsLineComment,hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName,hsExportModule,hsPattern
 
 syn match hsModuleCommentB "--.*\n"
   \ contains=hsCommentTodo,@Spell contained
@@ -192,6 +193,7 @@ syntax match	cCommentStartError display "/\*"me=e-1 contained
 syn region	cCppString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 
 hi def link hsTypedef          Typedef
+hi def link hsPattern          Keyword
 hi def link hsVarSym           hsOperator
 hi def link hsConSym           hsOperator
 hi def link hsDelimiter        Delimiter
