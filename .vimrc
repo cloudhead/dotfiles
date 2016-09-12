@@ -116,6 +116,7 @@ au FileType lua         setlocal       sw=2 expandtab
 au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
 au FileType help        setlocal ts=4  sw=4 noexpandtab
+au FileType txt         setlocal noai nocin nosi inde=
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
