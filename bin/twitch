@@ -1,0 +1,3 @@
+#!/bin/sh
+
+livestreamer --player mpv twitch.tv/$1 source
