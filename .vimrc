@@ -177,6 +177,8 @@ noremap k gk
 
 " Like '*' but stays on the original word
 nnoremap <Leader>/       *N
+nnoremap <C-n>           *N
+nnoremap <C-p>           #N
 nnoremap c*              *Ncgn
 nnoremap <Leader>h       :nohl<CR>
 
