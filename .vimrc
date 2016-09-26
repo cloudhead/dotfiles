@@ -226,8 +226,8 @@ if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+if executable('rg')
+  let g:ackprg = 'rg -S --no-heading --vimgrep'
 endif
 
 " Syntax coloring
