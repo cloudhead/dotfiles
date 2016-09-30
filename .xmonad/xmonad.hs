@@ -29,11 +29,11 @@ main = do
         { terminal           = termName
         , focusedBorderColor = "#555"
         , normalBorderColor  = "#1F1F1F"
-        , borderWidth        = 2
+        , borderWidth        = 1
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
-        , layoutHook         = avoidStruts $ smartSpacing 8 $ smartBorders $ layoutHook def
+        , layoutHook         = avoidStruts $ smartBorders $ layoutHook def
         , manageHook         = manageDocks <+> manageHook def
         , startupHook        = startup
         }
