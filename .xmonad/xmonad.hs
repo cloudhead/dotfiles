@@ -10,6 +10,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.FloatNext
 
 import System.Directory
 import System.IO
@@ -34,7 +35,7 @@ main = do
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
         , layoutHook         = avoidStruts $ smartBorders $ layoutHook def
-        , manageHook         = manageDocks <+> manageHook def
+        , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
         , startupHook        = startup
         }
 
@@ -74,11 +75,12 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
     Map.union ks (XMonad.keys def conf)
   where
     ks = Map.fromList
-       [ ((modMask, xK_F12),                  safeSpawn "systemctl" ["suspend"])
-       , ((modMask .|. shiftMask, xK_F12),    safeSpawn "systemctl" ["hibernate"])
-       , ((modMask, xK_p),                    dmenu)
-       , ((modMask, xK_Tab),                  toggleWS)
-       , ((noModMask, xK_Print),              spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
+       [ ((modMask, xK_F12),                    safeSpawn "systemctl" ["suspend"])
+       , ((modMask .|. shiftMask, xK_F12),      safeSpawn "systemctl" ["hibernate"])
+       , ((modMask, xK_p),                      dmenu)
+       , ((modMask, xK_Tab),                    toggleWS)
+       , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
+       , ((noModMask, xK_Print),                spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        ]
     dmenu :: X ()
     dmenu = safeSpawn
