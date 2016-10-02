@@ -23,4 +23,7 @@ fi
 compton -c -b -r 24 --active-opacity   0.95 \
                     --inactive-opacity 0.85 \
                     --vsync opengl
+
+[ -f ~/.fehbg ] && . ~/.fehbg
+
 exec xmonad
