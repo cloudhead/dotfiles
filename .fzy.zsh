@@ -51,4 +51,4 @@ fzy-history-widget () {
 	return $ret
 }
 zle     -N   fzy-history-widget
-bindkey '^R' fzy-history-widget
+bindkey '^H' fzy-history-widget

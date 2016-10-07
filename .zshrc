@@ -19,9 +19,10 @@ autoload -U complist
 # Fzy integration
 if command -v fzy >/dev/null 2>&1 && test -f ~/.fzy.zsh; then
   source ~/.fzy.zsh
-else
-  bindkey '^R' history-incremental-search-backward
 fi
+
+# Fzy history search doesn't sort things in a useful way, so we use zsh for now.
+bindkey '^R' history-incremental-search-backward
 
 #
 # ls
