@@ -18,6 +18,7 @@ set showmatch
 set wildmenu
 set wildmode=list,full
 set nowrap
+set breakindent                     " Preserve indentation when wrapping
 set hidden
 set modeline
 set hlsearch
@@ -116,7 +117,12 @@ au FileType lua         setlocal       sw=2 expandtab
 au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
 au FileType help        setlocal ts=4  sw=4 noexpandtab
-au FileType txt         setlocal noai nocin nosi inde=
+au FileType txt         setlocal noai nocin nosi inde= wrap linebreak
+au FileType pandoc      setlocal nonumber
+au FileType markdown    setlocal nonumber
+au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
+
+au BufRead,BufNewFile *.txt setf markdown
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -280,5 +286,9 @@ Plug 'shougo/deoplete.nvim'
 Plug 'bronson/vim-visual-star-search'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'tikhomirov/vim-glsl'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'junegunn/goyo.vim'
+Plug 'vim-scripts/fountain.vim'
 
 call plug#end()
