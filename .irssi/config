@@ -228,6 +228,4 @@ keyboard = (
   { key = "^H"; id = "command"; data = "/window left"; },
   { key = "^K"; id = "command"; data = "/scrollback goto -2"; }
 );
-hilights = (
-  { text = "cloudhead"; nick = "no"; word = "yes"; }
-);
+hilights = ( { text = "cloudhead"; nick = "no"; word = "yes"; } );
