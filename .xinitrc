@@ -21,7 +21,7 @@ if [ -f ~/.Xresources ]; then
 fi
 
 compton -c -r 18 --active-opacity   0.95 \
-                 --inactive-opacity 0.85 \
+                 --inactive-opacity 0.70 \
                  --vsync opengl &
 
 [ -f ~/.fehbg ] && . ~/.fehbg
