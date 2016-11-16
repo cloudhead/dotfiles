@@ -5,9 +5,9 @@
 *.o
 *.so
 .stack/
+.git/
 .stack-work/
 .cabal/
-.git/
 .cache/
 .local/
 .steam/
