@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mounted="$(mount -t fuse.sshfs | awk '{print $3}')"
+
+if [ ! -z "$mounted" ]; then
+	echo "$mounted"
+else
+	echo "-"
+fi
+
