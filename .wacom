@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xsetwacom --set "Wacom Intuos Pro M Finger touch" Gesture off
+xsetwacom --set "Wacom Intuos Pro M Finger touch" Touch off

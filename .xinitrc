@@ -25,5 +25,6 @@ compton -c -r 18 --active-opacity   0.95 \
                  --vsync opengl &
 
 [ -f ~/.fehbg ] && . ~/.fehbg
+[ -f ~/.wacom ] && . ~/.wacom
 
 exec xmonad
