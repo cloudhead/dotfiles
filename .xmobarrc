@@ -5,7 +5,7 @@ Config {
      , borderColor = "black"
      , border = TopB
      , bgColor = "black"
-     , fgColor = "#AA0000"
+     , fgColor = "#777777"
      , position = TopW L 100
      , commands = [ Run DynNetwork [ "--template", "<dev> <tx> <rx>", "-w", "7", "-S", "True" ] 10
                   , Run MultiCpu   [ "--template", "<total0>% <total1>% <total2>% <total3>%", "-w", "3" ] 50
@@ -19,5 +19,5 @@ Config {
                   ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{┊ %seedbox% ┊  %dropbox%  ┊ %coretemp% ┊ %multicpu%  ┊  %memory%  ┊  %disku% ┊  %dynnetwork%  ┊  <fc=#aa0000>%date%</fc> "
+     , template = "%StdinReader%  }{┊ %seedbox% ┊  %dropbox%  ┊ %coretemp% ┊ %multicpu%  ┊  %memory%  ┊  %disku% ┊  %dynnetwork%  ┊  <fc=#aaaaaa>%date%</fc> "
 }

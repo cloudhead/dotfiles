@@ -1,4 +1,4 @@
-:set prompt "λ "
+:set prompt "λ> "
 :set +m
 :set prompt2 "| "
 :def hoogle \x -> return $ ":!hoogle --color        \"" ++ x ++ "\""
@@ -11,4 +11,7 @@ import qualified Data.Map as Map
 import           Data.Map (Map)
 import qualified Data.IntMap as IntMap
 import           Data.IntMap (IntMap)
+import           Data.Maybe
+import           Data.Foldable
+import           Control.Monad
 import           Control.Arrow

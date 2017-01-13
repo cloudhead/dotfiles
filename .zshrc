@@ -161,4 +161,5 @@ fg-command() {
 zle -N fg-command
 bindkey '^Z' fg-command
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Zsh syntax highlighting
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

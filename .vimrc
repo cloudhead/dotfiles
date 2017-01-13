@@ -215,6 +215,7 @@ cnoreabbrev ack Ack!
 
 " File navigation/search
 nnoremap <Leader>o      :FuzzyOpen<CR>
+nnoremap <Leader>f      :FuzzyGrep<CR>
 
 " Navigate relative to the current file
 cmap     %/         %:p:h/
@@ -290,5 +291,6 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/fountain.vim'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
