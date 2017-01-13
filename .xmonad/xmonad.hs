@@ -77,6 +77,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
     ks = Map.fromList
        [ ((modMask, xK_F12),                    safeSpawn "sleep" [])
        , ((modMask .|. shiftMask, xK_F12),      safeSpawn "systemctl" ["hibernate"])
+       , ((modMask, xK_F5),                     safeSpawn "refresh-display" [])
        , ((modMask, xK_p),                      dmenu)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
