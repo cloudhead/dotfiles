@@ -242,11 +242,6 @@ endif
 " Syntax coloring
 syntax enable
 
-try
-  colorscheme shady
-catch
-endtry
-
 " Profiling
 command! ProfileStart call s:ProfileStart()
 function! s:ProfileStart()
@@ -287,6 +282,7 @@ Plug 'shougo/deoplete.nvim'
 Plug 'bronson/vim-visual-star-search'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'cloudhead/shady.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'junegunn/goyo.vim'
@@ -294,3 +290,10 @@ Plug 'vim-scripts/fountain.vim'
 Plug 'vimwiki/vimwiki'
 
 call plug#end()
+
+" Use custom colors.
+" This has to go after plugin initialization.
+try
+  colorscheme shady
+catch
+endtry
