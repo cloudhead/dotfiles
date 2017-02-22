@@ -4,6 +4,7 @@
 :def hoogle \x -> return $ ":!hoogle --color        \"" ++ x ++ "\""
 :def doc    \x -> return $ ":!hoogle --color --info \"" ++ x ++ "\""
 :set -Wno-type-defaults
+:set -XOverloadedStrings
 
 import qualified Data.Set as Set
 import           Data.Set (Set)
