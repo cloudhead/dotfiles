@@ -1,3 +1,4 @@
 #!/bin/sh
 
+# This was useful at a time, but I forget why.
 exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
