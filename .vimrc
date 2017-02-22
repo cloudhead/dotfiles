@@ -288,6 +288,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/fountain.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
