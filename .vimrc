@@ -278,7 +278,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
-Plug 'shougo/deoplete.nvim'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'bronson/vim-visual-star-search'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'cloudhead/neovim-fuzzy'
