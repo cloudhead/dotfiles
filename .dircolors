@@ -1,0 +1,195 @@
+
+TERM dvtm
+TERM dvtm-256color
+TERM rxvt
+TERM rxvt-256color
+TERM rxvt-unicode
+TERM rxvt-unicode256
+TERM rxvt-unicode-256color
+TERM st
+TERM st-256color
+
+## Documentation
+#
+# standard colors
+#
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+#
+# Text 256 color coding:
+# 38;5;COLOR_NUMBER
+# Background 256 color coding:
+# 48;5;COLOR_NUMBER
+
+## Special files
+
+NORMAL 00;38;5;250                     # no color code at all
+FILE 00;38;5;254                       # regular file: use no color at all
+RESET 0                                # reset to "normal" color
+DIR 00;38;5;111                        # directory 01;34
+LINK 00;38;5;37                        # symbolic link. (If you set this to 'target' instead of a numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 00                       # regular file with more than one link
+FIFO 00                                # pipe
+SOCK 00                                # socket
+DOOR 00                                # door
+BLK 00                                 # block device driver
+CHR 00                                 # character device driver
+ORPHAN 48;5;235;38;5;160               # symlink to nonexistent file, or non-stat'able file
+SETUID 00                              # file that is setuid (u+s)
+SETGID 00                              # file that is setgid (g+s)
+CAPABILITY 00                          # file with capability
+STICKY_OTHER_WRITABLE 00               # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 00                      # dir that is other-writable (o+w) and not sticky
+STICKY 00                              # dir with the sticky bit set (+t) and not other-writable
+EXEC 00;38;5;64                        # This is for files with execute permission:
+
+## Archives or compressed (violet + bold for compression)
+#
+.tar    00;38;5;61
+.tgz    00;38;5;61
+.lzh    00;38;5;61
+.lzma   00;38;5;61
+.tlz    00;38;5;61
+.txz    00;38;5;61
+.zip    00;38;5;61
+.z      00;38;5;61
+.Z      00;38;5;61
+.dz     00;38;5;61
+.gz     00;38;5;61
+.lz     00;38;5;61
+.xz     00;38;5;61
+.bz2    00;38;5;61
+.bz     00;38;5;61
+.tbz    00;38;5;61
+.tbz2   00;38;5;61
+.tz     00;38;5;61
+.deb    00;38;5;61
+.jar    00;38;5;61
+.rar    00;38;5;61
+.7z     00;38;5;61
+.rz     00;38;5;61
+.apk    00;38;5;61
+.gem    00;38;5;61
+
+# Image formats (yellow)
+.jpg    00;38;5;136
+.jpeg   00;38;5;136
+.gif    00;38;5;136
+.bmp    00;38;5;136
+.ppm    00;38;5;136
+.tga    00;38;5;136
+.tif    00;38;5;136
+.tiff   00;38;5;136
+.png    00;38;5;136
+.svg    00;38;5;136
+.svgz   00;38;5;136
+.xcf    00;38;5;136
+.xwd    00;38;5;136
+.yuv    00;38;5;136
+.eps    00;38;5;136
+.ico    00;38;5;136
+
+# Files of special interest
+.tex             00
+.rdf             00
+.owl             00
+.n3              00
+.ttl             00
+.nt              00
+.torrent         00
+.xml             00
+*Makefile        00
+*Rakefile        00
+*Dockerfile      00
+*rc              00
+*1               00
+.nfo             00
+.md              00
+.ini             00
+.yml             00
+.cfg             00
+.conf            00
+.h               00
+.hpp             00
+.c               00
+.hs              00
+.cpp             00
+.cc              00
+.objc            00
+.sqlite          00
+.go              00
+.sql             00
+.csv             00
+.js              00
+.rb              00
+
+# "unimportant" files as logs and backups (base01)
+.log        00;38;5;240
+.bak        00;38;5;240
+.aux        00;38;5;240
+.lof        00;38;5;240
+.lol        00;38;5;240
+.lot        00;38;5;240
+.out        00;38;5;240
+.toc        00;38;5;240
+.bbl        00;38;5;240
+.blg        00;38;5;240
+*~          00;38;5;240
+*#          00;38;5;240
+.part       00;38;5;240
+.incomplete 00;38;5;240
+.swp        00;38;5;240
+.tmp        00;38;5;240
+.temp       00;38;5;240
+.o          00;38;5;240
+.pyc        00;38;5;240
+.class      00;38;5;240
+.cache      00;38;5;240
+
+# Audio formats (orange)
+.aac    00;38;5;166
+.flac   00;38;5;166
+.mid    00;38;5;166
+.midi   00;38;5;166
+.mka    00;38;5;166
+.mp3    00;38;5;166
+.mpc    00;38;5;166
+.ogg    00;38;5;166
+.opus   00;38;5;166
+.ra     00;38;5;166
+.wav    00;38;5;166
+.m4a    00;38;5;166
+
+# Video formats (as audio + bold)
+.mov    00;38;5;166
+.mpg    00;38;5;166
+.mpeg   00;38;5;166
+.m2v    00;38;5;166
+.mkv    00;38;5;166
+.ogm    00;38;5;166
+.mp4    00;38;5;166
+.m4v    00;38;5;166
+.mp4v   00;38;5;166
+.vob    00;38;5;166
+.qt     00;38;5;166
+.nuv    00;38;5;166
+.wmv    00;38;5;166
+.asf    00;38;5;166
+.rm     00;38;5;166
+.rmvb   00;38;5;166
+.flc    00;38;5;166
+.avi    00;38;5;166
+.fli    00;38;5;166
+.flv    00;38;5;166
+.gl     00;38;5;166
+.m2ts   00;38;5;166
+.divx   00;38;5;166
+.webm   00;38;5;166
+
+
