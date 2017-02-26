@@ -87,8 +87,8 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
     dmenu = safeSpawn
         "dmenu_run" [ "-fn", "Inconsolata-14,Monospace-12"
                     , "-i"
-                    , "-y", "-2"
-                    , "-h",  "40"
+                    , "-y", "-1"
+                    , "-h",  "24"
                     , "-nb", "black"
                     , "-nf", "#bbb"
                     , "-sb", "#444"

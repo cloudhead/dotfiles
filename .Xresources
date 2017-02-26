@@ -2,7 +2,7 @@
 ! .Xresources
 !
 
-Xft.dpi: 160
+Xft.dpi: 96
 
 ! VGA
 *color0:  #000000
