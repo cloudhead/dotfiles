@@ -289,6 +289,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/fountain.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
+Plug 'exu/pgsql.vim'
+Plug 'hail2u/vim-css3-syntax'
 
 call plug#end()
 
