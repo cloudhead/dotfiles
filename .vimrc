@@ -133,6 +133,9 @@ function! s:StripTrailing()
     call cursor(l, c)
 endfunction
 
+" We use a POSIX shell
+let g:is_posix = 1
+
 " Haskell
 let g:haskellmode_completion_ghc = 0
 let g:haskell_enable_quantification = 1
