@@ -1,0 +1,10 @@
+#!/bin/sh
+
+max=$(cat ~/settings/max-brightness)
+actual=$(cat ~/settings/actual-brightness)
+ratio=$(($max / $actual))
+bars=$(($ratio * 5))
+
+printf "☀ $(($ratio * 100))%%"
+
+

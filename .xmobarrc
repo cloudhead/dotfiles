@@ -13,6 +13,7 @@ Config {
                   , Run Date       "%a %b %d %Y %H:%M:%S" "date" 10
                   , Run DiskU      [("/", "<used>/<size>"), ("/home", "<used>/<size>")] [] 20
                   , Run Com        "xmobar-dropbox-status" [] "dropbox" 10
+                  , Run Com        "xmobar-brightness" [] "brightness" 10
                   , Run Com        "seedbox-status" [] "seedbox" 10
                   , Run CoreTemp   [ "--template", "<core0>° <core1>°" ] 50
                   , Run Wireless   "wlp58s0" [ "--template", "☎ <essid>/<quality>"] 10
@@ -21,5 +22,5 @@ Config {
                   ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{┊ %battery% ┊ %wlp58s0wi% ┊ %seedbox% ┊ %dropbox% ┊ %multicpu% · %memory% · %disku% · %dynnetwork% ┊ <fc=#aaaaaa>%date%</fc> "
+     , template = "%StdinReader%  }{┊ %brightness% ┊ %battery% ┊ %wlp58s0wi% ┊ %seedbox% ┊ %dropbox% ┊ %multicpu% · %memory% · %disku% · %dynnetwork% ┊ <fc=#aaaaaa>%date%</fc> "
 }
