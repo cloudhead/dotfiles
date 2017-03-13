@@ -122,7 +122,8 @@ au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 
-au BufRead,BufNewFile *.txt setf markdown
+au BufRead,BufNewFile *.txt, *.md setf markdown
+au BufRead,BufNewFile *.tex       setf tex
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -279,6 +280,7 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-markdown'
 Plug 'mileszs/ack.vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -294,6 +296,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
 Plug 'exu/pgsql.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
