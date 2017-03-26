@@ -1,4 +1,0 @@
-#!/bin/sh
-
-killall sshfs
-systemctl suspend
