@@ -1,0 +1,8 @@
+#!/bin/env ruby
+
+require 'date'
+
+from = Date.new(2015, 10, 1)
+to   = Date.today
+
+puts "Day #{(to - from).to_i}"
