@@ -122,7 +122,8 @@ au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 
-au BufRead,BufNewFile *.txt, *.md setf markdown
+au BufRead,BufNewFile *.txt       setf markdown
+au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
 
 " Remove trailing whitespace on save
