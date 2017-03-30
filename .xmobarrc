@@ -4,7 +4,7 @@ Config {
        font = "xft:Inconsolata:size=14,monospace:size=12"
      , borderColor = "black"
      , border = TopB
-     , bgColor = "black"
+     , bgColor = "#000020"
      , fgColor = "#777777"
      , position = TopW L 100
      , commands = [ Run DynNetwork [ "--template", "<dev> <tx> <rx>", "-w", "7", "-S", "True" ] 10
