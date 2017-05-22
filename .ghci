@@ -6,13 +6,8 @@
 :set -Wno-type-defaults
 :set -XOverloadedStrings
 :set -XGADts
+:set -fobject-code
 
-import qualified Data.Set as Set
-import           Data.Set (Set)
-import qualified Data.Map as Map
-import           Data.Map (Map)
-import qualified Data.IntMap as IntMap
-import           Data.IntMap (IntMap)
 import           Data.Maybe
 import           Data.Foldable
 import           Control.Monad
