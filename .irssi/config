@@ -35,7 +35,8 @@ channels = (
   { name = "#zsh"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "no"; },
   { name = "#vis-editor"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#elliottcable"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#oftn"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
