@@ -199,7 +199,6 @@ nnoremap <Leader>p      :cprev<CR>
 cnoreabbrev gw    Gwrite
 cnoreabbrev gwa   Git add -u
 cnoreabbrev gc    Gcommit -v
-cnoreabbrev gca   gwa <Bar> gc
 
 autocmd BufRead fugitive\:* xnoremap <buffer> dp :diffput<CR>
 autocmd BufRead fugitive\:* xnoremap <buffer> do :diffget<CR>
