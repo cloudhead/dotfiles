@@ -141,7 +141,7 @@ let g:is_posix = 1
 let g:haskellmode_completion_ghc = 0
 let g:haskell_enable_quantification = 1
 au FileType haskell setlocal omnifunc=necoghc#omnifunc
-au FileType haskell setlocal makeprg=stack\ build
+au FileType haskell setlocal makeprg=stack\ build\ --fast
 au FileType haskell setlocal errorformat=
                 \%-G,
                 \%-Z\ %#,
