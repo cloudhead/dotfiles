@@ -57,6 +57,7 @@ set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
 set lazyredraw                      " Stop vim from freaking out all the time
 set statusline=%<%f\ %h%m%r%=%{Hi()}\ %y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
@@ -82,8 +83,6 @@ if !has("nvim")
 endif
 
 let mapleader = "\<Space>"
-
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Deoplete (autocomplete)
 if has("nvim")
