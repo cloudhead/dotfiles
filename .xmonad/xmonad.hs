@@ -78,7 +78,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        [ ((modMask, xK_F12),                    safeSpawn "sleep" [])
        , ((modMask .|. shiftMask, xK_F12),      safeSpawn "systemctl" ["hibernate"])
        , ((modMask, xK_F5),                     safeSpawn "refresh-display" [])
-       , ((modMask, xK_p),                      dmenu)
+       , ((modMask, xK_p),                      rofi)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
        , ((noModMask, xK_Print),                spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
@@ -96,3 +96,20 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
                     , "-sb", "#444"
                     , "-sf", "white"
                     ]
+
+rofi :: X ()
+rofi = safeSpawn
+    "rofi" [ "-show", "run"
+           , "-color-active", "#fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3"
+           , "-color-normal", "#111,#bbb,#111,#bbb,#000"
+           , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
+           , "-color-window", "#111,#666"
+           , "-font", "Inconsolata 16"
+           , "-hide-scrollbar"
+           , "-levenshtein-sort"
+           , "-lines", "7"
+           , "-matching", "fuzzy"
+           , "-padding", "5"
+           , "-separator-style", "solid"
+           , "-width", "30"
+           ]
