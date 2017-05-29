@@ -24,6 +24,8 @@ if [ -f /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/stop_timeout 
 	echo 300s | sudo tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/stop_timeout
 fi
 
+xautolock -time 5 -locker slock &
+
 compton -c -r 18 --active-opacity   0.95 \
                  --inactive-opacity 0.70 \
                  --no-fading-openclose \
