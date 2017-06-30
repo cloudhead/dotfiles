@@ -52,6 +52,7 @@ alias e=$EDITOR
 alias pdf='mupdf'
 alias webserver='python2 -m SimpleHTTPServer'
 alias pacman='sudo pacman --color=auto'
+alias netctl='sudo netctl'
 alias vim=nvim
 alias clip='xclip -sel clip'
 

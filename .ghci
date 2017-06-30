@@ -5,7 +5,7 @@
 :def doc    \x -> return $ ":!hoogle --color --info \"" ++ x ++ "\""
 :set -Wno-type-defaults
 :set -XOverloadedStrings
-:set -XGADts
+:set -XGADTs
 :set -fobject-code
 
 import           Data.Maybe

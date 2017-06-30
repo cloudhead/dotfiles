@@ -26,11 +26,6 @@ fi
 
 xautolock -time 5 -locker slock &
 
-compton -c -r 18 --active-opacity   0.95 \
-                 --inactive-opacity 0.70 \
-                 --no-fading-openclose \
-                 --vsync opengl &
-
 [ -f ~/.fehbg ] && . ~/.fehbg
 [ -f ~/.wacom ] && . ~/.wacom
 
