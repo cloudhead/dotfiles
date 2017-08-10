@@ -7,6 +7,7 @@ import XMonad.Layout.Spacing
 import XMonad.StackSet
 import XMonad.ManageHook
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ThreeColumns
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.UrgencyHook
@@ -34,10 +35,12 @@ main = do
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
-        , layoutHook         = avoidStruts $ smartBorders $ layoutHook def
+        , layoutHook         = avoidStruts $ smartBorders $ myLayout
         , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
         , startupHook        = startup
         }
+  where
+    myLayout = layoutHook def ||| ThreeCol 1 (3/100) (1/2) ||| ThreeColMid 1 (3/100) (1/2)
 
 startup :: X ()
 startup = do
