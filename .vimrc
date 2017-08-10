@@ -275,29 +275,30 @@ function! Hi()
   return ''
 endfunction
 
-call plug#begin()
+if has("nvim")
+  call plug#begin()
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
-Plug 'mileszs/ack.vim'
-Plug 'eagletmt/neco-ghc'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'bronson/vim-visual-star-search'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'cloudhead/neovim-fuzzy'
-Plug 'cloudhead/shady.vim'
-Plug 'tikhomirov/vim-glsl'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'junegunn/goyo.vim'
-Plug 'vim-scripts/fountain.vim'
-Plug 'vimwiki/vimwiki'
-Plug 'fatih/vim-go'
-Plug 'exu/pgsql.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'lervag/vimtex'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-markdown'
+  Plug 'mileszs/ack.vim'
+  Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'bronson/vim-visual-star-search'
+  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+  Plug 'cloudhead/neovim-fuzzy'
+  Plug 'cloudhead/shady.vim'
+  Plug 'tikhomirov/vim-glsl'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+  Plug 'junegunn/goyo.vim'
+  Plug 'vim-scripts/fountain.vim'
+  Plug 'vimwiki/vimwiki'
+  Plug 'fatih/vim-go'
+  Plug 'exu/pgsql.vim'
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'lervag/vimtex'
 
-call plug#end()
+  call plug#end()
+endif
 
 " Use custom colors.
 " This has to go after plugin initialization.
