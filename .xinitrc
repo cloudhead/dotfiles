@@ -24,7 +24,10 @@ if [ -f /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/stop_timeout 
 	echo 300s | sudo tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/stop_timeout
 fi
 
-xautolock -time 5 -locker slock &
+udiskie --no-notify --use-udisks2 &
+
+# Auto-lock
+# xautolock -time 5 -locker slock &
 
 [ -f ~/.fehbg ] && . ~/.fehbg
 [ -f ~/.wacom ] && . ~/.wacom
