@@ -80,7 +80,7 @@ syn keyword hsBoolean True False
 syn region	hsPackageString	start=+L\="+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end='$' contains=cSpecial contained
 sy match   hsModuleName  excludenl "\([A-Z]\w*\.\?\)*" contained
 
-sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)"
+sy match hsImport "\<import\>\s\+\(qualified\s\+\)\?\(\<\(\w\|\.\)*\>\)\s*\(()\)\?"
     \ contains=hsModuleName,hsImportLabel
     \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy keyword hsImportLabel import qualified contained
