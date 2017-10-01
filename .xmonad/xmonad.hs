@@ -40,7 +40,7 @@ main = do
         , startupHook        = startup
         }
   where
-    myLayout = layoutHook def ||| ThreeCol 1 (3/100) (1/2) ||| ThreeColMid 1 (3/100) (1/2)
+    myLayout = layoutHook def
 
 startup :: X ()
 startup = do

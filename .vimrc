@@ -171,6 +171,9 @@ nnoremap Y       y$
 " Copy selected text to clipboard
 xnoremap Y       "+y
 
+" Paste form clipboard
+xnoremap <leader>p "+p
+
 " Easy command mode switch
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
@@ -296,6 +299,7 @@ if has("nvim")
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex'
+  Plug 'vim-scripts/gnupg.vim'
 
   call plug#end()
 endif
