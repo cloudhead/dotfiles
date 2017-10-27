@@ -87,6 +87,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
        , ((noModMask, xK_Print),                spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
+       , ((modMask, xK_Print),                  safeSpawn "screenshot-region" [])
        , ((noModMask, 0x1008ff02),              safeSpawn "xbacklight" ["-inc", "10"]) -- XF86MonBrightnessUp
        , ((noModMask, 0x1008ff03),              safeSpawn "xbacklight" ["-dec", "10"]) -- XF86MonBrightnessDown
        ]
