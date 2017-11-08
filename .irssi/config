@@ -31,6 +31,7 @@ channels = (
   { name = "#suckless"; chatnet = "OFTC"; autojoin = "yes"; },
   { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#haskell-game"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#oscoin"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#neovim"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#zsh"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#archlinux"; chatnet = "freenode"; autojoin = "no"; },

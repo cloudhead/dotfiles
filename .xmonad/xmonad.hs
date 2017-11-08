@@ -37,7 +37,7 @@ main = do
         , logHook            = dynamicLogWithPP (barConfig xmproc)
         , layoutHook         = avoidStruts $ smartBorders $ myLayout
         , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
-        , startupHook        = startup
+        , startupHook        = startup <+> docksStartupHook
         }
   where
     myLayout = layoutHook def

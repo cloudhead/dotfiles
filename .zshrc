@@ -41,6 +41,7 @@ alias ll='/bin/ls -lFAGh --color=auto'
 # Aliases
 #
 alias g='git'
+alias n='sudo netctl'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
 alias img='sxiv -a'
