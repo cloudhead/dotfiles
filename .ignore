@@ -4,6 +4,8 @@
 *.in
 *.o
 *.so
+dist/
+dist-newstyle/
 .stack/
 .git/
 .stack-work/
@@ -12,3 +14,4 @@
 .local/
 .steam/
 .ghc/
+cabal.project.local

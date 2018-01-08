@@ -4,6 +4,8 @@
 :def doc    \x -> return $ ":!hoogle --color --info \"" ++ x ++ "\""
 :set -Wno-type-defaults
 :set -XOverloadedStrings
+:set -XDataKinds
+:set -XTypeApplications
 :set -XGADTs
 :set -fobject-code
 

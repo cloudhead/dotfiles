@@ -1,9 +1,9 @@
 ##
 # cloudhead - .zshenv
 #
-
 [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.env ]     && source ~/.env
+[ -f ~/.awsrc ]   && source ~/.awsrc
 
 export VISUAL=vim
 export GOPATH=~

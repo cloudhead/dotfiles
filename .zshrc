@@ -1,8 +1,6 @@
 ##
 # cloudhead - .zshrc
 #
-[ -f ~/.profile ] && source ~/.profile
-[ -f ~/.awsrc ]   && source ~/.awsrc
 
 # `ls` colors
 if [ -f ~/.dircolors ]; then
