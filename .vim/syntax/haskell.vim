@@ -72,7 +72,7 @@ sy keyword hsStatement  do case of let in
 sy keyword hsConditional if then else
 
 " Primitive types from the standard prelude and libraries.
-sy match hsType "\<[A-Z]\(\S\&[^,.]\)*\>"
+sy match hsType "\<[A-Z]\(\S\&[^,.{}]\)*\>"
 sy match hsType "()"
 
 syn keyword hsBoolean True False
