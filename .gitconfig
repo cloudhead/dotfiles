@@ -27,7 +27,7 @@
   untracked = cyan
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = /home/cloudhead/.gitignore
   pager = less -x1,5
   editor = /usr/bin/nvim
 
