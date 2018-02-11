@@ -84,18 +84,9 @@ endif
 
 let mapleader = "\<Space>"
 
-" Deoplete (autocomplete)
+" inccommand
 if has("nvim")
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 1
-  inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-  function! s:check_back_space()
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
+  set inccommand=nosplit
 endif
 
 " Save on focus lost
@@ -124,6 +115,7 @@ au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au BufRead,BufNewFile *.txt       setf markdown
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
+au BufRead,BufNewFile *.todo      setf todo
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -285,7 +277,6 @@ if has("nvim")
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-markdown'
   Plug 'mileszs/ack.vim'
-  Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'bronson/vim-visual-star-search'
   Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
   Plug 'cloudhead/neovim-fuzzy'
