@@ -8,6 +8,8 @@ TERM rxvt-unicode256
 TERM rxvt-unicode-256color
 TERM st
 TERM st-256color
+TERM vte-256color
+TERM xterm-256color
 
 ## Documentation
 #
