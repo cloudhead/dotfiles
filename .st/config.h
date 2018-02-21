@@ -64,7 +64,7 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-static char termname[] = "st-256color";
+static char termname[] = "xterm-256color";
 
 /*
  * spaces per tab
@@ -93,7 +93,7 @@ static const char *colorname[] = {
 	"#0000AA",
 	"#AA00AA",
 	"#00AAAA",
-	"#AAAAAA",
+	"#DDDDDD",
 
 	/* 8 bright colors */
 	"#666666",
