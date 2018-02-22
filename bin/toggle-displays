@@ -4,7 +4,7 @@ internal=eDP1
 external=DP1
 
 if xrandr | grep "$external disconnected"; then
-  xrandr --output "$external" --off --output "$internal" --auto
+  xrandr --output "$external" --off --output "$internal" --auto --primary
 else
-  xrandr --output "$internal" --off --output "$external" --auto
+  xrandr --output "$internal" --off --output "$external" --auto --primary
 fi
