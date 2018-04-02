@@ -33,7 +33,7 @@ set scrolloff=4
 set nofoldenable
 set timeoutlen=500                  " Set timeout between key sequences
 set background=dark
-set mouse=vin                       " Enable mouse in insert and normal mode
+set mouse=a                         " Enable mouse in all modes
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
 set showcmd
@@ -55,8 +55,7 @@ set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
-set lazyredraw                      " Stop vim from freaking out all the time
-set statusline=%<%f\ %h%m%r%=%{Hi()}\ %y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " We don't use tabs much, but at least try and show less cruft
