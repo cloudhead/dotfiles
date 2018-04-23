@@ -2,6 +2,14 @@
 # cloudhead - .zshrc
 #
 
+xset r rate 180 40                   # Sane repeat rate
+xset -b                              # No bell
+xset -dpms                           # Keep screen on at all times
+xset s off                           #
+xset m 7/5 0                         # Pointer settings
+setxkbmap -option compose:ralt       # Set compose key to R-Alt
+setxkbmap us -variant altgr-intl
+
 # `ls` colors
 if [ -f ~/.dircolors ]; then
   eval $(dircolors -b ~/.dircolors)
