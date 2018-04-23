@@ -97,7 +97,7 @@ function! s:SaveOnFocusLost()
 endfunction
 
 " Per file-type indentation
-au FileType haskell     setlocal sts=4 sw=4 expandtab
+au FileType haskell     setlocal sts=4 sw=4 expandtab formatprg=stylish-haskell
 au FileType javascript  setlocal sts=4 sw=4 expandtab
 au FileType css         setlocal ts=4  sw=4 noexpandtab
 au FileType go          setlocal ts=4  sw=4 noexpandtab
@@ -115,6 +115,7 @@ au BufRead,BufNewFile *.txt       setf markdown
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
+au BufRead,BufNewFile *.tikz      setf tex
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -254,19 +255,9 @@ function! s:ProfileStop()
 endfunction
 
 " Get highlight group under cursor
-command! Hi call s:ToggleHi()
-function! s:ToggleHi()
-  if exists('g:show_hi')
-    unlet g:show_hi
-  else
-    let g:show_hi = 1
-  endif
-endfunction
-function! Hi()
-  if exists('g:show_hi')
-    return synIDattr(synID(line("."), col("."), 1), "name")
-  endif
-  return ''
+command! Syn call s:Syn()
+function! s:Syn()
+  echo synIDattr(synID(line("."), col("."), 1), "name")
 endfunction
 
 if has("nvim")
