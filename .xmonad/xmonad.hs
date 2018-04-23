@@ -4,7 +4,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import XMonad.Layout.Spacing
-import XMonad.StackSet
+import XMonad.StackSet hiding (workspaces)
 import XMonad.ManageHook
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
@@ -21,7 +21,7 @@ import qualified Data.Map as Map
 import Control.Monad
 
 termName :: FilePath
-termName = "st"
+termName = "urxvt"
 
 main :: IO ()
 main = do
@@ -29,7 +29,8 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ desktopConfig
         { terminal           = termName
-        , focusedBorderColor = "#555"
+        , workspaces         = ["α", "β", "γ", "δ", "φ", "σ", "η", "θ", "λ", "ω"]
+        , focusedBorderColor = "#A00"
         , normalBorderColor  = "#1F1F1F"
         , borderWidth        = 1
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
@@ -88,6 +89,9 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
        , ((noModMask, xK_Print),                spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        , ((modMask, xK_Print),                  safeSpawn "screenshot-region" [])
+       , ((modMask, xK_0),                      windows $ greedyView "ω")
+       , ((modMask, xK_Left),                   prevWS)
+       , ((modMask, xK_Right),                  nextWS)
        , ((noModMask, 0x1008ff02),              safeSpawn "xbacklight" ["-inc", "10"]) -- XF86MonBrightnessUp
        , ((noModMask, 0x1008ff03),              safeSpawn "xbacklight" ["-dec", "10"]) -- XF86MonBrightnessDown
        ]
