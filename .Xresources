@@ -1,23 +1,41 @@
 !
 ! .Xresources
 !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
 
-Xft.dpi: 96
+URxvt*font:              xft:inconsolata:size=16:antialias=true
+URxvt*boldFont:          xft:inconsolata:bold:size=16:antialias=true
+URxvt*internalBorder:    5
+URxvt*externalBorder:    0
+URxvt*saveLines:         8192
+URxvt*scrollBar:         false
+URxvt*scrollTtyOutput:   false
+URxvt*scrollWithBuffer:  true
+URxvt*scrollTtyKeypress: true
+URxvt*scrollColor:       Red4
+URxvt*cursorColor:       Red4
+URxvt*letterSpace:       -1
+URxvt*thickness:         1
+URxvt*scrollstyle:       plain
 
-! VGA
+*background: black
+*foreground: white
+
 *color0:  #000000
-*color1:  #AA0000
-*color2:  #00AA00
-*color3:  yellow
+*color1:  maroon
+*color2:  medium aquamarine
+*color3:  moccasin
 *color4:  #0000AA
-*color5:  #AA00AA
+*color5:  rebecca purple
 *color6:  #00AAAA
-*color7:  #AAAAAA
-*color8:  #666666
-*color9:  #FF5555
-*color10: #55FF55
+*color7:  gray
+*color8:  dark gray
+*color9:  maroon
+*color10: aquamarine
 *color11: #FFFF55
 *color12: #5555FF
 *color13: #FF55FF
 *color14: #55FFFF
-*color15: #FFFFFF
+*color15: white
