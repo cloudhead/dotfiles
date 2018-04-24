@@ -23,19 +23,19 @@ URxvt*scrollstyle:       plain
 *background: black
 *foreground: white
 
-*color0:  #000000
+*color0:  black
 *color1:  maroon
 *color2:  medium aquamarine
 *color3:  moccasin
-*color4:  #0000AA
+*color4:  dark slate blue
 *color5:  rebecca purple
-*color6:  #00AAAA
+*color6:  light blue
 *color7:  gray
 *color8:  dark gray
 *color9:  maroon
 *color10: aquamarine
-*color11: #FFFF55
-*color12: #5555FF
+*color11: moccasin
+*color12: dark slate blue
 *color13: rebecca purple
-*color14: #55FFFF
+*color14: light blue
 *color15: white

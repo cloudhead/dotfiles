@@ -30,7 +30,7 @@ main = do
     xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ desktopConfig
         { terminal           = termName
         , workspaces         = ["α", "β", "γ", "δ", "φ", "σ", "η", "θ", "λ", "ω"]
-        , focusedBorderColor = "#A00"
+        , focusedBorderColor = "medium aquamarine"
         , normalBorderColor  = "#1F1F1F"
         , borderWidth        = 1
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
