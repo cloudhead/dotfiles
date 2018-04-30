@@ -74,15 +74,24 @@ HISTSIZE=65536
 SAVEHIST=65536
 REPORTTIME=10
 
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+# Treat the '!' character specially during expansion.
+setopt BANG_HIST
+# Write the history file in the ":start:elapsed;command" format.
+setopt EXTENDED_HISTORY
+# Write to the history file immediately, not when the shell exits.
+setopt INC_APPEND_HISTORY
+# Expire duplicate entries first when trimming history.
+setopt HIST_EXPIRE_DUPS_FIRST
+# Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_DUPS
+# Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_ALL_DUPS
+# Do not display a line previously found.
+setopt HIST_FIND_NO_DUPS
+# Don't write duplicate entries in the history file.
+setopt HIST_SAVE_NO_DUPS
+# Remove superfluous blanks before recording entry.
+setopt HIST_REDUCE_BLANKS
 
 autoload up-line-or-beginning-search
 autoload down-line-or-beginning-search
