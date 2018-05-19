@@ -90,6 +90,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((noModMask, xK_Print),                spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
        , ((modMask, xK_Print),                  safeSpawn "screenshot-region" [])
        , ((modMask, xK_0),                      windows $ greedyView "ω")
+       , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")
        , ((modMask, xK_Left),                   prevWS)
        , ((modMask, xK_Right),                  nextWS)
        , ((noModMask, 0x1008ff02),              safeSpawn "xbacklight" ["-inc", "10"]) -- XF86MonBrightnessUp

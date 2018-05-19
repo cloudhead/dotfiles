@@ -164,7 +164,7 @@ nnoremap Y       y$
 xnoremap Y       "+y
 
 " Paste form clipboard
-xnoremap <leader>p "+p
+noremap PP       "+p
 
 " Easy command mode switch
 inoremap kj <Esc>
