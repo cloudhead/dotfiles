@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+n = Dir["#{ENV['HOME']}/todo/*"].map do |todo|
+  File.read(todo).lines.map do |l|
+    /\[ \]/.match?(l)
+  end.count(true)
+end.sum
+
+if n.zero?
+  print "∅"
+else
+  print "<fc=#d00>≡ #{n}</fc>"
+end
