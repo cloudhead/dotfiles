@@ -5,8 +5,8 @@ Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 
-URxvt*font:              xft:inconsolata:size=16:antialias=true
-URxvt*boldFont:          xft:inconsolata:bold:size=16:antialias=true
+URxvt*font:              xft:inconsolata:size=14:antialias=true
+URxvt*boldFont:          xft:inconsolata:bold:size=14:antialias=true
 URxvt*internalBorder:    5
 URxvt*externalBorder:    0
 URxvt*saveLines:         8192
