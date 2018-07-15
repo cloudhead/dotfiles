@@ -45,6 +45,10 @@ syn match  hsSpecialCharError	contained "\\&\|'''\+"
 sy region  hsString		start=+"+  skip=+\\\\\|\\"+  end=+"+  contains=hsSpecialChar,@Spell
 sy match   hsCharacter		"[^a-zA-Z0-9_']'\([^\\]\|\\[^']\+\|\\'\)'"lc=1 contains=hsSpecialChar,hsSpecialCharError
 sy match   hsCharacter		"^'\([^\\]\|\\[^']\+\|\\'\)'" contains=hsSpecialChar,hsSpecialCharError
+sy match   hsOpFunctionName "(\(\W\&[^(),\"]\)\+)" contained
+sy match   hsHlFunctionName "[a-z_]\(\S\&[^,\(\)\[\]]\)*" contained
+
+
 
 " (Qualified) identifiers (no default highlighting)
 syn match ConId "\(\<[A-Z][a-zA-Z0-9_']*\.\)\=\<[A-Z][a-zA-Z0-9_']*\>"
@@ -97,7 +101,7 @@ sy match hsImportParams "hiding" contained
     \ contains=hsHidingLabel
     \ nextgroup=hsImportParams,hsImportIllegal skipwhite
 sy region hsImportParams start="(" end=")" contained
-    \ contains=hsBlockComment,hsLineComment, hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName
+    \ contains=hsBlockComment,hsLineComment, hsType,hsDelimTypeExport,hsHlFunctionName,hsOpFunctionName
     \ nextgroup=hsImportIllegal skipwhite
 
 " new module highlighting
@@ -124,7 +128,7 @@ syn match hsModuleCommentA "--.*\n"
 
 syn region hsModuleExports start="(" end=")" contained
    \ nextgroup=hsModuleCommentB,hsModuleWhereLabel skipwhite skipnl
-   \ contains=hsBlockComment,hsLineComment,hsType,hsDelimTypeExport,hs_hlFunctionName,hs_OpFunctionName,hsExportModule,hsPattern
+   \ contains=hsBlockComment,hsLineComment,hsType,hsDelimTypeExport,hsHlFunctionName,hsOpFunctionName,hsExportModule,hsPattern
 
 syn match hsModuleCommentB "--.*\n"
   \ contains=hsCommentTodo,@Spell contained
@@ -144,7 +148,7 @@ sy keyword hsFFISafety safe unsafe contained
 sy region  hsFFIString		start=+"+  skip=+\\\\\|\\"+  end=+"+  contained contains=hsSpecialChar
 sy match hsFFI excludenl "\<foreign\>\(.\&[^\"]\)*\"\(.\)*\"\(\s\|\n\)*\(.\)*::"
   \ keepend
-  \ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hs_OpFunctionName,hs_hlFunctionName
+  \ contains=hsFFIForeign,hsFFIImportExport,hsFFICallConvention,hsFFISafety,hsFFIString,hsOpFunctionName,hsHlFunctionName
 
 
 sy match   hsNumber		"\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
