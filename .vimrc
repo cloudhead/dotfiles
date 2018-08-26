@@ -101,7 +101,7 @@ au FileType haskell     setlocal sts=4 sw=4 expandtab formatprg=stylish-haskell
 au FileType javascript  setlocal sts=4 sw=4 expandtab
 au FileType css         setlocal ts=4  sw=4 noexpandtab
 au FileType go          setlocal ts=4  sw=4 noexpandtab
-au FileType c,cpp       setlocal       sw=4 noexpandtab
+au FileType c,cpp,glsl  setlocal       sw=4 noexpandtab
 au FileType lua         setlocal       sw=2 expandtab
 au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
@@ -116,6 +116,8 @@ au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
+
+au TermOpen * set nonumber modifiable
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -147,6 +149,11 @@ au FileType haskell setlocal errorformat=
 if executable('haskell-tags')
   au BufWritePost *.hs  silent !haskell-tags % '.tags'
   au BufWritePost *.hsc silent !haskell-tags % '.tags'
+endif
+
+if executable('ctags')
+  au BufWritePost *.c silent !ctags -f .tags -R .
+  au BufWritePost *.h silent !ctags -f .tags -R .
 endif
 
 " File-type
@@ -204,6 +211,9 @@ nnoremap <leader>p       V`]
 " Switch buffers easily
 nnoremap <Tab>   <C-^>
 
+" Switch between .c and .h files easily
+nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+
 " Actually easier to type and I do it by mistake anyway
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -234,7 +244,8 @@ if has("nvim")
 endif
 
 if executable('rg')
-  let g:ackprg = 'rg -S --no-heading --vimgrep'
+  let g:ackprg = 'rg -F -S --no-heading --vimgrep'
+  set grepprg=rg\ -S\ -F\ --no-heading\ --vimgrep\ $*
 endif
 
 " Syntax coloring
