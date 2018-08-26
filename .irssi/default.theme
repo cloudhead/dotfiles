@@ -288,7 +288,7 @@ abstracts = {
   # public message
   sb_act_msg = "%W$*%n";
   # hilight
-  sb_act_hilight = "%M$*%n";
+  sb_act_hilight = "%R$*%n";
   # hilight with specified color, $0 = color, $1 = text
   sb_act_hilight_color = "$0$1-%n";
 };
@@ -301,16 +301,19 @@ formats = {
     quit = "                    %c* │%n {channick $0} %chas left {reason $2}";
     quit_once = "{channel $3} {channick $0} {chanhost $1} quit {reason $2}";
     nick_changed = "{channick $[-21]0} %c│%n has changed their nick to {channick_hilight $1}";
-    line_start_irssi = "{line_start}{hilight                 Irssi} %W│%n ";
+    line_start_irssi = "{line_start}{hilight                Irssi}  %W│%n ";
 
-    own_msg = "{ownmsgnick {ownnick %_%c$2 %W%_$[-19]0 }}$1";
+    ## Your message in a channel.
+    own_msg = "{ownmsgnick {ownnick %W$[-20]0%_%K$[2]2}}$1";
     own_msg_channel = "{ownmsgnick {ownnick $[-19]0$3}{msgchannel $1}}$2";
-    pubmsg_me = "{pubmsgmenick {menick $[-21]0}$2}$1";
-    pubmsg_me_channel = "{pubmsgmenick {menick $[-21]0$3}{msgchannel $1}}$2";
-    pubmsg_hilight = "{pubmsghinick $0 $0 $[-21]1$3%n}$2";
-    pubmsg_hilight_channel = "{pubmsghinick $0 $[-21]1$4{msgchannel $2}}$3";
-    pubmsg = "{pubmsgnick {pubnick %w$[-21]0}%_%K$2}$1";
-    pubmsg_channel = "{pubmsgnick {pubnick %m$[-21]0}$2}$1";
+    ## /me
+    pubmsg_me = "{pubmsgmenick {menick $[-20]0}%K$[2]2}$1";
+    pubmsg_me_channel = "{pubmsgmenick {menick $[-20]0$3}{msgchannel $1}}$2";
+    ## Someone highlights your nick.
+    pubmsg_hilight = "{pubmsghinick $0 $0 $1$3}%K$[2]2";
+    pubmsg_hilight_channel = "{pubmsghinick $0 $[-21]1$4{msgchannel $[2]2}}$3";
+    pubmsg = "{pubmsgnick {pubnick %w$[-20]0}%K$[2]2 }$1";
+    pubmsg_channel = "{pubmsgnick {pubnick %m$[-20]0}$[2]2 }$1";
 
     line_start = "{line_start}";
     timestamp = "{timestamp $Z} ";
@@ -543,7 +546,7 @@ formats = {
     window_scroll_unknown = "Unknown scroll mode $0, must be ON, OFF or DEFAULT";
   };
   "fe-common/irc" = {
-    own_action = "                     %n*%n │ {channick_hilight $0} $1";
+    own_action = "                    %n*%n │ {channick_hilight $0} $1";
     action_public = "                    %_*%n │ {channick_hilight $0} $1";
     chanmode_change = "{nick $[-21]2} │ {mode $1} on {channelhilight $0}";
 
