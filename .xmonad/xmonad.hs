@@ -54,8 +54,8 @@ startup = do
 barConfig :: Handle -> PP
 barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor grey    black  . wrap " " " "
-    , ppHidden          = xmobarColor light   dark   . wrap " " " "
+    , ppHiddenNoWindows = xmobarColor dred    black  . wrap " " " "
+    , ppHidden          = xmobarColor grey    black  . wrap " " " "
     , ppUrgent          = xmobarColor black   red    . wrap " " " "
     , ppTitle           = xmobarColor red     black
     , ppLayout          = const ""
@@ -65,6 +65,7 @@ barConfig h = xmobarPP
     }
   where
     red   = "#AA0000"
+    dred  = "#550000"
     white = "white"
     black = "black"
     light = "#888888"
