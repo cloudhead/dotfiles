@@ -1,0 +1,13 @@
+resolver: lts-11.5
+
+packages:
+- xmobar-git
+- xmonad-git
+- xmonad-contrib-git
+
+flags:
+  xmobar:
+    all_extensions: true
+
+extra-deps:
+  - iwlib-0.1.0
