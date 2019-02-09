@@ -13,6 +13,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
 import XMonad.Prompt
 import XMonad.Prompt.XMonad
+import XMonad.Prompt.Input
 
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.FloatNext
@@ -22,6 +23,7 @@ import Graphics.X11.ExtraTypes.XF86
 import System.Directory
 import System.IO
 import System.Exit
+import System.FilePath
 import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -34,6 +36,16 @@ instance XPrompt EnterPrompt where
 
 confirmPrompt :: XPConfig -> String -> X () -> X ()
 confirmPrompt config app func = mkXPrompt (EnterPrompt app) config (mkComplFunFromList []) $ const func
+
+screenshotPrompt :: String -> X ()
+screenshotPrompt home = do
+    str <- inputPrompt cfg "Screenshot"
+    case str of
+        Just s  -> spawn $ printf "scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
+        Nothing -> pure ()
+  where
+    cfg = myXPConfig { position = CenteredAt 0.5 0.3
+                     , defaultText = "" }
 
 termName :: FilePath
 termName = "urxvt"
@@ -118,7 +130,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_p),                      rofi)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
-       , ((modMask, xK_Print),                  spawn $ printf "scrot -u -e 'mv $f %s/screenshots'" home)
+       , ((modMask, xK_Print),                  screenshotPrompt home)
        , ((modMask .|. shiftMask, xK_Print),    safeSpawn "screenshot-region" [])
        , ((modMask, xK_0),                      windows $ greedyView "ω")
        , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")

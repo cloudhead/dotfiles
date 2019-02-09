@@ -19,11 +19,11 @@ Config {
           , Run Com        "xmobar-brightness" [] "brightness" 10
           , Run Com        "seedbox-status" [] "seedbox" 10
           , Run CoreTemp   [ "--template", "<core0>° <core1>°" ] 50
-          , Run Wireless   "wlp58s0" [ "--template", "☎ <essid>/<quality>"] 10
+          , Run Wireless   "wlp2s0" [ "--template", "☎ <essid>/<quality>"] 10
           , Run Battery    [ "--template", "⌁ <left>%" ] 100
           , Run StdinReader
           ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{ %todo%   %brightness%   %battery%   %wlp58s0wi%   %seedbox%   %dropbox%   %multicpu% · %memory% · %disku% · %dynnetwork%   <fc=#aaaaaa>%date%</fc> "
+     , template = "%StdinReader%  }{ %todo%   %brightness%   %battery%   %wlp2s0wi%   %seedbox%   %dropbox%   %multicpu% · %memory% · %disku% · %dynnetwork%   <fc=#aaaaaa>%date%</fc> "
 }
