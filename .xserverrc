@@ -1,4 +1,2 @@
 #!/bin/sh
-
-# This was useful at a time, but I forget why.
-exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
+exec /usr/bin/Xorg -arinterval 180 -ardelay 40 -nolisten tcp "$@" vt$XDG_VTNR

@@ -31,6 +31,7 @@ fi
 # K8 integration. We lazy load because it's slow otherwise.
 function kubectl() {
 	if ! type __start_kubectl >/dev/null 2>&1; then
+		unfunction "$0"
 		source <(kubectl completion zsh)
 	fi
 	command kubectl "$@"
@@ -53,6 +54,7 @@ alias ll='/bin/ls -lFAGh --color=auto'
 #
 alias g='git'
 alias n='sudo netctl'
+alias mk='make'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
 alias img='sxiv -a'
@@ -67,6 +69,8 @@ alias pacman='sudo pacman --color=auto'
 alias netctl='sudo netctl'
 alias vim=nvim
 alias clip='xclip -sel clip'
+
+export NNN_USE_EDITOR=1
 
 #
 # History

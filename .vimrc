@@ -48,6 +48,7 @@ set cmdheight=1
 set matchtime=2                     " Shorter brace match time
 set virtualedit=block
 set tags+=.tags
+set tags+=codex.tags
 set undofile
 set gdefault                        " Always use /g with %s/
 set colorcolumn=80
@@ -83,6 +84,8 @@ endif
 
 let mapleader = "\<Space>"
 
+let g:signify_vcs_list = ['git']
+
 " inccommand
 if has("nvim")
   set inccommand=nosplit
@@ -101,7 +104,7 @@ au FileType haskell     setlocal sts=4 sw=4 expandtab formatprg=stylish-haskell
 au FileType javascript  setlocal sts=4 sw=4 expandtab
 au FileType css         setlocal ts=4  sw=4 noexpandtab
 au FileType go          setlocal ts=4  sw=4 noexpandtab
-au FileType c,cpp,glsl  setlocal       sw=4 noexpandtab
+au FileType c,cpp,glsl  setlocal ts=8  sw=8 noexpandtab
 au FileType lua         setlocal       sw=2 expandtab
 au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
@@ -117,7 +120,11 @@ au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
 
-au TermOpen * set nonumber modifiable
+let c_no_curly_error = 1
+
+if has("nvim")
+  au TermOpen * set nonumber modifiable
+endif
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
@@ -152,8 +159,8 @@ if executable('haskell-tags')
 endif
 
 if executable('ctags')
-  au BufWritePost *.c silent !ctags -f .tags -R .
-  au BufWritePost *.h silent !ctags -f .tags -R .
+  au BufWritePost *.c,*.cc,*.cpp  silent !ctags -f .tags -R .
+  au BufWritePost *.h             silent !ctags -f .tags -R .
 endif
 
 " File-type
@@ -212,7 +219,10 @@ nnoremap <leader>p       V`]
 nnoremap <Tab>   <C-^>
 
 " Switch between .c and .h files easily
-nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+autocmd BufRead,BufNewFile *.c,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+
+" Switch between .cc and .h files easily
+autocmd BufRead,BufNewFile *.cc,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 
 " Actually easier to type and I do it by mistake anyway
 cnoreabbrev W w
@@ -287,7 +297,6 @@ if has("nvim")
   Plug 'junegunn/goyo.vim'
   Plug 'vim-scripts/fountain.vim'
   Plug 'vimwiki/vimwiki'
-  Plug 'fatih/vim-go'
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex'
