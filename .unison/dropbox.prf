@@ -1,0 +1,16 @@
+root = ssh://cloudhead@box//home/cloudhead/share
+root = /home/cloudhead/share
+
+sshargs = -oIdentityFile=/home/cloudhead/.ssh/id_rsa
+
+auto = true
+batch = true
+perms = 0
+ui = text
+confirmmerge = false
+confirmbigdel = false
+prefer = newer
+silent = false
+times = true
+repeat = watch
+logfile = /home/cloudhead/.unison.log

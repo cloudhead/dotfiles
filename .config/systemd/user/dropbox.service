@@ -1,0 +1,13 @@
+[Unit]
+Description=Dropbox
+After=network.target
+
+[Service]
+Type=simple
+Environment="PATH=/usr/local/bin:/usr/bin"
+ExecStart=/usr/bin/unison dropbox
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
