@@ -10,15 +10,30 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.ThreeColumns
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Actions.CycleWS
+import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import XMonad.Prompt
+import XMonad.Prompt.XMonad
+
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.FloatNext
 
+import Graphics.X11.ExtraTypes.XF86
+
 import System.Directory
 import System.IO
+import System.Exit
 import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Control.Monad
+
+data EnterPrompt = EnterPrompt String
+
+instance XPrompt EnterPrompt where
+    showXPrompt (EnterPrompt n) = " " ++ n ++ " "
+
+confirmPrompt :: XPConfig -> String -> X () -> X ()
+confirmPrompt config app func = mkXPrompt (EnterPrompt app) config (mkComplFunFromList []) $ const func
 
 termName :: FilePath
 termName = "urxvt"
@@ -39,9 +54,13 @@ main = do
         , layoutHook         = avoidStruts $ smartBorders $ myLayout
         , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
         , startupHook        = startup <+> docksStartupHook
-        }
+        } `additionalKeysP` myXF86Keys
   where
     myLayout = layoutHook def
+    myXF86Keys =
+       [ ("<XF86MonBrightnessUp>",              safeSpawn "xbacklight" ["-inc", "10"])
+       , ("<XF86MonBrightnessDown>",            safeSpawn "xbacklight" ["-dec", "10"])
+       ]
 
 startup :: X ()
 startup = do
@@ -75,6 +94,17 @@ barConfig h = xmobarPP
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
+myXPConfig :: XPConfig
+myXPConfig = def
+  { position          = CenteredAt 0.5 0.09
+  , alwaysHighlight   = True
+  , height            = 60
+  , promptBorderWidth = 1
+  , font              = "xft:Inconsolata:size=14"
+  , borderColor       = "#555555"
+  , bgColor           = "#111111"
+  }
+
 myKeys :: FilePath -> XConfig Layout -> Map (KeyMask, KeySym) (X ())
 myKeys home conf@XConfig { XMonad.modMask = modMask } =
     Map.union ks (XMonad.keys def conf)
@@ -94,8 +124,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")
        , ((modMask, xK_Left),                   prevWS)
        , ((modMask, xK_Right),                  nextWS)
-       , ((noModMask, 0x1008ff02),              safeSpawn "xbacklight" ["-inc", "10"]) -- XF86MonBrightnessUp
-       , ((noModMask, 0x1008ff03),              safeSpawn "xbacklight" ["-dec", "10"]) -- XF86MonBrightnessDown
+       , ((modMask .|. shiftMask, xK_q),        confirmPrompt myXPConfig "Exit XMonad?" $ io (exitWith ExitSuccess))
        ]
     dmenu :: X ()
     dmenu = safeSpawn
