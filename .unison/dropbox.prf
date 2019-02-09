@@ -1,8 +1,9 @@
-root = ssh://cloudhead@box//home/cloudhead/share
-root = /home/cloudhead/share
+root = /home/cloudhead
+root = ssh://cloudhead@box//home/cloudhead
 
-sshargs = -oIdentityFile=/home/cloudhead/.ssh/id_rsa
+sshargs = -oIdentityFile=/home/cloudhead/.ssh/id_rsa_share
 
+path=share
 auto = true
 batch = true
 perms = 0
