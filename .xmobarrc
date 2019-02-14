@@ -11,10 +11,10 @@ Config {
      , commands =
           [ Run DynNetwork [ "--template", "<dev> <tx> <rx>", "-w", "7", "-S", "True" ] 10
           , Run MultiCpu   [ "--template", "<total0>% <total1>% <total2>% <total3>%", "-w", "3" ] 50
-          , Run Memory     [ "--template", "<used>/<available> MB" ] 50
+          , Run Memory     [ "--template", "<available>/<total> MB" ] 50
           , Run Date       "%b %d %Y %H:%M" "date" 10
           , Run DiskU      [("/", "<used>/<size>"), ("/home", "<used>/<size>")] [] 20
-          , Run Com        "xmobar-dropbox-status" [] "dropbox" 10
+          , Run Com        "xmobar-unison-status" [] "dropbox" 10
           , Run Com        "todo-widget" [] "todo" 10
           , Run Com        "xmobar-brightness" [] "brightness" 10
           , Run Com        "seedbox-status" [] "seedbox" 10
