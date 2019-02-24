@@ -302,9 +302,39 @@ if has("nvim")
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex'
   Plug 'vim-scripts/gnupg.vim'
+  Plug 'octol/vim-cpp-enhanced-highlight'
+  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['cpp', 'c', 'rust']}
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['cpp', 'c', 'rust'] }
 
   call plug#end()
 endif
+
+"
+" LSP
+"
+if has("nvim")
+  let g:LanguageClient_serverCommands = {
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'cpp': ['clangd'],
+      \ }
+endif
+
+function! RunLanguageClient()
+  if has("nvim")
+    if has_key(g:LanguageClient_serverCommands, &filetype)
+      call deoplete#enable()
+      nnoremap <silent> <buffer> <C-]>     :call LanguageClient#textDocument_definition()<CR>
+      nnoremap <silent> <buffer> <leader>d :call LanguageClient#textDocument_hover()<CR>
+      nnoremap <silent> <buffer> <leader>c :call LanguageClient_contextMenu()<CR>
+
+      let g:LanguageClient_diagnosticsSignsMax = 0
+      let g:LanguageClient_hoverPreview = "Never"
+      let g:LanguageClient_settingsPath = "settings.json"
+    endif
+  endif
+endfunction
+autocmd FileType * call RunLanguageClient()
+
 
 " Use custom colors.
 " This has to go after plugin initialization.
