@@ -113,13 +113,14 @@ au FileType help        setlocal ts=4  sw=4 noexpandtab
 au FileType txt         setlocal noai nocin nosi inde= wrap linebreak
 au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber
+au FileType rst         setlocal nonumber sw=2 expandtab
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 
-au BufRead,BufNewFile *.txt       setf markdown
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
+au BufRead,BufNewFile *.toml      setf toml
 
 let c_no_curly_error = 1
 
@@ -305,14 +306,14 @@ if has("nvim")
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['cpp', 'c', 'rust']}
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['cpp', 'c', 'rust'] }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['cpp', 'c', 'rust'] }
   Plug 'cespare/vim-toml'
-  Plug 'rust-lang/rust.vim'
+  Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 
   call plug#end()
 endif
 
 if has("nvim")
+  let g:rustfmt_fail_silently = 1
   autocmd BufWritePre *.rs :RustFmt
 endif
 
@@ -336,6 +337,8 @@ function! RunLanguageClient()
       nnoremap <silent> <buffer> <leader>rn :call LanguageClient#textDocument_rename()<CR>
 
       let g:LanguageClient_diagnosticsSignsMax = 0
+      let g:LanguageClient_selectionUI_autoOpen = 0
+      let g:LanguageClient_diagnosticsList = "Quickfix"
       let g:LanguageClient_hoverPreview = "Never"
       let g:LanguageClient_settingsPath = "settings.json"
       let g:LanguageClient_windowLogMessageLevel = "Error"

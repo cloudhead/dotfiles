@@ -95,8 +95,8 @@ barConfig h = xmobarPP
     , ppOutput          = hPutStrLn h
     }
   where
-    red   = "#AA0000"
-    dred  = "#550000"
+    red   = "maroon"
+    dred  = "maroon"
     white = "white"
     black = "black"
     light = "#888888"
