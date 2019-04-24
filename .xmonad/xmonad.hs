@@ -63,15 +63,18 @@ main = do
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
         , logHook            = dynamicLogWithPP (barConfig xmproc)
-        , layoutHook         = avoidStruts $ smartBorders $ myLayout
+        , layoutHook         = smartBorders $ avoidStruts $ myLayout
         , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
         , startupHook        = startup <+> docksStartupHook
         } `additionalKeysP` myXF86Keys
   where
     myLayout = layoutHook def
     myXF86Keys =
-       [ ("<XF86MonBrightnessUp>",              safeSpawn "xbacklight" ["-inc", "10"])
-       , ("<XF86MonBrightnessDown>",            safeSpawn "xbacklight" ["-dec", "10"])
+       [ ("<XF86MonBrightnessUp>",      safeSpawn "light"  ["-A", "5"])
+       , ("<XF86MonBrightnessDown>",    safeSpawn "light"  ["-U", "5"])
+       , ("<XF86AudioRaiseVolume>",     safeSpawn "amixer" ["-q", "sset", "Master", "2+"])
+       , ("<XF86AudioLowerVolume>",     safeSpawn "amixer" ["-q", "sset", "Master", "2-"])
+       , ("<XF86AudioMute>",            safeSpawn "amixer" ["-q", "sset", "Master", "toggle"])
        ]
 
 startup :: X ()

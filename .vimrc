@@ -51,14 +51,15 @@ set tags+=.tags
 set tags+=codex.tags
 set undofile
 set gdefault                        " Always use /g with %s/
-set colorcolumn=80
+set colorcolumn=100
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
 set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-set spelllang=en_us
+set spelllang=en_us,en_gb
+set completeopt=menu
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
@@ -111,10 +112,11 @@ au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
 au FileType help        setlocal ts=4  sw=4 noexpandtab
 au FileType txt         setlocal noai nocin nosi inde= wrap linebreak
-au FileType pandoc      setlocal nonumber
-au FileType markdown    setlocal nonumber
-au FileType rst         setlocal nonumber sw=2 expandtab
-au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
+au FileType pandoc      setlocal nonumber spell
+au FileType markdown    setlocal nonumber spell
+au FileType rst         setlocal nonumber sw=2 expandtab spell
+au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak spell
+au FileType tex         setlocal spell
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
@@ -185,6 +187,9 @@ noremap PP       "+p
 " Easy command mode switch
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
+
+" Correct spelling mistakes
+inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Jump to high/low and scroll
 noremap <C-k> H{
@@ -313,6 +318,9 @@ if has("nvim")
 endif
 
 if has("nvim")
+  " Make sure we dont' load the rust cargo plugin from rust.vim!
+  let g:loaded_rust_vim_plugin_cargo = 1
+  " Don't add errors to quickfix if rustfmt fails.
   let g:rustfmt_fail_silently = 1
   autocmd BufWritePre *.rs :RustFmt
 endif

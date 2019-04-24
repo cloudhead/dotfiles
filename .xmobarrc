@@ -17,7 +17,6 @@ Config {
           , Run Com        "xmobar-unison-status" [] "dropbox" 10
           , Run Com        "todo-widget" [] "todo" 10
           , Run Com        "xmobar-brightness" [] "brightness" 10
-          , Run Com        "seedbox-status" [] "seedbox" 10
           , Run CoreTemp   [ "--template", "<core0>° <core1>°" ] 50
           , Run Wireless   "wlp2s0" [ "--template", "☎ <essid>/<quality>"] 10
           , Run Battery    [ "--template", "⌁ <left>%" ] 100
@@ -25,5 +24,5 @@ Config {
           ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader%  }{ %todo%   %brightness%   %battery%   %wlp2s0wi%   %seedbox%   %dropbox%   %multicpu% · %memory% · %disku% · %dynnetwork%   <fc=#aaaaaa>%date%</fc> "
+     , template = "%StdinReader%  }{ %todo%   %brightness%   %battery%   %wlp2s0wi%   %dropbox%   %multicpu% · %memory% · %disku% · %dynnetwork%   <fc=#aaaaaa>%date%</fc> "
 }

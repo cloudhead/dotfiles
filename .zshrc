@@ -11,6 +11,8 @@ if xset q &>/dev/null; then
   setxkbmap us -variant altgr-intl
 fi
 
+export GPG_TTY=$(tty)
+
 # `ls` colors
 if [ -f ~/.dircolors ]; then
   eval $(dircolors -b ~/.dircolors)

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+status="$(systemctl --user is-active dropbox)"
+
+case "$status" in
+	"active")
+		if $(unison dropbox -testserver); then
+			echo "<fc=aquamarine>✔</fc>"
+		else
+			echo "<fc=maroon>↯</fc>"
+		fi ;;
+	*)
+		echo "<fc=maroon>✘</fc>" ;;
+esac
