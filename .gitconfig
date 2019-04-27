@@ -1,6 +1,7 @@
 [user]
-  email = alexis@cloudhead.io
+  email = alexis@monadic.xyz
   name = Alexis Sellier
+  signingkey = Alexis Sellier <alexis@monadic.xyz>
 
 [github]
   user = cloudhead
@@ -43,3 +44,6 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   changes = log -c --reverse
+
+[gpg]
+  program = gpg
