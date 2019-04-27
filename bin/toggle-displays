@@ -1,7 +1,7 @@
 #!/bin/sh
 
-internal=eDP1
-external=DP2
+internal=eDP-1
+external=DP-1
 
 if xrandr | grep "$external disconnected"; then
   xrandr --output "$external" --off --output "$internal" --auto --primary
