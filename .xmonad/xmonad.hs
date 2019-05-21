@@ -48,7 +48,7 @@ screenshotPrompt home = do
                      , defaultText = "" }
 
 termName :: FilePath
-termName = "urxvt"
+termName = "alacritty"
 
 main :: IO ()
 main = do
