@@ -48,7 +48,7 @@ screenshotPrompt home = do
                      , defaultText = "" }
 
 termName :: FilePath
-termName = "alacritty"
+termName = "kitty"
 
 main :: IO ()
 main = do
@@ -65,10 +65,15 @@ main = do
         , logHook            = dynamicLogWithPP (barConfig xmproc)
         , layoutHook         = smartBorders $ avoidStruts $ myLayout
         , manageHook         = floatNextHook <+> manageDocks <+> manageHook def
-        , startupHook        = startup <+> docksStartupHook
+        , startupHook        = docksStartupHook
         } `additionalKeysP` myXF86Keys
   where
-    myLayout = layoutHook def
+    myLayout = tiled ||| Mirror tiled ||| Full
+    tiled    = Tall nmaster delta ratio
+    nmaster  = 1
+    ratio    = 1/2
+    delta    = 4/100
+
     myXF86Keys =
        [ ("<XF86MonBrightnessUp>",      safeSpawn "light"  ["-A", "5"])
        , ("<XF86MonBrightnessDown>",    safeSpawn "light"  ["-U", "5"])
