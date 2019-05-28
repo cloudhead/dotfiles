@@ -116,11 +116,11 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
 myXPConfig :: XPConfig
 myXPConfig = def
-  { position          = CenteredAt 0.5 0.09
+  { position          = CenteredAt 0.5 0.1
   , alwaysHighlight   = True
   , height            = 60
   , promptBorderWidth = 1
-  , font              = "xft:Inconsolata:size=14"
+  , font              = "xft:Fira Code:size=13"
   , borderColor       = "#555555"
   , bgColor           = "#111111"
   }
@@ -135,7 +135,8 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_F11),                    safeSpawn "slock" [])
        , ((modMask, xK_F10),                    safeSpawn "toggle-displays" [])
        , ((modMask, xK_F5),                     safeSpawn "refresh-display" [])
-       , ((modMask, xK_p),                      rofi)
+       , ((modMask, xK_p),                      runExecutable)
+       , ((modMask, xK_o),                      switchWindow)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
        , ((modMask, xK_Print),                  screenshotPrompt home)
@@ -146,31 +147,26 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_Right),                  nextWS)
        , ((modMask .|. shiftMask, xK_q),        confirmPrompt myXPConfig "Exit XMonad?" $ io (exitWith ExitSuccess))
        ]
-    dmenu :: X ()
-    dmenu = safeSpawn
-        "dmenu_run" [ "-fn", "Inconsolata-14,Monospace-12"
-                    , "-i"
-                    , "-y", "-1"
-                    , "-h",  "24"
-                    , "-nb", "black"
-                    , "-nf", "#bbb"
-                    , "-sb", "#444"
-                    , "-sf", "white"
-                    ]
 
-rofi :: X ()
-rofi = safeSpawn
-    "rofi" [ "-show", "run"
-           , "-color-active", "#fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3"
-           , "-color-normal", "#111,#bbb,#111,#bbb,#000"
-           , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
-           , "-color-window", "#111,#666"
-           , "-font", "Inconsolata 16"
-           , "-hide-scrollbar"
-           , "-levenshtein-sort"
-           , "-lines", "7"
-           , "-matching", "fuzzy"
-           , "-padding", "5"
-           , "-separator-style", "solid"
-           , "-width", "30"
-           ]
+rofi :: String -> [String] -> X ()
+rofi mode opts = safeSpawn
+    "rofi" (opts ++ [ "-show", mode
+            , "-color-active", "#fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3"
+            , "-color-normal", "#111,#bbb,#111,#bbb,#000"
+            , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
+            , "-color-window", "#111,#555"
+            , "-font", "Fira Code 13"
+            , "-hide-scrollbar"
+            , "-levenshtein-sort"
+            , "-lines", "7"
+            , "-matching", "fuzzy"
+            , "-padding", "10"
+            , "-separator-style", "none"
+            , "-width", "30"
+            ])
+
+runExecutable :: X ()
+runExecutable = rofi "run" []
+
+switchWindow :: X ()
+switchWindow = rofi "window" ["-width", "50", "-lines", "14"]
