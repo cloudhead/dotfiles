@@ -7,7 +7,7 @@ n = Dir["#{ENV['HOME']}/todo/*"].map do |todo|
 end.sum
 
 if n.zero?
-  print "∅"
+  print "<fc=#666>∅</fc>"
 else
-  print "<fc=#d00>≡ #{n}</fc>"
+  print "<fc=maroon>≡ #{n}</fc>"
 end

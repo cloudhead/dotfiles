@@ -71,6 +71,7 @@ alias pacman='sudo pacman --color=auto'
 alias netctl='sudo netctl'
 alias vim=nvim
 alias clip='xclip -sel clip'
+alias irc='weechat'
 
 export NNN_USE_EDITOR=1
 
