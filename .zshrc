@@ -151,6 +151,14 @@ precmd() {
   if [ "$RPROMPT" != "" ]; then
     RPROMPT="%{$fg[red]%}#$RPROMPT%{$reset_color%}"
   fi
+
+	# Set the window title to the pwd.
+	print -Pn "\e]2;%~\a"
+}
+
+preexec() {
+	# Set the window title to the command and pwd.
+	print -Pn "\e]2;$1 %~\a"
 }
 
 #
