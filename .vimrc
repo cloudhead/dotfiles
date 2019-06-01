@@ -330,7 +330,7 @@ endif
 "
 if has("nvim")
   let g:LanguageClient_serverCommands = {
-      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'rust': ['env', 'CARGO_TARGET_DIR=./target', '~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
       \ 'cpp': ['clangd'],
       \ }
 endif
