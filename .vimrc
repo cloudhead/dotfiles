@@ -112,11 +112,11 @@ au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
 au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
 au FileType help        setlocal ts=4  sw=4 noexpandtab
 au FileType txt         setlocal noai nocin nosi inde= wrap linebreak
-au FileType pandoc      setlocal nonumber spell
-au FileType markdown    setlocal nonumber spell
-au FileType rst         setlocal nonumber sw=2 expandtab spell
-au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak spell
-au FileType tex         setlocal spell
+au FileType pandoc      setlocal nonumber
+au FileType markdown    setlocal nonumber
+au FileType rst         setlocal nonumber sw=2 expandtab
+au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
+au FileType tex         setlocal
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
