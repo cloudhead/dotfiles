@@ -1,0 +1,22 @@
+#!/bin/sh
+
+tmpfile=$(mktemp /tmp/cargo-flow.XXXXXX)
+result="$(cargo check --color always --all 2>&1 1>/dev/null)"
+
+if [ "$?" -ne 0 ]; then
+	# Display the results, but also output them to `errors.err`, which vim
+	# can read.
+	echo "$result" | tee errors.err
+
+	# We have to do this dance with the tempfile, because `sed`
+	# isn't able to do the edits in memory (for some reason),
+	# and creates a temporary file in $PWD which triggers `cargo watch`.
+	#
+	#          (╯°□°）╯︵ ┻━┻
+	#
+	sed -r 's/\x1b\[[0-9;]*m?//g' errors.err > $tmpfile
+	mv -f $tmpfile errors.err
+else
+	echo "$result"
+	echo -n > errors.err
+fi
