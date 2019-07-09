@@ -158,7 +158,7 @@ precmd() {
 
 preexec() {
 	# Set the window title to the command and pwd.
-	print -Pn "\e]2;$1 %~\a"
+	print -Pn "\e]2;$1 [%~]\a"
 }
 
 #
