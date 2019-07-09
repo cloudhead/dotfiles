@@ -202,7 +202,6 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <Leader>/       *N
 nnoremap <C-n>           *N
 nnoremap <C-p>           #N
 nnoremap c*              *Ncgn
@@ -219,8 +218,11 @@ cnoreabbrev gc    Gcommit -v
 autocmd BufRead fugitive\:* xnoremap <buffer> dp :diffput<CR>
 autocmd BufRead fugitive\:* xnoremap <buffer> do :diffget<CR>
 
+" Support jsonc comments in json files
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
  " Select recently pasted text
-nnoremap <leader>p       V`]
+nnoremap <leader>v       V`]
 
 " Switch buffers easily
 nnoremap <Tab>   <C-^>
@@ -245,7 +247,7 @@ nnoremap <Leader>f      :FuzzyGrep<CR>
 " Navigate relative to the current file
 cmap     %/         %:p:h/
 
-map <Leader>m       :make<CR>
+map <Leader>m       :make check<CR>
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
 
