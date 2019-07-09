@@ -1,0 +1,23 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " ✗ ",
+  "diagnostic.virtualTextLines": 1,
+  "diagnostic.enableSign": false,
+  "diagnostic.enableMessage": "never",
+  "codeLens.enable": false,
+  "coc.preferences.useQuickfixForLocations": true,
+  "coc.preferences.bracketEnterImprove": false,
+  "coc.preferences.snippets.enable": false,
+
+  "list.maxHeight": 10,
+  "list.autoResize": false,
+  "list.extendedSearchMode": false,
+
+  "languageserver": {
+    "rust": {
+      "command": "ra_lsp_server",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
+}
