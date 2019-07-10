@@ -1,7 +1,10 @@
 #!/bin/sh
 
+# Shift process name parameter out.
+shift
+
 tmpfile=$(mktemp /tmp/cargo-flow.XXXXXX)
-result="$(cargo check --color always --all 2>&1 1>/dev/null)"
+result="$(cargo check --color always --all $@ 2>&1 1>/dev/null)"
 
 if [ "$?" -ne 0 ]; then
 	# Display the results, but also output them to `errors.err`, which vim

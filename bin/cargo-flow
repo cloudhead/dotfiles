@@ -8,4 +8,4 @@
 shift
 
 # Exec cargo-watch with `flow-once`
-exec cargo watch -qc -i target/* -i errors.err -x 'flow-check' -w "${@:-$PWD}"
+exec cargo watch -qc -i 'target/*' -i errors.err -x "flow-check $@"
