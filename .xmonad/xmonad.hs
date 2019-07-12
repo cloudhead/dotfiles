@@ -41,11 +41,25 @@ screenshotPrompt :: String -> X ()
 screenshotPrompt home = do
     str <- inputPrompt cfg "Screenshot"
     case str of
-        Just s  -> spawn $ printf "scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
+        Just s  -> spawn $ printf "sleep 0.1 && scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
         Nothing -> pure ()
   where
     cfg = myXPConfig { position = CenteredAt 0.5 0.3
                      , defaultText = "" }
+
+editPrompt :: String -> X ()
+editPrompt home = do
+    str <- inputPrompt cfg "Edit (~)"
+    case str of
+        Just s  -> openInEditor s
+        Nothing -> pure ()
+  where
+    cfg = myXPConfig { position = CenteredAt 0.5 0.3
+                     , defaultText = "" }
+
+openInEditor :: String -> X ()
+openInEditor path =
+    safeSpawn termName ["nvim", path]
 
 termName :: FilePath
 termName = "kitty"
@@ -136,6 +150,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_F10),                    safeSpawn "toggle-displays" [])
        , ((modMask, xK_F5),                     safeSpawn "refresh-display" [])
        , ((modMask, xK_p),                      runExecutable)
+       , ((modMask .|. shiftMask, xK_p),        editPrompt home)
        , ((modMask, xK_o),                      switchWindow)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
