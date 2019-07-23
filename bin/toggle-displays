@@ -1,10 +1,14 @@
 #!/bin/sh
 
 internal=eDP-1
-external=DP-1
+external1=DP-1
+external2=DP-2
+output="$(xrandr)"
 
-if xrandr | grep "$external disconnected"; then
-  xrandr --output "$external" --off --output "$internal" --auto --primary
+if echo $output | grep "$external1 connected"; then
+  xrandr --output "$internal" --off --output "$external1" --auto --primary
+elif echo $output | grep "$external2 connected"; then
+  xrandr --output "$internal" --off --output "$external2" --auto --primary
 else
-  xrandr --output "$internal" --off --output "$external" --auto --primary
+  xrandr --output "$external" --off --output "$internal" --auto --primary
 fi
