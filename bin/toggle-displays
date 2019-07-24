@@ -5,9 +5,9 @@ external1=DP-1
 external2=DP-2
 output="$(xrandr)"
 
-if echo $output | grep "$external1 connected"; then
+if echo "$output" | grep -P "\b$external1 connected\b"; then
   xrandr --output "$internal" --off --output "$external1" --auto --primary
-elif echo $output | grep "$external2 connected"; then
+elif echo "$output" | grep -P "\b$external2 connected\b"; then
   xrandr --output "$internal" --off --output "$external2" --auto --primary
 else
   xrandr --output "$external" --off --output "$internal" --auto --primary
