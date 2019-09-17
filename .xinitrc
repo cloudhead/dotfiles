@@ -7,6 +7,8 @@
 [ -f ~/.profile ]   && . ~/.profile
 [ -f ~/.synaptics ] && . ~/.synaptics
 
+setxkbmap -option compose:rwin
+
 if [ -f ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap;
 fi
