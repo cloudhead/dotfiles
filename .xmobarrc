@@ -2,7 +2,7 @@
 -- vim: ft=haskell
 
 Config {
-       font = "xft:Fira Code:size=12,monospace:size=12"
+       font = "xft:monospace:size=12,fallback:size=12"
      , textOffset = 18
      , borderColor = "black"
      , border = TopB
@@ -10,6 +10,7 @@ Config {
      , fgColor = "#777777"
      , position = Bottom
      , persistent = True
+     , verbose = True,
      , commands =
           [ Run StdinReader
           , Run MultiCpu       [ "--template", "<total0> <total1> <total2> <total3>", "-w", "3" ] 50
@@ -24,5 +25,5 @@ Config {
           ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = "%StdinReader% }{ %unison%   %todo%   <fc=#555>☀</fc> %brightness%   %battery%   %wlp2s0wi%   %disku%   %memory%   %multicpu%   <fc=#aaaaaa>%date%</fc> "
+     , template = " %StdinReader% }{ %unison%   %todo%   <fc=#555>☀</fc> %brightness%   %battery%   %wlp2s0wi%   %disku%   %memory%   %multicpu%   <fc=#aaaaaa>%date%</fc> "
 }
