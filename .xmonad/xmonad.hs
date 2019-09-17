@@ -46,9 +46,9 @@ confirmPrompt config app func = mkXPrompt (EnterPrompt app) config (mkComplFunFr
 
 screenshotPrompt :: String -> X ()
 screenshotPrompt home = do
-    str <- inputPrompt cfg "Screenshot"
+    str <- inputPrompt cfg "~/screenshots/"
     case str of
-        Just s  -> spawn $ printf "sleep 0.1 && scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
+        Just s  -> spawn $ printf "sleep 0.3 && scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
         Nothing -> pure ()
   where
     cfg = myXPConfig { position = CenteredAt 0.5 0.3
@@ -56,7 +56,7 @@ screenshotPrompt home = do
 
 editPrompt :: String -> X ()
 editPrompt home = do
-    str <- inputPrompt cfg "✎ ~/"
+    str <- inputPrompt cfg "Edit ~/"
     case str of
         Just s  -> openInEditor s
         Nothing -> pure ()
@@ -167,7 +167,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")
        , ((modMask, xK_Left),                   prevWS)
        , ((modMask, xK_Right),                  nextWS)
-       , ((modMask .|. shiftMask, xK_q),        confirmPrompt myXPConfig "Exit XMonad?" $ io (exitWith ExitSuccess))
+       , ((modMask .|. shiftMask, xK_q),        confirmPrompt myXPConfig "Exit?" $ io (exitWith ExitSuccess))
        ]
 
 rofi :: String -> [String] -> X ()
