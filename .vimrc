@@ -18,7 +18,6 @@ set showmatch
 set wildmenu
 set wildmode=list,full
 set nowrap
-set breakindent                     " Preserve indentation when wrapping
 set hidden
 set modeline
 set hlsearch
@@ -56,7 +55,7 @@ set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
-set statusline=%<%f\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ (%{gitbranch#name()})\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set spelllang=en_us,en_gb
 set completeopt=menu
@@ -102,19 +101,20 @@ function! s:SaveOnFocusLost()
 endfunction
 
 " Per file-type indentation
-au FileType haskell     setlocal sts=4 sw=4 expandtab formatprg=stylish-haskell
-au FileType javascript  setlocal sts=4 sw=4 expandtab
-au FileType css         setlocal ts=4  sw=4 noexpandtab
-au FileType go          setlocal ts=4  sw=4 noexpandtab
-au FileType c,cpp,glsl  setlocal ts=8  sw=8 noexpandtab
-au FileType lua         setlocal       sw=2 expandtab
-au FileType sh,zsh      setlocal ts=2  sw=2 noexpandtab
-au FileType vim,ruby    setlocal sts=2 sw=2 expandtab
-au FileType help        setlocal ts=4  sw=4 noexpandtab
-au FileType txt         setlocal noai nocin nosi inde= wrap linebreak
+au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-haskell
+au FileType javascript  setlocal number sts=4 sw=4 expandtab
+au FileType css         setlocal number ts=4  sw=4 noexpandtab
+au FileType go          setlocal number ts=4  sw=4 noexpandtab
+au FileType c,cpp,glsl  setlocal number ts=8  sw=8 noexpandtab
+au FileType lua         setlocal number       sw=2 expandtab
+au FileType sh,zsh      setlocal number ts=2  sw=2 noexpandtab
+au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
+au FileType help        setlocal number ts=4  sw=4 noexpandtab
+au FileType rust        setlocal number signcolumn=yes nowrap
+au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber
-au FileType rst         setlocal nonumber sw=2 expandtab
+au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
 
@@ -123,6 +123,9 @@ au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
 au BufRead,BufNewFile *.toml      setf toml
+
+" If no file-type is detected, set to plain.
+autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
 
 let c_no_curly_error = 1
 
@@ -247,7 +250,7 @@ nnoremap <Leader>f      :FuzzyGrep<CR>
 " Navigate relative to the current file
 cmap     %/         %:p:h/
 
-map <Leader>m       :make check<CR>
+map <Leader>m       :make<CR>
 map <Leader>e       :e ~/.vimrc<CR>
 map <Leader>s       :source ~/.vimrc<CR>
 
@@ -305,19 +308,50 @@ if has("nvim")
   Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'junegunn/goyo.vim'
   Plug 'vim-scripts/fountain.vim'
-  Plug 'vimwiki/vimwiki'
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex'
   Plug 'vim-scripts/gnupg.vim'
-  Plug 'octol/vim-cpp-enhanced-highlight'
-  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh', 'for': ['cpp', 'c', 'rust']}
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['cpp', 'c', 'rust'] }
+  Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust'] }
 
   call plug#end()
 endif
+
+"
+" Quickfix Signs
+"
+sign define quickfix-error text=× texthl=ErrorSign
+
+command! QuickfixSigns call s:QuickfixSigns()
+
+" autocmd BufWrite * sign unplace *
+autocmd CursorHold *.rs silent QuickfixSigns
+
+function! s:QuickfixSigns()
+  silent! cgetfile
+  sign unplace *
+  for dict in getqflist()
+    if dict.type != 'E'
+      continue
+    endif
+    try
+      silent exe "sign"
+          \ "place"
+          \ dict.lnum
+          \ "line=" . string(dict.lnum)
+          \ "name=" . "quickfix-error"
+          \ "file=" . bufname(dict.bufnr)
+    catch
+
+    endtry
+  endfor
+endfunction
+
+command! Write setlocal spell   | Goyo 80
+command! Code  setlocal nospell | Goyo!
 
 if has("nvim")
   " Make sure we dont' load the rust cargo plugin from rust.vim!
@@ -327,36 +361,19 @@ if has("nvim")
   autocmd BufWritePre *.rs :RustFmt
 endif
 
-"
-" LSP
-"
-if has("nvim")
-  let g:LanguageClient_serverCommands = {
-      \ 'rust': ['env', 'CARGO_TARGET_DIR=./target', '~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'cpp': ['clangd'],
-      \ }
-endif
+" coc.vim
+function! SetupCoc()
+  nmap <silent> gd           <Plug>(coc-definition)
+  nmap <silent> gi           <Plug>(coc-implementation)
+  nmap <silent> gr           <Plug>(coc-references)
+  nmap <silent> <leader>/    :CocList --interactive symbols<CR>
 
-function! RunLanguageClient()
-  if has("nvim")
-    if has_key(g:LanguageClient_serverCommands, &filetype)
-      call deoplete#enable()
-      nnoremap <silent> <buffer> <C-]>      :call LanguageClient#textDocument_definition()<CR>
-      nnoremap <silent> <buffer> <leader>d  :call LanguageClient#textDocument_hover()<CR>
-      nnoremap <silent> <buffer> <leader>c  :call LanguageClient_contextMenu()<CR>
-      nnoremap <silent> <buffer> <leader>rn :call LanguageClient#textDocument_rename()<CR>
-
-      let g:LanguageClient_diagnosticsSignsMax = 0
-      let g:LanguageClient_selectionUI_autoOpen = 0
-      let g:LanguageClient_diagnosticsList = "Quickfix"
-      let g:LanguageClient_hoverPreview = "Never"
-      let g:LanguageClient_settingsPath = "settings.json"
-      let g:LanguageClient_windowLogMessageLevel = "Error"
-    endif
-  endif
+  " This is a kind of hack to make <C-Y> not trigger snippet expansion.
+  " We use <C-p><C-n> to insert the selection without triggering anything, and
+  " then close the popup.
+  inoremap <silent><expr> <C-Y> pumvisible() ? "<C-p><C-n><Esc>a" : "\<C-Y>"
 endfunction
-autocmd FileType * call RunLanguageClient()
-
+autocmd User CocNvimInit call SetupCoc()
 
 " Use custom colors.
 " This has to go after plugin initialization.
