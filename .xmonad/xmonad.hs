@@ -13,7 +13,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
 import XMonad.Prompt
 import XMonad.Prompt.XMonad
-import XMonad.Prompt.Input
 
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.FloatNext
@@ -28,6 +27,14 @@ import Text.Printf
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Control.Monad
+
+data InputPrompt = InputPrompt String
+
+instance XPrompt InputPrompt where
+    showXPrompt (InputPrompt s) = " " ++ s
+
+inputPrompt :: XPConfig -> String -> X (Maybe String)
+inputPrompt c p = mkXPromptWithReturn (InputPrompt p) c (const (pure [])) return
 
 data EnterPrompt = EnterPrompt String
 
@@ -49,7 +56,7 @@ screenshotPrompt home = do
 
 editPrompt :: String -> X ()
 editPrompt home = do
-    str <- inputPrompt cfg "Edit (~)"
+    str <- inputPrompt cfg "✎ ~/"
     case str of
         Just s  -> openInEditor s
         Nothing -> pure ()
@@ -134,7 +141,7 @@ myXPConfig = def
   , alwaysHighlight   = True
   , height            = 60
   , promptBorderWidth = 1
-  , font              = "xft:Fira Code:size=13"
+  , font              = "xft:monospace:size=13"
   , borderColor       = "#555555"
   , bgColor           = "#111111"
   }
@@ -174,7 +181,6 @@ rofi mode opts = safeSpawn
             , "-hide-scrollbar"
             , "-levenshtein-sort"
             , "-lines", "7"
-            , "-matching", "fuzzy"
             , "-padding", "10"
             , "-separator-style", "none"
             , "-width", "30"
