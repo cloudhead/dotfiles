@@ -56,7 +56,7 @@ screenshotPrompt home = do
 
 editPrompt :: String -> X ()
 editPrompt home = do
-    str <- inputPrompt cfg "Edit ~/"
+    str <- inputPrompt cfg "$ edit ~/"
     case str of
         Just s  -> openInEditor s
         Nothing -> pure ()
@@ -142,8 +142,8 @@ myXPConfig = def
   , height            = 60
   , promptBorderWidth = 1
   , font              = "xft:monospace:size=13"
-  , borderColor       = "#555555"
-  , bgColor           = "#111111"
+  , borderColor       = "aquamarine"
+  , bgColor           = "black"
   }
 
 myKeys :: FilePath -> XConfig Layout -> Map (KeyMask, KeySym) (X ())
@@ -173,11 +173,11 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
 rofi :: String -> [String] -> X ()
 rofi mode opts = safeSpawn
     "rofi" (opts ++ [ "-show", mode
-            , "-color-active", "#fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3"
-            , "-color-normal", "#111,#bbb,#111,#bbb,#000"
+            , "-color-active", "black,aquamarine,black,#bbb,black"
+            , "-color-normal", "black,#bbb,black,#bbb,black"
             , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
-            , "-color-window", "#111,#555"
-            , "-font", "Fira Code 13"
+            , "-color-window", "black,aquamarine"
+            , "-font", "monospace 13"
             , "-hide-scrollbar"
             , "-levenshtein-sort"
             , "-lines", "7"
