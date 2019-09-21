@@ -87,6 +87,11 @@ let mapleader = "\<Space>"
 
 let g:signify_vcs_list = ['git']
 
+" Markdown
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_no_default_key_mappings = 1
+
 " inccommand
 if has("nvim")
   set inccommand=nosplit
@@ -113,7 +118,7 @@ au FileType help        setlocal number ts=4  sw=4 noexpandtab
 au FileType rust        setlocal number signcolumn=yes nowrap
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
-au FileType markdown    setlocal nonumber
+au FileType markdown    setlocal nonumber conceallevel=2
 au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
@@ -296,9 +301,9 @@ endfunction
 if has("nvim")
   call plug#begin()
 
-  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-markdown'
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
   Plug 'mileszs/ack.vim'
   Plug 'bronson/vim-visual-star-search'
   Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
