@@ -1,6 +1,9 @@
 #!/bin/sh
 
-eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+if command -v keychain >/dev/null; then
+	eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+fi
+
 export PATH=~/bin:~/.local/bin:~/.cabal/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.npm-packages/bin:$PATH
 export EDITOR=nvim
 export VISUAL=nvim

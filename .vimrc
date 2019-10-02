@@ -112,7 +112,7 @@ au FileType css         setlocal number ts=4  sw=4 noexpandtab
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
 au FileType c,cpp,glsl  setlocal number ts=8  sw=8 noexpandtab
 au FileType lua         setlocal number       sw=2 expandtab
-au FileType sh,zsh      setlocal number ts=2  sw=2 noexpandtab
+au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
 au FileType help        setlocal number ts=4  sw=4 noexpandtab
 au FileType rust        setlocal number signcolumn=yes nowrap
@@ -355,7 +355,7 @@ function! s:QuickfixSigns()
   endfor
 endfunction
 
-command! Write setlocal spell   | Goyo 80
+command! Write setlocal spell   | Goyo 100x98%
 command! Code  setlocal nospell | Goyo!
 
 if has("nvim")

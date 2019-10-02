@@ -11,6 +11,10 @@ if xset q &>/dev/null; then
   setxkbmap us -variant altgr-intl
 fi
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  export TERM=xterm
+fi
+
 export GPG_TTY=$(tty)
 
 # `ls` colors
