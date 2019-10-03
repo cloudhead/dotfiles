@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dir=$HOME/share/
+user=$(whoami)
+
+while inotifywait -qqr \
+  -e modify -e moved_to -e moved_from -e create -e delete "$dir";
+do
+  rsync --del -avz ~/share/ $user@box:share
+done
