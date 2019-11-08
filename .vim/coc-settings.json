@@ -8,6 +8,9 @@
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.bracketEnterImprove": false,
   "coc.preferences.snippets.enable": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust"
+  ],
   "coc.source.snippets.enable": false,
 
   "list.maxHeight": 10,
@@ -15,6 +18,10 @@
   "list.extendedSearchMode": false,
 
   "rust-analyzer.enableEnhancedTyping": false,
+  "rust-analyzer.enableCargoWatchOnStartup": true,
+  "rust-analyzer.featureFlags": {
+     "completion.insertion.add-call-parenthesis": false
+  },
   "suggest.fixInsertedWord": false,
   "suggest.maxCompleteItemCount": 24,
 
