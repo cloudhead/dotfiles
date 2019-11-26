@@ -146,10 +146,10 @@ precmd() {
 
   # Status
   if [ "$last" -eq 0 ]; then
-    PROMPT='; '
+    PROMPT="%{$fg[blue]%}> %{$reset_color%}"
     RPROMPT="$remote"
   else
-    PROMPT="%{$fg[red]%}; %{$reset_color%}"
+    PROMPT="%{$fg[red]%}> %{$reset_color%}"
     RPROMPT=" $last"
   fi
 
