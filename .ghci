@@ -1,5 +1,5 @@
 
-:set prompt "\ESC[0;34m> \ESC[m"
+:set prompt "\ESC[0;34m>> \ESC[m"
 :set prompt-cont "\ESC[0;34m| \ESC[m"
 :set +m
 :set -fbyte-code

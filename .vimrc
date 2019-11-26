@@ -50,7 +50,7 @@ set tags+=.tags
 set tags+=codex.tags
 set undofile
 set gdefault                        " Always use /g with %s/
-set colorcolumn=100
+set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
@@ -92,6 +92,9 @@ let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_no_default_key_mappings = 1
 
+" Latex
+let g:vimtex_quickfix_mode = 0
+
 " inccommand
 if has("nvim")
   set inccommand=nosplit
@@ -115,7 +118,7 @@ au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
 au FileType help        setlocal number ts=4  sw=4 noexpandtab
-au FileType rust        setlocal number signcolumn=yes nowrap
+au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber conceallevel=2
@@ -128,6 +131,7 @@ au BufRead,BufNewFile *.tex       setf tex
 au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
 au BufRead,BufNewFile *.toml      setf toml
+au BufRead,BufNewFile *.rs        setf rust
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -319,7 +323,7 @@ if has("nvim")
   Plug 'vim-scripts/gnupg.vim'
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
-  Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+  Plug 'rust-lang/rust.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust'] }
 
   call plug#end()
@@ -363,7 +367,6 @@ if has("nvim")
   let g:loaded_rust_vim_plugin_cargo = 1
   " Don't add errors to quickfix if rustfmt fails.
   let g:rustfmt_fail_silently = 1
-  autocmd BufWritePre *.rs :RustFmt
 endif
 
 " coc.vim
