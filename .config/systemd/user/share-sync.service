@@ -1,0 +1,14 @@
+[Unit]
+Description=Backup
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/cloudhead
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/cloudhead/bin/share-sync
+Restart=always
+RestartSec=1000ms
+
+[Install]
+WantedBy=default.target
