@@ -4,24 +4,35 @@ unset x y w h
 
 mkdir -p $HOME/recordings
 
-FPS=${FPS:-4}
-SCALE=${SCALE:-.5}
+FPS=${FPS:-6}
+SCALE=${SCALE:-1}
+NAME=${1:-unknown}
 
-eval $(xwininfo -id $(xdotool getactivewindow) |
+# NOTE: To get the active window: `xwininfo -id $(xdotool getactivewindow)`
+
+eval $(xwininfo -name "$NAME" |
     sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
            -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
            -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
            -e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p" )
 
-now="$(date +"%S%M%H%d%m%Y")"
+now="$(date +"%Y%m%d-%H%M%S")"
 tmp="$(mktemp).gif"
 
-ffmpeg -v warning \
-	     -video_size ${w}x${h} \
-			 -framerate 6 \
-			 -f x11grab \
-			 -i :0.0+${x},${y} \
-			 -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE:flags=lanczos \
-			 -gifflags +transdiff -y \
-			 "$HOME/recordings/recording-$now.gif"
+let x=$x+1
+let y=$y+1
 
+OUT="$HOME/recordings/recording-$NAME-$now.gif"
+
+ffmpeg -v warning \
+         -video_size ${w}x${h} \
+             -framerate 4 \
+             -f x11grab \
+             -i :0.0+${x},${y} \
+             -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE:flags=lanczos \
+             -gifflags +transdiff -y \
+             "$OUT"
+
+echo "saved to '$OUT'"
+
+# TIP: convert FILE.gif -strip -coalesce -layers Optimize OPTIMIZED.gif
