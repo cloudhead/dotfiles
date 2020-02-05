@@ -132,6 +132,7 @@ au BufRead,BufNewFile *.todo      setf todo
 au BufRead,BufNewFile *.tikz      setf tex
 au BufRead,BufNewFile *.toml      setf toml
 au BufRead,BufNewFile *.rs        setf rust
+au BufRead,BufNewFile *.mustache  setf mustache
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -221,11 +222,6 @@ nnoremap <Leader>h       :nohl<CR>
 
 nnoremap <Leader>n      :cnext<CR>
 nnoremap <Leader>p      :cprev<CR>
-
-" Git
-cnoreabbrev gw    Gwrite
-cnoreabbrev gwa   Git add -u
-cnoreabbrev gc    Gcommit -v
 
 autocmd BufRead fugitive\:* xnoremap <buffer> dp :diffput<CR>
 autocmd BufRead fugitive\:* xnoremap <buffer> do :diffget<CR>

@@ -1,7 +1,7 @@
 [user]
-  email = alexis@monadic.xyz
+  email = self@cloudhead.io
   name = Alexis Sellier
-  signingkey = Alexis Sellier <alexis@monadic.xyz>
+  signingkey = Alexis Sellier <self@cloudhead.io>
 
 [github]
   user = cloudhead

@@ -9,6 +9,7 @@ set -uo pipefail
 [ -f ~/.profile ]   && . ~/.profile
 [ -f ~/.synaptics ] && . ~/.synaptics
 
+setxkbmap -option compose:lwin
 setxkbmap -option compose:rwin
 
 if [ -f ~/.Xmodmap ]; then

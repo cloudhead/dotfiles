@@ -3,6 +3,8 @@
 dir=$HOME/share/
 user=$(whoami)
 
+echo "Backup service started.." | systemd-cat -p info
+
 while inotifywait -qqr \
   -e modify -e moved_to -e moved_from -e create -e delete "$dir";
 do

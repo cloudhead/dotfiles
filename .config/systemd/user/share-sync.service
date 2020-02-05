@@ -1,6 +1,5 @@
 [Unit]
-Description=Backup
-After=network.target
+Description=Backup Service
 
 [Service]
 Type=simple
@@ -11,4 +10,4 @@ Restart=always
 RestartSec=1000ms
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

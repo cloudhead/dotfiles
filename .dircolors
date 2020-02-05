@@ -52,7 +52,7 @@ CAPABILITY 00                          # file with capability
 STICKY_OTHER_WRITABLE 00               # dir that is sticky and other-writable (+t,o+w)
 OTHER_WRITABLE 00                      # dir that is other-writable (o+w) and not sticky
 STICKY 00                              # dir with the sticky bit set (+t) and not other-writable
-EXEC 00;38;5;64                        # This is for files with execute permission:
+EXEC 00;32;5;64                        # This is for files with execute permission:
 
 ## Archives or compressed (violet + bold for compression)
 #

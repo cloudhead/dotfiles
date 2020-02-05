@@ -44,13 +44,14 @@ instance XPrompt EnterPrompt where
 confirmPrompt :: XPConfig -> String -> X () -> X ()
 confirmPrompt config app func = mkXPrompt (EnterPrompt app) config (mkComplFunFromList []) $ const func
 
-screenshotPrompt :: String -> X ()
-screenshotPrompt home = do
+screenshotPrompt :: String -> Bool -> X ()
+screenshotPrompt home select = do
     str <- inputPrompt cfg "~/screenshots/"
     case str of
-        Just s  -> spawn $ printf "sleep 0.3 && scrot -u '%s.png' -e 'mv $f ~/screenshots'" s
+        Just s  -> spawn $ printf "sleep 0.3 && scrot %s '%s' -e 'mv $f ~/screenshots'" mode s
         Nothing -> pure ()
   where
+    mode = if select then "--select" else "--focused"
     cfg = myXPConfig { position = CenteredAt 0.5 0.3
                      , defaultText = "" }
 
@@ -161,8 +162,8 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_o),                      switchWindow)
        , ((modMask, xK_Tab),                    toggleWS)
        , ((modMask .|. controlMask, xK_Return), toggleFloatNext >> (spawn $ XMonad.terminal conf))
-       , ((modMask, xK_Print),                  screenshotPrompt home)
-       , ((modMask .|. shiftMask, xK_Print),    safeSpawn "screenshot-region" [])
+       , ((modMask, xK_Print),                  screenshotPrompt home False)
+       , ((modMask .|. shiftMask, xK_Print),    screenshotPrompt home True)
        , ((modMask, xK_0),                      windows $ greedyView "ω")
        , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")
        , ((modMask, xK_Left),                   prevWS)
