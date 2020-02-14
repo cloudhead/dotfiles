@@ -33,6 +33,7 @@
   editor = /usr/bin/nvim
 
 [alias]
+  b = branch -v
   c = commit -v
   s = status -sb
   st = status
