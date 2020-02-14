@@ -1,0 +1,23 @@
+#!/bin/sh
+
+REMOTE=share
+
+while :; do
+  status="$(systemctl --user is-active share-sync)"
+
+  case "$status" in
+    "active")
+      ping -c1 -w5 $REMOTE 2>&1 >/dev/null
+
+      if [[ $? -eq 0 ]]; then
+        echo "<fc=aquamarine>✔</fc>"
+      else
+        echo "<fc=maroon>!</fc>"
+      fi ;;
+
+    *)
+      echo "<fc=maroon>✘</fc>" ;;
+  esac
+
+  sleep 5
+done
