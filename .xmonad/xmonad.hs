@@ -79,8 +79,8 @@ main = do
     xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ desktopConfig
         { terminal           = termName
         , workspaces         = ["α", "β", "γ", "δ", "φ", "σ", "η", "θ", "λ", "ω"]
-        , focusedBorderColor = "medium aquamarine"
-        , normalBorderColor  = "#1F1F1F"
+        , focusedBorderColor = "#333333" -- previously: medium aquamarine
+        , normalBorderColor  = "#111111" -- previously: #1F1F1F
         , borderWidth        = 1
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
@@ -174,10 +174,10 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
 rofi :: String -> [String] -> X ()
 rofi mode opts = safeSpawn
     "rofi" (opts ++ [ "-show", mode
-            , "-color-active", "black,aquamarine,black,#bbb,black"
+            , "-color-active", "black,#333,black,#bbb,black"
             , "-color-normal", "black,#bbb,black,#bbb,black"
             , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
-            , "-color-window", "black,aquamarine"
+            , "-color-window", "black,#333"
             , "-font", "monospace 13"
             , "-hide-scrollbar"
             , "-levenshtein-sort"
