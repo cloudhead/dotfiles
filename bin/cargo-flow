@@ -9,5 +9,5 @@ shift
 
 cmd="flow-check $@"
 
-# Exec cargo-watch with `flow-once`
+# Exec cargo-watch with `flow-check`
 exec cargo watch -qc -i 'target/*' -i errors.err -x "$cmd"
