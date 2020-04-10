@@ -4,7 +4,7 @@
 shift
 
 tmpfile=$(mktemp /tmp/cargo-flow.XXXXXX)
-result="$(cargo $@ --color always --all 2>&1)"
+result="$(cargo $@ --color always 2>&1)"
 
 if [ "$?" -ne 0 ]; then
 	# Display the results, but also output them to `errors.err`, which vim

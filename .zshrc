@@ -77,6 +77,7 @@ alias vim=nvim
 alias clip='xclip -sel clip'
 alias irc='weechat'
 alias cloc='tokei'
+alias shred='shred -uvz'
 
 export NNN_USE_EDITOR=1
 
