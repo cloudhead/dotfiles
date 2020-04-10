@@ -133,6 +133,8 @@ au BufRead,BufNewFile *.tikz      setf tex
 au BufRead,BufNewFile *.toml      setf toml
 au BufRead,BufNewFile *.rs        setf rust
 au BufRead,BufNewFile *.mustache  setf mustache
+au BufRead,BufNewFile *.tera      setf htmldjango
+au BufRead,BufNewFile *.svelte    setf svelte
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
