@@ -318,7 +318,6 @@ if has("nvim")
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex'
-  Plug 'vim-scripts/gnupg.vim'
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
@@ -359,6 +358,9 @@ endfunction
 
 command! Write setlocal spell   | Goyo 100x98%
 command! Code  setlocal nospell | Goyo!
+
+" Delete the current file.
+command! Delete call delete(expand('%')) | bdelete!
 
 if has("nvim")
   " Make sure we dont' load the rust cargo plugin from rust.vim!
