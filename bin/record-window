@@ -22,11 +22,11 @@ tmp="$(mktemp).gif"
 let x=$x+1
 let y=$y+1
 
-OUT="$HOME/recordings/recording-$NAME-$now.gif"
+OUT="$NAME-$now.gif"
 
 ffmpeg -v warning \
          -video_size ${w}x${h} \
-             -framerate 4 \
+             -framerate 6 \
              -f x11grab \
              -i :0.0+${x},${y} \
              -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE:flags=lanczos \

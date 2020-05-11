@@ -11,4 +11,5 @@ elif echo "$output" | grep -P "\b$external2 connected\b"; then
   xrandr --output "$internal" --off --output "$external2" --auto --primary
 else
   xrandr --output "$external1" --off --output "$internal" --auto --primary
+  xrandr --size 1920x1080
 fi
