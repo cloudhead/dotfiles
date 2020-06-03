@@ -8,6 +8,7 @@ export PATH=~/bin:~/.local/bin:~/.cabal/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~
 export EDITOR=nvim
 export VISUAL=nvim
 export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
+export RIPGREP_CONFIG_PATH=$HOME/.rgrc
 
 systemctl --user start share-sync
 

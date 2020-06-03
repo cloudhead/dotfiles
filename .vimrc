@@ -16,7 +16,7 @@ set number
 set ruler
 set showmatch
 set wildmenu
-set wildmode=list,full
+set wildmode=full
 set nowrap
 set hidden
 set modeline
@@ -30,7 +30,7 @@ set laststatus=2                    " Always show status-line
 set nocursorline                    " Highlight current line
 set scrolloff=4
 set nofoldenable
-set timeoutlen=500                  " Set timeout between key sequences
+set timeoutlen=200                  " Set timeout between key sequences
 set background=dark
 set mouse=a                         " Enable mouse in all modes
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
@@ -148,11 +148,18 @@ endif
 " Remove trailing whitespace on save
 autocmd BufWritePre * call s:StripTrailing()
 function! s:StripTrailing()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+  if &ft =~ 'rust'
+    return
+  endif
+
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfunction
+
+" Markdown, highlight YAML frontmatter
+let g:vim_markdown_frontmatter = 1
 
 " We use a POSIX shell
 let g:is_posix = 1
