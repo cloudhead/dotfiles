@@ -79,6 +79,7 @@ alias irc='weechat'
 alias cloc='tokei'
 alias shred='shred -uvz'
 alias diskusage='ncdu'
+alias calc=kalk
 
 export NNN_USE_EDITOR=1
 
