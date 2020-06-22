@@ -79,8 +79,8 @@ main = do
     xmonad $ withUrgencyHook NoUrgencyHook $ ewmh $ desktopConfig
         { terminal           = termName
         , workspaces         = ["α", "β", "γ", "δ", "φ", "σ", "η", "θ", "λ", "ω"]
-        , focusedBorderColor = "#333333" -- previously: medium aquamarine
-        , normalBorderColor  = "#111111" -- previously: #1F1F1F
+        , focusedBorderColor = "medium aquamarine"
+        , normalBorderColor  = "#1F1F1F"
         , borderWidth        = 1
         , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
         , keys               = myKeys home
