@@ -80,6 +80,18 @@ alias cloc='tokei'
 alias shred='shred -uvz'
 alias diskusage='ncdu'
 alias calc=kalk
+alias tree=tree-git-ignore
+
+function tree-git-ignore {
+  local ignored=$(git ls-files -ci --others --directory --exclude-standard)
+  local ignored_filter=$(echo "$ignored" \
+    | egrep -v "^#.*$|^[[:space:]]*$" \
+    | sed 's~^/~~' \
+    | sed 's~/$~~' \
+    | tr "\\n" "|")
+
+  /usr/bin/tree --prune -I ".git|${ignored_filter: : -1}" "$@"
+}
 
 export NNN_USE_EDITOR=1
 
