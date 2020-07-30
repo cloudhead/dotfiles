@@ -329,6 +329,7 @@ if has("nvim")
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust'] }
+  Plug 'tomlion/vim-solidity'
 
   call plug#end()
 endif
