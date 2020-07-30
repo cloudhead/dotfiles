@@ -51,9 +51,9 @@ bindkey '^R' history-incremental-search-backward
 #
 LS_IGNORE="Dropbox" # ~/Dropbox is symlinked.
 
-alias ls="/bin/ls -I $LS_IGNORE"
-alias l="/bin/ls -lFGhL --color=auto -I $LS_IGNORE"
-alias ll='/bin/ls -lFAGh --color=auto'
+alias ls="/bin/ls -I $LS_IGNORE --group-directories-first"
+alias l="/bin/ls -lFGhL --color=auto -I $LS_IGNORE --group-directories-first"
+alias ll='/bin/ls -lFAGh --color=auto --group-directories-first'
 
 #
 # Aliases
