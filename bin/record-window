@@ -22,15 +22,14 @@ tmp="$(mktemp).gif"
 let x=$x+1
 let y=$y+1
 
-OUT="$NAME-$now.gif"
+OUT="$NAME-$now.webm"
 
 ffmpeg -v warning \
          -video_size ${w}x${h} \
              -framerate 6 \
              -f x11grab \
              -i :0.0+${x},${y} \
-             -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE:flags=lanczos \
-             -gifflags +transdiff -y \
+             -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE \
              "$OUT"
 
 echo "saved to '$OUT'"

@@ -9,6 +9,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
+export PATH="$HOME/.radicle/bin:$PATH"
 
 systemctl --user start share-sync
 

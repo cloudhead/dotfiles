@@ -118,6 +118,7 @@ au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
 au FileType help        setlocal number ts=4  sw=4 noexpandtab
+au FileType solidity    setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
@@ -157,6 +158,14 @@ function! s:StripTrailing()
   %s/\s\+$//e
   call cursor(l, c)
 endfunction
+
+" Git gutter
+let g:gitgutter_sign_modified = '±'
+let g:gitgutter_sign_modified_removed = '±'
+let g:gitgutter_map_keys = 0
+
+nmap <Leader>gs <Plug>(GitGutterStageHunk)
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)
 
 " Markdown, highlight YAML frontmatter
 let g:vim_markdown_frontmatter = 1
@@ -324,12 +333,14 @@ if has("nvim")
   Plug 'vim-scripts/fountain.vim'
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
-  Plug 'lervag/vimtex'
+  Plug 'lervag/vimtex', { 'for': ['tex'] }
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust'] }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust'] }
   Plug 'tomlion/vim-solidity'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'leafgarland/typescript-vim'
 
   call plug#end()
 endif
@@ -380,8 +391,11 @@ endif
 " coc.vim
 function! SetupCoc()
   nmap <silent> gd           <Plug>(coc-definition)
+  nmap <silent> gy           <Plug>(coc-type-definition)
   nmap <silent> gi           <Plug>(coc-implementation)
   nmap <silent> gr           <Plug>(coc-references)
+  nmap <silent> gj           <Plug>(coc-diagnostic-next)
+  nmap <silent> gk           <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
 
   " This is a kind of hack to make <C-Y> not trigger snippet expansion.

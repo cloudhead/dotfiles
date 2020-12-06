@@ -49,11 +49,8 @@ bindkey '^R' history-incremental-search-backward
 #
 # ls
 #
-LS_IGNORE="Dropbox" # ~/Dropbox is symlinked.
-
-alias ls="/bin/ls -I $LS_IGNORE --group-directories-first"
-alias l="/bin/ls -lFGhL --color=auto -I $LS_IGNORE --group-directories-first"
-alias ll='/bin/ls -lFAGh --color=auto --group-directories-first'
+alias l="ls -lFGhL --color=auto --group-directories-first"
+alias ll='ls -lFAGh --color=auto --group-directories-first'
 
 #
 # Aliases
@@ -66,13 +63,13 @@ alias ..='cd ..'
 alias img='sxiv -a'
 alias df='df -h'
 alias sys='systemctl'
+alias s='systemctl'
 alias x='startx'
 alias web='chromium &'
 alias e=$EDITOR
 alias pdf='mupdf'
 alias webserver='python2 -m SimpleHTTPServer'
 alias pacman='sudo pacman --color=auto'
-alias netctl='sudo netctl'
 alias vim=nvim
 alias clip='xclip -sel clip'
 alias irc='weechat'
@@ -80,7 +77,11 @@ alias cloc='tokei'
 alias shred='shred -uvz'
 alias diskusage='ncdu'
 alias calc=kalk
-alias tree=tree-git-ignore
+alias t=tree-git-ignore
+
+function weather {
+  curl "https://v2.wttr.in/$1"
+}
 
 function tree-git-ignore {
   local ignored=$(git ls-files -ci --others --directory --exclude-standard)

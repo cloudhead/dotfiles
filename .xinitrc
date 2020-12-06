@@ -6,11 +6,11 @@ set -uo pipefail
 
 . ~/bin/toggle-displays
 
-[ -f ~/.profile ]   && . ~/.profile
 [ -f ~/.synaptics ] && . ~/.synaptics
 
 setxkbmap -option compose:lwin
 setxkbmap -option compose:rwin
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 if [ -f ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap;
