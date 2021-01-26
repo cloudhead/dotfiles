@@ -157,7 +157,7 @@ precmd() {
   local remote=""
 
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    remote=" $(whoami)@$(hostname)"
+    remote=" $(whoami)@$(cat /etc/hostname)"
   fi
 
   # Status
