@@ -320,17 +320,13 @@ if has("nvim")
   call plug#begin()
 
   Plug 'tpope/vim-commentary'
-  Plug 'godlygeek/tabular'
-  Plug 'plasticboy/vim-markdown'
+  Plug 'evanleck/vim-svelte', { 'for': ['svelte'] }
   Plug 'mileszs/ack.vim'
   Plug 'bronson/vim-visual-star-search'
-  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'cloudhead/shady.vim'
   Plug 'tikhomirov/vim-glsl'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'junegunn/goyo.vim'
-  Plug 'vim-scripts/fountain.vim'
   Plug 'exu/pgsql.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex', { 'for': ['tex'] }
