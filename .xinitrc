@@ -27,4 +27,5 @@ fi
 [ -f ~/.fehbg ] && . ~/.fehbg
 [ -f ~/.wacom ] && . ~/.wacom
 
-exec xmonad
+# `dbus-launch` is required for flameshot.
+exec dbus-launch xmonad
