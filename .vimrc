@@ -110,8 +110,9 @@ endfunction
 
 " Per file-type indentation
 au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-haskell
-au FileType javascript  setlocal number sts=4 sw=4 expandtab
-au FileType css         setlocal number ts=4  sw=4 noexpandtab
+au FileType javascript  setlocal number sts=2 sw=2 expandtab nowrap
+au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
+au FileType css         setlocal number ts=2  sw=2 noexpandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
 au FileType c,cpp,glsl  setlocal number ts=8  sw=8 noexpandtab
 au FileType lua         setlocal number       sw=2 expandtab
@@ -320,7 +321,8 @@ if has("nvim")
   call plug#begin()
 
   Plug 'tpope/vim-commentary'
-  Plug 'evanleck/vim-svelte', { 'for': ['svelte'] }
+  Plug 'evanleck/vim-svelte', { 'for': ['svelte'], 'branch': 'main' }
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
   Plug 'mileszs/ack.vim'
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
