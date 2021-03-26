@@ -1,7 +1,29 @@
 #!/bin/sh
+# pacman -S inotify-tools openssh rsync
+
+set -euf -o pipefail
 
 dir=$HOME/share/
 user=$(whoami)
+
+if [ ! -d "$dir" ]; then
+  echo "First-time sync.."
+
+  cd $HOME
+
+  mkdir $dir
+  rsync -avz $user@box:share $HOME
+
+  ln -sf share/txt ~/txt
+  ln -sf share/notes ~/notes
+  ln -sf share/crypto ~/crypto
+  ln -sf share/papers ~/papers
+  ln -sf share/docs ~/docs
+
+  echo "Synced."
+
+  exit 0
+fi
 
 echo "Backup service started.." | systemd-cat -p info
 
