@@ -1,17 +1,37 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-internal=eDP-1
-external1=DP-1
-external2=DP-2
-output="$(xrandr)"
+internal = "eDP1"
+external = "DP1"
+output = `xrandr`
 
-if echo "$output" | grep -P "\b$external1 connected\b"; then
-  xrandr --output "$internal" --off --output "$external1" --auto --primary
-elif echo "$output" | grep -P "\b$external2 connected\b"; then
-  xrandr --output "$internal" --off --output "$external2" --auto --primary
-else
-  xrandr --output "$external1" --off --output "$internal" --auto --primary
-  xrandr --size 1920x1080
-fi
+internal_connected = /#{internal} connected\b/.match?(output)
+external_connected = /#{external} connected\b/.match?(output)
 
-feh --bg-fill ~/images/background
+internal_active = /#{internal} connected .*?\d+x\d+\b/.match?(output)
+external_active = /#{external} connected .*?\d+x\d+\b/.match?(output)
+
+puts "#{internal} connected: #{internal_connected}"
+puts "#{external} connected: #{external_connected}"
+puts "#{internal} active: #{internal_active}"
+puts "#{external} active: #{external_active}"
+
+def xrandr(args)
+  system "xrandr #{args}"
+end
+
+if external_active && !internal_active && internal_connected then
+  # Switch External -> Internal
+  xrandr "--output #{internal} --auto --primary --output #{external} --off "
+elsif internal_active && !external_active && external_connected then
+  # Switch Internal -> External
+  xrandr "--output #{external} --auto --primary --output #{internal} --off"
+elsif !internal_active && !external_active && external_connected && internal_connected  then
+  # Switch None -> All
+  xrandr "--output #{internal} --auto --output #{external} --auto --primary"
+elsif internal_active && external_active then
+  # Switch All -> External
+  xrandr "--output #{internal} --off --output #{external} --auto --primary"
+end
+
+# Set background
+system "set-background"
