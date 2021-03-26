@@ -1,6 +1,7 @@
 .cache
 .cargo
 .config
+.fehbg
 .rustup
 .gnupg
 .mozilla
@@ -30,3 +31,4 @@ priv
 pkg
 txt
 papers
+images

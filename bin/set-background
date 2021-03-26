@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if command -v feh >/dev/null 2>&1; then
+  feh --bg-fill ~/images/background
+fi
