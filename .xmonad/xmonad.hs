@@ -41,9 +41,6 @@ data EnterPrompt = EnterPrompt String
 instance XPrompt EnterPrompt where
     showXPrompt (EnterPrompt n) = " " ++ n ++ " "
 
-confirmPrompt :: XPConfig -> String -> X () -> X ()
-confirmPrompt config app func = mkXPrompt (EnterPrompt app) config (mkComplFunFromList []) $ const func
-
 screenshotPrompt :: String -> Bool -> X ()
 screenshotPrompt home select = do
     str <- inputPrompt cfg "~/screenshots/"
@@ -115,12 +112,12 @@ startup = do
 barConfig :: Handle -> PP
 barConfig h = xmobarPP
     { ppCurrent         = xmobarColor white   black  . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor dred    black  . wrap " " " "
+    , ppHiddenNoWindows = xmobarColor dgrey   black  . wrap " " " "
     , ppHidden          = xmobarColor grey    black  . wrap " " " "
     , ppUrgent          = xmobarColor black   red    . wrap " " " "
     , ppTitle           = xmobarColor red     black
     , ppLayout          = const ""
-    , ppWsSep           = ""
+    , ppWsSep           = "  "
     , ppSep             = "  "
     , ppOutput          = hPutStrLn h
     }
@@ -131,7 +128,8 @@ barConfig h = xmobarPP
     black = "black"
     light = "#888888"
     dark  = "#333333"
-    grey  = "#555555"
+    grey  = "#777777"
+    dgrey = "#333333"
 
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
@@ -152,11 +150,11 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
     Map.union ks (XMonad.keys def conf)
   where
     ks = Map.fromList
-       [ ((modMask, xK_F12),                    safeSpawn "sleep" [])
+       [ ((modMask, xK_F12),                    safeSpawnProg "sleep")
        , ((modMask .|. shiftMask, xK_F12),      safeSpawn "systemctl" ["hibernate"])
-       , ((modMask, xK_F11),                    safeSpawn "slock" [])
-       , ((modMask, xK_F10),                    safeSpawn "toggle-displays" [])
-       , ((modMask, xK_F5),                     safeSpawn "refresh-display" [])
+       , ((modMask, xK_F11),                    safeSpawnProg "slock")
+       , ((modMask, xK_F10),                    safeSpawnProg "toggle-displays")
+       , ((modMask, xK_F5),                     safeSpawnProg "refresh-display")
        , ((modMask, xK_p),                      runExecutable)
        , ((modMask .|. shiftMask, xK_p),        editPrompt home)
        , ((modMask, xK_o),                      switchWindow)
@@ -168,7 +166,6 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask .|. shiftMask, xK_0),        windows $ shift "ω")
        , ((modMask, xK_Left),                   prevWS)
        , ((modMask, xK_Right),                  nextWS)
-       , ((modMask .|. shiftMask, xK_q),        confirmPrompt myXPConfig "Exit?" $ io (exitWith ExitSuccess))
        ]
 
 rofi :: String -> [String] -> X ()

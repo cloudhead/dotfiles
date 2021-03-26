@@ -1,29 +1,30 @@
 -- Xmobar configuration
 -- vim: ft=haskell
-
+--
 Config {
-       font = "xft:monospace:size=12,fallback:size=12"
-     , textOffset = 18
+       font = "xft:monospace:size=11,fallback:size=11"
      , borderColor = "black"
      , border = TopB
      , bgColor = "#000000"
-     , fgColor = "#777777"
-     , position = Bottom
+     , fgColor = "#dddddd"
+     , position = BottomSize C 99 36
      , persistent = True
-     , verbose = True,
+     , verbose = True
      , commands =
           [ Run StdinReader
-          , Run MultiCpu       [ "--template", "<total0> <total1> <total2> <total3>", "-w", "3" ] 50
-          , Run Memory         [ "--template", "<available>" ] 50
+          , Run Cpu            [ "-t", "<fc=#555>CPU</fc> <total>%" ] 50
+          , Run Alsa           "default" "Master" ["--template", "<fc=#555>VOL</fc> <volume>%"]
+          , Run Memory         [ "-t", "<fc=#555>RAM</fc> <available>" ] 50
+          , Run Brightness     [ "-t", "☀ <percent>", "--", "-D", "intel_backlight" ] 60
           , Run Date           "%b %d %H:%M" "date" 10
-          , Run DiskU          [("/", "<free>"), ("/home", "<free>")] [] 20
+          , Run DiskU          [("/", "<fc=#555>/</fc> <free>"), ("/home", "<fc=#555>/home</fc> <free>")] [] 20
           , Run CommandReader  "xmobar-sync-status" "sync"
           , Run Com            "todo-widget" [] "todo" 10
           , Run Com            "xmobar-brightness" [] "brightness" 10
-          , Run Wireless       "wlp2s0" [ "--template", "<essid>/<fc=#666><quality></fc>"] 10
-          , Run Battery        [ "--template", "<fc=#555>⌁</fc> <left>" ] 100
+          , Run Wireless       "wlan0" [ "--template", "<essid>/<fc=#666><quality></fc>"] 10
+          , Run Battery        [ "-t", "⌁ <left>%" ] 100
           ]
      , sepChar = "%"
      , alignSep = "}{"
-     , template = " %StdinReader% }{ %sync%   %todo%   <fc=#555>☀</fc> %brightness%   %battery%   %wlp2s0wi%   %disku%   %memory%   %multicpu%   <fc=#aaaaaa>%date%</fc> "
+     , template = " %StdinReader% }{ %sync%   %todo%   %alsa:default:Master%   %disku%   %memory%  %cpu%   %wlan0wi%   %bright%  %battery%   <fc=#aaaaaa>%date%</fc> "
 }
