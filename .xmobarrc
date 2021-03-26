@@ -7,7 +7,7 @@ Config {
      , border = TopB
      , bgColor = "#000000"
      , fgColor = "#dddddd"
-     , position = BottomSize C 99 36
+     , position = BottomSize C 100 36
      , persistent = True
      , verbose = True
      , commands =
