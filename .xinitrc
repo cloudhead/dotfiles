@@ -2,7 +2,7 @@
 #
 # ~/.xinitrc
 #
-set -uo pipefail
+set -ue
 
 . ~/bin/toggle-displays
 
