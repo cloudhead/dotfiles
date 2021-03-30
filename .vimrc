@@ -59,6 +59,7 @@ set statusline=%<%f\ (%{gitbranch#name()})\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set spelllang=en_us,en_gb
 set completeopt=menu
+set clipboard+=unnamedplus " Requires `xclip`
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()

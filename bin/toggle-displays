@@ -1,14 +1,15 @@
 #!/usr/bin/env ruby
 
-internal = "eDP1"
-external = "DP1"
 output = `xrandr`
 
-internal_connected = /#{internal} connected\b/.match?(output)
-external_connected = /#{external} connected\b/.match?(output)
+internal = /^(eDP-?1)/.match(output)[1]
+external = /^(DP-?1)/.match(output)[1]
 
-internal_active = /#{internal} connected .*?\d+x\d+\b/.match?(output)
-external_active = /#{external} connected .*?\d+x\d+\b/.match?(output)
+internal_connected = /^#{internal} connected/m.match?(output)
+external_connected = /^#{external} connected/m.match?(output)
+
+internal_active = /^#{internal} connected .*?\d+x\d+\b/m.match?(output)
+external_active = /^#{external} connected .*?\d+x\d+\b/m.match?(output)
 
 puts "#{internal} connected: #{internal_connected}"
 puts "#{external} connected: #{external_connected}"
@@ -28,6 +29,9 @@ elsif internal_active && !external_active && external_connected then
 elsif !internal_active && !external_active && external_connected && internal_connected  then
   # Switch None -> All
   xrandr "--output #{internal} --auto --output #{external} --auto --primary"
+elsif !internal_active && !external_active && internal_connected then
+  # Switch None -> Internal
+  xrandr "--output #{internal} --auto --primary"
 elsif internal_active && external_active then
   # Switch All -> External
   xrandr "--output #{internal} --off --output #{external} --auto --primary"
