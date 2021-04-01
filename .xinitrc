@@ -4,8 +4,6 @@
 #
 set -ue
 
-. ~/bin/toggle-displays
-
 [ -f ~/.synaptics ] && . ~/.synaptics
 
 setxkbmap -option compose:lwin
