@@ -338,7 +338,11 @@ if has("nvim")
   Plug 'rust-lang/rust.vim'
   Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust'] }
   Plug 'tomlion/vim-solidity'
+  " For v0.4
   Plug 'airblade/vim-gitgutter'
+  " For v0.5
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim'
 
   call plug#end()
