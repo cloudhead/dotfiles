@@ -2,7 +2,8 @@
 #
 # ~/.xinitrc
 #
-set -ue
+exec >~/.local/share/xorg/xinitrc-$DISPLAY.log 2>&1
+set -uex
 
 [ -f ~/.synaptics ] && . ~/.synaptics
 

@@ -60,6 +60,7 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 set spelllang=en_us,en_gb
 set completeopt=menu
 set clipboard+=unnamedplus " Requires `xclip`
+set shell=/bin/sh
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
