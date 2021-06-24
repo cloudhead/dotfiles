@@ -23,6 +23,8 @@
     "rust"
   ],
   "coc.source.snippets.enable": false,
+  "coc.source.buffer.enable": false,
+  "coc.source.file.enable": false,
 
   "rust-analyzer.inlayHints.typeHintsSeparator": "",
   "rust-analyzer.inlayHints.chainingHintsSeparator": " ",

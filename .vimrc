@@ -97,6 +97,12 @@ let g:vim_markdown_no_default_key_mappings = 1
 " Latex
 let g:vimtex_quickfix_mode = 0
 
+" Svelte
+let g:svelte_preprocessors = ['typescript', 'ts']
+let g:svelte_preprocessor_tags = [
+  \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
+  \ ]
+
 " inccommand
 if has("nvim")
   set inccommand=nosplit
@@ -113,6 +119,7 @@ endfunction
 " Per file-type indentation
 au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-haskell
 au FileType javascript  setlocal number sts=2 sw=2 expandtab nowrap
+au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
 au FileType css         setlocal number ts=2  sw=2 noexpandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
@@ -337,14 +344,14 @@ if has("nvim")
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust'] }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
   Plug 'tomlion/vim-solidity'
   " For v0.4
   Plug 'airblade/vim-gitgutter'
   " For v0.5
   " Plug 'nvim-lua/plenary.nvim'
   " Plug 'lewis6991/gitsigns.nvim'
-  Plug 'leafgarland/typescript-vim'
+  Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 
   call plug#end()
 endif
@@ -401,13 +408,17 @@ function! SetupCoc()
   nmap <silent> gj           <Plug>(coc-diagnostic-next)
   nmap <silent> gk           <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
+  nmap <silent> <leader>r    <Plug>(coc-rename)
 
   " This is a kind of hack to make <C-Y> not trigger snippet expansion.
   " We use <C-p><C-n> to insert the selection without triggering anything, and
   " then close the popup.
   inoremap <silent><expr> <C-Y> pumvisible() ? "<C-p><C-n><Esc>a" : "\<C-Y>"
+  " Trigger completion on <CR>.
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endfunction
 autocmd User CocNvimInit call SetupCoc()
+
 
 " Use custom colors.
 " This has to go after plugin initialization.

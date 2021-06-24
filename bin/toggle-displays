@@ -5,11 +5,11 @@ output = `xrandr`
 internal = /^(eDP-?1)/.match(output)[1]
 external = /^(DP-?1)/.match(output)[1]
 
-internal_connected = /^#{internal} connected/m.match?(output)
-external_connected = /^#{external} connected/m.match?(output)
+internal_connected = /^#{internal} connected/.match?(output)
+external_connected = /^#{external} connected/.match?(output)
 
-internal_active = /^#{internal} connected .*?\d+x\d+\b/m.match?(output)
-external_active = /^#{external} connected .*?\d+x\d+\b/m.match?(output)
+internal_active = /^#{internal} connected .*?\d+x\d+\b/.match?(output)
+external_active = /^#{external} connected .*?\d+x\d+\b/.match?(output)
 
 puts "#{internal} connected: #{internal_connected}"
 puts "#{external} connected: #{external_connected}"
@@ -22,7 +22,7 @@ end
 
 if external_active && !internal_active && internal_connected then
   # Switch External -> Internal
-  xrandr "--output #{internal} --auto --primary --output #{external} --off "
+  xrandr "--output #{internal} --auto --primary --output #{external} --off"
 elsif internal_active && !external_active && external_connected then
   # Switch Internal -> External
   xrandr "--output #{external} --auto --primary --output #{internal} --off"
