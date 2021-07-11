@@ -94,6 +94,10 @@ function tree-git-ignore {
   /usr/bin/tree --prune -I ".git|${ignored_filter: : -1}" "$@"
 }
 
+function pdf-slice {
+  qpdf $1 --pages . $2 -- $3
+}
+
 export NNN_USE_EDITOR=1
 
 #

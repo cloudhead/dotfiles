@@ -169,14 +169,6 @@ function! s:StripTrailing()
   call cursor(l, c)
 endfunction
 
-" Git gutter
-let g:gitgutter_sign_modified = '±'
-let g:gitgutter_sign_modified_removed = '±'
-let g:gitgutter_map_keys = 0
-
-nmap <Leader>gs <Plug>(GitGutterStageHunk)
-nmap <Leader>gu <Plug>(GitGutterUndoHunk)
-
 " Markdown, highlight YAML frontmatter
 let g:vim_markdown_frontmatter = 1
 
@@ -336,6 +328,7 @@ if has("nvim")
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'cloudhead/shady.vim'
+  Plug 'gabrielelana/vim-markdown'
   Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/goyo.vim'
   Plug 'exu/pgsql.vim'
@@ -346,15 +339,21 @@ if has("nvim")
   Plug 'rust-lang/rust.vim'
   Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
   Plug 'tomlion/vim-solidity'
-  " For v0.4
-  Plug 'airblade/vim-gitgutter'
-  " For v0.5
-  " Plug 'nvim-lua/plenary.nvim'
-  " Plug 'lewis6991/gitsigns.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 
   call plug#end()
 endif
+
+lua <<EOF
+require('gitsigns').setup {
+  signs = {
+    changedelete = { text = "│" }
+  }
+}
+EOF
 
 "
 " Quickfix Signs
