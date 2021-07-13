@@ -129,6 +129,7 @@ au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
 au FileType help        setlocal number ts=4  sw=4 noexpandtab
 au FileType solidity    setlocal number ts=4  sw=4 expandtab nowrap
+au FileType graphql     setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
@@ -343,6 +344,7 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+  Plug 'jparise/vim-graphql'
 
   call plug#end()
 endif
