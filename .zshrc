@@ -158,18 +158,18 @@ setopt INTERACTIVECOMMENTS
 #
 precmd() {
   local last=$?
-  local remote=""
+  local indicator=">"
 
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    remote=" $(whoami)@$(cat /etc/hostname)"
+    indicator="$(whoami)@$(cat /etc/hostname) #"
   fi
 
   # Status
   if [ "$last" -eq 0 ]; then
-    PROMPT="%{$fg[blue]%}> %{$reset_color%}"
-    RPROMPT="$remote"
+    PROMPT="%{$fg[blue]%}$indicator %{$reset_color%}"
+    RPROMPT=""
   else
-    PROMPT="%{$fg[red]%}> %{$reset_color%}"
+    PROMPT="%{$fg[red]%}$indicator %{$reset_color%}"
     RPROMPT=" $last"
   fi
 
@@ -177,13 +177,13 @@ precmd() {
     RPROMPT="%{$fg[red]%}#$RPROMPT%{$reset_color%}"
   fi
 
-	# Set the window title to the pwd.
-	print -Pn "\e]2;%~\a"
+  # Set the window title to the pwd.
+  print -Pn "\e]2;%~\a"
 }
 
 preexec() {
-	# Set the window title to the command and pwd.
-	print -Pn "\e]2;$1 [%~]\a"
+  # Set the window title to the command and pwd.
+  print -Pn "\e]2;$1 [%~]\a"
 }
 
 #
