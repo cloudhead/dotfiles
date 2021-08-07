@@ -1,9 +1,0 @@
-XMONAD
-
-  git clone <xmonad.git> xmonad-git
-  git clone <xmonad-contrib.git> xmonad-contrib-git
-  git clone <xmobar.git> xmobar-git
-
-  curl -sSL https://get.haskellstack.org | sh
-
-  pacman -S libxss pkg-config

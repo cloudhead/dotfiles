@@ -1,4 +1,0 @@
-#!/bin/sh
-
-q=${2:-source}
-livestreamer --player mpv twitch.tv/$1 $q

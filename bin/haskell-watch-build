@@ -1,4 +1,0 @@
-#!/bin/sh
-
-ag --haskell -g "" | entr -c -- sh -c \
-  'stack build "$@" --fast 2>/dev/null && echo -n "\033[1;32mOK.\033[0m"'

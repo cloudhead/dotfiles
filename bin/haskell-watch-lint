@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ -f "$1" ]; then
-  rg --type haskell --files | entr -c hlint -h=$1 -h=HLint /_
-else
-  rg --type haskell --files | entr -c hlint -g
-fi
-
-

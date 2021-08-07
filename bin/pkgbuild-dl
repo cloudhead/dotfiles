@@ -1,3 +1,0 @@
-#!/bin/sh
-
-wget https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$1 -O PKGBUILD

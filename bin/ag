@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Since ~ has everything in git exclude, ag
-# wouldn't find anything without -U.
-if [ "$PWD" = "$HOME" ]; then
-  /usr/bin/ag --hidden -U "$@"
-else
-  /usr/bin/ag --hidden "$@"
-fi

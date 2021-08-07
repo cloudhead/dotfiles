@@ -1,6 +1,0 @@
-#!/bin/sh
-echo
-for t in $(ls *.todo); do
-	cat $t
-	echo
-done

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-FILEPATH="$(readlink -f $HOME/screenshots)/screenshot-$(date +"%Y-%m-%d@%T").png"
-scrot -s $FILEPATH
-echo -n "$(dropbox-cli sharelink $FILEPATH)" | xclip -i
