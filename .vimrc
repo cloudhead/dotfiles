@@ -61,6 +61,7 @@ set spelllang=en_us,en_gb
 set completeopt=menu
 set clipboard+=unnamedplus " Requires `xclip`
 set shell=/bin/sh
+set signcolumn=yes
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
