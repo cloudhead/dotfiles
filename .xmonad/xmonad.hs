@@ -169,20 +169,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        ]
 
 rofi :: String -> [String] -> X ()
-rofi mode opts = safeSpawn
-    "rofi" (opts ++ [ "-show", mode
-            , "-color-active", "black,#333,black,#bbb,black"
-            , "-color-normal", "black,#bbb,black,#bbb,black"
-            , "-color-urgent", "#fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3"
-            , "-color-window", "black,#333"
-            , "-font", "monospace 13"
-            , "-hide-scrollbar"
-            , "-levenshtein-sort"
-            , "-lines", "7"
-            , "-padding", "10"
-            , "-separator-style", "none"
-            , "-width", "30"
-            ])
+rofi mode opts = safeSpawn "rofi" (opts ++ ["-show", mode])
 
 runExecutable :: X ()
 runExecutable = rofi "run" []
