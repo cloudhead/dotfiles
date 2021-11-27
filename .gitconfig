@@ -1,7 +1,7 @@
 [user]
   email = self@cloudhead.io
   name = Alexis Sellier
-  signingkey = Alexis Sellier <self@cloudhead.io>
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrvO/Q9/5eGYPWlj0ygyzismMbJ3P2ZbzN/HcVCrpPD
 
 [github]
   user = cloudhead
@@ -46,7 +46,11 @@
   changes = log -c --reverse
 
 [gpg]
-  program = gpg
+  format = ssh
+
+[gpg.ssh]
+  program = ssh-keygen
+  allowedSignersFile = .gitsigners
 
 [commit]
   gpgsign = true
@@ -56,5 +60,6 @@
 
 [init]
   defaultBranch = master
+
 [rerere]
-	enabled = 1
+  enabled = 1
