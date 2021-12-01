@@ -6,6 +6,13 @@
 [github]
   user = cloudhead
 
+[sendemail]
+  annotate = yes
+  smtpserver = smtp.gmail.com
+  smtpencryption = tls
+  smtpserverport = 587
+  smtpuser = alexis@cloudhead.io
+
 [color]
   branch = auto
   diff = auto
@@ -57,9 +64,16 @@
 
 [pull]
   ff = only
+  rebase = true
 
 [init]
   defaultBranch = master
 
 [rerere]
   enabled = 1
+
+[diff]
+  colorMoved = zebra
+
+[fetch]
+  prune = true
