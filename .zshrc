@@ -1,15 +1,8 @@
 ##
-# cloudhead - .zshrc
+# odyslam - .zshrc
 #
 
-if xset q &>/dev/null; then
-  xset r rate 180 40                   # Sane repeat rate
-  xset -b                              # No bell
-  xset -dpms                           # Keep screen on at all times
-  xset s off                           #
-  xset m 7/5 0                         # Pointer settings
-  setxkbmap us -variant altgr-intl
-fi
+export ZSH="/Users/odys/.oh-my-zsh"
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export TERM=xterm
@@ -17,10 +10,9 @@ fi
 
 export GPG_TTY=$(tty)
 
-# `ls` colors
-if [ -f ~/.dircolors ]; then
-  eval $(dircolors -b ~/.dircolors)
-fi
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 
 #
 # Includes
@@ -55,34 +47,22 @@ alias ll='ls -lFAGh --color=auto --group-directories-first'
 #
 # Aliases
 #
+
 alias g='git'
-alias n='sudo netctl'
 alias mk='make'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
-alias img='sxiv -a'
 alias df='df -h'
-alias sys='systemctl'
-alias s='systemctl'
-alias x='startx'
-alias web='chromium &'
 alias e=$EDITOR
-alias pdf='mupdf'
-alias webserver='python2 -m SimpleHTTPServer'
-alias pacman='sudo pacman --color=auto'
 alias vim=nvim
-alias clip='xclip -sel clip'
-alias irc='weechat'
-alias cloc='tokei'
-alias shred='shred -uvz'
+alias vi=nvim
 alias diskusage='ncdu'
-alias calc=kalk
 alias t=tree-git-ignore
-
-function weather {
-  curl "https://v2.wttr.in/$1"
-}
-
+alias tmh="tmux splitw -h"
+alias tmv="tmux splitw -v"
+alias ga='gatsby'
+alias gad='gatsby develop'
+alias gac='gatsby clean'
 function tree-git-ignore {
   local ignored=$(git ls-files -ci --others --directory --exclude-standard)
   local ignored_filter=$(echo "$ignored" \
@@ -92,10 +72,6 @@ function tree-git-ignore {
     | tr "\\n" "|")
 
   /usr/bin/tree --prune -I ".git|${ignored_filter: : -1}" "$@"
-}
-
-function pdf-slice {
-  qpdf $1 --pages . $2 -- $3
 }
 
 export NNN_USE_EDITOR=1
@@ -160,23 +136,10 @@ precmd() {
   local last=$?
   local indicator=">"
 
+
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     indicator="$(whoami)@$(cat /etc/hostname) #"
   fi
-
-  # Status
-  if [ "$last" -eq 0 ]; then
-    PROMPT="%{$fg[blue]%}$indicator %{$reset_color%}"
-    RPROMPT=""
-  else
-    PROMPT="%{$fg[red]%}$indicator %{$reset_color%}"
-    RPROMPT=" $last"
-  fi
-
-  if [ "$RPROMPT" != "" ]; then
-    RPROMPT="%{$fg[red]%}#$RPROMPT%{$reset_color%}"
-  fi
-
   # Set the window title to the pwd.
   print -Pn "\e]2;%~\a"
 }
@@ -186,47 +149,44 @@ preexec() {
   print -Pn "\e]2;$1 [%~]\a"
 }
 
-#
-# Vi-mode
-#
-bindkey -v
-export KEYTIMEOUT=1
-#
-zle-keymap-select zle-line-init() {
-  # Check ~/.st/config.h for the cursor escape sequences.
-  case $KEYMAP in
-    vicmd)      print -n -- "\e[2 q";;
-    viins|main) print -n -- "\e[4 q";;
-  esac
+export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.radicle/bin:~/.npm-packages/bin:$PATH
+export EDITOR=nvim
+export VISUAL=nvim
+export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
+export RIPGREP_CONFIG_PATH=$HOME/.rgrc
+export PATH="$HOME/.radicle/bin:$PATH"
+export NNN_FIFO=/tmp/nnn.fifo
+export ZSH="/Users/odys/.oh-my-zsh"
 
-  zle reset-prompt
-  zle -R
-}
+eval "$(rbenv init -)"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-zle-line-finish() {
-  print -n -- "\e[2 q"
-}
 
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+  . ~/.nix-profile/etc/profile.d/nix.sh;
+fi # added by Nix installer
 
-col() {
-  awk "{ print \$$1 }"
-}
 
-#
-# Switch to `fg` process with Ctrl-Z
-#
-fg-command() {
-  if [[ ! $#BUFFER -eq 0 ]]; then
-    zle push-input
-  fi
-  BUFFER="fg"
-  zle accept-line
-}
-zle -N fg-command
-bindkey '^Z' fg-command
+# Oh my zsh
 
-# Zsh syntax highlighting
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_THEME="agnoster"
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+ZSH_COMMAND_TIME_MIN_SECONDS=1
+
+plugins=(git rsync docker copybuffer textmate tmux sudo zsh-syntax-highlighting zsh-autosuggestions command-time)
+ZSH_TMUX_AUTOSTART="true"
+export SSH_AUTH_SOCK=/Users/odys/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+source $ZSH/oh-my-zsh.sh
+if [ -e /Users/odys/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/odys/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+export PATH="/usr/local/sbin:$PATH"

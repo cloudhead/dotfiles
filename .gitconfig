@@ -1,10 +1,9 @@
 [user]
-  email = self@cloudhead.io
-  name = Alexis Sellier
-  signingkey = Alexis Sellier <self@cloudhead.io>
-
+  email = odyslam@gmail.com
+  name = Odysseas Lamtzidis
+  signingKey = Odysseas Lamtzidis <odyslam@gmail.com>
 [github]
-  user = cloudhead
+  user = OdysLam
 
 [color]
   branch = auto
@@ -28,8 +27,7 @@
   untracked = cyan
 
 [core]
-  excludesfile = /home/cloudhead/.gitignore
-  editor = /usr/bin/nvim
+  editor = vim
 
 [alias]
   b = branch -v

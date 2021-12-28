@@ -1,4 +1,3 @@
-"
 " .vimrc
 "
 " Tabs and Spaces
@@ -12,6 +11,7 @@ set cindent
 set smarttab
 
 " Misc
+"
 set number
 set ruler
 set showmatch
@@ -33,7 +33,6 @@ set nofoldenable
 set timeoutlen=200                  " Set timeout between key sequences
 set background=dark
 set mouse=a                         " Enable mouse in all modes
-set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
 set showcmd
 set updatetime=250                  " How long before 'CursorHold' event
@@ -41,7 +40,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set nostartofline
-set noshowmode                      " Don't show stuff like `-- INSERT --`
+"set noshowmode                      " Don't show stuff like `-- INSERT --`
 set foldlevel=99                    " Open all folds by default
 set cmdheight=1
 set matchtime=2                     " Shorter brace match time
@@ -50,17 +49,13 @@ set tags+=.tags
 set tags+=codex.tags
 set undofile
 set gdefault                        " Always use /g with %s/
-set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
 set statusline=%<%f\ (%{gitbranch#name()})\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set spelllang=en_us,en_gb
 set completeopt=menu
-set clipboard+=unnamedplus " Requires `xclip`
-set shell=/bin/sh
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
@@ -128,7 +123,7 @@ au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
 au FileType help        setlocal number ts=4  sw=4 noexpandtab
-au FileType solidity    setlocal number ts=4  sw=4 expandtab nowrap
+au FileType solidity    setlocal number ts=4  sw=4 expandtab nowrap colorcolumn=120 textwidth=120 signcolumn=yes
 au FileType graphql     setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
@@ -193,7 +188,7 @@ au FileType haskell setlocal errorformat=
 
 if executable('haskell-tags')
   au BufWritePost *.hs  silent !haskell-tags % '.tags'
-  au BufWritePost *.hsc silent !haskell-tags % '.tags'
+  au BufWritchPost *.hsc silent !haskell-tags % '.tags'
 endif
 
 if executable('ctags')
@@ -213,22 +208,21 @@ nnoremap Q       <NOP>
 nnoremap Y       y$
 
 " Copy selected text to clipboard
-xnoremap Y       "+y
+xnoremap Y       :w !pbcopy
 
 " Paste form clipboard
-noremap PP       "+p
+noremap PP       :r !pbpaste
 
 " Easy command mode switch
 inoremap kj <Esc>
 inoremap <C-l> <C-x><C-l>
 
 " Correct spelling mistakes
-inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
+inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>
 
 " Jump to high/low and scroll
 noremap <C-k> H{
 noremap <C-j> L}
-
 " Move easily between ^ and $
 noremap <C-h> ^
 noremap <C-l> $
@@ -236,10 +230,11 @@ noremap j gj
 noremap k gk
 
 " Like '*' but stays on the original word
-nnoremap <C-n>           *N
-nnoremap <C-p>           #N
-nnoremap c*              *Ncgn
-nnoremap <Leader>h       :nohl<CR>
+
+ nnoremap <C-n>           *N
+ nnoremap <C-p>           #N
+ nnoremap c*              *Ncgn
+ nnoremap <Leader>h       :nohl<CR>
 
 nnoremap <Leader>n      :cnext<CR>
 nnoremap <Leader>p      :cprev<CR>
@@ -252,7 +247,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
  " Select recently pasted text
 nnoremap <leader>v       V`]
-
 " Switch buffers easily
 nnoremap <Tab>   <C-^>
 
@@ -266,8 +260,9 @@ autocmd BufRead,BufNewFile *.cc,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123
 cnoreabbrev W w
 cnoreabbrev Q q
 
-" Ack
-cnoreabbrev ack Ack!
+" Nerdtree toggle
+nnoremap <C-t> :NERDTreeToggle<CR>
+
 
 " File navigation/search
 nnoremap <Leader>o      :FuzzyOpen<CR>
@@ -321,14 +316,14 @@ endfunction
 
 if has("nvim")
   call plug#begin()
-
+  Plug 'ekalinin/Dockerfile.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug  'preservim/nerdtree'
   Plug 'tpope/vim-commentary'
   Plug 'evanleck/vim-svelte', { 'for': ['svelte'], 'branch': 'main' }
   Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-  Plug 'mileszs/ack.vim'
   Plug 'bronson/vim-visual-star-search'
-  Plug 'cloudhead/neovim-fuzzy'
-  Plug 'cloudhead/shady.vim'
   Plug 'gabrielelana/vim-markdown'
   Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/goyo.vim'
@@ -345,6 +340,8 @@ if has("nvim")
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
   Plug 'jparise/vim-graphql'
+  Plug 'tpope/vim-fugitive'
+  Plug 'vim-ruby/vim-ruby'
 
   call plug#end()
 endif
@@ -418,12 +415,7 @@ function! SetupCoc()
   " Trigger completion on <CR>.
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endfunction
-autocmd User CocNvimInit call SetupCoc()
+  autocmd User CocNvimInit call SetupCoc()
+autocmd VimEnter * NERDTree | wincmd p
 
 
-" Use custom colors.
-" This has to go after plugin initialization.
-try
-  colorscheme shady
-catch
-endtry
