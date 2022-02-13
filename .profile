@@ -5,6 +5,7 @@ if command -v keychain >/dev/null; then
 fi
 
 export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.radicle/bin:~/.npm-packages/bin:$PATH
+export PATH=$PATH:~/.foundry/bin
 export NODE_PATH=/usr/lib/node_modules
 export EDITOR=nvim
 export VISUAL=nvim

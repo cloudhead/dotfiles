@@ -34,6 +34,10 @@ if command -v fzy >/dev/null 2>&1 && test -f ~/.fzy.zsh; then
   source ~/.fzy.zsh
 fi
 
+if [ -f ~/.LESS_TERMCAP ]; then
+  source ~/.LESS_TERMCAP
+fi
+
 # K8 integration. We lazy load because it's slow otherwise.
 function kubectl() {
 	if ! type __start_kubectl >/dev/null 2>&1; then
