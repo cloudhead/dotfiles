@@ -333,7 +333,7 @@ if has("nvim")
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release'}
   Plug 'tomlion/vim-solidity'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/plenary.nvim'

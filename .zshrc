@@ -1,17 +1,11 @@
 ##
 # odyslam - .zshrc
 #
-
-export ZSH="/Users/odys/.oh-my-zsh"
-
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export TERM=xterm
 fi
 
 export GPG_TTY=$(tty)
-
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
 
 
 #
@@ -26,29 +20,32 @@ if command -v fzy >/dev/null 2>&1 && test -f ~/.fzy.zsh; then
   source ~/.fzy.zsh
 fi
 
-# K8 integration. We lazy load because it's slow otherwise.
-function kubectl() {
-	if ! type __start_kubectl >/dev/null 2>&1; then
-		unfunction "$0"
-		source <(kubectl completion zsh)
-	fi
-	command kubectl "$@"
-}
-
 # Fzy history search doesn't sort things in a useful way, so we use zsh for now.
 bindkey '^R' history-incremental-search-backward
 
 #
-# ls
-#
-alias l="ls -lFGhL --color=auto --group-directories-first"
-alias ll='ls -lFAGh --color=auto --group-directories-first'
-
-#
 # Aliases
 #
-
+# Foundry
+alias fb="forge build"
+alias ft="forge test"
+# GitHub
 alias g='git'
+alias ga="git -a ."
+alias gc"git commit"
+# Cargo
+alias c="cargo"
+alias cc="cargo check"
+alias cb="cargo build"
+alias ct="cargo test"
+alias cl="cargo check --all && cargo test --all --all-features && cargo +nightly fmt -- --check && cargo +nightly clippy --all --all-features -- -D warnings"
+# Wrangler -- Cloudflare Workers
+alias wd="wrangler dev"
+alias wp="wrangler publish"
+# Javascript
+alias y="yarn"
+# Bash
+alias v="nvim"
 alias mk='make'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
@@ -63,6 +60,7 @@ alias tmv="tmux splitw -v"
 alias ga='gatsby'
 alias gad='gatsby develop'
 alias gac='gatsby clean'
+alias cat='bat'
 function tree-git-ignore {
   local ignored=$(git ls-files -ci --others --directory --exclude-standard)
   local ignored_filter=$(echo "$ignored" \
@@ -152,10 +150,7 @@ preexec() {
 export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.radicle/bin:~/.npm-packages/bin:$PATH
 export EDITOR=nvim
 export VISUAL=nvim
-export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
-export PATH="$HOME/.radicle/bin:$PATH"
-export NNN_FIFO=/tmp/nnn.fifo
 export ZSH="/Users/odys/.oh-my-zsh"
 
 eval "$(rbenv init -)"
@@ -180,13 +175,16 @@ COMPLETION_WAITING_DOTS="true"
 
 ZSH_COMMAND_TIME_MIN_SECONDS=1
 
-plugins=(git rsync docker copybuffer textmate tmux sudo zsh-syntax-highlighting zsh-autosuggestions command-time)
+plugins=(git docker copybuffer textmate tmux sudo zsh-syntax-highlighting zsh-autosuggestions command-time zsh-vi-mode)
 ZSH_TMUX_AUTOSTART="true"
 export SSH_AUTH_SOCK=/Users/odys/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zsh/zsh_secrets
 if [ -e /Users/odys/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/odys/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 export PATH="/usr/local/sbin:$PATH"
+
+export PATH="$PATH:/Users/odys/.foundry/bin"
