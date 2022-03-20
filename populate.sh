@@ -11,3 +11,4 @@ cp -R .vim ~/.vim
 cp -r .config/nvim/ ~/.config/nvim
 cp -r .config/coc/ ~/.config/coc
 
+./install-eth-toolchain.sh
