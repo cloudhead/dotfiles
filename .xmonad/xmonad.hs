@@ -155,6 +155,7 @@ myKeys home conf@XConfig { XMonad.modMask = modMask } =
        , ((modMask, xK_F11),                    safeSpawnProg "slock")
        , ((modMask, xK_F10),                    safeSpawnProg "toggle-displays")
        , ((modMask, xK_F5),                     safeSpawnProg "refresh-display")
+       , ((modMask .|. controlMask, xK_r),      safeSpawn "killall" ["kitty", "-USR1"])
        , ((modMask, xK_p),                      runExecutable)
        , ((modMask .|. shiftMask, xK_p),        editPrompt home)
        , ((modMask, xK_o),                      switchWindow)

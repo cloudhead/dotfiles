@@ -7,6 +7,7 @@ mkdir -p $HOME/recordings
 FPS=${FPS:-6}
 SCALE=${SCALE:-1}
 NAME=${1:-unknown}
+EXT=${2:webm}
 
 # NOTE: To get the active window: `xwininfo -id $(xdotool getactivewindow)`
 
@@ -22,7 +23,7 @@ tmp="$(mktemp).gif"
 let x=$x+1
 let y=$y+1
 
-OUT="$NAME-$now.webm"
+OUT="$NAME-$now.$EXT"
 
 ffmpeg -v warning \
          -video_size ${w}x${h} \

@@ -98,6 +98,10 @@ function tree-git-ignore {
   /usr/bin/tree --prune -I ".git|${ignored_filter: : -1}" "$@"
 }
 
+function find-and-replace {
+  rg "$1" --files-with-matches | xargs sed -i "s/$1/$2/g"
+}
+
 function pdf-slice {
   qpdf $1 --pages . $2 -- $3
 }

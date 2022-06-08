@@ -2,7 +2,7 @@
 -- vim: ft=haskell
 --
 Config {
-       font = "xft:monospace:size=11,fallback:size=11"
+       font = "xft:monospace:size=14,fallback:size=14"
      , borderColor = "black"
      , border = TopB
      , bgColor = "#000000"

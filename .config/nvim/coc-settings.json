@@ -26,6 +26,8 @@
   "coc.source.buffer.enable": false,
   "coc.source.file.enable": false,
 
+  "svelte.enable-ts-plugin": true,
+
   "rust-analyzer.inlayHints.typeHintsSeparator": "",
   "rust-analyzer.inlayHints.chainingHintsSeparator": " ",
   "rust-analyzer.updates.prompt": false,

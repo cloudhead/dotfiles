@@ -26,7 +26,7 @@ set autoread                        " Auto-reload modified files (with no local 
 set ignorecase                      " Ignore case in search
 set smartcase                       " Override ignorecase if uppercase is used in search string
 set report=0                        " Report all changes
-set laststatus=2                    " Always show status-line
+set laststatus=3                    " Always show status-line
 set nocursorline                    " Highlight current line
 set scrolloff=4
 set nofoldenable
@@ -62,6 +62,10 @@ set completeopt=menu
 set clipboard+=unnamedplus " Requires `xclip`
 set shell=/bin/sh
 set signcolumn=yes
+
+" Use modern file-type detection
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
 
 " We don't use tabs much, but at least try and show less cruft
 function! Tabline()
@@ -124,7 +128,7 @@ au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
 au FileType css         setlocal number ts=2  sw=2 noexpandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
-au FileType c,cpp,glsl  setlocal number ts=8  sw=8 noexpandtab
+au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab
 au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
