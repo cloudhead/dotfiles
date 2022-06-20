@@ -1,24 +1,10 @@
 !
 ! .Xresources
 !
-Xft.dpi:        96
+Xft.dpi:        144
 Xft.antialias:  true
 Xft.rgba:       rgb
-
-URxvt*font:              xft:inconsolata:size=14:antialias=true
-URxvt*boldFont:          xft:inconsolata:bold:size=14:antialias=true
-URxvt*internalBorder:    5
-URxvt*externalBorder:    0
-URxvt*saveLines:         8192
-URxvt*scrollBar:         false
-URxvt*scrollTtyOutput:   false
-URxvt*scrollWithBuffer:  true
-URxvt*scrollTtyKeypress: true
-URxvt*scrollColor:       Red4
-URxvt*cursorColor:       Red4
-URxvt*letterSpace:       -1
-URxvt*thickness:         1
-URxvt*scrollstyle:       plain
+Xcursor.size:   16
 
 *background: black
 *foreground: white

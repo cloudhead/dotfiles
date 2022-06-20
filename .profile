@@ -8,6 +8,7 @@ export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.cargo/b
 export PATH=$PATH:~/.foundry/bin
 export NODE_PATH=/usr/lib/node_modules
 export EDITOR=nvim
+export VISUAL=nvim
 export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
 export PATH="$HOME/.radicle/bin:$PATH"

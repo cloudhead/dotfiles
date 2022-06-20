@@ -1,36 +1,30 @@
 * {
-	red:                         maroon;
-	selected-active-foreground:  var(background);
+	foreground:                  white;
+	background:                  rgba(0, 0, 0, 100%);
+	red:                         #B03060;
 	lightfg:                     white;
 	separatorcolor:              var(foreground);
-	urgent-foreground:           var(red);
-	alternate-urgent-background: var(lightbg);
 	lightbg:                     #333333;
 	background-color:            rgba(0, 0, 0, 0%);
 	border-color:                aquamarine;
 	normal-background:           var(background);
-	selected-urgent-background:  var(red);
-	alternate-active-background: var(lightbg);
 	spacing:                     2;
-	alternate-normal-foreground: var(foreground);
-	urgent-background:           var(background);
-	selected-normal-foreground:  white;
+	urgent-foreground:           var(background);
+	urgent-background:           var(red);
 	active-foreground:           white;
-	background:                  rgba(0, 0, 0, 100%);
-	selected-active-background:  var(lightbg);
 	active-background:           var(background);
-	selected-normal-background:  var(lightbg);
-	alternate-normal-background: var(background);
-	foreground:                  white;
+	selected-urgent-background:  aquamarine;
+	selected-active-foreground:  var(background);
+	selected-active-background:  aquamarine;
+	selected-normal-foreground:  var(background);
+	selected-normal-background:  aquamarine;
 	selected-urgent-foreground:  var(background);
 	normal-foreground:           var(foreground);
-	alternate-urgent-foreground: var(red);
-	alternate-active-foreground: white;
 }
 element {
-	padding: 4px 8px;
+	padding: 8px 12px;
 	cursor:  pointer;
-	spacing: 5px;
+	spacing: 0px;
 	border:  0;
 }
 element normal.normal {
@@ -58,16 +52,16 @@ element selected.active {
 	text-color:       var(selected-active-foreground);
 }
 element alternate.normal {
-	background-color: var(alternate-normal-background);
-	text-color:       var(alternate-normal-foreground);
+	background-color: var(normal-background);
+	text-color:       var(normal-foreground);
 }
 element alternate.urgent {
-	background-color: var(alternate-urgent-background);
-	text-color:       var(alternate-urgent-foreground);
+	background-color: var(urgent-background);
+	text-color:       var(urgent-foreground);
 }
 element alternate.active {
-	background-color: var(alternate-active-background);
-	text-color:       var(alternate-active-foreground);
+	background-color: var(active-background);
+	text-color:       var(active-foreground);
 }
 element-text {
 	background-color: rgba(0, 0, 0, 0%);
@@ -99,7 +93,7 @@ textbox {
 	text-color: var(foreground);
 }
 listview {
-	padding:      2px 0px 0px;
+	padding:      0px;
 	scrollbar:    false;
 	border-color: #333;
 	spacing:      2px;
@@ -140,11 +134,10 @@ textbox-num-sep {
 	text-color: #777;
 }
 inputbar {
-	padding:    1px;
+	padding:    12px 12px;
 	spacing:    0px;
 	text-color: var(normal-foreground);
 	children:   [prompt,textbox-prompt-colon,entry,num-filtered-rows,textbox-num-sep,num-rows,case-indicator];
-	padding:    4px 8px;
 }
 case-indicator {
 	spacing:    0;

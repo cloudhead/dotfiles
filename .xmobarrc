@@ -2,12 +2,12 @@
 -- vim: ft=haskell
 --
 Config {
-       font = "xft:monospace:size=14,fallback:size=14"
+       font = "xft:monospace:size=10,fallback:size=10"
      , borderColor = "black"
      , border = TopB
      , bgColor = "#000000"
      , fgColor = "#dddddd"
-     , position = BottomSize C 100 36
+     , position = BottomSize C 100 48
      , persistent = True
      , verbose = True
      , commands =
