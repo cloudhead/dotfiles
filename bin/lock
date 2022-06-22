@@ -1,0 +1,9 @@
+#!/bin/sh
+export XSECURELOCK_AUTH_FOREGROUND_COLOR=aquamarine
+export XSECURELOCK_AUTH_WARNING_COLOR=red
+export XSECURELOCK_FONT="monospace:size=12"
+export XSECURELOCK_PASSWORD_PROMPT=asterisks
+export XSECURELOCK_SHOW_HOSTNAME=0
+export XSECURELOCK_SHOW_USERNAME=0
+
+exec xsecurelock

@@ -5,12 +5,13 @@
 [ -f ~/.env ]     && source ~/.env
 [ -f ~/.awsrc ]   && source ~/.awsrc
 
-export VISUAL=vim
 export GOPATH=~
 
 if command -v nvim >/dev/null 2>&1; then
+  export VISUAL=nvim
   export EDITOR=nvim
 else
+  export VISUAL=vim
   export EDITOR=vim
 fi
 
