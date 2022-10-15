@@ -289,8 +289,8 @@ map <Leader>s       :source ~/.vimrc<CR>
 map <Leader><Space> @:
 
 " Commenting
-nmap <C-_>           <Plug>CommentaryLine
-xmap <C-_>           <Plug>Commentary
+nmap <C-/>           <Plug>CommentaryLine
+xmap <C-/>           <Plug>Commentary
 
 if has("nvim")
   tnoremap <Esc> <C-\><C-n>
@@ -424,6 +424,7 @@ function! SetupCoc()
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endfunction
 autocmd User CocNvimInit call SetupCoc()
+command! CocStop call coc#rpc#stop()
 
 
 " Use custom colors.

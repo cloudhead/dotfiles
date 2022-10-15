@@ -1,6 +1,9 @@
 !
 ! .Xresources
 !
+
+! DPI for 2160p external monitor: 144
+! DPI for 1080p laptop monitor: 112
 Xft.dpi:        144
 Xft.antialias:  true
 Xft.rgba:       rgb

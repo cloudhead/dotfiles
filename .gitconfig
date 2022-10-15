@@ -26,8 +26,12 @@
 [color "diff"]
   meta = yellow
   frag = magenta
-  old = red
-  new = green
+  old = brightred
+  oldMoved = red
+  oldMovedAlternative = red
+  newMoved = green
+  newMovedAlternative = green
+  new = brightgreen
 
 [color "status"]
   added = yellow
@@ -43,6 +47,8 @@
   b = branch -v
   c = commit -v
   s = status -sb
+  r = rebase
+  re = rebase
   st = status
   co = checkout
   d = diff --word-diff=color
@@ -51,6 +57,7 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  delete-merged = branch --merged | xargs git branch -d
   changes = log -c --reverse
   lg = "!f() { \
       git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
@@ -87,7 +94,8 @@
   enabled = 1
 
 [diff]
-  colorMoved = zebra
+  colorMoved = dimmed-zebra
+  colorMovedWs = allow-indentation-change
 
 [fetch]
   prune = true

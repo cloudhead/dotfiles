@@ -11,8 +11,6 @@
   "diagnostic.format": "✗ %message",
   "diagnostic.hintSign": "",
   "diagnostic.level": "warning",
-  "diagnostic.checkCurrentLine": true,
-  "suggest.fixInsertedWord": false,
   "codeLens.enable": false,
   "codeLens.separator": " ",
   "coc.preferences.useQuickfixForLocations": true,
@@ -28,6 +26,10 @@
 
   "svelte.enable-ts-plugin": true,
 
+  "rust-analyzer.completion.postfix.enable": false,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.renderColons": false,
   "rust-analyzer.inlayHints.typeHintsSeparator": "",
   "rust-analyzer.inlayHints.chainingHintsSeparator": " ",
   "rust-analyzer.updates.prompt": false,
@@ -36,11 +38,11 @@
     "macro-error"
   ],
   "rust-analyzer.lens.enable": true,
+  "rust-analyzer.checkOnSave.command": "clippy",
 
   "list.maxHeight": 10,
   "list.autoResize": false,
   "list.extendedSearchMode": false,
 
-  "suggest.fixInsertedWord": false,
   "suggest.maxCompleteItemCount": 32
 }

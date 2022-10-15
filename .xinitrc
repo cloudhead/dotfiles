@@ -9,6 +9,7 @@ set -uex
 
 setxkbmap -option compose:lwin
 setxkbmap -option compose:rwin
+setxkbmap -option compose:menu
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 if [ -f ~/.Xmodmap ]; then
