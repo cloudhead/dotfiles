@@ -99,7 +99,7 @@ function tree-git-ignore {
 }
 
 function find-and-replace {
-  rg "$1" --files-with-matches | xargs sed -i "s/$1/$2/g"
+  rg "$1" --files-with-matches | xargs sed -i "s@$1@$2@g"
 }
 
 function pdf-slice {
@@ -170,6 +170,10 @@ precmd() {
 
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     indicator="$(whoami)@$(cat /etc/hostname) #"
+  fi
+
+  if [ -n "$RAD_HOME" ]; then
+    indicator="RAD_HOME=$RAD_HOME 🌱"
   fi
 
   # Status

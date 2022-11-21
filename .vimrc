@@ -394,6 +394,7 @@ endfunction
 
 command! Write setlocal spell   | Goyo 100x98%
 command! Code  setlocal nospell | Goyo!
+command! GitAdd silent !git add %
 
 " Delete the current file.
 command! Delete call delete(expand('%')) | bdelete!
