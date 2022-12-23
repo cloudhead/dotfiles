@@ -13,7 +13,7 @@ export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
 export PATH="$HOME/.radicle/bin:$PATH"
 export NNN_FIFO=/tmp/nnn.fifo
-export CARGO_BUILD_JOBS=4
+export CARGO_BUILD_JOBS=12
 
 systemctl --user start share-sync
 

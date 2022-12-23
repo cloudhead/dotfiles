@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-deprecations #-}
 import XMonad
 import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog

@@ -15,3 +15,4 @@ else
   export EDITOR=vim
 fi
 
+. "$HOME/.cargo/env"
