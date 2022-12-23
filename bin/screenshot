@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Send to background to let the application launcher exit and get out
+# of the way.
+(sleep 0.033 ; flameshot gui) &
