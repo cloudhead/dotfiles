@@ -417,13 +417,9 @@ function! SetupCoc()
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
   nmap <silent> <leader>r    <Plug>(coc-rename)
 
-  " This is a kind of hack to make <C-Y> not trigger snippet expansion.
-  " We use <C-p><C-n> to insert the selection without triggering anything, and
-  " then close the popup.
-  inoremap <silent><expr> <C-Y> pumvisible() ? "<C-p><C-n><Esc>a" : "\<C-Y>"
-  " Trigger completion on <CR>.
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 endfunction
+
 autocmd User CocNvimInit call SetupCoc()
 command! CocStop call coc#rpc#stop()
 
