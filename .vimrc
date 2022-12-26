@@ -96,7 +96,7 @@ let g:signify_vcs_list = ['git']
 
 " Markdown
 let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_no_default_key_mappings = 1
 
 " Latex
@@ -138,7 +138,7 @@ au FileType graphql     setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
-au FileType markdown    setlocal nonumber conceallevel=2
+au FileType markdown    setlocal nonumber conceallevel=0
 au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
@@ -334,7 +334,7 @@ if has("nvim")
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'cloudhead/shady.vim'
-  Plug 'gabrielelana/vim-markdown'
+  Plug 'preservim/vim-markdown'
   Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/goyo.vim'
   Plug 'exu/pgsql.vim'
