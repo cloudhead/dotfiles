@@ -28,4 +28,4 @@ fi
 [ -f ~/.wacom ] && . ~/.wacom
 
 # `dbus-launch` is required for flameshot.
-exec dbus-launch xmonad
+exec dbus-launch spectrwm
