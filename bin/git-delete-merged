@@ -1,0 +1,2 @@
+#!/bin/sh
+git branch --merged master | grep -E -v "(^\*|master|main)" | xargs git branch -d

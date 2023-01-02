@@ -1,0 +1,12 @@
+#!/bin/sh
+
+LINK="$(readlink -f ~/.config/kitty/kitty.conf)"
+DARK="$(readlink -f ~/.config/kitty/dark.conf)"
+
+if [ $LINK = $DARK ]; then
+  ln -sf ~/.config/kitty/light.conf ~/.config/kitty/kitty.conf
+else
+  ln -sf ~/.config/kitty/dark.conf ~/.config/kitty/kitty.conf
+fi
+
+kitty-reload
