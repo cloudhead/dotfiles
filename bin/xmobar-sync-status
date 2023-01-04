@@ -2,22 +2,18 @@
 
 REMOTE=share
 
-while :; do
-  status="$(systemctl --user is-active share-sync)"
+status="$(systemctl --user is-active share-sync)"
 
-  case "$status" in
-    "active")
-      ping -c1 -w5 $REMOTE 1>/dev/null 2>/dev/null
+case "$status" in
+  "active")
+    ping -c1 -w5 $REMOTE 1>/dev/null 2>/dev/null
 
-      if [ $? -eq 0 ]; then
-        echo "<fc=aquamarine>✔</fc>"
-      else
-        echo "<fc=maroon>!</fc>"
-      fi ;;
+    if [ $? -eq 0 ]; then
+      echo "+@fg=4;✔+@fg=0;"
+    else
+      echo "+@fg=3;!+@fg=0;"
+    fi ;;
 
-    *)
-      echo "<fc=maroon>✘</fc>" ;;
-  esac
-
-  sleep 5
-done
+  *)
+    echo "+@fg=3;✘+@fg=0;" ;;
+esac
