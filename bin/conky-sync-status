@@ -1,0 +1,35 @@
+#!/bin/sh
+
+REMOTE=share
+
+status="$(systemctl --user is-active share-sync)"
+dry=$(rsync --dry-run --checksum --delete -ril ~/share/ $REMOTE:share/)
+
+green() {
+  echo -n "+@fg=4;$1+@fg=0;"
+}
+
+red() {
+  echo -n "+@fg=3;$1+@fg=0;"
+}
+
+if [[ "$dry" ]]; then
+  red "!"
+else
+  green "✔"
+fi
+
+case "$status" in
+  "active")
+    ping -c1 -w5 $REMOTE 1>/dev/null 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+      green "✔"
+    else
+      red "!"
+    fi ;;
+
+  *)
+    red "✘" ;;
+esac
+echo
