@@ -275,6 +275,7 @@ cnoreabbrev ack Ack!
 " File navigation/search
 nnoremap <Leader>o      :FuzzyOpen<CR>
 nnoremap <Leader>f      :FuzzyGrep<CR>
+nnoremap <Leader>t      :FuzzyTodo<CR>
 
 " Navigate relative to the current file
 cmap     %/         %:p:h/
