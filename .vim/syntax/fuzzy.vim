@@ -3,8 +3,8 @@
 " Maintainer:	Alexis Sellier
 " File Types:	.fuzzy
 "
-syntax match fuzzyTodo       'TODO'
-syntax match fuzzyFixme      'FIXME'
+syntax match fuzzyTodo       '\<TODO\ze\(([^)]\+)\)\?:\?'
+syntax match fuzzyFixme      '\<FIXME\ze\(([^)]\+)\)\?:\?'
 syntax match fuzzyLocation   '^[0-9_a-zA-Z-/]\+\(\.[a-zA-Z]\+\)\?:[0-9]\+:'
 
 hi fuzzyTodo          cterm=bold ctermfg=cyan
