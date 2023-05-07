@@ -124,7 +124,7 @@ au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-h
 au FileType javascript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
-au FileType css         setlocal number ts=2  sw=2 noexpandtab nowrap
+au FileType css         setlocal number sts=2 sw=2 expandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
 au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab
 au FileType lua         setlocal number       sw=2 expandtab
@@ -138,6 +138,7 @@ au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak t
 au FileType pandoc      setlocal nonumber
 au FileType markdown    setlocal nonumber conceallevel=0
 au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
+au FileType todo        setlocal nonumber sw=2 expandtab nolinebreak nowrap textwidth=0
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
 

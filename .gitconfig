@@ -43,6 +43,9 @@
   editor = /usr/bin/nvim
   pager = less -F -X
 
+[push]
+  autoSetupRemote = true
+
 [alias]
   b = branch -v
   c = commit -v

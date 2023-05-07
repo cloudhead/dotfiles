@@ -2,9 +2,6 @@
 
 REMOTE=share
 
-status="$(systemctl --user is-active share-sync)"
-dry=$(rsync --dry-run --checksum --delete -ril ~/share/ $REMOTE:share/)
-
 green() {
   echo -n "+@fg=4;$1+@fg=0;"
 }
@@ -12,6 +9,15 @@ green() {
 red() {
   echo -n "+@fg=3;$1+@fg=0;"
 }
+
+status="$(systemctl --user is-active share-sync)"
+dry=$(rsync --dry-run --checksum --delete -ril ~/share/ $REMOTE:share/)
+
+if [ $? -ne 0 ]; then
+    red "✘"
+    echo
+    exit 0
+fi
 
 if [[ "$dry" ]]; then
   red "!"

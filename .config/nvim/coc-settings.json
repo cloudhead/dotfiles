@@ -37,9 +37,13 @@
   "rust-analyzer.inlayHints.typeHintsSeparator": "",
   "rust-analyzer.inlayHints.chainingHintsSeparator": " ",
   "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.diagnostics.enableExperimental": true,
+  "rust-analyzer.diagnostics.experimental.enable": false,
+  "rust-analyzer.experimental.procAttrMacros": true,
+  "rust-analyzer.procMacro.attributes.enable": true,
+  "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.diagnostics.disabled": [
-    "macro-error"
+    "macro-error",
+    "unresolved-proc-macro"
   ],
   "rust-analyzer.lens.enable": true,
   "rust-analyzer.checkOnSave.command": "clippy",

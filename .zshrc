@@ -72,7 +72,7 @@ alias x='startx'
 alias web='chromium &'
 alias e=$EDITOR
 alias pdf='mupdf'
-alias webserver='python2 -m SimpleHTTPServer'
+alias webserver='python -m http.server'
 alias pacman='sudo pacman --color=auto'
 alias vim=nvim
 alias clip='xclip -sel clip'
