@@ -167,19 +167,21 @@ setopt INTERACTIVECOMMENTS
 precmd() {
   local last=$?
   local indicator=">"
+  local extra=""
 
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     indicator="$(whoami)@$(cat /etc/hostname) #"
   fi
 
   if [ -n "$RAD_HOME" ]; then
-    indicator="RAD_HOME=$RAD_HOME 🌱"
+    indicator="🌱"
+    extra=" RAD_HOME=$RAD_HOME"
   fi
 
   # Status
   if [ "$last" -eq 0 ]; then
     PROMPT="%{$fg[blue]%}$indicator %{$reset_color%}"
-    RPROMPT=""
+    RPROMPT="$extra"
   else
     PROMPT="%{$fg[red]%}$indicator %{$reset_color%}"
     RPROMPT=" $last"
