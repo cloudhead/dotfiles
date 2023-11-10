@@ -338,7 +338,6 @@ if has("nvim")
   Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/goyo.vim'
   Plug 'exu/pgsql.vim'
-  Plug 'hail2u/vim-css3-syntax'
   Plug 'lervag/vimtex', { 'for': ['tex'] }
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
@@ -346,10 +345,9 @@ if has("nvim")
   Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
   Plug 'tomlion/vim-solidity'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
-  Plug 'jparise/vim-graphql'
+  Plug 'lambdalisue/fern.vim'
 
   call plug#end()
 endif

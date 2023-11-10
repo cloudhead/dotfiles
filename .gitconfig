@@ -61,7 +61,9 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   delete-merged = branch --merged | xargs git branch -d
+  open-patch = push rad HEAD:refs/patches
   changes = log -c --reverse
+  sl = stash list --format='%gd (%cr): %gs'
   lg = "!f() { \
       git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
       sed \

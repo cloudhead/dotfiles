@@ -35,6 +35,7 @@ if command -v fzy >/dev/null 2>&1 && test -f ~/.fzy.zsh; then
 fi
 
 if [ -f ~/.LESS_TERMCAP ]; then
+  export LESS="--RAW-CONTROL-CHARS"
   source ~/.LESS_TERMCAP
 fi
 
