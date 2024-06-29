@@ -83,6 +83,7 @@ alias shred='shred -uvz'
 alias diskusage='ncdu'
 alias calc=kalk
 alias t=tree-git-ignore
+alias sql3='sqlite3 -box'
 
 function weather {
   curl "https://v2.wttr.in/$1"

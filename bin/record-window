@@ -1,17 +1,23 @@
 #!/bin/sh
+set -e
 
 unset x y w h
 
-mkdir -p $HOME/recordings
-
-FPS=${FPS:-6}
+FPS=${FPS:-12}
 SCALE=${SCALE:-1}
 NAME=${1:-unknown}
-EXT=${2:webm}
+EXT=${2:-webm}
+
+if ! command -v xwininfo >/dev/null 2>&1; then
+  printf "fatal: command 'xwininfo' not found"
+  exit 1
+fi
+
+ID="$(xwininfo | grep "Window id" | cut -d' ' -f4 -)"
 
 # NOTE: To get the active window: `xwininfo -id $(xdotool getactivewindow)`
 
-eval $(xwininfo -name "$NAME" |
+eval $(xwininfo -id "$ID" |
     sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
            -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
            -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
@@ -26,12 +32,14 @@ let y=$y+1
 OUT="$NAME-$now.$EXT"
 
 ffmpeg -v warning \
-         -video_size ${w}x${h} \
-             -framerate 6 \
-             -f x11grab \
-             -i :0.0+${x},${y} \
-             -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE \
-             "$OUT"
+       -video_size ${w}x${h} \
+       -framerate $FPS \
+       -f x11grab \
+       -i :0.0+${x},${y} \
+       -vcodec libvpx-vp9 \
+       -b:v 1M \
+       -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE \
+       "$OUT"
 
 echo "saved to '$OUT'"
 

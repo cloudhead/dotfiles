@@ -17,6 +17,7 @@
   "diagnostic.floatConfig.maxHeight": 24,
   "codeLens.enable": false,
   "codeLens.separator": " ",
+  "inlayHint": false,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.bracketEnterImprove": false,
   "coc.preferences.snippets.enable": false,
@@ -46,7 +47,6 @@
     "unresolved-proc-macro"
   ],
   "rust-analyzer.lens.enable": true,
-  "rust-analyzer.checkOnSave.command": "clippy",
 
   "list.maxHeight": 10,
   "list.autoResize": false,

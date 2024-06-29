@@ -61,6 +61,7 @@ set spelllang=en_us,en_gb
 set completeopt=menu
 set shell=/bin/sh
 set signcolumn=yes
+set notermguicolors
 
 " Copy all yanked text to system clipboard (requires `xclip`)
 " set clipboard+=unnamedplus
@@ -298,7 +299,7 @@ endif
 
 if executable('rg')
   let g:ackprg = 'rg -F -S --no-heading --vimgrep'
-  set grepprg=rg\ -S\ -F\ --no-heading\ --vimgrep\ $*
+  set grepprg=rg\ -S\ -F\ --no-heading\ --vimgrep
 endif
 
 " Syntax coloring
@@ -406,6 +407,17 @@ function! SetupCoc()
   nmap <silent> gk           <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
   nmap <silent> <leader>r    <Plug>(coc-rename)
+
+  " Use K to show documentation in preview window
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
 
   inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 endfunction

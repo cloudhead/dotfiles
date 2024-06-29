@@ -1,9 +1,10 @@
 ##
 # cloudhead - .zshenv
 #
-[ -f ~/.profile ] && source ~/.profile
-[ -f ~/.env ]     && source ~/.env
-[ -f ~/.awsrc ]   && source ~/.awsrc
+[ -f ~/.profile ]   && source ~/.profile
+[ -f ~/.env ]       && source ~/.env
+[ -f ~/.awsrc ]     && source ~/.awsrc
+[ -f ~/.cargo/env ] && source ~/.cargo/env
 
 export GOPATH=~
 export PAGER="less -s -M +Gg"
@@ -16,4 +17,3 @@ else
   export EDITOR=vim
 fi
 
-. "$HOME/.cargo/env"
