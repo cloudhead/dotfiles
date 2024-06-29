@@ -20,6 +20,10 @@ if [ -f ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi
 
+if [ -f ~/.Xresources.local ]; then
+  xrdb -merge ~/.Xresources.local
+fi
+
 if command -v udiskie >/dev/null 2>&1; then
   udiskie --no-notify --use-udisks2 &
 fi

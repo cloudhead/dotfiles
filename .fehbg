@@ -1,2 +1,6 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/cloudhead/images/background'
+if command -v feh >/dev/null 2>&1; then
+  if [ -f "~/images/background" ]; then
+    feh --no-fehbg --bg-fill "~/images/background"
+  fi
+fi
