@@ -1,7 +1,5 @@
-[user]
-  email = self@cloudhead.io
-  name = Alexis Sellier
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL460KIEccS4881p7PPpiiQBsxF+H5tgC6De6crw9rbU
+[include]
+  path = .gitconfig.user
 
 [github]
   user = cloudhead
