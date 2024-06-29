@@ -13,5 +13,5 @@ conky.text = [[
  +@fg=1;/+@fg=0;${fs_free /} \
  +@fg=1;RAM+@fg=0; $memavail \
  +@fg=1;CPU+@fg=0; ${cpu}% \
- +@fg=1;⏻+@fg=0; ${battery_percent BAT0}%
+ +@fg=1;↯+@fg=0; ${battery_percent BAT0}%
 ]]
