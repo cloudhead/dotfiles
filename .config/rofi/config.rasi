@@ -1,5 +1,5 @@
 configuration {
-  font: "monospace 18";
+  font: "monospace 14";
   timeout {
     action: "kb-cancel";
     delay: 0;
