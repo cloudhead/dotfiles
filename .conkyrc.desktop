@@ -1,0 +1,20 @@
+# vim: filetype=conky
+
+conky.config = {
+  out_to_x = false,
+  out_to_console = true,
+  update_interval = 1.0,
+  total_run_times = 0,
+  short_units = true,
+  pad_percents = 2,
+  use_spacer = "left"
+}
+
+conky.text = [[
+ +@fn=1;${execi 60 conky-sync-status}+@fn=0; \
+ +@fg=1;/+@fg=0; ${fs_free /} \
+ +@fg=1;/home+@fg=0; ${fs_free /home} \
+ +@fg=1;RAM+@fg=0; $memavail \
+ +@fg=1;CPU+@fg=0; ${cpu}% \
+ +@fg=1;↓+@fg=0; ${downspeed eno1}
+]]

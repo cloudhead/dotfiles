@@ -17,11 +17,6 @@ export CARGO_BUILD_JOBS=12
 
 systemctl --user start share-sync
 
-if command -v xinput >/dev/null; then
-  prop="$(xinput | rg Touchpad | rg -o 'id=[0-9]+' | sed 's/id=//')"
-  xinput --set-prop "$prop" "libinput Disable While Typing Enabled" 0
-fi
-
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh;
 fi # added by Nix installer

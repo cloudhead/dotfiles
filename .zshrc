@@ -2,15 +2,6 @@
 # cloudhead - .zshrc
 #
 
-if xset q &>/dev/null; then
-  xset r rate 180 40                   # Sane repeat rate
-  xset -b                              # No bell
-  xset -dpms                           # Keep screen on at all times
-  xset s off                           #
-  xset m 7/5 0                         # Pointer settings
-  setxkbmap us -variant altgr-intl
-fi
-
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   export TERM=xterm
 fi

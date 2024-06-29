@@ -27,5 +27,18 @@ fi
 [ -f ~/.fehbg ] && . ~/.fehbg
 [ -f ~/.wacom ] && . ~/.wacom
 
+if xset q &>/dev/null; then
+  xset r rate 180 40                   # Sane repeat rate
+  xset -b                              # No bell
+  xset -dpms                           # Keep screen on at all times
+  xset s off                           #
+  xset m 7/5 0                         # Pointer settings
+  setxkbmap us -variant altgr-intl
+fi
+
+if command -v xbindkeys >/dev/null 2>&1; then
+  xbindkeys
+fi
+
 # `dbus-launch` is required for flameshot.
 exec dbus-launch spectrwm

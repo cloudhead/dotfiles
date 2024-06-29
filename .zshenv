@@ -16,4 +16,3 @@ else
   export VISUAL=vim
   export EDITOR=vim
 fi
-
