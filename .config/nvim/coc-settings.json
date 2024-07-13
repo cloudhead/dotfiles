@@ -31,6 +31,8 @@
 
   "svelte.enable-ts-plugin": true,
 
+  "rust-analyzer.server.extraEnv": "RA_LOG=debug",
+  "rust-analyzer.server.path": "rust-analyzer",
   "rust-analyzer.completion.postfix.enable": false,
   "rust-analyzer.inlayHints.closingBraceHints.enable": false,
   "rust-analyzer.inlayHints.parameterHints.enable": false,

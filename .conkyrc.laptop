@@ -8,10 +8,11 @@ conky.config = {
   use_spacer = "left"
 }
 conky.text = [[
- +@fn=1;${execi 60 conky-sync-status}+@fn=0; \
- +@fg=1;✳+@fg=0; ${wireless_essid wlan0}${wireless_link_qual_perc wlan0}% \
- +@fg=1;/+@fg=0;${fs_free /} \
- +@fg=1;RAM+@fg=0; $memavail \
- +@fg=1;CPU+@fg=0; ${cpu}% \
- +@fg=1;↯+@fg=0; ${battery_percent BAT0}%
+ +@fn=1;${execi 60 conky-sync-status}+@fn=0;  \
+ +@fn=1;${execi 6 conky-radicle-status}+@fn=0;  \
+ +@fg=1;+@fg=0; ${wireless_essid wlan0}${wireless_link_qual_perc wlan0}%  \
+ +@fg=1;/+@fg=0;${fs_free /}  \
+ +@fg=1;RAM+@fg=0; $memavail  \
+ +@fg=1;CPU+@fg=0; ${cpu}%  \
+ ${execi 1 conky-acpi-status}
 ]]

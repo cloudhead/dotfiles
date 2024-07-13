@@ -424,6 +424,7 @@ endfunction
 
 autocmd User CocNvimInit call SetupCoc()
 command! CocStop call coc#rpc#stop()
+command! CocLspLogs CocCommand workspace.showOutput
 
 
 " Use custom colors.
