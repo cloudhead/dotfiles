@@ -1,6 +1,6 @@
 #!/bin/sh
 
 if command -v xsetwacom >/dev/null 2>&1; then
-	xsetwacom --set "Wacom Intuos Pro M Finger touch" Gesture off
-	xsetwacom --set "Wacom Intuos Pro M Finger touch" Touch off
+	xsetwacom --set "Wacom Intuos Pro M Finger touch" Gesture off || echo "Could not find wacom device"
+	xsetwacom --set "Wacom Intuos Pro M Finger touch" Touch off || echo "Could not find wacom device"
 fi
