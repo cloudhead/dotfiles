@@ -1,6 +1,6 @@
 #!/bin/sh
 if command -v feh >/dev/null 2>&1; then
   if [ -f "~/images/background" ]; then
-    feh --no-fehbg --bg-fill "~/images/background"
+    feh --force-aliasing --no-fehbg --bg-fill "~/images/background"
   fi
 fi

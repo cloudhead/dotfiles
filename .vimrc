@@ -91,12 +91,11 @@ endif
 
 let mapleader = "\<Space>"
 
-let g:signify_vcs_list = ['git']
+" vim.wiki
+let g:wiki_filetypes = ['wiki']
 
-" Markdown
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_no_default_key_mappings = 1
+" signify
+let g:signify_vcs_list = ['git']
 
 " Latex
 let g:vimtex_quickfix_mode = 0
@@ -152,6 +151,7 @@ au BufRead,BufNewFile *.rs        setf rust
 au BufRead,BufNewFile *.mustache  setf mustache
 au BufRead,BufNewFile *.tera      setf htmldjango
 au BufRead,BufNewFile *.svelte    setf svelte
+au BufRead,BufNewFile *.wiki      setf wiki
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -177,6 +177,9 @@ endfunction
 
 " Markdown, highlight YAML frontmatter
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_no_default_key_mappings = 1
 
 " We use a POSIX shell
 let g:is_posix = 1
@@ -335,7 +338,6 @@ if has("nvim")
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'cloudhead/shady.vim'
-  Plug 'preservim/vim-markdown'
   Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/goyo.vim'
   Plug 'exu/pgsql.vim'
@@ -344,11 +346,11 @@ if has("nvim")
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
   Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
-  Plug 'tomlion/vim-solidity'
   Plug 'neovim/nvim-lspconfig'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
   Plug 'lambdalisue/fern.vim'
+  Plug 'lervag/wiki.vim'
 
   call plug#end()
 endif
@@ -425,7 +427,6 @@ endfunction
 autocmd User CocNvimInit call SetupCoc()
 command! CocStop call coc#rpc#stop()
 command! CocLspLogs CocCommand workspace.showOutput
-
 
 " Use custom colors.
 " This has to go after plugin initialization.
