@@ -27,8 +27,8 @@ fi
 
 echo "Backup service started.." | systemd-cat -p info
 
-while inotifywait -qqr \
-  -e modify -e moved_to -e moved_from -e create -e delete "$dir";
+while inotifywait -t 60 -qqr \
+  -e close_write -e moved_to -e moved_from -e delete "$dir";
 do
   rsync --del -avz $dir $user@box:share
 done

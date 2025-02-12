@@ -141,6 +141,8 @@ au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidt
 au FileType todo        setlocal nonumber sw=2 expandtab nolinebreak nowrap textwidth=0
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
+au FileType verilog     setlocal commentstring=//\ %s
+au FileType riscv       setlocal number sts=4 sw=4 expandtab noautoindent commentstring=#\ %s
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
@@ -274,9 +276,6 @@ autocmd BufRead,BufNewFile *.cc,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123
 cnoreabbrev W w
 cnoreabbrev Q q
 
-" Ack
-cnoreabbrev ack Ack!
-
 " File navigation/search
 nnoremap <Leader>o      :FuzzyOpen<CR>
 nnoremap <Leader>f      :FuzzyGrep<CR>
@@ -300,10 +299,13 @@ if has("nvim")
   tnoremap <Esc> <C-\><C-n>
 endif
 
+" Grep
 if executable('rg')
-  let g:ackprg = 'rg -F -S --no-heading --vimgrep'
-  set grepprg=rg\ -S\ -F\ --no-heading\ --vimgrep
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
 endif
+command! -nargs=+ Rg execute 'silent grep! <args>' | copen 12
+autocmd FileType qf nnoremap <buffer> <CR> <CR>
 
 " Syntax coloring
 syntax enable
@@ -334,7 +336,6 @@ if has("nvim")
   Plug 'tpope/vim-commentary'
   Plug 'evanleck/vim-svelte', { 'for': ['svelte'], 'branch': 'main' }
   Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-  Plug 'mileszs/ack.vim'
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
   Plug 'cloudhead/shady.vim'
@@ -345,12 +346,13 @@ if has("nvim")
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte'] }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte', 'c'] }
   Plug 'neovim/nvim-lspconfig'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
   Plug 'lambdalisue/fern.vim'
   Plug 'lervag/wiki.vim'
+  Plug 'laurelmay/riscv.vim'
 
   call plug#end()
 endif
@@ -366,7 +368,11 @@ command! QuickfixSigns call s:QuickfixSigns()
 autocmd CursorHold *.rs silent QuickfixSigns
 
 function! s:QuickfixSigns()
-  silent! cgetfile
+  " Only try to read from .errors if it exists and is non-empty
+  if filereadable('.errors') && getfsize('.errors') > 0
+    silent! cgetfile
+  endif
+
   sign unplace *
   for dict in getqflist()
     if dict.type != 'E'
@@ -409,6 +415,9 @@ function! SetupCoc()
   nmap <silent> gk           <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
   nmap <silent> <leader>r    <Plug>(coc-rename)
+
+  " Auto-format C files.
+  autocmd BufWritePre *.c,*.h :call CocAction('format')
 
   " Use K to show documentation in preview window
   nnoremap <silent> K :call <SID>show_documentation()<CR>

@@ -15,8 +15,8 @@ export RIPGREP_CONFIG_PATH=$HOME/.rgrc
 export NNN_FIFO=/tmp/nnn.fifo
 export CARGO_BUILD_JOBS=12
 
-systemctl --user start share-sync
-
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh;
 fi # added by Nix installer
+
+export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"

@@ -53,6 +53,8 @@ alias ll='ls -lFAGh --color=auto --group-directories-first'
 #
 alias g='git'
 alias n='sudo netctl'
+alias b='yazi'
+alias f='fd'
 alias mk='make'
 alias mv='/bin/mv -i'
 alias ..='cd ..'
