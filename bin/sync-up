@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+
+REMOTE_HOST=backup
+REMOTE_USER=$USER
+
+# Check if directory parameter is provided.
+if [ $# -ne 1 ]; then
+  echo "usage: $0 <dir>"
+  exit 1
+fi
+
+# Check if the provided path exists and is a directory.
+if [ ! -d "$1" ]; then
+  echo "Error: '$1' is not a directory or does not exist"
+fi
+
+# Enter directory to upload.
+cd "$1"
+# Get absolute path.
+DIR=$(pwd)
+# Get the relative path from current directory.
+REMOTE_DIR=$(echo "$DIR" | sed "s#^$HOME/##")
+
+echo "$DIR -> ${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_DIR"
+exec rsync -avz -R --mkpath --del --info=progress2 \
+  --filter=':- .gitignore' \
+  . "${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_DIR/"
