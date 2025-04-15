@@ -50,6 +50,10 @@
   ],
   "rust-analyzer.lens.enable": true,
 
+  "clangd.fallbackFlags": [
+    "-x", "c"
+  ],
+
   "list.maxHeight": 10,
   "list.autoResize": false,
   "list.extendedSearchMode": false,

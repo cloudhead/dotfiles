@@ -16,13 +16,13 @@ if [ ! -d "$1" ]; then
 fi
 
 # Enter directory to upload.
-cd "$1"
+cd "$1" && shift
 # Get absolute path.
 DIR=$(pwd)
 # Get the relative path from current directory.
 REMOTE_DIR=$(echo "$DIR" | sed "s#^$HOME/##")
 
 echo "$DIR -> ${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_DIR"
-exec rsync -avz -R --mkpath --del --info=progress2 \
-  --filter=':- .gitignore' \
+exec rsync -avz -R --mkpath --info=progress2 \
+  --filter=':- .gitignore' "$@" \
   . "${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_DIR/"

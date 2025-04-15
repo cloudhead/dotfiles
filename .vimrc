@@ -100,6 +100,9 @@ let g:signify_vcs_list = ['git']
 " Latex
 let g:vimtex_quickfix_mode = 0
 
+" Why this is not the default, I don't know.
+let g:c_syntax_for_h = 1
+
 " Svelte
 let g:svelte_preprocessors = ['typescript', 'ts']
 let g:svelte_preprocessor_tags = [
@@ -126,7 +129,7 @@ au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
 au FileType css         setlocal number sts=2 sw=2 expandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
-au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab
+au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab nowrap
 au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab
 au FileType vim,ruby    setlocal number sts=2 sw=2 expandtab
@@ -143,6 +146,7 @@ au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
 au FileType verilog     setlocal commentstring=//\ %s
 au FileType riscv       setlocal number sts=4 sw=4 expandtab noautoindent commentstring=#\ %s
+au FileType radiance    setlocal number ts=4 sw=4 expandtab nowrap commentstring=//\ %s
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
@@ -154,6 +158,7 @@ au BufRead,BufNewFile *.mustache  setf mustache
 au BufRead,BufNewFile *.tera      setf htmldjango
 au BufRead,BufNewFile *.svelte    setf svelte
 au BufRead,BufNewFile *.wiki      setf wiki
+au BufRead,BufNewFile *.r         setf radiance
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -268,9 +273,6 @@ nnoremap <Tab>   <C-^>
 
 " Switch between .c and .h files easily
 autocmd BufRead,BufNewFile *.c,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-
-" Switch between .cc and .h files easily
-autocmd BufRead,BufNewFile *.cc,*.h nnoremap <silent> <S-Tab> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 
 " Actually easier to type and I do it by mistake anyway
 cnoreabbrev W w
