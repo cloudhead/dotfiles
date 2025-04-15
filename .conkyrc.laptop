@@ -9,7 +9,6 @@ conky.config = {
 }
 conky.text = [[
  +@fn=1;${execi 60 conky-sync-status}+@fn=0;  \
- +@fn=1;${execi 6 conky-radicle-status}+@fn=0;  \
  +@fg=1;+@fg=0; ${wireless_essid wlan0}${wireless_link_qual_perc wlan0}%  \
  +@fg=1;/+@fg=0;${fs_free /}  \
  +@fg=1;RAM+@fg=0; $memavail  \
