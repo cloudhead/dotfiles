@@ -159,6 +159,7 @@ au BufRead,BufNewFile *.tera      setf htmldjango
 au BufRead,BufNewFile *.svelte    setf svelte
 au BufRead,BufNewFile *.wiki      setf wiki
 au BufRead,BufNewFile *.r         setf radiance
+au BufRead,BufNewFile *.h         set filetype=c
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -303,10 +304,22 @@ endif
 
 " Grep
 if executable('rg')
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ --smart-case
   set grepformat=%f:%l:%c:%m
 endif
-command! -nargs=+ Rg execute 'silent grep! <args>' | copen 12
+command! -nargs=+ -complete=file Rg call Ripgrep(<q-args>)
+command! -nargs=+ -complete=file RgAll call Ripgrep(<q-args>, '--no-ignore')
+
+function! Ripgrep(query, ...)
+  " Get additional flags (like --no-ignore)
+  let l:extra_flags = a:0 > 0 ? a:1 : ''
+  " Build the search command
+  let l:cmd = 'silent grep! ' . l:extra_flags . ' ' . shellescape(a:query)
+  " Execute search and open quickfix
+  execute l:cmd
+  copen 12
+endfunction
+
 autocmd FileType qf nnoremap <buffer> <CR> <CR>
 
 " Syntax coloring
@@ -352,9 +365,9 @@ if has("nvim")
   Plug 'neovim/nvim-lspconfig'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
-  Plug 'lambdalisue/fern.vim'
   Plug 'lervag/wiki.vim'
   Plug 'laurelmay/riscv.vim'
+  Plug 'kblin/vim-fountain'
 
   call plug#end()
 endif

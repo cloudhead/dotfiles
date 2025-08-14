@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if command -v keychain >/dev/null; then
-  eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa ~/.radicle/keys/radicle)
+  eval $(keychain --eval -Q --quiet ~/.ssh/id_rsa ~/.radicle/keys/radicle)
 fi
 
 export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.radicle/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.npm-packages/bin:$PATH

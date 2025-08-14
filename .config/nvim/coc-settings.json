@@ -23,7 +23,7 @@
   "coc.preferences.snippets.enable": false,
   "coc.preferences.enableMessageDialog": true,
   "coc.preferences.formatOnSaveFiletypes": [
-    "rust"
+    "rust", "c", "cpp"
   ],
   "coc.source.snippets.enable": false,
   "coc.source.buffer.enable": false,
@@ -57,6 +57,14 @@
   "list.maxHeight": 10,
   "list.autoResize": false,
   "list.extendedSearchMode": false,
+
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+      "filetypes": ["c"]
+    }
+  },
 
   "suggest.maxCompleteItemCount": 32
 }
