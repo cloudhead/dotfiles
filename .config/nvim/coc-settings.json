@@ -53,6 +53,10 @@
   "clangd.fallbackFlags": [
     "-x", "c"
   ],
+  "clangd.arguments": [
+    "-header-insertion=never",
+    "-suggest-missing-includes=false"
+  ],
 
   "list.maxHeight": 10,
   "list.autoResize": false,

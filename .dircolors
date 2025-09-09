@@ -54,34 +54,34 @@ OTHER_WRITABLE 00                      # dir that is other-writable (o+w) and no
 STICKY 00                              # dir with the sticky bit set (+t) and not other-writable
 EXEC 00;32;5;64                        # This is for files with execute permission:
 
-## Archives or compressed (violet + bold for compression)
-#
-.tar    00;35
-.tgz    00;35
-.lzh    00;35
-.lzma   00;35
-.tlz    00;35
-.txz    00;35
-.zip    00;35
-.z      00;35
-.Z      00;35
-.dz     00;35
-.gz     00;35
-.lz     00;35
-.xz     00;35
-.bz2    00;35
-.bz     00;35
-.tbz    00;35
-.tbz2   00;35
-.tz     00;35
-.deb    00;35
-.jar    00;35
-.rar    00;35
-.7z     00;35
-.rz     00;35
-.apk    00;35
-.gem    00;35
-.pdf    00;35
+## Archives or compressed
+
+.tar    00;37
+.tgz    00;37
+.lzh    00;37
+.lzma   00;37
+.tlz    00;37
+.txz    00;37
+.zip    00;37
+.z      00;37
+.Z      00;37
+.dz     00;37
+.gz     00;37
+.lz     00;37
+.xz     00;37
+.bz2    00;37
+.bz     00;37
+.tbz    00;37
+.tbz2   00;37
+.tz     00;37
+.deb    00;37
+.jar    00;37
+.rar    00;37
+.7z     00;37
+.rz     00;37
+.apk    00;37
+.gem    00;37
+.pdf    00;37
 
 # Image formats (yellow)
 .jpg    00;36;5;136

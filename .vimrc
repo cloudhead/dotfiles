@@ -431,9 +431,6 @@ function! SetupCoc()
   nmap <silent> <leader>/    :CocList --interactive symbols<CR>
   nmap <silent> <leader>r    <Plug>(coc-rename)
 
-  " Auto-format C files.
-  autocmd BufWritePre *.c,*.h :call CocAction('format')
-
   " Use K to show documentation in preview window
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
