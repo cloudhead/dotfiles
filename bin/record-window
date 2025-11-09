@@ -1,46 +1,41 @@
-#!/bin/sh
-set -e
+#!/usr/bin/env sh
+set -eu
 
-unset x y w h
-
-FPS=${FPS:-12}
+FPS=${FPS:-16}
 SCALE=${SCALE:-1}
-NAME=${1:-unknown}
-EXT=${2:-webm}
+CRF=${CRF:-21}
+NAME=${1:-capture}
+DISPLAY=${DISPLAY:-:0.0}
+SLOP_OPTS=${SLOP_OPTS:-}
 
-if ! command -v xwininfo >/dev/null 2>&1; then
-  printf "fatal: command 'xwininfo' not found"
-  exit 1
-fi
+need() {
+  command -v "$1" >/dev/null 2>&1 || {
+    printf "fatal: %s not found\n" "$1"; exit 1;
+  };
+}
 
-ID="$(xwininfo | grep "Window id" | cut -d' ' -f4 -)"
+need slop
+need ffmpeg
 
-# NOTE: To get the active window: `xwininfo -id $(xdotool getactivewindow)`
+# Pick region/window: "x y w h"
+set -- $(slop $SLOP_OPTS -f '%x %y %w %h') || { printf "aborted\n"; exit 1; }
+x=$1 y=$2 w=$3 h=$4
 
-eval $(xwininfo -id "$ID" |
-    sed -n -e "s/^ \+Absolute upper-left X: \+\([0-9]\+\).*/x=\1/p" \
-           -e "s/^ \+Absolute upper-left Y: \+\([0-9]\+\).*/y=\1/p" \
-           -e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
-           -e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p" )
+VF="crop=iw-2:ih-2:1:1,fps=${FPS},scale=trunc(iw*${SCALE}/2)*2:trunc(ih*${SCALE}/2)*2"
+ts=$(date +"%Y%m%d-%H%M%S")
+out="${NAME}-${ts}.webm"
 
-now="$(date +"%Y%m%d-%H%M%S")"
-tmp="$(mktemp).gif"
+printf "recording… to %s (Ctrl-C)\n" "$out"
 
-let x=$x+1
-let y=$y+1
-
-OUT="$NAME-$now.$EXT"
-
-ffmpeg -v warning \
-       -video_size ${w}x${h} \
-       -framerate $FPS \
-       -f x11grab \
-       -i :0.0+${x},${y} \
-       -vcodec libvpx-vp9 \
-       -b:v 1M \
-       -vf fps=$FPS,scale=iw*$SCALE:ih*$SCALE \
-       "$OUT"
-
-echo "saved to '$OUT'"
+# Run ffmpeg in the foreground so it handles Ctrl-C itself and finalizes cleanly
+exec ffmpeg -v warning \
+  -video_size "${w}x${h}" \
+  -framerate "${FPS}" \
+  -f x11grab -i "${DISPLAY}+${x},${y}" \
+  -vf "${VF}" \
+  -c:v libvpx-vp9 -crf "${CRF}" -b:v 0 \
+  -row-mt 1 -tile-columns 2 -tile-rows 1 \
+  -pix_fmt yuv420p \
+  "${out}"
 
 # TIP: convert FILE.gif -strip -coalesce -layers Optimize OPTIMIZED.gif
