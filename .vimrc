@@ -31,7 +31,7 @@ set nocursorline                    " Highlight current line
 set scrolloff=4
 set nofoldenable
 set timeoutlen=200                  " Set timeout between key sequences
-set background=dark
+set background=light
 set mouse=a                         " Enable mouse in all modes
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
@@ -47,6 +47,7 @@ set cmdheight=1
 set matchtime=2                     " Shorter brace match time
 set virtualedit=block
 set tags+=.tags
+set tags+=./tags,tags;
 set tags+=codex.tags
 set undofile
 set gdefault                        " Always use /g with %s/
@@ -56,6 +57,7 @@ set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
 set diffopt=filler,vertical,foldcolumn:0
 set statusline=%<%f\ (%{gitbranch#name()})\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
+let &statuscolumn='%=%{v:lnum}  '
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set spelllang=en_us,en_gb
 set completeopt=menu
@@ -213,8 +215,7 @@ if executable('haskell-tags')
 endif
 
 if executable('ctags')
-  au BufWritePost *.c,*.cc,*.cpp  silent !ctags -f .tags -R .
-  au BufWritePost *.h             silent !ctags -f .tags -R .
+  nnoremap <silent> <Leader>j <C-]>
 endif
 
 " File-type
@@ -409,6 +410,8 @@ endfunction
 command! Write setlocal spell   | Goyo 100x98%
 command! Code  setlocal nospell | Goyo!
 command! GitAdd silent !git add %
+command! GitStage silent :Gitsigns stage_hunk
+xnoremap <silent> <leader>s :Gitsigns stage_hunk<CR>
 
 " Delete the current file.
 command! Delete call delete(expand('%')) | bdelete!
@@ -452,6 +455,6 @@ command! CocLspLogs CocCommand workspace.showOutput
 " Use custom colors.
 " This has to go after plugin initialization.
 try
-  colorscheme shady
+  colorscheme radiant
 catch
 endtry
