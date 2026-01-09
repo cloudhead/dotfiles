@@ -14,6 +14,7 @@ export MOZ_USE_XINPUT2=1 # Pixel scrolling in Firefox
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
 export NNN_FIFO=/tmp/nnn.fifo
 export CARGO_BUILD_JOBS=12
+export XCURSOR_SIZE=42
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh;

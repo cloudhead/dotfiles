@@ -7,7 +7,7 @@
 Xft.dpi:        144
 Xft.antialias:  true
 Xft.rgba:       rgb
-Xcursor.size:   32
+Xcursor.size:   48
 
 *background: black
 *foreground: white
