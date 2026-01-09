@@ -55,9 +55,8 @@ set colorcolumn=80
 set list
 set listchars=tab:·\ ,eol:¬,trail:█
 set fillchars=diff:\ ,vert:│
-set diffopt=filler,vertical,foldcolumn:0
+set diffopt=filler,vertical,foldcolumn:0,algorithm:patience
 set statusline=%<%f\ (%{gitbranch#name()})\ %h%m%r%=%y\ \ %-14(%{&sw}:%{&sts}:%{&ts}%)%-14.(%l,%c%V%)\ %P
-let &statuscolumn='%=%{v:lnum}  '
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set spelllang=en_us,en_gb
 set completeopt=menu
@@ -91,6 +90,9 @@ if !has("nvim")
   set t_Co=256
 endif
 
+" Number column
+let &statuscolumn='%=%s%{v:lnum}  '
+
 let mapleader = "\<Space>"
 
 " vim.wiki
@@ -104,12 +106,6 @@ let g:vimtex_quickfix_mode = 0
 
 " Why this is not the default, I don't know.
 let g:c_syntax_for_h = 1
-
-" Svelte
-let g:svelte_preprocessors = ['typescript', 'ts']
-let g:svelte_preprocessor_tags = [
-  \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
-  \ ]
 
 " inccommand
 if has("nvim")
@@ -128,7 +124,6 @@ endfunction
 au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-haskell
 au FileType javascript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
-au FileType svelte      setlocal number sts=2 sw=2 expandtab nowrap
 au FileType css         setlocal number sts=2 sw=2 expandtab nowrap
 au FileType go          setlocal number ts=4  sw=4 noexpandtab
 au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab nowrap
@@ -141,14 +136,14 @@ au FileType graphql     setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
-au FileType markdown    setlocal nonumber conceallevel=0
+au FileType markdown    setlocal nonumber conceallevel=0 formatprg=fmt\ -w\ 80
 au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
 au FileType todo        setlocal nonumber sw=2 expandtab nolinebreak nowrap textwidth=0
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
 au FileType verilog     setlocal commentstring=//\ %s
 au FileType riscv       setlocal number sts=4 sw=4 expandtab noautoindent commentstring=#\ %s
-au FileType radiance    setlocal number ts=4 sw=4 expandtab nowrap commentstring=//\ %s
+au FileType radiance    setlocal number ts=4 sw=4 expandtab nowrap commentstring=//\ %s comments=:///,://
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
@@ -158,10 +153,10 @@ au BufRead,BufNewFile *.toml      setf toml
 au BufRead,BufNewFile *.rs        setf rust
 au BufRead,BufNewFile *.mustache  setf mustache
 au BufRead,BufNewFile *.tera      setf htmldjango
-au BufRead,BufNewFile *.svelte    setf svelte
 au BufRead,BufNewFile *.wiki      setf wiki
 au BufRead,BufNewFile *.r         setf radiance
-au BufRead,BufNewFile *.h         set filetype=c
+au BufRead,BufNewFile *.rir       setf rir
+au BufRead,BufNewFile *.h         setf c
 
 " If no file-type is detected, set to plain.
 autocmd BufEnter * if &filetype == "" | setlocal ft=plain | endif
@@ -350,7 +345,6 @@ if has("nvim")
   call plug#begin()
 
   Plug 'tpope/vim-commentary'
-  Plug 'evanleck/vim-svelte', { 'for': ['svelte'], 'branch': 'main' }
   Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
   Plug 'bronson/vim-visual-star-search'
   Plug 'cloudhead/neovim-fuzzy'
@@ -362,7 +356,7 @@ if has("nvim")
   Plug 'itchyny/vim-gitbranch'
   Plug 'cespare/vim-toml'
   Plug 'rust-lang/rust.vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'svelte', 'c'] }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['rust', 'typescript', 'c'] }
   Plug 'neovim/nvim-lspconfig'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
@@ -411,6 +405,7 @@ command! Write setlocal spell   | Goyo 100x98%
 command! Code  setlocal nospell | Goyo!
 command! GitAdd silent !git add %
 command! GitStage silent :Gitsigns stage_hunk
+command! GitReset silent :Gitsigns reset_hunk
 xnoremap <silent> <leader>s :Gitsigns stage_hunk<CR>
 
 " Delete the current file.
