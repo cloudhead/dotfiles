@@ -450,6 +450,6 @@ command! CocLspLogs CocCommand workspace.showOutput
 " Use custom colors.
 " This has to go after plugin initialization.
 try
-  colorscheme radiant
+  colorscheme shady
 catch
 endtry
