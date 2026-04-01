@@ -88,10 +88,10 @@ if !has("nvim")
   set nocompatible                  " Don't try to be compatible with vi
   set ttyfast
   set t_Co=256
+else
+  " Number column
+  let &statuscolumn='%=%s%{v:lnum}  '
 endif
-
-" Number column
-let &statuscolumn='%=%s%{v:lnum}  '
 
 let mapleader = "\<Space>"
 
@@ -155,7 +155,7 @@ au BufRead,BufNewFile *.mustache  setf mustache
 au BufRead,BufNewFile *.tera      setf htmldjango
 au BufRead,BufNewFile *.wiki      setf wiki
 au BufRead,BufNewFile *.r         setf radiance
-au BufRead,BufNewFile *.rir       setf rir
+au BufRead,BufNewFile *.ril       setf ril
 au BufRead,BufNewFile *.h         setf c
 
 " If no file-type is detected, set to plain.

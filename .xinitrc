@@ -44,5 +44,4 @@ if command -v xbindkeys >/dev/null 2>&1; then
   xbindkeys
 fi
 
-# `dbus-launch` is required for flameshot.
-exec dbus-launch spectrwm
+exec dbus-run-session spectrwm

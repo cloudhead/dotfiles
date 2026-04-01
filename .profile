@@ -4,8 +4,9 @@ if command -v keychain >/dev/null; then
   eval $(keychain --eval -Q --quiet ~/.ssh/id_rsa ~/.radicle/keys/radicle ~/.ssh/alexis.radiant.computer)
 fi
 
-export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.gcloud/bin:~/.cabal/bin:~/.radicle/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:~/.npm-packages/bin:$PATH
+export PATH=~/bin:~/.local/bin:~/.yarn/bin:~/.cabal/bin:~/.radicle/bin:~/.cargo/bin:~/.gem/ruby/2.6.0/bin:$PATH
 export PATH=$PATH:~/.foundry/bin
+export PATH=$PATH:~/.npm/bin
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin
 export NODE_PATH=/usr/lib/node_modules
 export EDITOR=nvim
