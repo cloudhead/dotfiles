@@ -143,7 +143,7 @@ au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak
 au FileType tex         setlocal
 au FileType verilog     setlocal commentstring=//\ %s
 au FileType riscv       setlocal number sts=4 sw=4 expandtab noautoindent commentstring=#\ %s
-au FileType radiance    setlocal number ts=4 sw=4 expandtab nowrap commentstring=//\ %s comments=:///,://
+au FileType radiance    setlocal number ts=4 sw=4 expandtab nowrap commentstring=//\ %s comments=:///,://!,://
 
 au BufRead,BufNewFile *.md        setf markdown
 au BufRead,BufNewFile *.tex       setf tex
@@ -156,6 +156,7 @@ au BufRead,BufNewFile *.tera      setf htmldjango
 au BufRead,BufNewFile *.wiki      setf wiki
 au BufRead,BufNewFile *.r         setf radiance
 au BufRead,BufNewFile *.ril       setf ril
+au BufRead,BufNewFile *.ras       setf ras
 au BufRead,BufNewFile *.h         setf c
 
 " If no file-type is detected, set to plain.
