@@ -1,0 +1,64 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 30,
+  "spacing": 8,
+  "modules-left": [ "sway/workspaces" ],
+  "modules-center": [],
+  "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "tray", "clock" ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}"
+  },
+  "sway/window": {
+    "format": "{}",
+    "max-length": 80
+  },
+  "clock": {
+    "format": "{:%a %H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y %H:%M:%S}"
+  },
+  "network": {
+    "interval": 2,
+    "format-wifi": "󰖩 {essid} {signalStrength}%",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-linked": "󰈀 {ifname} linked",
+    "format-disconnected": "󰖪 offline",
+    "tooltip-format": "{ifname} {ipaddr}\nDown {bandwidthDownBytes} Up {bandwidthUpBytes}"
+  },
+  "cpu": {
+    "interval": 2,
+    "format": "󰍛 {usage}%"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "󰾆 {used:0.1f}/{total:0.1f}G"
+  },
+  "disk": {
+    "path": "/",
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "tooltip-format": "{used} used of {total} on {path}"
+  },
+  "pulseaudio": {
+    "format": "󰕾 {volume}%",
+    "format-muted": "󰝟 muted",
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "battery": {
+    "interval": 30,
+    "format": "󰁹 {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
+  }
+}

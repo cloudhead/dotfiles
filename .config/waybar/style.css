@@ -1,0 +1,76 @@
+@import url("file:///etc/xdg/waybar/style.css");
+
+* {
+    font-family: "BlexMono Nerd Font Mono", "BlexMono Nerd Font", monospace;
+    font-size: 16px;
+}
+
+window#waybar {
+    background-color: #000000;
+    border-bottom: none;
+    color: #dddddd;
+}
+
+#clock {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#network {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#cpu {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#memory {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#disk {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#pulseaudio {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#battery {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+#workspaces button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #333333;
+}
+
+#workspaces button:hover {
+    background-color: #101010;
+    border: none;
+    box-shadow: none;
+}
+
+#workspaces button.visible {
+    color: #242424;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: #1a1a1a;
+    color: #999999;
+    box-shadow: none;
+}
+
+#workspaces button.urgent {
+    background-color: #b03060;
+    color: #ffffff;
+}

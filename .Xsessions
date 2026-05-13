@@ -1,2 +1,0 @@
-VDPAU_DRIVER=va_gl
-xrdb -merge .Xresources
