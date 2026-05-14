@@ -39,11 +39,11 @@ if status is-interactive
   alias b yazi
   alias f fd
   alias mv "/bin/mv -i"
-  alias img "sxiv -a"
+  alias img imv
   alias df "df -h"
   alias sys systemctl
   alias s systemctl
-  alias pdf mupdf
+  alias pdf zathura
   alias webserver "python -m http.server"
   alias pacman "sudo pacman --color=auto"
   alias vim nvim

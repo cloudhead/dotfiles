@@ -46,6 +46,10 @@ window#waybar {
     color: #dddddd;
 }
 
+#tray {
+    background-color: transparent;
+}
+
 #workspaces button {
     background-color: transparent;
     border: none;
