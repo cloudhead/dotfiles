@@ -10,8 +10,13 @@ if status is-interactive
   set fish_cursor_replace_one underscore
   set fish_cursor_visual block
 
+  if set -q SSH_AUTH_SOCK; and not test -S "$SSH_AUTH_SOCK"
+    set -e SSH_AUTH_SOCK
+    set -e SSH_AGENT_PID
+  end
+
   if type -q keychain
-    keychain --eval -Q --quiet ~/.ssh/id_rsa ~/.radicle/keys/radicle ~/.ssh/alexis.radiant.computer | source
+    keychain --eval --quiet --noinherit ~/.ssh/id_rsa ~/.radicle/keys/radicle ~/.ssh/alexis.radiant.computer | source
   end
 
   function fish_mode_prompt
