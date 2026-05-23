@@ -98,4 +98,8 @@ if status is-interactive
   end
 
   source ~/.config/fish/pureish.fish
+
+  if type -q fzf
+    fzf --fish | source
+  end
 end
