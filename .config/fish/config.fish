@@ -5,6 +5,8 @@ if status is-interactive
   fish_vi_key_bindings
 
   set -g fish_greeting
+  set -g fish_autosuggestion_enabled 0
+
   set fish_cursor_default block
   set fish_cursor_insert underscore
   set fish_cursor_replace_one underscore
@@ -36,7 +38,7 @@ if status is-interactive
   set -gx PAGER "less -s -M +Gg"
   set -gx EZA_COLORS "reset:fi=37:di=36:ln=36:or=31:ex=32:sp=31:pi=33:so=33:bd=33:cd=33:xx=90:da=90:uu=37:gu=37:ur=90:uw=90:ux=32:gr=90:gw=90:gx=32:tr=90:tw=90:tx=32:sn=37:sb=90:lc=90"
 
-  alias l "eza --color=auto --icons --group-directories-first"
+  alias l "eza --width=50 --color=auto --icons --group-directories-first"
   alias ll "eza -lag --color=auto --icons --group-directories-first"
   alias g git
   alias n "sudo netctl"
