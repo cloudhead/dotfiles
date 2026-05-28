@@ -16,6 +16,8 @@ output * scale 1.5 bg $bg solid_color
 output * bg ~/images/wallpaper.png tile
 exec $term
 exec waybar
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store
 
 focus_follows_mouse yes
 mouse_warping none
@@ -65,7 +67,7 @@ bindsym $mod+l             focus right
 bindsym $mod+Shift+j       move down
 bindsym $mod+Shift+k       move up
 bindsym $mod+Shift+h       move left
-bindsym $mod+Shift+l       move right
+bindsym $mod+Shift+l       exec sh -c 'cliphist list | fuzzel --dmenu --width 100 | cliphist decode | wl-copy'
 bindsym $mod+f             fullscreen toggle
 bindsym $mod+Shift+space   floating toggle
 bindsym $mod+space         layout toggle split

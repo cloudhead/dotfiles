@@ -136,7 +136,7 @@ au FileType graphql     setlocal number ts=4  sw=4 expandtab nowrap
 au FileType rust        setlocal number signcolumn=yes nowrap colorcolumn=100 textwidth=100
 au FileType plain       setlocal nonumber noai nocin nosi inde= wrap linebreak textwidth=80
 au FileType pandoc      setlocal nonumber
-au FileType markdown    setlocal nonumber conceallevel=0 formatprg=fmt\ -w\ 80
+au FileType markdown    setlocal nonumber nowrap conceallevel=0 formatprg=fmt\ -w\ 80
 au FileType rst         setlocal nonumber sw=2 expandtab wrap linebreak textwidth=80
 au FileType todo        setlocal nonumber sw=2 expandtab nolinebreak nowrap textwidth=0
 au FileType fountain    setlocal nonumber noai nocin nosi inde= wrap linebreak

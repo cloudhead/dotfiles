@@ -46,6 +46,11 @@ window#waybar {
     color: #dddddd;
 }
 
+#custom-clipboard {
+    background-color: transparent;
+    color: #dddddd;
+}
+
 #tray {
     background-color: transparent;
 }

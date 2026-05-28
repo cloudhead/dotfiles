@@ -12,9 +12,17 @@ if status is-interactive
   set fish_cursor_replace_one underscore
   set fish_cursor_visual block
 
-  if set -q SSH_AUTH_SOCK; and not test -S "$SSH_AUTH_SOCK"
-    set -e SSH_AUTH_SOCK
-    set -e SSH_AGENT_PID
+  if set -q SSH_AUTH_SOCK
+    if not test -S "$SSH_AUTH_SOCK"
+      set -e SSH_AUTH_SOCK
+      set -e SSH_AGENT_PID
+    else if type -q ssh-add
+      ssh-add -l >/dev/null 2>&1
+      if test $status -eq 2
+        set -e SSH_AUTH_SOCK
+        set -e SSH_AGENT_PID
+      end
+    end
   end
 
   if type -q keychain

@@ -5,7 +5,7 @@
   "spacing": 8,
   "modules-left": [ "sway/workspaces" ],
   "modules-center": [],
-  "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "tray", "clock" ],
+  "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "custom/clipboard", "tray", "clock" ],
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
@@ -56,6 +56,17 @@
       "warning": 30,
       "critical": 15
     }
+  },
+  "custom/clipboard": {
+    "format": "",
+    "interval": "once",
+    "return-type": "json",
+    "exec": "sh -c 'printf \"{\\\"tooltip\\\":\\\"%s clipboard items\\\"}\\n\" \"$(cliphist list 2>/dev/null | wc -l)\"'",
+    "exec-if": "sh -c 'command -v cliphist >/dev/null && [ \"$(cliphist list 2>/dev/null | wc -l)\" -gt 0 ]'",
+    "on-click": "sh -c 'cliphist list | fuzzel --dmenu --width 100 | cliphist decode | wl-copy && pkill -RTMIN+9 waybar'",
+    "on-click-right": "sh -c 'cliphist list | fuzzel --dmenu --width 100 | cliphist delete && pkill -RTMIN+9 waybar'",
+    "on-click-middle": "sh -c 'cliphist wipe && pkill -RTMIN+9 waybar'",
+    "signal": 9
   },
   "tray": {
     "icon-size": 18,
