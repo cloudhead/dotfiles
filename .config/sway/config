@@ -16,6 +16,7 @@ output * scale 1.5 bg $bg solid_color
 output * bg ~/images/wallpaper.png tile
 exec $term
 exec waybar
+exec flameshot
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
