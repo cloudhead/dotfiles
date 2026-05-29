@@ -55,8 +55,8 @@ input type:pointer {
 
 bindsym $mod+Shift+Return  exec $term
 bindsym $mod+p             exec $menu
-bindsym $mod+b             exec firefox
-bindsym $mod+Shift+r       reload
+bindsym $mod+b             split v
+bindsym $mod+v             split h
 bindsym $mod+Shift+c       kill
 bindsym $mod+q             reload
 bindsym $mod+x             exec swaylock -f -c 000000
@@ -65,6 +65,8 @@ bindsym $mod+h             focus left
 bindsym $mod+j             focus down
 bindsym $mod+k             focus up
 bindsym $mod+l             focus right
+bindsym $mod+Page_Up       focus parent
+bindsym $mod+Page_Down     focus child
 bindsym $mod+Shift+j       move down
 bindsym $mod+Shift+k       move up
 bindsym $mod+Shift+h       move left
