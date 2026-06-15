@@ -35,7 +35,7 @@ set background=light
 set mouse=a                         " Enable mouse in all modes
 set directory=~/tmp,/var/tmp,/tmp,. " Keep swap files in one of these
 set wmh=0                           " Minimum window height = 0
-set showcmd
+set noshowcmd
 set updatetime=250                  " How long before 'CursorHold' event
 set nobackup
 set nowritebackup
@@ -125,7 +125,7 @@ au FileType haskell     setlocal number sts=4 sw=4 expandtab formatprg=stylish-h
 au FileType javascript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType typescript  setlocal number sts=2 sw=2 expandtab nowrap
 au FileType css         setlocal number sts=2 sw=2 expandtab nowrap
-au FileType go          setlocal number ts=4  sw=4 noexpandtab
+au FileType go          setlocal number ts=4  sw=4 noexpandtab nowrap
 au FileType c,cpp,glsl  setlocal number ts=4  sw=4 noexpandtab nowrap
 au FileType lua         setlocal number       sw=2 expandtab
 au FileType sh,zsh      setlocal number sts=2 sw=2 expandtab

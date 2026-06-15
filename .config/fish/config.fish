@@ -1,6 +1,22 @@
 #
 # config.fish
 #
+set -gx PATH \
+  "$HOME/bin" \
+  "$HOME/.local/bin" \
+  "$HOME/.yarn/bin" \
+  "$HOME/.radicle/bin" \
+  "$HOME/.cargo/bin" \
+  "$HOME/.npm/bin" \
+  "$HOME/.local/share/gem/ruby/3.4.0/bin" \
+  "$HOME/.proto/shims" \
+  "$HOME/.proto/bin" \
+  $PATH
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx RIPGREP_CONFIG_PATH "$HOME/.rgrc"
+set -gx CARGO_BUILD_JOBS 12
+
 if status is-interactive
   fish_vi_key_bindings
 
@@ -26,7 +42,12 @@ if status is-interactive
   end
 
   if type -q keychain
-    keychain --eval --quiet --noinherit ~/.ssh/id_rsa ~/.radicle/keys/radicle ~/.ssh/alexis.radiant.computer | source
+    keychain --eval --quiet --noinherit \
+      ~/.ssh/id_ed25519 \
+      ~/.ssh/id_rsa \
+      ~/.ssh/id_rsa_share \
+      ~/.radicle/keys/radicle \
+      ~/.ssh/alexis.radiant.computer | source
   end
 
   function fish_mode_prompt
