@@ -41,13 +41,18 @@ if status is-interactive
     end
   end
 
-  if type -q keychain
+  if status is-login; and type -q keychain
     keychain --eval --quiet --noinherit \
       ~/.ssh/id_ed25519 \
       ~/.ssh/id_rsa \
       ~/.ssh/id_rsa_share \
       ~/.radicle/keys/radicle \
       ~/.ssh/alexis.radiant.computer | source
+  else if not set -q SSH_AUTH_SOCK
+    set -l keychain_env ~/.keychain/(uname -n)-fish
+    if test -r "$keychain_env"
+      source "$keychain_env"
+    end
   end
 
   function fish_mode_prompt
@@ -75,7 +80,7 @@ if status is-interactive
   alias b yazi
   alias f fd
   alias mv "/bin/mv -i"
-  alias img imv
+  alias img swayimg
   alias df "df -h"
   alias sys systemctl
   alias s systemctl

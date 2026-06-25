@@ -3,15 +3,16 @@
   "position": "bottom",
   "height": 30,
   "spacing": 8,
-  "modules-left": [ "sway/workspaces" ],
-  "modules-center": [],
+  "modules-left": [ "hyprland/workspaces" ],
+  "modules-center": [ "hyprland/window" ],
   "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "custom/clipboard", "tray", "clock" ],
-  "sway/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
-    "format": "{name}"
+    "format": "{name}",
+    "sort-by-number": true
   },
-  "sway/window": {
+  "hyprland/window": {
     "format": "{}",
     "max-length": 80
   },
