@@ -11,11 +11,13 @@ set -gx PATH \
   "$HOME/.local/share/gem/ruby/3.4.0/bin" \
   "$HOME/.proto/shims" \
   "$HOME/.proto/bin" \
+  "$HOME/.local/share/pnpm/bin" \
   $PATH
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx RIPGREP_CONFIG_PATH "$HOME/.rgrc"
 set -gx CARGO_BUILD_JOBS 12
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 
 if status is-interactive
   fish_vi_key_bindings
@@ -28,13 +30,28 @@ if status is-interactive
   set fish_cursor_replace_one underscore
   set fish_cursor_visual block
 
+  set -l ssh_keys \
+    ~/.ssh/id_ed25519 \
+    ~/.ssh/id_rsa \
+    ~/.ssh/id_rsa_share \
+    ~/.radicle/keys/radicle \
+    ~/.ssh/alexis.radiant.computer
+  set -l keychain_env ~/.keychain/(uname -n)-fish
+
   if set -q SSH_AUTH_SOCK
     if not test -S "$SSH_AUTH_SOCK"
       set -e SSH_AUTH_SOCK
       set -e SSH_AGENT_PID
-    else if type -q ssh-add
+    end
+  end
+
+  if status is-login; and type -q ssh-add; and set -q SSH_AUTH_SOCK
+    if test -S "$SSH_AUTH_SOCK"
       ssh-add -l >/dev/null 2>&1
       if test $status -eq 2
+        set -e SSH_AUTH_SOCK
+        set -e SSH_AGENT_PID
+      else if test $status -eq 1
         set -e SSH_AUTH_SOCK
         set -e SSH_AGENT_PID
       end
@@ -42,14 +59,8 @@ if status is-interactive
   end
 
   if status is-login; and type -q keychain
-    keychain --eval --quiet --noinherit \
-      ~/.ssh/id_ed25519 \
-      ~/.ssh/id_rsa \
-      ~/.ssh/id_rsa_share \
-      ~/.radicle/keys/radicle \
-      ~/.ssh/alexis.radiant.computer | source
+    keychain --eval --quiet --noinherit $ssh_keys | source
   else if not set -q SSH_AUTH_SOCK
-    set -l keychain_env ~/.keychain/(uname -n)-fish
     if test -r "$keychain_env"
       source "$keychain_env"
     end
@@ -96,6 +107,14 @@ if status is-interactive
   alias calc kalk
   alias t tree-git-ignore
   alias sql3 "sqlite3 -box"
+  alias mysql mariadb
+
+  function awsx
+    set -l profile (aws configure list-profiles | fzf --prompt "AWS profile: ")
+    test -n "$profile"; or return 1
+    set -gx AWS_PROFILE "$profile"
+    echo "AWS_PROFILE=$AWS_PROFILE"
+  end
 
   function e
     $EDITOR $argv

@@ -3,8 +3,8 @@
   "position": "bottom",
   "height": 30,
   "spacing": 8,
-  "modules-left": [ "hyprland/workspaces" ],
-  "modules-center": [ "hyprland/window" ],
+  "modules-left": [ "hyprland/workspaces", "niri/workspaces" ],
+  "modules-center": [ "hyprland/window", "niri/window" ],
   "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "custom/clipboard", "tray", "clock" ],
   "hyprland/workspaces": {
     "disable-scroll": true,
