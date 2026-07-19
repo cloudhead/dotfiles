@@ -49,6 +49,19 @@ window#waybar {
 #custom-clipboard {
     background-color: transparent;
     color: #dddddd;
+    padding: 0 8px;
+}
+
+#custom-screenshot {
+    background-color: transparent;
+    color: #dddddd;
+    padding: 0 8px;
+}
+
+#custom-clipboard:hover,
+#custom-screenshot:hover {
+    background-color: #404040;
+    color: #ffffff;
 }
 
 #tray {
@@ -57,19 +70,30 @@ window#waybar {
 
 #workspaces button {
     background-color: transparent;
+    background-image: none;
     border: none;
     box-shadow: none;
-    color: #333333;
+    color: #777777;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+    transition: none;
+    animation: none;
 }
 
 #workspaces button:hover {
-    background-color: #101010;
+    background: #181818;
+    background-image: none;
     border: none;
     box-shadow: none;
+    color: #777777;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+    transition: none;
+    animation: none;
 }
 
 #workspaces button.visible {
-    color: #242424;
+    color: #777777;
 }
 
 #workspaces button.focused,
@@ -77,9 +101,31 @@ window#waybar {
     background-color: #1a1a1a;
     color: #999999;
     box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
 #workspaces button.urgent {
     background-color: #b03060;
     color: #ffffff;
+}
+
+#taskbar button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #dddddd;
+    padding: 0;
+}
+
+#taskbar button:not(.active) {
+    font-size: 0;
+    min-width: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+#taskbar button.active {
+    padding-left: 8px;
+    padding-right: 8px;
 }
