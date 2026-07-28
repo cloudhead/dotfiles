@@ -3,18 +3,26 @@
   "position": "bottom",
   "height": 30,
   "spacing": 8,
-  "modules-left": [ "hyprland/workspaces", "niri/workspaces" ],
-  "modules-center": [ "hyprland/window", "niri/window" ],
-  "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "custom/clipboard", "tray", "clock" ],
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": false,
-    "format": "{name}",
-    "sort-by-number": true
+  "fixed-center": true,
+  "modules-left": [ "ext/workspaces" ],
+  "modules-center": [ "custom/swm-window" ],
+  "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "custom/screenshot", "custom/clipboard", "tray", "clock" ],
+  "custom/swm-window": {
+    "exec": "tail -n 1 -F -s 0.05 ${XDG_RUNTIME_DIR}/swm-title 2>/dev/null",
+    "max-length": 80,
+    "tooltip": false
   },
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 80
+  "ext/workspaces": {
+    "format": "{name}",
+    "sort-by-name": true,
+    "on-click": "activate"
+  },
+  "custom/screenshot": {
+    "format": "",
+    "tooltip-format": "Screenshot\nLeft: region\nRight: full output\nMiddle: region edit",
+    "on-click": "waybar-screenshot region",
+    "on-click-right": "waybar-screenshot full",
+    "on-click-middle": "waybar-screenshot edit"
   },
   "clock": {
     "format": "{:%a %H:%M}",
@@ -46,7 +54,8 @@
     "format": "󰕾 {volume}%",
     "format-muted": "󰝟 muted",
     "scroll-step": 5,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    "on-click": "waybar-audio-output-selector",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "battery": {
     "interval": 30,
@@ -62,11 +71,11 @@
     "format": "",
     "interval": "once",
     "return-type": "json",
-    "exec": "sh -c 'printf \"{\\\"tooltip\\\":\\\"%s clipboard items\\\"}\\n\" \"$(cliphist list 2>/dev/null | wc -l)\"'",
-    "exec-if": "sh -c 'command -v cliphist >/dev/null && [ \"$(cliphist list 2>/dev/null | wc -l)\" -gt 0 ]'",
-    "on-click": "sh -c 'cliphist list | fuzzel --dmenu --width 100 | cliphist decode | wl-copy && pkill -RTMIN+9 waybar'",
-    "on-click-right": "sh -c 'cliphist list | fuzzel --dmenu --width 100 | cliphist delete && pkill -RTMIN+9 waybar'",
-    "on-click-middle": "sh -c 'cliphist wipe && pkill -RTMIN+9 waybar'",
+    "exec": "waybar-clipboard status",
+    "exec-if": "waybar-clipboard has-items",
+    "on-click": "waybar-clipboard copy",
+    "on-click-right": "waybar-clipboard delete",
+    "on-click-middle": "waybar-clipboard wipe",
     "signal": 9
   },
   "tray": {
