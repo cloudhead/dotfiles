@@ -1,0 +1,36 @@
+#!/bin/sh
+
+refresh_waybar() {
+  pkill -RTMIN+9 -x waybar
+}
+
+case "$1" in
+  status)
+    count=$(cliphist list 2>/dev/null | wc -l)
+    printf '{"tooltip":"%s clipboard items"}\n' "$count"
+    ;;
+  has-items)
+    command -v cliphist >/dev/null 2>&1 || exit 1
+    test "$(cliphist list 2>/dev/null | wc -l)" -gt 0
+    ;;
+  copy)
+    item=$(cliphist list | fuzzel --dmenu --width 100) || exit
+    test -n "$item" || exit
+    printf '%s\n' "$item" | cliphist decode | wl-copy || exit
+    refresh_waybar
+    ;;
+  delete)
+    item=$(cliphist list | fuzzel --dmenu --width 100) || exit
+    test -n "$item" || exit
+    printf '%s\n' "$item" | cliphist delete || exit
+    refresh_waybar
+    ;;
+  wipe)
+    cliphist wipe || exit
+    refresh_waybar
+    ;;
+  *)
+    echo "usage: waybar-clipboard {status|has-items|copy|delete|wipe}" >&2
+    exit 2
+    ;;
+esac

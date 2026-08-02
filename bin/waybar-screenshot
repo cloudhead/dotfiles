@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case "$1" in
+  region)
+    geometry=$(slurp) || exit
+    grim -g "$geometry" - | wl-copy
+    ;;
+  full)
+    grim -c - | wl-copy
+    ;;
+  window)
+    geometry=$(slurp -r < "${XDG_RUNTIME_DIR:?}/swm-windows") || exit
+    grim -c -g "$geometry" - | wl-copy
+    ;;
+  edit)
+    grim -c - |
+      satty --filename - --fullscreen current-screen --initial-tool crop \
+      --copy-command=wl-copy --early-exit copy
+    ;;
+  *)
+    echo "usage: waybar-screenshot {region|full|window|edit}" >&2
+    exit 2
+    ;;
+esac

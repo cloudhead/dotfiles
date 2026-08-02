@@ -1,0 +1,23 @@
+#!/bin/sh
+
+sinks=$(pactl -f json list sinks | jq -r '.[] | [.name, .description] | @tsv')
+
+[ -n "$sinks" ] || exit 1
+
+default=$(pactl get-default-sink)
+sink=$(
+  printf '%s\n' "$sinks" |
+    awk -F '\t' -v current="$default" '{
+      marker = ($1 == current) ? "* " : "  "
+      printf "%s\t%s%s\n", $1, marker, $2
+    }' |
+      fuzzel --dmenu --hide-prompt --lines=6 --width=64 \
+      --with-nth=2 --accept-nth=1 --only-match --no-run-if-empty
+    ) || exit 0
+
+[ -n "$sink" ] || exit 1
+
+pactl set-default-sink "$sink"
+pactl list sink-inputs short | awk '{ print $1 }' | while read -r input; do
+  pactl move-sink-input "$input" "$sink"
+done
