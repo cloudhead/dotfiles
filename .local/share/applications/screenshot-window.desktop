@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Screenshot: Window
+Exec=waybar-screenshot window
+Icon=camera-photo
+Terminal=false

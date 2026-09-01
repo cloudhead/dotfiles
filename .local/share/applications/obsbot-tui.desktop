@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OBSBOT TUI
+GenericName=Camera controller
+Comment=Control an OBSBOT camera in a terminal
+Exec=foot obsbot-tui
+Icon=camera-video
+Terminal=false
+Categories=AudioVideo;Video;
+Keywords=obsbot;camera;webcam;control;
+StartupNotify=true

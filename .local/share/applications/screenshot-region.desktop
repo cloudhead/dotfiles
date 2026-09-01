@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Screenshot: Region
+Exec=waybar-screenshot region
+Icon=camera-photo
+Terminal=false
