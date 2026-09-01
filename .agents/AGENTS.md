@@ -33,3 +33,7 @@
 * When writing technical documentation, comments, etc. ALWAYS adhere to
   ADS-STE100 Simplified Technical English, unless asked to adhere to another
   style explicitly.
+* When committing code, ALWAYS sign the commit.
+* If I don't ask to commit changes, leave them dirty.
+* If I ask to commit changes, but not to amend, create a new commit.
+* Only if I ask to amend should you amend.

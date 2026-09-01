@@ -4,7 +4,7 @@
 set -gx PATH \
   "$HOME/bin" \
   "$HOME/.local/bin" \
-  "$HOME/.yarn/bin" \
+  "$HOME/.bun/bin" \
   "$HOME/.radicle/bin" \
   "$HOME/.cargo/bin" \
   "$HOME/.npm/bin" \

@@ -49,8 +49,10 @@
   c = commit -v
   s = status -sb
   r = rebase
+  h = history
   re = rebase
   st = status
+  stack = spice
   co = checkout
   d = diff --word-diff=color
   l = log --stat
@@ -102,3 +104,5 @@
 
 [fetch]
   prune = true
+[branch]
+  sort = committerdate
