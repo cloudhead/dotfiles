@@ -21,6 +21,11 @@ window#waybar {
     color: #dddddd;
 }
 
+#network.disconnected {
+    background-color: transparent;
+    color: #ff5555;
+}
+
 #cpu {
     background-color: transparent;
     color: #dddddd;
@@ -45,6 +50,10 @@ window#waybar {
     background-color: transparent;
     color: #dddddd;
 }
+#battery.charging,
+#battery.plugged {
+    background-color: transparent;
+}
 
 #custom-clipboard {
     background-color: transparent;
@@ -66,6 +75,26 @@ window#waybar {
 
 #tray {
     background-color: transparent;
+}
+
+menu {
+    background-color: #000000;
+    border: 1px solid #404040;
+    color: #dddddd;
+}
+
+menuitem {
+    background-color: transparent;
+    color: #dddddd;
+}
+
+menuitem:hover {
+    background-color: #404040;
+    color: #ffffff;
+}
+
+menu separator {
+    background-color: #404040;
 }
 
 #workspaces button {

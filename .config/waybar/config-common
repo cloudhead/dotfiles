@@ -1,0 +1,94 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 30,
+  "spacing": 8,
+  "fixed-center": true,
+  "modules-left": [ "ext/workspaces" ],
+  "modules-center": [ "custom/swm-window" ],
+  "modules-right": [ "cpu", "memory", "disk", "pulseaudio", "battery", "network", "custom/screenshot", "custom/clipboard", "tray", "clock" ],
+  "custom/swm-window": {
+    "exec": "tail -n 1 -F -s 0.05 ${XDG_RUNTIME_DIR}/swm-title 2>/dev/null",
+    "max-length": 80,
+    "tooltip": false
+  },
+  "ext/workspaces": {
+    "format": "{name}",
+    "sort-by-name": true,
+    "on-click": "activate"
+  },
+  "custom/screenshot": {
+    "format": "",
+    "tooltip-format": "Screenshot\nLeft: region\nRight: full output\nMiddle: region edit",
+    "on-click": "waybar-screenshot region",
+    "on-click-right": "waybar-screenshot full",
+    "on-click-middle": "waybar-screenshot edit"
+  },
+  "clock": {
+    "format": "{:%a %H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y %H:%M:%S}"
+  },
+  "network": {
+    "interval": 2,
+    "format-wifi": "{icon}",
+    "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
+    "format-ethernet": "󰈀",
+    "format-linked": "󰈀",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{essid} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  "cpu": {
+    "interval": 2,
+    "format": "󰍛 {usage}%"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "󰾆 {used:0.1f}/{total:0.1f}G"
+  },
+  "disk": {
+    "path": "/",
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "tooltip-format": "{used} used of {total} on {path}"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": [ "󰕿", "󰖀", "󰕾" ],
+      "headphone": "󰋋"
+    },
+    "tooltip-format": "{desc} {volume}%",
+    "scroll-step": 5,
+    "on-click": "waybar-audio-output-selector",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "battery": {
+    "interval": 30,
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
+    "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+  "custom/clipboard": {
+    "format": "",
+    "interval": "once",
+    "return-type": "json",
+    "exec": "waybar-clipboard status",
+    "exec-if": "waybar-clipboard has-items",
+    "on-click": "waybar-clipboard copy",
+    "on-click-right": "waybar-clipboard delete",
+    "on-click-middle": "waybar-clipboard wipe",
+    "signal": 9
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
+  }
+}

@@ -30,12 +30,10 @@ if status is-interactive
   set fish_cursor_replace_one underscore
   set fish_cursor_visual block
 
-  set -l ssh_keys \
-    ~/.ssh/id_ed25519 \
-    ~/.ssh/id_rsa \
-    ~/.ssh/id_rsa_share \
-    ~/.radicle/keys/radicle \
-    ~/.ssh/alexis.radiant.computer
+  set -l ssh_keys
+  while read -l ssh_key
+    set -a ssh_keys ~/.ssh/$ssh_key
+  end <~/.ssh/keychain.keys
   set -l keychain_env ~/.keychain/(uname -n)-fish
 
   if set -q SSH_AUTH_SOCK
