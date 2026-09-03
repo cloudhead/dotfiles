@@ -1,0 +1,8 @@
+profile undocked {
+    output eDP-1 enable
+}
+
+profile docked {
+    output DP-3 enable position 0,0
+    output eDP-1 enable position 1920,0
+}
