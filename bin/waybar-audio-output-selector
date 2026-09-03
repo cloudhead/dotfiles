@@ -1,21 +1,80 @@
 #!/bin/sh
 
 sinks=$(pactl -f json list sinks | jq -r '.[] | [.name, .description] | @tsv')
-
-[ -n "$sinks" ] || exit 1
-
 default=$(pactl get-default-sink)
-sink=$(
+choices=$(
   printf '%s\n' "$sinks" |
-    awk -F '\t' -v current="$default" '{
+    awk -F '\t' -v current="$default" 'NF {
       marker = ($1 == current) ? "* " : "  "
-      printf "%s\t%s%s\n", $1, marker, $2
-    }' |
-      fuzzel --dmenu --hide-prompt --lines=6 --width=64 \
-      --with-nth=2 --accept-nth=1 --only-match --no-run-if-empty
-    ) || exit 0
+      icon = index($1, "bluez_output.") == 1 ? "󰂯" : "󰕾"
+      printf "sink:%s\t%s%s %s\n", $1, marker, icon, $2
+    }'
+)
 
-[ -n "$sink" ] || exit 1
+while read -r prefix address name; do
+  [ "$prefix" = Device ] || continue
+
+  info=$(bluetoothctl info "$address")
+  case "$info" in
+    *"UUID: Audio Sink"*) ;;
+    *) continue ;;
+  esac
+
+  device_key=$(printf '%s' "$address" | tr ':' '_')
+  case "$sinks" in
+    *"bluez_output.$device_key."*) continue ;;
+  esac
+
+  choices="${choices}${choices:+
+}bluetooth:$address	  󰂲 $name"
+done <<EOF
+$(bluetoothctl devices Paired)
+EOF
+
+[ -n "$choices" ] || exit 1
+
+selection=$(
+  printf '%s\n' "$choices" |
+    fuzzel --dmenu --hide-prompt --lines=6 --width=64 \
+      --with-nth=2 --accept-nth=1 --only-match --no-run-if-empty
+) || exit 0
+
+[ -n "$selection" ] || exit 1
+
+case "$selection" in
+  sink:*)
+    sink=${selection#sink:}
+    case "$sink" in
+      bluez_output.*)
+        device_key=${sink#bluez_output.}
+        device_key=${device_key%%.*}
+        address=$(printf '%s' "$device_key" | tr '_' ':')
+        bluetoothctl connect "$address" || exit 1
+        ;;
+    esac
+    ;;
+  bluetooth:*)
+    address=${selection#bluetooth:}
+    bluetoothctl connect "$address" || exit 1
+
+    device_key=$(printf '%s' "$address" | tr ':' '_')
+    attempts=0
+    while [ "$attempts" -lt 20 ]; do
+      sink=$(
+        pactl -f json list sinks |
+          jq -r --arg prefix "bluez_output.$device_key." \
+            'first(.[] | select(.name | startswith($prefix)) | .name) // empty'
+      )
+      [ -n "$sink" ] && break
+      sleep 0.25
+      attempts=$((attempts + 1))
+    done
+    [ -n "$sink" ] || exit 1
+    ;;
+  *)
+    exit 1
+    ;;
+esac
 
 pactl set-default-sink "$sink"
 pactl list sink-inputs short | awk '{ print $1 }' | while read -r input; do
